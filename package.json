@@ -24,7 +24,7 @@
   "homepage": "https://github.com/marabesi/marabesi.com#readme",
   "dependencies": {
     "simple-jekyll-search": "^1.7.11",
-    "tailwindcss": "^0.7.4"
+    "tailwindcss": "^1.6.0"
   },
   "devDependencies": {
     "@babel/core": "^7.10.5",
