@@ -86,7 +86,8 @@ is expected as pointed by {% cite google_employee_search_results --file 2020-06-
 To mine the results a javascript file was developed, the script executes recursively
 based on the number of pages that google returns till the last page of results
 for a given search string. In total 96 links were found and saved to a XLS file {% cite google_search_results --file 2020-06-22-reactjs-patterns-a-study-based-on-google-search %}
-for further analysis described in the next section.
+for further analysis described in the next section. Furthermore, the code used
+to search and generate the XLS file is available on [github](https://github.com/marabesi/marabesi.com/tree/master/artifacts/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/search){:target="_blank"}.
 
 ## Mining results
 
