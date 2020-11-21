@@ -34,7 +34,7 @@ provide details on configuration and why the decision to chose a given tool.
 Disclaimer: this is my personal setup, I am not endorsing any particular
 tool over another.
 
-The content distrubuted as follows:
+The content distributed as follows:
 
 1. [Operating system](#operating-system)
 2. [Development environment](#development-environment)
@@ -57,13 +57,13 @@ Windowing system     X11
 My development environment changes based on the type of application that
 I am working on, but for this section, I am describing the tools that I use
 for the overall development cycle, which means that I will use those
-regarless of the app I am building.
+regardless of the app I am building.
 
 ### Zsh
 
 Personally I use the zsh shell instead of the default one that comes with linux distros.
 Besides that I also use the plugin [oh my zsh](https://github.com/ohmyzsh/ohmyzsh){:target="_blank"}
-that provides extra funcionality to the zsh shell. It has been a companion of mine
+that provides extra functionality to the zsh shell. It has been a companion of mine
 for many years, despite of its ease of installation it helps me to keep a
 acceptable productive level, avoiding repetitive key strokes and auto completing
 my terminal commands.
@@ -76,7 +76,7 @@ The plugins that I have enabled on my configuration are:
 - [docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose){:target="_blank"}
 - [zsh-autosuggestios](https://github.com/zsh-users/zsh-autosuggestions){:target="_blank"}
 
-Besides that I personaly have a few aliases that I configured to help me to
+Besides that I personally have a few aliases that I configured to help me to
 avoiding typing repetitive commands, the follow list depicts the custom aliases:
 
 ```shell
@@ -88,11 +88,11 @@ which provides a easy to setup, custom terminal look.
 
 ### Tmux
 
-For a more productive terminal I stopped using the termial tabs in favor of
+For a more productive terminal I stopped using the terminal tabs in favor of
 [tmux](https://github.com/tmux/tmux){:target="_blank"} windows/panes. The tmux approach allows me to create, delete, split, resize
 panes with a few key binding and the most important, without leaving the keyboard.
 
-As a companion to tmux I use a plugin called .tmux that self descrbies as a "oh my tmux",
+As a companion to tmux I use a plugin called .tmux that self describes it as a "oh my tmux",
 which I think is influenced by the "oh my zsh" and also provides extra functionality
 to tmux, without the need of configuration.
 
@@ -202,7 +202,7 @@ vscode. In a normal workflow I often use a mix of vim and vscode bindings.
 
 ### Phpstorm
 
-PHPstorm is my preferred IDE to edit PHP files or to perform refactorings. I tried
+PHPstorm is my preferred IDE to edit PHP files or to do refactoring. I tried
 to keep all my use cases in PHP on vscode code but the intelisense and experience
 that PHPStorm has for PHP is better.
 
