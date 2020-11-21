@@ -13,8 +13,14 @@ tags:
 - docker,
 - setup,
 - development,
-- zsh,,
-- version
+- zsh,
+- version,
+- vscode,
+- IDE,
+- system,
+- text,
+- vim,
+- configuration
 ---
 
 Usually I like to jump from one setup to another just for fun of learning
@@ -28,7 +34,7 @@ provide details on configuration and why the decision to chose a given tool.
 Disclaimer: this is my personal setup, I am not endorsing any particular
 tool over another.
 
-The content is distrubuted as follows:
+The content distrubuted as follows:
 
 1. [Operating system](#operating-system)
 2. [Development environment](#development-environment)
@@ -62,13 +68,19 @@ for many years, despite of its ease of installation it helps me to keep a
 acceptable productive level, avoiding repetitive key strokes and auto completing
 my terminal commands.
 
-The plugins that I have enabled on my configuration are: [git](), [zsh-autosuggestios]().
+The plugins that I have enabled on my configuration are:
+
+- [git](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git){:target="_blank"}
+- [dotenv](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv){:target="_blank"}
+- [docker](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker){:target="_blank"}
+- [docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose){:target="_blank"}
+- [zsh-autosuggestios](https://github.com/zsh-users/zsh-autosuggestions){:target="_blank"}
 
 Besides that I personaly have a few aliases that I configured to help me to
 avoiding typing repetitive commands, the follow list depicts the custom aliases:
 
 ```shell
-alias dc="docker-compose"
+alias hh="cd ~/Projects"
 ```
 
 As a theme for zsh I use [powerlevel10k](https://github.com/romkatv/powerlevel10k){:target="_blank"}
@@ -112,7 +124,29 @@ use often in my flow:
 - rabbitmq
 
 Instead of have those dependencies installed locally, I setup them using docker
-instead.
+instead. For example, the most common workflow with nodejs is to use nvm and
+switch between node version locally:
+
+```
+nvm install 12
+```
+
+Once the version is installed, the nodejs is available in the path, such as:
+
+```
+node --version
+```
+
+My approach is to use docker first, instead of nvm:
+
+```
+docker run --rm node:12 -v $(pwd):/app -w /app node --version
+```
+
+The gotcha is to use the flag `w` (workspace) and `v`(volume). Those flags
+translate into something like: I have an app in this directory and I want
+to map them to the container, and also I want to use `/app` as the default
+directory to execute the commands inside the container.
 
 ## IDE's and text editors
 
@@ -157,11 +191,11 @@ for my use case. The extension list is as follows:
 
 Theme used:
 
-- One dark pro
+- [Onde dark pro](https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme){:target="_blank"}
 
 Font:
 
-- JetBrainsMono
+- [JetBrainsMono](https://www.jetbrains.com/lp/mono){:target="_blank"}
 
 The vim extension is the one I use the most, as it brings the vim key bindings to
 vscode. In a normal workflow I often use a mix of vim and vscode bindings.
@@ -171,6 +205,18 @@ vscode. In a normal workflow I often use a mix of vim and vscode bindings.
 PHPstorm is my preferred IDE to edit PHP files or to perform refactorings. I tried
 to keep all my use cases in PHP on vscode code but the intelisense and experience
 that PHPStorm has for PHP is better.
+
+### DBeaver
+
+DBeaver is been the DBMS that I have used the most for MySQL and postgres.
+Previously I used MySQL workbench for MySQL, but since I started to require
+more than one type of database, DBeaver suited better my needs.
+
+### Robo 3T
+
+For mongodb the GUI that helped my since I started is Robo 3T, which provides
+a simple interface and with the features I need to go through collections,
+connect to different servers and query data.
 
 ## References
 
