@@ -92,9 +92,9 @@ For a more productive terminal I stopped using the terminal tabs in favor of
 [tmux](https://github.com/tmux/tmux){:target="_blank"} windows/panes. The tmux approach allows me to create, delete, split, resize
 panes with a few key binding and the most important, without leaving the keyboard.
 
-As a companion to tmux I use a plugin called .tmux that self describes it as a "oh my tmux",
+As a companion to tmux I use a plugin called [.tmux](https://github.com/gpakosz/.tmux){:target="_blank"} that self describes it as a "oh my tmux",
 which I think is influenced by the "oh my zsh" and also provides extra functionality
-to tmux, without the need of configuration.
+to tmux, without the need of trcking the tmux config yourself.
 
 ### Docker
 
