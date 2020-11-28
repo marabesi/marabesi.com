@@ -59,6 +59,11 @@ I am working on, but for this section, I am describing the tools that I use
 for the overall development cycle, which means that I will use those
 regardless of the app I am building.
 
+### Fonts
+
+For font I use [nerd font](https://github.com/ryanoasis/nerd-fonts){:target="_blank"},
+which provides a lot of custom fonts and also icons (based on the font) for the terminal.
+
 ### Zsh
 
 Personally I use the zsh shell instead of the default one that comes with linux distros.
@@ -74,7 +79,7 @@ The plugins that I have enabled on my configuration are:
 - [dotenv](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv){:target="_blank"}
 - [docker](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker){:target="_blank"}
 - [docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose){:target="_blank"}
-- [zsh-autosuggestios](https://github.com/zsh-users/zsh-autosuggestions){:target="_blank"}
+- [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions){:target="_blank"}
 
 Besides that I personally have a few aliases that I configured to help me to
 avoiding typing repetitive commands, the follow list depicts the custom aliases:
