@@ -183,16 +183,16 @@ javascript/typescript out of the box. I do not use vscode as it comes, I have
 a list of plugins that I work with to make it as productive as possible
 for my use case. The extension list is as follows:
 
-- eslint
-- vim
-- file utils
-- formate: CSS/LESS/CSS
-- gitlens
-- jest runner
-- macrosRe
-- settings Sync
-- tailwind CSS Intellisense
-- wakatime
+1. vim
+2. eslint
+3. settings sync
+4. file utils
+5. formate: CSS/LESS/CSS
+6. gitlens
+7. jest runner
+8. macrosRe
+9. tailwind CSS Intellisense
+10. wakatime
 
 Theme used:
 
@@ -202,8 +202,13 @@ Font:
 
 - [JetBrainsMono](https://www.jetbrains.com/lp/mono){:target="_blank"}
 
-The vim extension is the one I use the most, as it brings the vim key bindings to
-vscode. In a normal workflow I often use a mix of vim and vscode bindings.
+The vim (1) extension is the one I use the most, as it brings the vim key bindings to
+vscode, in a normal workflow I often use a mix of vim and vscode bindings.
+
+Sync settings (2) is the first extension that I get working on a fresh install
+of vscode, in two special ocasions: New laptop or new operating system installed.
+The extension helps me to get the extensions, fonts, themes and custom
+settings up in seconds.
 
 ### Phpstorm
 
