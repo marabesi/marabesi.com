@@ -81,6 +81,7 @@ The plugins that I have enabled on my configuration are:
 - [docker-compose](https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose){:target="_blank"}
 - [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions){:target="_blank"}
 - [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting){:target="_blank"}
+- [zsh-autocomplete](https://github.com/marlonrichert/zsh-autocomplete){:target="_blank"}
 
 Besides that I personally have a few aliases that I configured to help me to
 avoiding typing repetitive commands, the follow list depicts the custom aliases:

@@ -9,7 +9,12 @@ status: published
 categories:
 - testing
 tags:
+- code,
 - testing,
+- development,
+- legacy,
+- strategy,
+- tdd
 ---
 
 Previously I discussed about legacy code and the strategies to test legacy
@@ -51,12 +56,24 @@ due the lack of the "precise" estimation.
 
 ## Developers that don't know testing
 
-<!-- often developers starting their careers are not awere of testing -->
+Often developers starting their careers are not awere of testing. We can expand
+the argument going back to the university, where the testing is focused on a single
+event during the development cycle, and usually after the development is done.
+
+The line that is drawn then, goes from the university to the professional life
+of new developers. To emphasize the thinking, in the development industry,
+testing or quality are often treaded when it comes to delivery.
+
+Which in the "modern" agile software development is a confusion, how can it be
+agile without testing? The extreme programming somehow address this issue
+pushing towards a responsible development. The developer owns the code and
+the responsability of testing the code and ensure its quality.
 
 ## Management, often an issue
 
-<!-- Even though management knows the down sides of legacy code, the more important
-thing is to have something "done" -->
+The link between management and development is in my opinion, difficult. XP is
+superior to SCRUM as a base for starting out in agile development
+{% cite extreme_programming_martin_fowler --file 2020-09-01-rethinking-legacy-code-and-testing %}.
 
 ## References
 
