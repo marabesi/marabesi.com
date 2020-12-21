@@ -35,6 +35,10 @@ As opposed to the official best practices {% cite best_practices_docker_hub --fi
 the goal here is to share tips on approaches in how to write the docker files, this is not a
 beginners guide in how docker works or how to use it.
 
+For context, this post is somehow connected to the
+playlist {% cite youtube_playlist --file 2020-05-15-tips-for-writting-docker-files %} I've built
+to keep track of topics that are related to docker.
+
 ## Docker images and services
 
 In this section, the focus is to go through the tips around building
