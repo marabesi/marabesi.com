@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/marabesi/marabesi.com.svg?branch=master)](https://travis-ci.org/marabesi/marabesi.com)
+
 # Hello welcome to my personal website : )
 
 This is the source code of my personal website where you can find
