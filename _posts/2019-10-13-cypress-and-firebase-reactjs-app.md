@@ -50,7 +50,7 @@ backend to interact with the web app **[3]**.
 ## Firebase
 
 Firebase is a library maintained by Google, which has many products inside it.
-In specific the real time database (or more recent firestore) is a Firebase
+In specific the real time database (or its newer version: firestore) is a Firebase
 product that allows developers to write real time applications.
 
 It has a vast library that integrates with many programming languages, the firebase
