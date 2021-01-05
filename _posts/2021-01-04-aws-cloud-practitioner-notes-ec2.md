@@ -11,6 +11,14 @@ categories:
 - ccp
 tags:
 - aws,
+- AWS,
+- demand,
+- servers,
+- ECS,
+- Application,
+- computing,
+- manage,
+- code,
 - ec2,
 - instance,
 - resources,
@@ -20,7 +28,6 @@ tags:
 - cloud,
 - on-demand,
 - ec2 instance,
-- modules ec2,
 - high performance,
 - aws cloud,
 - cloud computing,

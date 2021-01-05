@@ -10,22 +10,31 @@ categories:
 - development
 tags:
 - project,
+- app,
+- step,
+- analytics,
+- javascript,
+- create,
 - firebase,
 - database,
-- web
+- web,
+- post,
+- real,
+- console,
+- account
 ---
 
 Firebase is a service that started as a real time database and expanded
 the services as it grew. The real time database provides a integration
 for sharing data in real time with no need to set up an infrastructure.
-This post aims to cover the web app creating in order to generate the javascript
-object needed to configure the javascript SDK.
+This post aims to cover the web app creating in order to generate the javascript object needed to configure the javascript SDK.
 
 Be aware that the javascript SDK used in this post is not the Nodejs, rather, the focus is in the client side only.
 
 ## Requirements
 
 1. A google account
+2. Javascript basic experience
 
 ## Creating the web app
 
