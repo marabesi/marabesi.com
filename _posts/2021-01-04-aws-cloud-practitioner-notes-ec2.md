@@ -28,9 +28,9 @@ tags:
 ---
 
 This post aims to expose the path I took to take the AWS cloud practitioner
-certification. This post was inspired by {% cite preparing_for_ccp --file 2020-01-04-aws-cloud-practitioner-notes-ec2 %}
+certification. This post was inspired by {% cite preparing_for_ccp --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}
 and some of the resources I am going to share here were taken from his post as
-well my own notes from the free official training {% cite aws_free_training --file 2020-01-04-aws-cloud-practitioner-notes-ec2 %}.
+well my own notes from the free official training {% cite aws_free_training --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}.
 
 The CCP exam is the first certification in the AWS exam list, as such, if you
 have some experience with AWS it should be no problem to complete it. Therefore, the material presented is valuable in the details and conventions used.
@@ -87,7 +87,7 @@ different combinations of storage, memory, processing power.
 For the following list, consider the term **resources** as the group of: compute, memory and networking.
 
 - General purpose (Balanced resources: Web servers/code repository)
-- Computer optimized (Compute intensive tasks: Gaming servers, high performance computing - HPC, Scientific modeling)
+- Computer optimized (Compute intensive tasks: Gaming servers, high performance computing - HPC, Scientific modeling, batch processing)
 - Memory optimized (Memory intensive tasks)
 - Accelerated computing (Floating point number calculations, Graphics processing, Data pattern matching, hardware accelerators)
 - Storage optimized (High performance for locally stored data)
@@ -176,4 +176,4 @@ that removes the access to low level components such as the operational system. 
 
 ## References
 
-{% bibliography --cited_in_order --file 2020-01-04-aws-cloud-practitioner-notes-ec2 %}
+{% bibliography --cited_in_order --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}
