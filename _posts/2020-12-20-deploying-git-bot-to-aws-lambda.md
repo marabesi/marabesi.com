@@ -166,6 +166,20 @@ layers:
   None
 ```
 
+At this point, the deployment is completed and accessing the endpoint provided
+should show up the bref logo.
+
+[![bref welcome image](/images/posts/2020-12-20-deploying-git-bot-to-aws-lambda/bref.png "bref welcome image")](/images/posts/2020-12-20-deploying-git-bot-to-aws-lambda/bref.png){:target="_blank"}
+
+## Updating the deployed app and env variables
+
+By default the `serverless.yml` points to a file `index.php` in the root of the
+project, therefore, git bot uses the file in the `public/index.php` instead.
+Changing the parameter `handler` under `api` fix the index path.
+
+Once the change is in place, the command `serverless deploy` also updates
+the app code to reflect the change.
+
 ## References
 
 {% bibliography --cited_in_order --file 2020-12-20-deploying-git-bot-to-aws-lambda %}
