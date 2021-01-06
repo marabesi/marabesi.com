@@ -16,9 +16,10 @@ tags:
 
 ## Introduction
 
-Amazon VPC (Virtual Private Cloud) lets you provision a isolated section of aws
-cloud, and deliver aws services that you control. Public and private grouping
-of resources are known as subnets.
+Amazon VPC (Virtual Private Cloud) {% cite aws_vpc --file 2021-01-06-aws-cloud-practitioner-notes-networking %}{% cite aws_vpcs_and_subnets --file 2021-01-06-aws-cloud-practitioner-notes-networking %}
+lets you provision a isolated section of aws cloud, and deliver aws services
+that you control. Public and private grouping of
+resources are known as subnets.
 
 - Public subnet
 - Private subnet
@@ -62,7 +63,8 @@ _______________                    |    _|_________                        |  |
                                    |__________________________________________|
 ```
 
-**AWS Direct connect** provides a direct connection from private data center to AWS.
+**AWS Direct connect** {% cite aws_direct_connect --file 2021-01-06-aws-cloud-practitioner-notes-networking %}
+provides a direct connection from private data center to AWS.
 
 ```shell
                                            ____________________________________________
@@ -81,7 +83,9 @@ _______________     |AWS direct connect|   |  ___|_________                     
                                            |__________________________________________|
 ```
 
-AWS networking secuirty features:
+## Module 4 - subnets and network access control lists
+
+AWS networking security features:
 
 - Network hardening
 - Application security
@@ -96,5 +100,20 @@ if the package can go in or out.
 
 Every ec2 comes with a security group, by default all connections are blocked.
 
-- Security groups are stateful
+- Security groups are stateful 
 - Network ACL is stateless (allow all inbound and outbound traffic)
+
+## Module 4 - Global networking
+
+AWS Route 53 domain name system, is the service that amazon uses to translates
+a domain name to an IP address. Route 53 can route traffic based on the
+following policies:
+
+- Latency-based routing
+- Geolocation DNS
+- Geoproximity routing
+- weighted round robin
+
+## References
+
+{% bibliography --cited_in_order --file 2021-01-06-aws-cloud-practitioner-notes-networking %}
