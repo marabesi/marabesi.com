@@ -18,7 +18,19 @@ tags:
 - access,
 - setting,
 - php7,
-- serverless
+- serverless,
+- Serverless,
+- php,
+- application,
+- Stack,
+- app,
+- bot,
+- git,
+- deploy,
+- api,
+- file,
+- dependencies,
+- AWS
 ---
 
 Git bot is a monolith application written in slim and it uses twig as a view

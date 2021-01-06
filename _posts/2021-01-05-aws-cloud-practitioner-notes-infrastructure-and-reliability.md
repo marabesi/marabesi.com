@@ -15,7 +15,17 @@ tags:
 - global infrastructure,
 - availability zone,
 - AZ,
-- edge locations
+- edge locations,
+- availability,
+- CloudFormation,
+- services,
+- locations,
+- regions,
+- calls,
+- data centers,
+- cloud,
+- operate,
+- infrastructure
 ---
 
 ## Introduction
@@ -31,9 +41,9 @@ AWS provides a range of regions to support highly availability.
 3. Future availability 
 4. Pricing (some locations are more expensive to operate)
 
-Each region is made up of multiple of datacenters. AWS calls a single
-datacenter or a group of datacenters a **availability zone** or **AZ**.
-AWS datacenters have redundant power, networking and connectivity.
+Each region is made up of multiple of data centers. AWS calls a single
+data center or a group of data centers a **availability zone** or **AZ**.
+AWS data centers have redundant power, networking and connectivity.
 
 Services that have the check "Regionally scoped service" are already
 high available.
