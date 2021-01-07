@@ -147,14 +147,17 @@ main ul li {
 .page-content {
     min-height: 100%;
 
-    h1, h2, h3 {
+    h1, h2, h3, h4, h5, h6 {
         margin-top: 40px;
         margin-bottom: 10px;
         text-transform: uppercase;
+    }
+
+    h1, h2, h3 {
         color: $post-date-color;
         font-weight: lighter;
     }
-    
+
     :target::before {
         content   : "";
         display   : block;

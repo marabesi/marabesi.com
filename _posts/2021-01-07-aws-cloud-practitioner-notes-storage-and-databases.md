@@ -10,12 +10,34 @@ categories:
 - aws
 - ccp
 tags:
+- Amazon,
 - aws,
 - AWS,
-- S3
+- S3,
+- EBS,
+- data
+- database,
+- databases,
+- DynamoDB,
+- Module,
+- RDS,
+- objects,
+- storage,
+- type,
+- service,
+- migration,
+- files,
+- application,
+- volumes,,
+- store,
+- Use case
 ---
 
 ## Introduction
+
+This module describes the AWS services for storage and databases. AWS has
+different services that goes from file storaging service to serverless
+database.
 
 ## Module 5 - Instance stores and AmazonElastic Block Store
 
