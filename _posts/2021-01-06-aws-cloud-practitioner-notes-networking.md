@@ -12,6 +12,21 @@ categories:
 tags:
 - aws,
 - AWS,
+- VPC,
+- vpc,
+- private,
+- Private,
+- cloud,
+- gateway,
+- amazon,
+- internet,
+- subnets,
+- Virtual,
+- traffic,
+- direct,
+- internet gateway,
+- virtual private gateway,
+- AWS Direct connect
 ---
 
 ## Introduction
