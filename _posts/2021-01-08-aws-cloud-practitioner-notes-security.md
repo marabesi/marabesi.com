@@ -12,6 +12,20 @@ categories:
 tags:
 - aws,
 - AWS,
+- security,
+- data,
+- Module,
+- account,
+- permissions,
+- IAM,
+- cloud,
+- attack,
+- compliance,
+- Compliance,
+- group,
+- encryption,
+- service,
+- resource,
 - S3
 ---
 

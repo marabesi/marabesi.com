@@ -15,8 +15,9 @@ tags:
 - AWS,
 - S3,
 - EBS,
-- data
 - database,
+- Database,
+- data,
 - databases,
 - DynamoDB,
 - Module,
@@ -39,7 +40,7 @@ This module describes the AWS services for storage and databases. AWS has
 different services that goes from file storaging service to serverless
 database.
 
-## Module 5 - Instance stores and AmazonElastic Block Store
+## Module 5 - Instance stores and Amazon Elastic Block Store
 
 Block storage level are places to store files, EC2 has different types
 of storage as well.
