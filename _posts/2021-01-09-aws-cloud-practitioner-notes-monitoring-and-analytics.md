@@ -12,12 +12,36 @@ categories:
 tags:
 - aws,
 - AWS,
-- S3
+- CloudWatch,
+- Amazon,
+- applications,
+- based,
+- Module,
+- metrics,
+- Advisor,
+- Monitoring,
+- Trusted,
+- CloudTrail,
+- resources,
+- time,
+- real,
+- dashboard,
+- Code,
+- Alarms,
+- location,
+- notes,
+- Analytics,
+- Amazon CloudWatch,
+- CloudWatch Alarms,
+- CloudWatch dashboard,
+- AWS CloudTrail,
+- AWS Trusted Advisor,
 ---
 
 ## Introduction
 
-AWS offers a variety of tools for analytics and monitoring, such as Amazon CloudWatch, AWS CloudTrail and AWS Trusted Advisor.
+AWS offers a variety of tools for analytics and monitoring, such as Amazon
+CloudWatch, AWS CloudTrail and AWS Trusted Advisor.
 
 Monitoring: Observing systems. collecting metrics, and then using data
 to make decisions.
