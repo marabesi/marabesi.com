@@ -35,17 +35,22 @@ the lack of checking if an imported class is being used or not.
 
 On the other hand, PHPStorm {% cite phpstorm_jetbrains --file 2020-04-05-php-import-checker-vscode-extension %}
 has the ability to check imports being used built-in - This is a long discussion
-between editors x IDE's.
-
-PHP import checker {% cite php_import_checker --file 2020-04-05-php-import-checker-vscode-extension %} fills
+between editors x IDE's. PHP import checker {% cite php_import_checker --file 2020-04-05-php-import-checker-vscode-extension %} fills
 this gap, which offers PHP developers feedback of unused classes that have been
-imported into the file.
+imported into the file. The content is provided in the following order:
+
+## Table of contents
+
+1. [Installing the extension](#installing-the-extension)
+2. [PHP import checker features](#php-import-checker-features)
+3. [Conclusion](#conclusion)
+4. [References](#references)
 
 ## Installing the extension
 
 Once installed Vscode, the steps to install PHP import checker are the following:
 
-1. Lunch Vscode
+1. Launch Vscode
 2. Access the extension menu
 3. Search for PHP import checker
 4. Hit the button install

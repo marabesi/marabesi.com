@@ -29,6 +29,11 @@ the services as it grew. The real time database provides a integration
 for sharing data in real time with no need to set up an infrastructure.
 This post aims to cover the web app creating in order to generate the javascript object needed to configure the javascript SDK.
 
+## Table of contents
+
+1. [Requirements](#requirements)
+2. [Creating the web app](#creating-the-web-app)
+
 Be aware that the javascript SDK used in this post is not the Nodejs, rather, the focus is in the client side only.
 
 ## Requirements
