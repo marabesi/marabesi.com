@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Deploying git bot to AWS lambda
+title: Deploying git bot release to AWS lambda
 date: 2020-12-20 01:06:05.000000000 -03:00
 image:
 type: article
@@ -31,10 +31,19 @@ tags:
 - file,
 - dependencies,
 - AWS
+redirect_from:
+  - /aws/2020/12/20/deploying-git-bot-to-aws-lambda.html
 ---
 
 Git bot is a monolith application written in slim and it uses twig as a view
 render.
+
+## Table of contents
+
+1. [Requirements](#requirements)
+2. [Setting up bref](#setting-up-bref)
+3. [Deploying](#deploying)
+3. [References](#references)
 
 ## Requirements 
 
