@@ -128,7 +128,7 @@ item in the list. Therefore, this section does not cover the categories `questio
 
 The post category is the most popular with 66, as a first exploration the posts
 were read, and for each of them a pattern name was manually assigned, based on the content
-of the post. Most of them have more the one pattern associated with it, for
+of the post. Most of them have more than one pattern associated with it, for
 example, the first post, in the list covered 22 patterns.
 
 This process was repeated for each post in the list. Once the classification was done,
