@@ -48,7 +48,7 @@ to tricky an authorization to test if the user ca/can't do certain actions in th
 
 ## Spies
 
-To assert that a method was called by the system under test, as the post by {% cite the_little_mocker --file2020-11-29-2020-mocks-dummies-spies-fakes-testing-your-code %}:
+To assert that a method was called by the system under test, as the post by {% cite the_little_mocker --file 2020-11-29-2020-mocks-dummies-spies-fakes-testing-your-code %}:
 "You can use Spies to see inside the workings of the algorithms you are testing".
 
 ## true mocks
