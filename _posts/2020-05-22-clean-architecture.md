@@ -42,10 +42,8 @@ having a architecture in place.
 
 As I first started my path through the clean architecture I often found asking myself: is
 hexagonal architecture {% cite hexagonal_architecutre --file 2020-05-22-clean-architecture %}
-the same as clean architecutre?
-
-The clean architecture, shares decisions compared with the hexagonal architecture,
-as {% cite clean_architecture_article --file 2020-05-22-clean-architecture %}
+the same as clean architecutre? The clean architecture, shares decisions compared
+with the hexagonal architecture, as {% cite clean_architecture_article --file 2020-05-22-clean-architecture %}
 states that the clean architecture is an attempt to integrate the hexagonal
 architecture and other as well, named:
 
@@ -65,7 +63,6 @@ clean architecture as it has a dedicated section in the first chapter, "The Tota
 {% cite clean_architecture_book --file 2020-05-22-clean-architecture %}
 that depicts the fact that the productivity degrades as the time goes. Which
 is caused by the lack of care with code and also the software maintainability. 
-
 The following diagram taken from {% cite clean_architecture_article --file 2020-05-22-clean-architecture %}
 depicts the clean architecture overview.
 
