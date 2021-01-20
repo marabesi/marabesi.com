@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (WIP) Towards a reactjs folder structure based on intent
+title: Towards a reactjs folder structure based on intent (WIP) 
 date: 2021-01-18 01:06:05.000000000 -03:00
 image: 
 type: article
