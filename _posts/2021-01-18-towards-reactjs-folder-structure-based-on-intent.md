@@ -22,9 +22,13 @@ tags:
 - communication,
 - RCA,
 - React create app,
-- UI (user interface),
+- UI,
+- user interface,
 - Third party,
-- Data flow
+- Data flow,
+- package,
+- architecture,
+- approach
 ---
 
 This post is geared towards a reactjs folder structure based on roles, that
@@ -40,6 +44,7 @@ the issue that is to organize reactjs componentes in a "meaningful" way.
 
 1. [The default](#the-default)
 2. [A new approach](#a-new-approach)
+3. [References](#references)
 
 ## The default
 
@@ -136,6 +141,7 @@ The structure has three main pillars, named:
 - UI (user interface)
 - Third party
 - Data flow
+- Packages
 
 The division between those two approaches are inspired by different architectural
 styles such as hexagonal architecture {% cite hexagonal_architecutre --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %} and clean architecture {% cite clean_architecture_book --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}.
@@ -152,6 +158,13 @@ category.
 Data flow, is the place to have everything related to the data that the UI depends
 on. As such, this is the place for redux, mobx or any other library that
 handles data flow and has data itself.
+
+The gotcha for this structure I believe for any complex application, lies in
+the gray area, between components, and how they communicate. To address this issue
+I suggest to use a specific place, a specific folder, named `packages`.
+
+The `packages` folder, in general would have a strict business rule, as such,
+it is the place to have, in this case, pure javascript/typescript code.
 
 ## References
 

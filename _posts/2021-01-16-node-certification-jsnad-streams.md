@@ -120,6 +120,8 @@ fs.readFile('./dump.csv', (error, content) => {
 
 Even though,the readFile loads the content of the file at once in memory,
 this example depicts the usage of the events: `readable`, `end` and `error`.
+Keep in mind that this approach depicts the events usage only, but, nodejs
+offers the `pipe` as well.
 
 ## References
 

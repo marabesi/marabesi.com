@@ -25,7 +25,12 @@ tags:
 - php,
 - PHP,
 - behaviors,
-- oop
+- oop,
+- php oop examples,
+- encapsulation php,
+- encapsulation in php,
+- types of inheritance in php,
+- php final class
 ---
 
 The following content aims to introduce the concepts of OOP, complementing these
