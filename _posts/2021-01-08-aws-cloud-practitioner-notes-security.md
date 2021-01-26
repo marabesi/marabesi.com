@@ -144,8 +144,7 @@ AWS WAF uses a web application firewall to filter traffic from bad actors.
 
 ### AWS Shield standard
 
-Autimatically protects all AWS customers at no cost. It protects from the most
-common and frequent types of DDoS attack.
+Autimatically protects all AWS customers at no cost. It protects from the most common and frequent types of DDoS attack.
 
 ### AWS Shield advanced
 

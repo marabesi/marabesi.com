@@ -79,7 +79,7 @@ _______________                    |    _|_________                        |  |
 ```
 
 **AWS Direct connect** {% cite aws_direct_connect --file 2021-01-06-aws-cloud-practitioner-notes-networking %}
-provides a direct connection from private data center to AWS.
+provides a direct connection from private data center, offices, or other locations to AWS.
 
 ```shell
                                            ____________________________________________

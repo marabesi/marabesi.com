@@ -49,17 +49,23 @@ PHP import checker is a visual code extension that was inspired by PHPStorm a ID
 
 ## Trello to excel
 
-Trello to excel is a chrome extension that exports a trello board to a exel file following a specific spreadsheet layout.
+Trello to excel is a chrome extension that exports a trello board to a excel
+file following a specific spreadsheet layout.
+
+- [Trello to excel github repository](https://github.com/marabesi/trello-to-excel){:target="_blank"}
 
 ## Laration
 
-Laration is a PHP/Laravel package that provides a CLI to show up in a nice way the env variables currently being used by any Laravel application.
+Laration is a PHP/Laravel package that provides a CLI to show up in a nice way
+the env variables currently being used by any Laravel application.
 
 - [Laration]({% post_url 2016-11-26-laration %})
 
 ## Laravel easy crud
 
-Easy CRUD was created to easily generate a CRUD for each Eloquent model (Laravel's ORM). The package generates a admin like interface to create, read, update or delete data from the database.
+Easy CRUD was created to easily generate a CRUD for each Eloquent model
+(Laravel's ORM). The package generates a admin like interface to create,
+read, update or delete data from the database.
 
 ## zcpe
 

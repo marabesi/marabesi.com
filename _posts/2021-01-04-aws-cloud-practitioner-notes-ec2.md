@@ -101,11 +101,21 @@ For the following list, consider the term **resources** as the group of: compute
 
 ### Modules 2 - EC2 pricing
 
-- On-demand
-- Savings plans (low prices, in exchange for commitments in one or three year term, leading up to 72% of saving compared to on-demand)
-- Reserved instances (predictable usage up to 75% of savings compared to on-demand)
-- Spot instances (Ideal for flexible workloads - therefore AWS can terminate the instance at any time)
-- Dedicated  (No shared tenancy of the host)
+The EC2 pricing model vary based on the EC2 buying option:
+
+- **On-demand**
+- **Savings plans** (low prices, in exchange for commitments in one or three year term, leading up to 72% of saving compared to on-demand)
+- **Reserved instances** (predictable usage up to 75% of savings compared to on-demand)
+- **Spot instances** (Ideal for flexible workloads - therefore AWS can terminate the instance at any time). Up to 90% discount compared to On-Demand prices. {% cite overview_aws_white_paper --file2021-01-04-aws-cloud-practitioner-notes-ec2 %}
+- **Dedicated**  (No shared tenancy of the host)
+
+Besides that, the price can vary based on:
+
+- Instance type (micro, small, large, etc). Instance type refers to a combination of resources such as CPU, memory, storage, and networking capacity.
+- Selected region
+- Number of instances
+- Load balancing
+- Allocated elastic IP addresses
 
 ### Modules 2 - EC2 scaling
 
@@ -119,12 +129,18 @@ aspects of the instance such as: processing power, memory and HD.
 ### Modules 2 - Elastic load balancing (ELB)
 
 Load balancing distributes incoming application traffic accross
-multiple resources and its built on regional construct, it runs on regional level.
+multiple resources and its built on regional construct, it runs on regional level. The ELB has the following characteristics:
 
 - High performance
 - Cost-efficient
 - Highly available
 - Automatically scalable
+
+AWS provides different ELB solutions for each kind of work load {% cite overview_aws_white_paper --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}:
+
+- **Application load balancer**: load balancing of HTTP and HTTPS traffic
+- **Network load balancer**: load balancing TCP traffic
+- **Classic load balancer**: basic load balancing across multiple Amazon EC2 instances. The classic load balancer is intended for applications that were built within the EC2-classic network.
 
 ### Modules 2 - Message and queueing
 
