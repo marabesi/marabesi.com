@@ -2,7 +2,7 @@
 layout: post
 title: Deploying git bot release to AWS lambda
 date: 2020-12-20 01:06:05.000000000 -03:00
-image:
+image: /images/posts/2020-12-20-deploying-git-bot-release-to-aws-lambda/cover.jpg
 type: article
 published: true
 status: published

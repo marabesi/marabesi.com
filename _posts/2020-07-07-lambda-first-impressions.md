@@ -2,7 +2,7 @@
 layout: post
 title: Lambda (AWS) - first impressions
 date: 2020-07-07 01:06:05.000000000 -03:00
-image: 
+image: /images/posts/2020-07-07-lambda-first-impressions/cover.jpg
 type: article
 published: true
 status: published

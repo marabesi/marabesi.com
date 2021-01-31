@@ -96,10 +96,22 @@ first image depicts the wiring for the transmitter.
 
 <!-- image transmitter -->
 
+| Pi PIN | Transmitter PIN |
+|--------|-----------------|
+| 11 (GPIO 17) |  |
+| 5v |  |
+| GND |  |
+
 The receiver sensor, was adapted from {% cite epitran --file 2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry %} as
 it has the wiring required but used with arduino.
 
 <!-- image receiver -->
+
+| Pi PIN | Transmitter PIN |
+|--------|-----------------|
+| 11 (GPIO 17) |  |
+| 5v |  |
+| GND |  |
 
 The following section, will cover how to map the wiring presented in this
 section and sending or receiving the signals, it will also dives in the

@@ -113,7 +113,7 @@ fs.readFile('./dump.csv', (error, content) => {
   });
 
   generator.on('error', function() {
-    console.error('something went wrong)
+    console.error('something went wrong')
   })
 })
 ```

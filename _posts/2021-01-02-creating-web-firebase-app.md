@@ -1,8 +1,8 @@
 ---
 layout: post
-title: Creating web firebase app
+title: Creating web firebase app (browser based not server)
 date: 2021-01-02 01:06:05.000000000 -03:00
-image:
+image: /images/posts/2021-01-02-creating-web-firebase-app/project-web-setup.jpg
 type: article
 published: true
 status: published
@@ -27,7 +27,8 @@ tags:
 Firebase is a service that started as a real time database and expanded
 the services as it grew. The real time database provides a integration
 for sharing data in real time with no need to set up an infrastructure.
-This post aims to cover the web app creating in order to generate the javascript object needed to configure the javascript SDK.
+This post aims to cover the web app creating in order to generate the javascript
+object needed to configure the javascript SDK.
 
 ## Table of contents
 

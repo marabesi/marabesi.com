@@ -44,6 +44,10 @@ refactoring, it is changing code without confidence.
 The following content aims to define strategies to refactor existing
 code without tests.
 
+# Edit 27, 2019 - MadridJs talk
+
+<iframe src="//speakerdeck.com/player/bf58fda1a16f40bcbf881d6efbfa77c5" width="100%" height="399" style="border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
 # Acceptance testing
 
 The acceptance testing is, compared to the unit test slower to run and depends
@@ -126,10 +130,6 @@ just the execution approach would change from a developer point of view.
 Once the unit test suite is good enough to have confidence, the developer at
 each change would execute the suite to have feedback on the change. Whereas in
 the acceptance suite would be executed only once the refactor is done.
-
-# Edit 27, 2019 - MadridJs talk
-
-<iframe src="//speakerdeck.com/player/bf58fda1a16f40bcbf881d6efbfa77c5" width="100%" height="399" style="border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
 
 # References
 
