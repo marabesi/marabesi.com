@@ -38,7 +38,7 @@ tags:
 - developer
 ---
 
-I already wrote about streams in PHP and how to use them, in the same way
+I already wrote about streams in PHP and how to use them, in the same way 
 this post focuses on the Node.js streams. The aim here is to cover the streams
 in Node.js, the concepts are fundamentaly the same, but each language has its
 implementation detail.

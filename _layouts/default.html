@@ -17,6 +17,7 @@
     <meta property="og:site_name" content="marabesi.com" />
     <meta property="og:type" content="{% if page.type %}{{ page.type }}{% else %}website{% endif %}" />
     <meta property="og:url" content="{{ page.url | prepend: site.url }}" />
+    <meta property="og:image:alt" content="{{ page.image_alt }}" />
     <meta property="og:image"
       content="{% if page.image %}{{ page.image | prepend: site.url }}{% else %}{{ '/images/manifest/icon-192x192.png' | prepend: site.url }}{% endif %}" />
     <meta property="og:description"
@@ -32,6 +33,9 @@
     <meta name="twitter:creator" content="@MatheusMarabesi">
     <meta name="twitter:image:src"
       content="{% if page.image %}{{ page.image | prepend: site.url }}{% else %}{{ '/images/manifest/icon-192x192.png' | prepend: site.url }}{% endif %}">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="{{ page.date }}">
 
     <meta name="keywords" content="{{ page.tags }}" />
 
