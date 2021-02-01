@@ -94,24 +94,24 @@ were for arduino and for one sensor, the transmitter or the receiver {% cite tra
 section is the result for the lack of having both sensors on the pi. The
 first image depicts the wiring for the transmitter.
 
-<!-- image transmitter -->
+![KY022 wiring with raspberry pi 3 b+](/images/posts/2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/ky022.jpg)
 
 | Pi PIN | Transmitter PIN |
 |--------|-----------------|
-| 11 (GPIO 17) |  |
-| 5v |  |
-| GND |  |
+| 11 (GPIO 17) | YELLOW |
+| 5v | RED |
+| GND | BLACK |
 
 The receiver sensor, was adapted from {% cite epitran --file 2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry %} as
 it has the wiring required but used with arduino.
 
-<!-- image receiver -->
+![KY005 wiring with raspberry pi 3 b+](/images/posts/2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/ky005.jpg)
 
 | Pi PIN | Transmitter PIN |
 |--------|-----------------|
-| 11 (GPIO 17) |  |
-| 5v |  |
-| GND |  |
+| 11 (GPIO 17) | YELLOW |
+| 5v | RED |
+| GND | BLACK |
 
 The following section, will cover how to map the wiring presented in this
 section and sending or receiving the signals, it will also dives in the
