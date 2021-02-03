@@ -78,6 +78,7 @@ links, podcasts, books and influencers to follow.
 * Social media
   * [Netflix engineering](https://netflixtechblog.com){:target="_blank"}
   * [Instagram engineering](https://instagram-engineering.com){:target="_blank"}
+  * [Vimeo engineering](https://medium.com/vimeo-engineering-blog){:target="_blank"}
 
 ## People
 

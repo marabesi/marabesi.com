@@ -9,6 +9,18 @@ status: published
 categories:
 - iot
 tags:
+- lirc,
+- remote,
+- sensor,
+- pin,
+- gpio,
+- wiring,
+- section,
+- sudo,
+- dev,
+- dev lirc,
+- lircd conf,
+- config txt,
 - raspberry pi,
 - iot,
 - KY-002,
@@ -38,8 +50,8 @@ used is as follows:
 - Energy supplied via USB cable
 
 **DISCLAIMER 2**: The sections 1 and 2 can be swapped out without any problem. If
-you prefer to setup the hardware parte first, then read the section 2 and then section 1.
-Therefore, if you prefer to setup the software first (as I preferer), you can
+you prefer to setup the hardware part first, then read the section 2 and then section 1.
+Therefore, if you prefer to setup the software first (as I prefer), you can
 keep the suggested order.
 
 ## Setting up the pi to use IR
@@ -67,7 +79,7 @@ dtoverlay=gpio-ir,gpio_pin=17
 ```
 
 Once the change has been made in the file `config.txt`, save it and reboot
-the pi. Once back in the pi shell, verify if the devices were enable properly,
+the pi. Once back in the pi shell, verify if the devices were enabled properly,
 executing the following command:
 
 ```shell
@@ -102,7 +114,7 @@ first image depicts the wiring for the transmitter.
 | 5v | RED |
 | GND | BLACK |
 
-The receiver sensor, was adapted from {% cite epitran --file 2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry %} as
+The receiver sensor, was adopted from {% cite epitran --file 2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry %} as
 it has the wiring required but used with arduino.
 
 ![KY005 wiring with raspberry pi 3 b+](/images/posts/2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/ky005.jpg)
@@ -119,7 +131,7 @@ remote control database that the project lirc has for already mapped remotes.
 
 ## Mapping inputs to IR codes
 
-Previous sections were focused onsetting up the hardware and the needed software
+Previous sections were focused on setting up the hardware and the needed software
 to make the ir sensors to work. This section focus on the configuration of lirc.
 The configuration presented here is needed in order to send ir commands.
 
@@ -148,10 +160,10 @@ remote `name` and the available keys under the section `begin codes`.
 
 ## Miss leading configuration
 
-A few tutorials related to the pi, will have an extra step reagarding configuring
+A few tutorials related to the pi, will have an extra step regarding configuring
 the ir devices. The extra step says that it is required to update the file `modules`
 under the directory `etc`. **For this post and the setup I am using this step is not require, there is no need
-to add any entry in the file located at `/et/modules`.**
+to add an entry in the file located at `/et/modules`.**
 
 ## References
 
