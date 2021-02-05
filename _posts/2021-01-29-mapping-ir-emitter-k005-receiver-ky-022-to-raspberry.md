@@ -2,7 +2,7 @@
 layout: post
 title: Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor
 date: 2021-01-29 01:06:05.000000000 -03:00
-image: 
+image: /images/posts/2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/cover.jpg 
 type: article
 published: true
 status: published

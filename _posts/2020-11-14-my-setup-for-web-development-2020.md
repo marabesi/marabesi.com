@@ -2,7 +2,7 @@
 layout: post
 title: My setup for web development, 2020 edition
 date: 2020-11-14 01:06:05.000000000 -03:00
-image:
+image: /images/posts/2020-11-14-my-setup-for-web-development-2020/cover.png
 type: article
 published: true
 status: published
