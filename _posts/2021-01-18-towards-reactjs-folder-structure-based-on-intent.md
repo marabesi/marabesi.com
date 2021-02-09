@@ -38,12 +38,14 @@ aims to favor:
 - communication
 
 Both of them are connected in somehow and in this post I am going to address
-the issue that is to organize reactjs componentes in a "meaningful" way.
+the issue that is to organize reactjs componentes in a "meaningful" way, given that the official reactjs documentation does not provide
+an official file structure {% cite reactjs_official_file_structure --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}.
 
 ## Table of contents
 
 1. [The default](#the-default)
 2. [A new approach](#a-new-approach)
+  - [Proof of concept](#poc)
 3. [References](#references)
 
 ## The default
@@ -122,11 +124,33 @@ years:
 └── tsconfig.json
 ```
 
-From that structure, the only thing that is easy to follow is the mess. At least
+From that structure, the only thing that is easy to follow is the lack of organization. At least
 for me, it is hard to tell, which part has what and where I can find a specific
 piece of code that I am interested in. This is the first issue mentioned earlier
 in the post, the `intent` issue. As such there is no clear intent of what the
 things are.
+
+The common pattern during the development was to drop any file into a subfolder
+of `src`, leading to a structure that does not express any meaning for
+the project itself.
+
+## Related work
+
+There are attempts to structure reactjs applications in a opionated way and
+without a consensus. For that reason, developers publish materias such as this
+one aimed to create a standard.
+
+For example, {% cite akash_joshi --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}
+states in the blog post a better way to structure reactjs projects following
+a principle of responsabilities and adapters. Therefore, it is shallow in
+the content of the intent. It assumes that the project uses context,
+which might vary from project to project. 
+
+Even the official website from reactjs offers a file structure to
+be a pattern across reactjs applications
+{% cite reactjs_official_file_structure --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %},
+therefore, it gives a few common approaches such as grouping by features and
+grouping by file type.
 
 ## A new approach
 
@@ -165,6 +189,77 @@ I suggest to use a specific place, a specific folder, named `packages`.
 
 The `packages` folder, in general would have a strict business rule, as such,
 it is the place to have, in this case, pure javascript/typescript code.
+
+### POC
+
+The structure presented in the previouse section was applied to the same
+project presented in the section [The default](#the-default).
+
+```
+├── src
+│   ├── components
+│   │   ├── app
+│   │   └── ui
+│   ├── config.ts
+│   ├── css
+│   │   ├── index.css
+│   │   └── tailwind.css
+│   ├── data-flow
+│   │   └── redux
+│   ├── index.spec.ts
+│   ├── index.tsx
+│   ├── packages
+│   │   ├── emitter
+│   │   ├── engine
+│   │   ├── queue
+│   │   └── types
+│   ├── pages
+│   │   ├── completed-end
+│   │   ├── completed-intro
+│   │   ├── introduction
+│   │   ├── login
+│   │   ├── notfound
+│   │   ├── rocket-01
+│   │   ├── rocket-02
+│   │   ├── rocket-03
+│   │   ├── survey
+│   │   ├── tdd
+│   │   ├── tdd-intro
+│   │   ├── tutorial
+│   │   ├── tutorial-end
+│   │   ├── unit-testing
+│   │   ├── unit-testing-end
+│   │   └── unit-testing-intro
+│   ├── react-app-env.d.ts
+│   ├── registerServiceWorker.js
+│   ├── scss
+│   │   ├── attention.scss
+│   │   ├── fade-in-left.scss
+│   │   ├── fade-out-left.scss
+│   │   ├── levelup-animation.scss
+│   │   ├── logo-animation.scss
+│   │   ├── shake-horizontal.scss
+│   │   └── tailwind.src.scss
+│   ├── setupTests.ts
+│   ├── tailwind.js
+│   ├── __test__
+│   │   ├── stubs
+│   │   ├── withintlProvider.js
+│   │   └── withReduxProvider.js
+│   └── third-party
+├── static.json
+├── stryker.conf.js
+├── styleguide.config.js
+└── tsconfig.json
+```
+
+## Future work
+
+The proposed architecture for reactjs applications require adoption to test
+if the approach brings any benefit or degrades any aspect of the software
+lyfice cicle development. Besides that, the suggested approach can be applied
+for different frameworks or libraries, it isnot coupled to reactjs. As such,
+further analysis is required to investigate the fit for other popular frameworks.
 
 ## References
 
