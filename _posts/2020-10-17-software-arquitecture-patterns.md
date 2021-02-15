@@ -91,7 +91,9 @@ system operational.
 
 Perhaps the best example of the microkernel architecture is the
 Eclipse IDE. However, once you start adding
-plug-ins, it becomes a highly customizable and useful product.
+plug-ins, it becomes a highly customizable and useful product. Another
+example is [wordpress](https://wordpress.com){:target="_blank"}, users can
+download as many plugins as needed.
 
 One great thing about the microkernel architecture pattern is that it
 can be embedded or used as part of another architecture pattern.
