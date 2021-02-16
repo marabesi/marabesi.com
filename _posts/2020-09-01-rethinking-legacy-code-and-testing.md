@@ -71,8 +71,9 @@ the responsability of testing the code and ensure its quality.
 
 ## Management, often an issue
 
-The link between management and development is in my opinion, difficult. XP is
-superior to SCRUM as a base for starting out in agile development
+The link between management and development is in my opinion, difficult. XP
+{% cite extreme_programming_kent_beck --file 2020-09-01-rethinking-legacy-code-and-testing %} is
+superior to SCRUM as it was the base for starting the agile development
 {% cite extreme_programming_martin_fowler --file 2020-09-01-rethinking-legacy-code-and-testing %}.
 
 ## References
