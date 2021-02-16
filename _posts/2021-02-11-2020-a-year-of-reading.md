@@ -38,24 +38,27 @@ styles:
 - Microservices
 - Spaced-based
 
+{% cite software_architectural_patterns --file 2021-02-11-2020-a-year-of-reading %} goes through each style and gives
+a few examples on how to use them, the diagrams used are helpful to
+illustrate the architecture components.
+
 ## Production ready microservices
 
 This was one of the first books I read focused on microservices, as such it
 is a complete guide on what, when and how to handle microservices. Susan Fowler
 catalogs the aspects that matters while choosing the microservices architecture
-for the enterprise.
+for the enterprise {% cite fowler2016production --file2021-02-11-2020-a-year-of-reading %}.
 
 ## Grokking algorithms
 
-Grokking algorithms was a book for remembering classical algorithms and
+Grokking algorithms {% cite bhargava2016grokking --file 2021-02-11-2020-a-year-of-reading %} was a book for remembering classical algorithms and
 implementation that as a programmers we use everyday without noticing it.
 Aditya depicts the algorthms in a visual fashion, transforming the book
-a choice for first year Computer Science students(and of course, experienced
-developers that might want a refresher on the subject).
+a choice for first year Computer Science students(and of course, experienced developers that might want a refresher on the subject).
 
 ## Extreme programming explained
 
-Extreme programming by Kent Beck and Cynthia Andres was on of the most
+Extreme programming by Kent Beck and Cynthia Andres {% cite extreme_programming_kent_beck --file 2021-02-11-2020-a-year-of-reading %} was on of the most
 pleaseant readings of the year. The history of agile is written in this
 book, the new approach to develop software in pairs and focusing on code
 was a "crazy" idea at that time.
@@ -76,15 +79,15 @@ popular style among developers.
 
 Uncle bob defined the clean architecture based on different styles,
 fetching what each one of the others has to offer best and then
-added his own thoughts. The result is the clean architecture, which
+added his own thoughts {% cite clean_architecture_article --file 2021-02-11-2020-a-year-of-reading %}. The result is the clean architecture, which
 is a history across the computer history, best practices on programming
 and also a architectural style definition, named clean.
 
-Therefore, Uncle bob's architecture does not provide an implementation
+Therefore, Uncle bob's architecture {% cite clean_architecture_book --file 2021-02-11-2020-a-year-of-reading %} does not provide an implementation
 for his architecture, it is a theorical book.
 
 Tom, on the other hand, took the clean architecture and gave his
-opinionated implementation, using the java programming language.
+opinionated implementation {% cite hombergs2019get --file 2021-02-11-2020-a-year-of-reading %}, using the java programming language.
 Get your hands on clean architecture is a reading for programmers
 that want to understand the clean architecture in a praticalway.
 
