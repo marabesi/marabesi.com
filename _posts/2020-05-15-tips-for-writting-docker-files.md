@@ -21,6 +21,8 @@ tags:
 - container,
 - files,
 - program
+redirect_from:
+  - /devops/tips-for-writting-docker-files
 ---
 
 Docker has revolutionized how developers build and deploy applications.
