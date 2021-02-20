@@ -93,7 +93,11 @@ Perhaps the best example of the microkernel architecture is the
 Eclipse IDE. However, once you start adding
 plug-ins, it becomes a highly customizable and useful product. Another
 example is [wordpress](https://wordpress.com){:target="_blank"}, users can
-download as many plugins as needed.
+download as many plugins as needed. Pat Kua {% cite kua2017evolutionary --file 2020-10-17-software-arquitecture-patterns %} in his talk named the following softwares that were built using microkernel architecture:
+
+- [Apache Maven](https://maven.apache.org){:target="_blank"}
+- [Eclipse IDE](https://www.eclipse.org/ide){:target="_blank"}
+- [Firefox](https://www.mozilla.org){:target="_blank"}
 
 One great thing about the microkernel architecture pattern is that it
 can be embedded or used as part of another architecture pattern.

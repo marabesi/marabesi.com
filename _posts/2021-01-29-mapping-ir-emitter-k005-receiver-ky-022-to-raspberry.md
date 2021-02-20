@@ -56,8 +56,10 @@ keep the suggested order.
 
 ## Setting up the pi to use IR
 
-There are two parts of this puzzle to make it to work, the first is to install
-the lirc.
+*Note: the commands executed in this section are executed in the raspberry pi shell*
+
+There are two parts of this puzzle to make it to work, the first is
+to install the lirc.
 
 ```shell
 sudo apt-get install lirc -y
