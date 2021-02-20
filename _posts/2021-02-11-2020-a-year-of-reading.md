@@ -9,9 +9,22 @@ status: published
 categories:
 - review
 tags:
-- reading,
+- architecture,
 - books,
-- review
+- book,
+- software,
+- microservices,
+- programming,
+- read,
+- reading,
+- review,
+- algorithms,
+- clean architecture,
+- software architecture,
+- books read,
+- architecture patterns,
+- extreme programming,
+- tech leads
 ---
 
 2020 was a mixed year for reading, in my list I had technical subjects, productivity, algorithms, software architecture, programming methodologies, microservices and leadership. In total I read 1k pages across the listed subjects. This section provides my thouthgs on each of them, my personal opinions and the book I enjoied the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
