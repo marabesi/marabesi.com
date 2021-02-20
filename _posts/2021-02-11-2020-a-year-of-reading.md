@@ -14,11 +14,9 @@ tags:
 - review
 ---
 
-2020 was a mixed year for reading, in my list I had technical subjects,
-productivity, algorithms, software architecture, programming methodologies,
-microservices and leadership. In total I read 1k pages across the listed subjects.
-This section provides my thouthgs on each of them, my personal opinions and
-the book I enjoied the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
+2020 was a mixed year for reading, in my list I had technical subjects, productivity, algorithms, software architecture, programming methodologies, microservices and leadership. In total I read 1k pages across the listed subjects. This section provides my thouthgs on each of them, my personal opinions and the book I enjoied the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
+
+![Books read in 2020](/images/posts/2021-02-11-2020-a-year-of-reading/featured.jpg)
 
 Disclaimer: The order I list the books here does not representthe order I
 read them, instead I combined them into sections that relates closer subjects.
@@ -40,7 +38,9 @@ styles:
 
 {% cite software_architectural_patterns --file 2021-02-11-2020-a-year-of-reading %} goes through each style and gives
 a few examples on how to use them, the diagrams used are helpful to
-illustrate the architecture components.
+depict the architecture components. Pat Kua {% cite kua2017evolutionary --file 2021-02-11-2020-a-year-of-reading %} uses the listed
+architecture styles in his talk as a context to build
+evolutionary architecture.
 
 ## Production ready microservices
 
@@ -91,9 +91,25 @@ opinionated implementation {% cite hombergs2019get --file 2021-02-11-2020-a-year
 Get your hands on clean architecture is a reading for programmers
 that want to understand the clean architecture in a praticalway.
 
+## Talking with tech leads
+
+Pat Kua {% cite kua2014talking --file 2021-02-11-2020-a-year-of-reading %} assembled a collection of advices from tech leads from various
+sectors in the industry, the insights provided is a handful list
+of do's and dont's for novices in the tech lead role and for
+experienced ones.
+
+## 14 habits of highly productive developers
+
+Zeno Rocha {% cite rocha2020habits --file 2021-02-11-2020-a-year-of-reading %} collected 14 habits that
+might help developers to achieve their career goasl. It is
+not a recipe to follow as it is described, rather it is a
+friendly companion to keep under the shelf and consult it
+from time to time.
+
 ## Introduction to mathematical thinking
 
-This book is a companion from the MOOC by Dr. Keith Devlin named
+This book is a companion from the MOOC(Massive Open Online Courses)
+by Dr. Keith Devlin named
 "Introduction to Mathematical Thinking". The MOOC is aimed at
 students that are coming from school mathematics and want to
 level up to university mathematics, or at least to get started
