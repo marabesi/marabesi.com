@@ -28,7 +28,7 @@
     "tailwindcss": "^0.7.4"
   },
   "devDependencies": {
-    "@babel/core": "^7.12.17",
+    "@babel/core": "^7.13.1",
     "@babel/preset-env": "^7.13.0",
     "babel-loader": "^8.2.2",
     "concurrently": "^5.3.0",
