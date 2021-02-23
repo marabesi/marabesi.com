@@ -557,3 +557,8 @@ On the Title column, the original title from the source was preserved and on the
 | A state management pattern for Ionic React with React Hooks | {% cite post_a_state_management_pattern_for_ionic_react --file 2020-06-22-reactjs-patterns-a-study-based-on-google-search %} uses reactjs hooks to replicate the redux library behavior. |
 | Advanced React Concepts \| React Resources | {% cite post_advanced_react_concepts --file 2020-06-22-reactjs-patterns-a-study-based-on-google-search %} is a collection of reactjs resources about advanced usage of reactjs. |
 | Reactjs application development tips \| Reactive | {% cite post_reactjs_application_development_tips --file 2020-06-22-reactjs-patterns-a-study-based-on-google-search %} |
+
+### Web almanac css
+
+Web almanac {% cite web_almanac_2020 --file 2020-06-22-reactjs-patterns-a-study-based-on-google-search %} is a reasearch that focus on the web features used in the
+wild.
