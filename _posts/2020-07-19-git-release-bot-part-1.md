@@ -31,8 +31,15 @@ came to support the agile practices.
 
 Gitbot comes to continue the continuous integration/deploy in the development
 process based on conventional commits and semantic version. Gitbot is an attempt
-to make the boring task to change files (package.json or composer.json) versions
+to make the boring task to change files (`package.json` or `composer.json`) versions
 for each relased an automated process.
+
+## Table of contents
+
+- [The problem with releases](#the-problem-with-releases)
+- [Git bot concept](#gitbot-concept)
+- [References](#references)
+- [Appendix](#appendix)
 
 ## The problem with releases
 
@@ -94,3 +101,8 @@ such as github or bitbucket.
 ## References
 
 {% bibliography --cited_in_order --file 2020-07-19-git-release-bot-part-1 %}
+
+## Appendix
+
+This [link]({% post_url 2020-12-20-deploying-git-bot-release-to-aws-lambda %}){:target="_blank"} provides
+a step-by-step guide to deploy gitbot release in AWS lambda.
