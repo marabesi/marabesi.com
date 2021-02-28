@@ -27,9 +27,24 @@ tags:
 - tech leads
 ---
 
-2020 was a mixed year for reading, in my list I had technical subjects, productivity, algorithms, software architecture, programming methodologies, microservices and leadership. In total I read 1k pages across the listed subjects. This section provides my thouthgs on each of them, my personal opinions and the book I enjoied the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
+2020 was a mixed year for reading, in my list I had technical subjects, productivity, algorithms, software architecture, programming methodologies, microservices and leadership. In total I read 1k pages across the listed subjects.
 
 ![Books read in 2020](/images/posts/2021-02-11-2020-a-year-of-reading/featured.jpg)
+
+This section provides my thouthgs on each of them, my personal opinions and the book I enjoied the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
+
+## Table of contents
+
+- [Software architecture patterns](#software-architecture-patterns)
+- [Production ready microservices](#production-ready-microservices)
+- [Grokking algorithms](#grokking-algorithms)
+- [Extreme programming explained](#extreme-programming-explained)
+- [Redis for dummies](#redis-for-dummies)
+- [Get your hands dirty on clean architecture](#get-your-hands-dirty-on-clean-architecture)
+- [Talking with tech leads](#talking-with-tech-leads)
+- [14 habits of highly productive developers](#14-habits-of-highly-productive-developers)
+- [Introduction to mathematical thinking](#introduction-to-mathematical-thinking)
+- [References](#references)
 
 Disclaimer: The order I list the books here does not representthe order I
 read them, instead I combined them into sections that relates closer subjects.
