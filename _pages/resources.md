@@ -91,6 +91,8 @@ links, podcasts, books and influencers to follow.
 * [Simon Brown](http://www.codingthearchitecture.com/authors/sbrown){:target="_blank"}
 * [Robert C. Martin](https://blog.cleancoder.com){:target="_blank"}
 * [Matthias Noback](https://matthiasnoback.nl){:target="_blank"}
+* [GeePaw Hill](https://www.geepawhill.org){:target="_blank"}
+* [khalilstemmler](https://khalilstemmler.com){:target="_blank"}
 
 ## PHP
 
