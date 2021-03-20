@@ -10,6 +10,7 @@ categories:
 - review
 tags:
 - architecture,
+- Architecture,
 - books,
 - book,
 - software,
@@ -19,12 +20,16 @@ tags:
 - reading,
 - review,
 - algorithms,
+- clean,
 - clean architecture,
 - software architecture,
 - books read,
 - architecture patterns,
 - extreme programming,
-- tech leads
+- Extreme,
+- tech leads,
+- Software,
+- patterns
 ---
 
 2020 was a mixed year for reading, in my list I had technical subjects, productivity, algorithms, software architecture, programming methodologies, microservices and leadership. In total I read 1k pages across the listed subjects.

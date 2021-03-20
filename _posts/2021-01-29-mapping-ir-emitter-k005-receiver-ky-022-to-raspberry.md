@@ -10,7 +10,11 @@ categories:
 - iot
 tags:
 - lirc,
+- lircd,
+- https,
 - remote,
+- remotes,
+- receiver,
 - sensor,
 - pin,
 - gpio,
