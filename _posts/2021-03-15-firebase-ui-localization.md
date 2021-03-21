@@ -10,10 +10,23 @@ categories:
 - development
 tags:
 - firebase,
+- Firebase,
 - firebaseui,
 - reactjs,
 - i18n,
-- localization
+- localization,
+- build,
+- npm,
+- language,
+- run,
+- css,
+- web,
+- install,
+- files,
+- process,
+- esm,
+- anonymous,
+- project
 ---
 
 Firebase ui has helped me to build an application with social login
