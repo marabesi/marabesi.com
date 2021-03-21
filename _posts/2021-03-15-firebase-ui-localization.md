@@ -37,12 +37,13 @@ of easy to use also points to an localization easy to integrate.
 Therefore, the i18n for the firebaseui {% cite firebaseui_github --file 2021-03-15-firebase-ui-localization %} has some tricks and is not as
 straight forward as it could be, it requires manual building for
 each specific language, and also it is required to ship the generated
-bundle with the application.
+bundle with the application. In this post, I am going to explore my experience
+with the firebase library trying to implement the localization in the
+Testable project.
 
-In this post, I am going to explore my experience with the firebase library
-trying to implement the localization in the Testable project.
-
-**NOTE**: This post does not cover using the firebase CDN for translations.{% cite firebaseui_github_localized_cdn --file 2021-03-15-firebase-ui-localization %}
+**NOTE**: This post does not cover using the firebase CDN (Content Delivery Network)
+{% cite cdn --file 2021-03-15-firebase-ui-localization %}
+for translations.{% cite firebaseui_github_localized_cdn --file 2021-03-15-firebase-ui-localization %}
 
 ## Requirements
 
