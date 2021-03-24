@@ -8,11 +8,34 @@ status: publish
 categories:
 - Newbies
 tags:
-- git
-- web
+- git,
+- Git,
+- web,
+- introduction,
+- repository,
+- code,
+- server,
+- main,
+- work,
+- SVN,
+- client,
+- system,
+- push,
+- version,
+- software
 redirect_from:
   - /git/introduction
 ---
+
+Git has stabilished itself as the de-facto standard versioning control system,
+developers got used to it (despite it being a not so newbies welcome tool) and
+git has an ecosystem that helps to ease the learning curve. Github has
+emerged as the open source platform, and gitlab is an integrated devops
+platform that runs based on git.
+
+By its popularity and the often questions that newcomers have to git, I started
+this section to share what have learn and the sources that I use to find
+help.
 
 Key words: Distributed, Main server, compile, elegant fail prevention
 
