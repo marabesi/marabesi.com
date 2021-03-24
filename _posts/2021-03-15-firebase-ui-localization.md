@@ -27,6 +27,8 @@ tags:
 - esm,
 - anonymous,
 - project
+redirect_from:
+  - /development/firebase-ui-localization
 ---
 
 Firebase ui has helped me to build an application with social login
