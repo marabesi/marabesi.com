@@ -32,6 +32,8 @@ tags:
 
 AWS provides solutions to provide high availability for customers through multiple regions. 
 
+Previous: [EC2]({% post_url 2021-01-04-aws-cloud-practitioner-notes-ec2 %})
+
 ## Module 3 - global infrastructure
 
 AWS provides a range of regions to support highly availability.
@@ -96,3 +98,11 @@ CloudFormation template  ---------> |  Aws Formation | ---------> AWS services
 
 The CloudFormation approach decouples the what yuo want to build from
 how to build it. The CloudFormation takes cares of the how, and you the what.
+
+## Up next
+
+[**Networking**]({% post_url 2021-01-06-aws-cloud-practitioner-notes-networking %})
+
+## References
+
+{% bibliography --cited_in_order --file 2021-01-05-aws-cloud-practitioner-notes-infrastructure-and-reliability %}

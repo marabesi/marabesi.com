@@ -34,13 +34,26 @@ tags:
 - instance types
 ---
 
-This post aims to expose the path I took to take the AWS cloud practitioner
-certification. This post was inspired by {% cite preparing_for_ccp --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}
-and some of the resources I am going to share here were taken from his post as
-well my own notes from the free official training {% cite aws_free_training --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}.
+This post as the free official course from AWS {% cite aws_free_training --file 2021-01-04-aws-cloud-practitioner-notes-ec2 %}
+is the first on a series to cover the envire course content. The focus on this
+post is to co over the EC2 service as well as another computing services that
+AWS provides. Besides that, a brief introductino to the model pay as you go that
+AWS uses.
 
-The CCP exam is the first certification in the AWS exam list, as such, if you
-have some experience with AWS it should be no problem to complete it. Therefore, the material presented is valuable in the details and conventions used.
+Previous: [AWS Cloud Practitioner Notes]({% post_url 2021-01-20-aws-cloud-practitioner-notes %})
+
+## Table of contents
+
+- [Course overview](#course-overview)
+- [Module 1 - Introduction AWS](#module-1---introduction-aws)
+- [Module 2 - Introduction EC2 (CaaS)](#module-2---introduction-ec2-caas)
+  - [Modules 2 - EC2 Instance types]()
+  - [Modules 2 - EC2 pricing]()
+  - [Modules 2 - EC2 scaling]()
+  - [Modules 2 - Elastic load balancing (ELB)]()
+  - [Modules 2 - Message and queueing]()
+- [Modules 2 - Additional compute services - AWS lambda]()
+- [Modules 2 - Additional compute services - AWS ECS (Elastic container service) or EKS (Elastic Kubernetes service)]()
 
 ## Course overview
 
@@ -196,6 +209,10 @@ that removes the access to low level components such as the operational system. 
 
 1. ECS on EC2 you manage
 2. ECS on Fargate AWS manages
+
+## Up next
+
+[**Infrastructure and reliability**]({% post_url 2021-01-05-aws-cloud-practitioner-notes-infrastructure-and-reliability %})
 
 ## References
 
