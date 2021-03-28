@@ -41,7 +41,7 @@ straight forward as it could be, it requires manual building for
 each specific language, and also it is required to ship the generated
 bundle with the application. In this post, I am going to explore my experience
 with the firebase library trying to implement the localization in the
-Testable project.
+Testable{% cite testable_github --file 2021-03-15-firebase-ui-localization %} project.
 
 **NOTE**: This post does not cover using the firebase CDN (Content Delivery Network)
 {% cite cdn --file 2021-03-15-firebase-ui-localization %}
@@ -58,7 +58,7 @@ for translations.{% cite firebaseui_github_localized_cdn --file 2021-03-15-fireb
 The first step is to get the firebase ui up and running locally, the following
 commands are available in the README of the project as well.
 
-```
+```shell
 git clone https://github.com/firebase/firebaseui-web.git &&
 cd firebaseui-web &&
 npm install
@@ -90,7 +90,7 @@ Note: Closure Builder will run with an limited feature set!
 
 To fix install the open JDK as follows:
 
-```
+```shell
 sudo apt-get install -y openjdk-8-jre-headless
 ```
 
@@ -112,7 +112,7 @@ Once google chrome has been installed {% cite installing_google_chrome --file 20
 command should run successfully, before build the assets for any specific
 language, try to build the project as it is, with the following command:
 
-```
+```shell
 npm run build
 ```
 
@@ -167,7 +167,7 @@ is the sabe as running `npm run build` and specifying the desired language.
 To build firebaseui with Spanish support, the followig build command should
 be run:
 
-```
+```shell
 npm run build build-npm-es
 ```
 
