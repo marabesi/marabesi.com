@@ -131,6 +131,11 @@ sectors in the industry, the insights provided is a handful list
 of do's and dont's for novices in the tech lead role and for
 experienced ones.
 
+As he mentioned in an interview at thought works podcast {% cite thought_works_podcast --file 2021-02-11-2020-a-year-of-reading %}
+the book is also a collection that he wish he had when he made the
+transition to a tech lead position. The postcast can be a warm up prior to
+reading the book.
+
 ## 14 habits of highly productive developers
 
 Zeno Rocha {% cite rocha2020habits --file 2021-02-11-2020-a-year-of-reading %} collected 14 habits that
@@ -154,3 +159,8 @@ companion book has exercices to follow on the course.
 ## References
 
 {% bibliography --cited_in_order --file 2021-02-11-2020-a-year-of-reading %}
+
+## Edit March 29, 2021
+
+Added reference to the thought works podcast, an interview made with
+Pat Kua about the book [Talking with tech leads](#talking-with-tech-leads).
