@@ -9,11 +9,24 @@ status: published
 categories:
 - development
 tags:
+- test,
+- Test,
+- testing,
+- system,
+- mock,
+- Mocks,
 - mocks,
 - dummies,
 - spies,
+- Spies,
 - fakes,
-- code
+- Fakes,
+- code,
+- doubles,
+- Dummies,
+- stubs
+redirect_from:
+  - /development/testing/mocks-dummies-spies-fakes-testing-your-code
 --- 
 
 Testing code has different definitions and sometimes can mean different things for
