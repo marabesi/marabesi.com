@@ -20,7 +20,12 @@ tags:
 - compose,
 - container,
 - files,
-- program
+- program,
+- flag,
+- COPY,
+- run,
+- host,
+- flag
 redirect_from:
   - /devops/tips-for-writting-docker-files
 ---
@@ -40,6 +45,10 @@ beginners guide in how docker works or how to use it.
 For context, this post is somehow connected to the
 playlist {% cite youtube_playlist --file 2020-05-15-tips-for-writting-docker-files %} I've built
 to keep track of topics that are related to docker.
+
+> NOTE: if you are starting with docker, have a look at the curriculum
+> {% cite docker_curriculum --file 2020-05-15-tips-for-writting-docker-files %}
+> first to get used to docker basics
 
 ## Docker images and services
 
