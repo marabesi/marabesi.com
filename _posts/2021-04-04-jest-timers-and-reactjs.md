@@ -13,6 +13,14 @@ tags:
 - jest,
 - timers,
 - fake
+- test,
+- time,
+- Scene,
+- use,
+- describe,
+- wrapper,
+- suite,
+- beforeEach
 ---
 
 This post explores the possibilitites to use fake timers with jest. Such
