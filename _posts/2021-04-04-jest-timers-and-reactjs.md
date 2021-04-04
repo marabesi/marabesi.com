@@ -38,6 +38,11 @@ them. as such, the animation takes time to finish and to complete its
 life cycle. Jest timers are used to avoid the needed to delay the test
 suite execution.
 
+For further details on the test file and implementation refer to:
+
+- [Scene.spec.tsx (test)](https://github.com/marabesi/testable/blob/master/webapp/src/components/ui/interface/scene-manager/Scene.spec.tsx){:target="_blank"}
+- [Scene.tsx (implementation)](https://github.com/marabesi/testable/blob/master/webapp/src/components/ui/interface/scene-manager/Scene.tsx){:target="_blank"}
+
 ## Fake times
 
 The first step to use the fake timers is to have them set. There are two options
@@ -91,7 +96,7 @@ describe('my test suite', () => {
 
 ## Run all timers
 
-```javascript
+```jsx
 import { mount } from 'enzyme'
 import { act } from 'react-dom/test-utils'
 import Scene from './Scene'
@@ -138,6 +143,52 @@ In the test case, the button depends on two specific timers, one for
 displaying the button and the other one to enable the interaction with
 the button again. The latter is to prevent to call the button events twice
 or even more times.
+
+`runAllTimers` as specified in the jest documentation, is desired to use
+when there is no recursive timers, otherwise `runAllTimers` will end up
+in a endless loop {% cite jest_fake_timer --file 2021-04-04-jest-timers-and-reactjs %}.
+
+## Advance timers by time
+
+Another approach to use in the test case provided in the previous section
+would be to use `advanceTimersByTime`. As long as the time provided by the
+function is greater than the time passed in `showNextButton`, it should
+work. For example:
+
+```jsx
+// imports and describe have been removed, this snippet
+// focus on jest.advanceTimersByTime only
+test('should handle next scene', () => {
+  const handleLastScene = jest.fn() 
+  const handleNextScene = jest.fn()
+
+  const wrapper = mount(
+    <Scene
+      lastScene={false}
+      handleLastScene={handleLastScene}
+      next={handleNextScene}
+      text={fakeText}
+      showNextButton={1}
+      releaseButton={1}
+    />
+  )
+
+  act(() => {
+    jest.advanceTimersByTime(2000);               // advance time by 2 seconds
+  })
+
+  wrapper.update()
+  wrapper.find(Button).simulate('click')
+
+  expect(handleLastScene).toHaveBeenCalledTimes(0)
+  expect(handleNextScene).toHaveBeenCalled()
+})
+```
+
+Using `advanceTimersByTime` advance all timers as well as recursive timers. Both
+of the approaches depicted work without having to wait for the actual time
+to pass, thus, the test suite runs as fast as it can and there is no
+"real" delay.
 
 ## References
 
