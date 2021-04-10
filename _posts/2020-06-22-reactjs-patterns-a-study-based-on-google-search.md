@@ -29,6 +29,8 @@ tags:
 - hooks,
 - props,
 - render
+redirect_from:
+  - /reactjs-patterns-a-study-based-on-google-search
 ---
 
 ReactJS is among one of the most used javascript library according to GitHub it is
