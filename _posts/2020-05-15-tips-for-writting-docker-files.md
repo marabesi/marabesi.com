@@ -50,6 +50,9 @@ to keep track of topics that are related to docker.
 > {% cite docker_curriculum --file 2020-05-15-tips-for-writting-docker-files %}
 > first to get used to docker basics
 
+> NOTE 2: if you are interested in the nodejs docker image (how it is build)
+> have a lookat the official git repository {% cite official_nodejs_github --file 2020-05-15-tips-for-writting-docker-files %}
+
 ## Docker images and services
 
 In this section, the focus is to go through the tips around building
