@@ -1,8 +1,8 @@
 ---
 layout: post
-title: How to loose your developers
+title: How to lose your developers
 date: 2021-04-08 01:06:05.000000000 -03:00
-image: /images/posts/2021-04-08-how-to-loose-your-developers/cover.jpg
+image: /images/posts/2021-04-08-how-to-lose-your-developers/cover.jpg
 type: article
 published: true
 status: published
@@ -17,7 +17,9 @@ tags:
 - software,
 - mind,
 - subject,
-- code
+- code,
+- engineering,
+- culture
 ---
 
 This post is randoms thoughts around software development from a developer
@@ -27,12 +29,12 @@ the text as a saint graal or a tutorial, it is more like a conversation on what
 I think about developers, soft skills, hard skills and management.
 
 On top of that, I was inpired by the book Mind Map Mastery from Tony Buzan
-{% cite buzan2018mind --file 2021-04-08-how-to-loose-your-developers %} and
+{% cite buzan2018mind --file 2021-04-08-how-to-lose-your-developers %} and
 also by The software craftsman: professionalism, Pragmatism, Pride by
-Sandro Mancuso {% cite mancuso2014software --file 2021-04-08-how-to-loose-your-developers %},
+Sandro Mancuso {% cite mancuso2014software --file 2021-04-08-how-to-lose-your-developers %},
 which I share the same opinions as he expressed in the book.
 
-[![Mind mapping - how to loose your developers](/images/posts/2021-04-08-how-to-loose-your-developers/mindmapping.jpg)](/images/posts/2021-04-08-how-to-loose-your-developers/mindmapping.jpg){:target="_blank"}
+[![Mind mapping - how to loose your developers](/images/posts/2021-04-08-how-to-lose-your-developers/mindmapping.jpg)](/images/posts/2021-04-08-how-to-lose-your-developers/mindmapping.jpg){:target="_blank"}
 
 The depicted mind map above is the result of my dive into mind mapping, the
 subject approach is what this post came to be.
@@ -48,7 +50,7 @@ responsabilities. For example, dealing with dead lines, struggling with
 bugs, writting documentation, talking with business and trying out new
 technologies (just to name a few).
 
-## it is easy
+### it is easy
 
 The first way to start a fight in the middle of a meeting with developers is
 to say the phrase: "its easy". It is a bonus point if followed by "its just
@@ -62,7 +64,7 @@ are working under pressure, having to deal with meetings, support for clients
 and many other tasks besides coding, it can be a started for the developer
 to loose confidence and start to search for another job.
 
-## Lack of documentation
+### Lack of documentation
 
 Since the agile manifesto documentation has been a subject of a second matter.
 Even though, being a secondary subject does't mean to not have it. Teams
@@ -71,7 +73,7 @@ that people miss interpreted the manifesto and uses that as a shield to
 jump the documentation step. To achieve tehcnical excelence, documentation
 is needed, as it can be used as a way to share knowlegde among the team.
 
-## You have until Friday to finish up
+### You have until Friday to finish up
 
 Imposing deadlines on developers can lead to friction. Developers are not
 a "code machine", writting code takes time, creation and problem solving.
@@ -94,7 +96,7 @@ the dentist's work is going to take. Did you find this weird? This is the feelin
 that developers have when managers or business start to pressure for
 sooner deliveries.
 
-## Don't worry we will test it later
+### Don't worry we will test it later
 
 Developers deliver value through tasks, be it in a staging environment or in
 production, the final word should be from the users or the ones that are
@@ -123,6 +125,17 @@ Longer feedback circles can also lead to the feature or bug to be reworked
 and change too may times, as the cycle is long, often it is difficult to
 keep track of all the changes and make decisions.
 
+## Tackling the engineering culture
+
+Pack Kua, in his talk {% cite pat_kua_engineering_culture --file 2021-04-08-how-to-lose-your-developers %}
+enumarates a few ideas that I would like to share here
+as they are engineering oriented. Those ideas are based on his experience working
+across different projects and companies.
+
+The part I enjoyed the most is the distinction between the enterprise scenarion
+and the startup, on his talk those are totally different things and he uses
+that to contrast those two worlds.
+
 ## References
 
-{% bibliography --cited_in_order --file 2021-04-08-how-to-loose-your-developers %}
+{% bibliography --cited_in_order --file 2021-04-08-how-to-lose-your-developers %}
