@@ -36,6 +36,8 @@ tags:
 - error occurred,
 - application,
 - developer
+redirect_from:
+  - /nodejs/streams
 ---
 
 I already wrote about streams in PHP and how to use them, in the same way 
@@ -122,6 +124,12 @@ Even though,the readFile loads the content of the file at once in memory,
 this example depicts the usage of the events: `readable`, `end` and `error`.
 Keep in mind that this approach depicts the events usage only, but, nodejs
 offers the `pipe` as well.
+
+## Appendix
+
+{% cite nodejs_stream_julian_duque --file 2021-01-16-node-certification-jsnad-streams %}
+did a live stream about nodejs and data stream, it is a deep dive in the implementation.
+I it's recommended for developers that prefer a video style approach.
 
 ## References
 
