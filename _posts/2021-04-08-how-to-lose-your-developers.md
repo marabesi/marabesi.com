@@ -20,6 +20,9 @@ tags:
 - code,
 - engineering,
 - culture
+redirect_from:
+  - /thoughts/2021/04/08/how-to-loose-your-developers.html
+  - /thoughts/2021/04/08/how-to-loose-your-developers
 ---
 
 This post is randoms thoughts around software development from a developer
