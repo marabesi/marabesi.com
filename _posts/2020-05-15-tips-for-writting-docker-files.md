@@ -30,12 +30,13 @@ redirect_from:
   - /devops/tips-for-writting-docker-files
 ---
 
-Docker has revolutionized how developers build and deploy applications.
+Docker has revolutionized how developers build and deploy applications, being
+one of the most popular container engine {% cite burns2019kubernetes --file 2020-05-15-tips-for-writting-docker-files %}.
 Docker has support for different programming languages and runs natively on linux,
 as opposed to virtual machines that mimics an entire operational system,
 docker containers run on linux namespaces, removing the overhead
 that virtual machines have, for example, the boot time. The virtual machine
-needs time to boot, while docker is a service that starts in the operational
+needs time to boot, while docker is a service that starts on the host operational
 system.
 
 As opposed to the official best practices {% cite best_practices_docker_hub --file 2020-05-15-tips-for-writting-docker-files %} on writting docker files,
