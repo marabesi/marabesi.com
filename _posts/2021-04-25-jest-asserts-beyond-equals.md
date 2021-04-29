@@ -51,7 +51,7 @@ for the test case.
 `Any` is a generalization to use when the value of the result is not needed, rather
 the type is.
 
-```javascript
+```js
 const isNumber = number => number
 
 expect(type of isNumber(2)).toEqual('number')
@@ -59,7 +59,7 @@ expect(type of isNumber(2)).toEqual('number')
 
 An alternative to this approach would be to use the any:
 
-```javascript
+```js
 const isNumber = number => number
 
 expect(isNumber(2)).toEqual(expect.any(Number))
@@ -70,7 +70,7 @@ expect(isNumber(2)).toEqual(expect.any(Number))
 Thinking about `assert.equal`, an approach to assert an entry of arrays, would
 be to go through them and assert each of them, for example:
 
-```javascript
+```js
 const expectedFruits = ['banana', 'mango', 'watermelon']
 
 expect(expectedFruits[0]).toEqual('banana')
@@ -80,7 +80,7 @@ expect(expectedFruits[0]).toEqual('watermalo')
 
 Therefore another approach to assert such structure is using `arrayContaining`:
 
-```javascript
+```js
 const expectedFruits = ['banana', 'mango', 'watermelon']
 
 const actualFruits = () => ['banana', 'mango', 'watermelon']
@@ -98,7 +98,7 @@ For checking the size of an array is possible using the `lenght` property. There
 are different ways to achieve that, for example, with assert equals, would be
 something:
 
-```javascript
+```js
 const myList = [1, 2, 3]
 expect(myList.length).toEqual(3)   // <---
 ```
@@ -106,7 +106,7 @@ expect(myList.length).toEqual(3)   // <---
 Therefore, jest offers a matcher specifically for that, instead of asserting
 the `length` property. The same snippet using `toHaveLength` would become:
 
-```javascript
+```js
 const myList = [1, 2, 3]
 expect(myList).toHaveLength(3)   // <---
 ```
@@ -116,7 +116,7 @@ expect(myList).toHaveLength(3)   // <---
 Asserting values grater than otherscan be achieved with raw `assert.equals`,
 such as:
 
-```javascript
+```js
 const expected = 10
 const actual = 3
 expect(expected > actual).toEqual(true)
@@ -126,7 +126,7 @@ The disadivantage here is that when reading the assertion it takes a bit more
 to interpret the code in our head. For that, jest offers an assertion that
 is more readable to follow (and also gives a more friendly message when failing).
 
-```javascript
+```js
 const expected = 10
 const actual = 3
 expect(actual).toBeGreaterThan(expected)
@@ -140,7 +140,7 @@ The not modifier is handy when it comes to assert the negation of a given
 sentence. For context, a indication that `.not` is needed would
 be asserting false in some result, for example:
 
-```javascript
+```js
 const isOff = false
 expect(!isOff).toBe(true) // <--- this sometimes is tricky to spot
 ```
@@ -148,7 +148,7 @@ expect(!isOff).toBe(true) // <--- this sometimes is tricky to spot
 Another way to achieve the same result but being explicity would be
 something as follows:
 
-```javascript
+```js
 const isOff = false
 expect(isOff).not.toBe(true)
 ```
@@ -167,7 +167,7 @@ Testing async code comes with challenges and the approach to test also changes.
 One way to test is to use the variable that comes from the it callback, something
 like:
 
-```javascript
+```js
 it('my async test', done => {
   callAsyncFunc().
     then((value) => {
@@ -180,7 +180,7 @@ it('my async test', done => {
 The code above depicts how to assert a value once the promise resolves. Jest
 provides a more readable way of doing things with `resolve`:
 
-```javascript
+```js
 it('my async test', async () => { // <--- 1
   await expect(callAsyncFunc()).resolves.toEqual(true) // <--- 2
 })
@@ -189,7 +189,7 @@ it('my async test', async () => { // <--- 1
 The same applies to a rejected promise, in this case we would change the `resolves`
 by `rejects`.
 
-```javascript
+```js
 it('my async test', async () => {
   await expect(callAsyncFunc()).rejects.toEqual(false) // <--- 3
 })
@@ -207,7 +207,7 @@ Asserting that a callback has been invoked can be achieved in different ways,
 for this purpose the first approach (and not recommend) is to use the
 async style as in the previous example:
 
-```javascript
+```js
 it('callback has been invoked', done => {
   callAsyncFunc(() => {the 
     expect(true).toEqual(true) <--- assumes it has been called
@@ -219,7 +219,7 @@ A more readable assertion would be using `toHaveBeenCalled`, as it is human
 readable and might take less time to undestand what the test case is
 asserting
 
-```javascript
+```js
 it('callback has been invoked', done => {
   const result = jest.fn() // 1 
   callAsyncFunc(result)
@@ -238,7 +238,7 @@ respect. There are variants that are more strict than that. For example, it
 is possible to assert that a given function have been called X times, as
 opposed to `toHaveBeenCalled` that does not match exactly the number of calls.
 
-```javascript
+```js
 it('callback has been invoked', done => {
   const result = jest.fn()
   callAsyncFunc(result)
