@@ -13,3 +13,7 @@ tags:
 - aws,
 - web
 ---
+
+## References
+
+{% bibliography --cited_in_order --file 2020-06-11-web-share-api %}

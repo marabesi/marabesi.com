@@ -79,12 +79,13 @@ describe('my test suite', () => {
 The second option is the prefered one if the test suite has multiple tests
 that depends on the timer, as the official jest documentation says:
 
-```
-If running multiple tests inside of one file or describe block, jest.useFakeTimers(); can be called before each test manually or with a setup function such as beforeEach. Not doing so will result in the internal usage counter not being reset.
-```
+
+> If running multiple tests inside of one file or describe block, **jest.useFakeTimers()**
+> can be called before each test manually or with a setup function such as
+> **beforeEach**. Not doing so will result in the internal usage counter not being reset.
 
 On the other hand, the first approach has no way to reset the mocks set, for
-achieve that we would have to make use of the function `afterAll` from jest.
+achieve that we would have to make use of the function **afterAll** from jest.
 All in all,  the approach used for the post is the following:
 
 
