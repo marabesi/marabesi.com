@@ -35,6 +35,19 @@ projects only, therefore, the examples used here use reactjs as
 a library to build web interfaces. For pure nodejs examples with times
 it is recommended to go to the official documentation {% cite jest_fake_timer --file 2021-04-04-jest-timers-and-reactjs %}.
 
+Dave Farley in his webinar about acceptance testing also recommends this approach
+for controlling time variables {% cite  dave_farley_acceptance_testing --file 2021-04-04-jest-timers-and-reactjs %}, Dave shows code
+examples in java, which spot this idea of controlling time across
+programming languages, the concept is the important bit.
+
+## Table of contents
+
+- [Context](#context)
+- [Fake times](#fake-times)
+- [Run all timers](#run-all-timers)
+- [Advance timers by time](#advance-timers-by-time)
+- [References](#references)
+
 > NOTE: this post assumes testing knowledge as well as jest features, such as:
 > describe and test.
 
@@ -78,7 +91,6 @@ describe('my test suite', () => {
 
 The second option is the prefered one if the test suite has multiple tests
 that depends on the timer, as the official jest documentation says:
-
 
 > If running multiple tests inside of one file or describe block, **jest.useFakeTimers()**
 > can be called before each test manually or with a setup function such as

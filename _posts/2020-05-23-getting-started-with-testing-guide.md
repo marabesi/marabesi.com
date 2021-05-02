@@ -63,8 +63,9 @@ As a beginner on the the testing subject, there are more questions than answers.
 fine and a good starting point. This section provides references for understanding the
 foundation of testing, but not just the theory, the practice as well.
 
-The first recommended read of this section, if you are the developer that prefers to see the code
-before reading the theory is: TDD by example {% cite tdd_by_example_kent_beck --file 2020-05-23-getting-started-with-testing-guide %}.
+The first recommended read of this section, if you are the developer that prefers to see a mix of the code
+and the theory is: Software Testing: From Theory to Practice {% cite sttp --file 2020-05-23-getting-started-with-testing-guide %}
+and then TDD by example {% cite tdd_by_example_kent_beck --file 2020-05-23-getting-started-with-testing-guide %}.
 
 On the other hand if you prefer to digest more theory and then later on go deeper
 into the practical aspect of it, then the suggested reading is:
