@@ -12,6 +12,7 @@ tags:
 - jest,
 - javascript,
 - expect,
+- equals,
 - toequal,
 - async,
 - assertion,
@@ -21,7 +22,11 @@ tags:
 - toEqual,
 - example,
 - callback,
-- called
+- called,
+- test,
+- result,
+- approach,
+- beyond
 ---
 
 Testing with jest is an activity that developers do to keep the application

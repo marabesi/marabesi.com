@@ -19,7 +19,12 @@ tags:
 - subject,
 - code,
 - engineering,
-- culture
+- culture,
+- start,
+- bug,
+- developer,
+- team,
+- time
 redirect_from:
   - /thoughts/2021/04/08/how-to-loose-your-developers.html
   - /thoughts/2021/04/08/how-to-loose-your-developers

@@ -10,11 +10,20 @@ categories:
 - devops
 tags:
 - kubernetes,
+- Kubernetes,
 - k8s,
 - deployment,
 - docker,
 - exposing,
-- kubectl
+- kubectl,
+- container,
+- example,
+- pod,
+- Pod,
+- expose,
+- ReplicaSet,
+- image,
+- abstraction
 ---
 
 As opposed to docker that operates on the container level directly, kubernetes
