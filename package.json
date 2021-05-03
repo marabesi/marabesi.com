@@ -37,7 +37,7 @@
     "cypress": "^7.2.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "http-server": "^0.12.3",
-    "mini-css-extract-plugin": "^1.5.1",
+    "mini-css-extract-plugin": "^1.6.0",
     "node-sass": "^5.0.0",
     "postcss-import": "^14.0.1",
     "postcss-loader": "^4.2.0",
