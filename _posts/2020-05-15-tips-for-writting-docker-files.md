@@ -39,7 +39,8 @@ that virtual machines have, for example, the boot time. The virtual machine
 needs time to boot, while docker is a service that starts on the host operational
 system.
 
-As opposed to the official best practices {% cite best_practices_docker_hub --file 2020-05-15-tips-for-writting-docker-files %} on writting docker files,
+As opposed to the official best practices
+{% cite best_practices_docker_hub --file 2020-05-15-tips-for-writting-docker-files %} on writting docker files,
 the goal here is to share tips on approaches in how to write the docker files, this is not a
 beginners guide in how docker works or how to use it.
 
@@ -49,10 +50,11 @@ to keep track of topics that are related to docker.
 
 > **NOTE**: if you are starting with docker, have a look at the curriculum
 > {% cite docker_curriculum --file 2020-05-15-tips-for-writting-docker-files %}
-> first to get used to docker basics
+> first to get used to docker basics. Personally I have a presentation around
+> docker basics available as well {% cite matheus_marabesi_docker_101 --file 2020-05-15-tips-for-writting-docker-files %}.
 
 > **NOTE 2**: if you are interested in the nodejs docker image (how it is build)
-> have a lookat the official git repository {% cite official_nodejs_github --file 2020-05-15-tips-for-writting-docker-files %}
+> have a look at the official git repository {% cite official_nodejs_github --file 2020-05-15-tips-for-writting-docker-files %}
 
 ## Docker images and services
 
@@ -75,8 +77,6 @@ FROM node:12 # <--- standard image, and also the bigger compared to the next two
 
 WORKDIR /var/www/app
 
-COPY package*.json ./
-
 COPY . .
 
 RUN npm install && npm run build
@@ -93,8 +93,6 @@ FROM node:12-slim # <--- slim image, smaller, but also has less dependencies ins
 
 WORKDIR /var/www/app
 
-COPY package*.json ./
-
 COPY . .
 
 RUN npm install && npm run build
@@ -104,14 +102,12 @@ EXPOSE 5000
 CMD npm run serve
 ```
 
-Dockerfile with alphine image:
+Dockerfile with alpine image:
 
 ```shell
 FROM node:12-slim # <--- slim image, the smallest, but also it has some drawbacks such as missing needed dependencies by the code
 
 WORKDIR /var/www/app
-
-COPY package*.json ./
 
 COPY . .
 
@@ -127,7 +123,29 @@ to run the program. on the other side though, the alphine version has almost
 nothing to run the program, it has just the core, nothing else. Which in many 
 cases will make the program to not run, depending on the dependencies.
 
-### 2. The root user
+### 2. Caching
+
+Caching in docker is used to avoid refetching dependencies over and over again
+even when they don't change. To avoid that, the docker layer system
+can be used to trick the engine {% cite docker_and_kubernetes_caching --file 2020-05-15-tips-for-writting-docker-files %}.
+
+```shell
+FROM node:12-slim
+
+WORKDIR /var/www/app
+
+COPY package*.json ./ # <--- Caches the npm dependencies
+
+RUN npm install && npm run build
+
+COPY . .
+
+EXPOSE 5000
+
+CMD npm run serve
+```
+
+### 3. The root user
 
 The root user is the default user in which the container runs, which makes
 easier the process to set up permissions to access files or to setup configurations.
@@ -164,18 +182,18 @@ CMD npm run serve
 This tip relies on the same approach as the previous one, first, make it work
 with the root user, then start to trick around permissions with a specific user.
 
-### 3. Separate concerns, avoid building different services into one image
+### 4. Separate concerns, avoid building different services into one image
 
 As a best practice the recommended way to build containers is: one container equals
 to one process. Which can avoid problems when it comes to managing them. 
 
-### 4. setup docker file first, and then move to docker compose (if needed)
+### 5. setup docker file first, and then move to docker compose (if needed)
 
 Usually, docker compose is the next step when building services to use with docker,
 though developers tend to skip the first step which is to understand how the
 image works and then move on to compose.
 
-### 5. Networking and sharing hosts
+### 6. Networking and sharing hosts
 
 Docker creates its own network interface, which in turn containers communicate
 between each other. Therefore, there are scenarios in which this behavior
@@ -211,7 +229,7 @@ docker run --rm --add-host=localhost:192.168.1.102 nginx
 
 This section focus on the docker compose only.
 
-### 6. Different docker compose files for different environments 
+### 7. Different docker compose files for different environments 
 
 Docker compose files are used to compose the container orchestration, therefore
 sometimes it is needed to use different behavior based on the environment
