@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (WIP) Kubernetes quick notes deployment
+title: Kubernetes quick notes deployment (WIP)
 date: 2021-05-01 01:06:05.000000000 -03:00
 image: 
 type: article

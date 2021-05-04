@@ -151,7 +151,8 @@ The root user is the default user in which the container runs, which makes
 easier the process to set up permissions to access files or to setup configurations.
 Usually this is a bad practice {% cite husky_best_practices_no_root --file 2020-05-15-tips-for-writting-docker-files %},
 the container should not run with the root user due security issues
-{% cite best_practices_nodejs_dockercon --file 2020-05-15-tips-for-writting-docker-files %}.
+{% cite best_practices_nodejs_dockercon --file 2020-05-15-tips-for-writting-docker-files %}
+{% cite keep_nodejs_rockin_in_docker --file 2020-05-15-tips-for-writting-docker-files %}.
 
 Though for the process to set up the docker image this can be a bit harder,
 given the fact that setting up a different user with less permission can

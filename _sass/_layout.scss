@@ -171,8 +171,13 @@ main ol {
     }
 
     p {
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.1rem;
+    }
+
+    .highlight {
+        margin-top: 0.8rem;
+        margin-bottom: 0.8rem;
     }
 }
 

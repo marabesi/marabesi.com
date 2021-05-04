@@ -2,7 +2,7 @@
 layout: post
 title: Towards a reactjs folder structure based on intent (WIP) 
 date: 2021-01-18 01:06:05.000000000 -03:00
-image: 
+image: /images/posts/2021-01-18-towards-reactjs-folder-structure-based-on-intent/cover.png
 type: article
 published: true
 status: published
@@ -38,8 +38,15 @@ aims to favor:
 - communication
 
 Both of them are connected in somehow and in this post I am going to address
-the issue that is to organize reactjs componentes in a "meaningful" way, given that the official reactjs documentation does not provide
-an official file structure {% cite reactjs_official_file_structure --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}.
+the issue that is to organize reactjs componentes in a "meaningful" way, given
+that the official reactjs documentation does not provide
+an official file structure
+{% cite reactjs_official_file_structure --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}.
+
+Eventough there are attempts for structuring reactjs
+{% cite reactjs_architecture_essentials --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}
+apps none has gotten an official stamp, probably it will not happen, but it is
+possible to become a common standard.
 
 ## Table of contents
 
@@ -55,7 +62,7 @@ components. As it is a unofficial approach to create a folder named `components`
 and uses it to hold all components needed for the application. A
 basic RCA scafolding looks like:
 
-```
+```shell
 ├── node_modules
 ├── package.json
 ├── package-lock.json
@@ -87,7 +94,7 @@ Its been a few years since I started to work with reactjs and since then, I
 will make a bullet list of the structures that I have used over the last few
 years:
 
-```
+```shell
 ├── LICENSE
 ├── node_modules
 ├── package.json
