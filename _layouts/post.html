@@ -2,12 +2,26 @@
 layout: default
 ---
 
-<div class="page-content container flex flex-col p-5 m-auto">
+<div class="page-content container flex flex-col p-1 m-auto">
   <h1>{{ page.title }}</h1>
 
-  <main class="mb-5">
-    {{ content }}
-  </main>
+  {% if page.table_of_contents %}
+    <main class="mb-5 lg:flex">
+      <div class="w-full lg:w-3/4">
+        {{ content }}
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t mt-5">
+          {% capture my_include %}{% include {{page.table_of_contents}} %}{% endcapture %}
+          {{ my_include | markdownify }}
+        </div>
+      </div>
+    </main>
+  {% else %}
+    <main class="mb-5">
+      {{ content }}
+    </main>
+  {% endif %}
 
   {% include share-buttons.html %}
 

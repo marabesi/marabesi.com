@@ -39,13 +39,6 @@ Giving the different sensors and boards I took some time to figure out
 the steps I needed to build the project. This post is the detailed
 step-by-step that I did to build my personal project using IR sensors.
 
-## Table of contents
-
-1. [Setting up the pi to use IR](#setting-up-the-pi-to-use-ir)
-2. [Wiring up](#wiring-up)
-3. [Mapping inputs to IR codes](#mapping-inputs-to-ir-codes)
-4. [References](#references)
-
 **DISCLAIMER**: This post is focused on the kernel 5.4, and the base hardware
 used is as follows:
 
@@ -57,6 +50,13 @@ used is as follows:
 you prefer to setup the hardware part first, then read the section 2 and then section 1.
 Therefore, if you prefer to setup the software first (as I prefer), you can
 keep the suggested order.
+
+## Table of contents
+
+1. [Setting up the pi to use IR](#setting-up-the-pi-to-use-ir)
+2. [Wiring up](#wiring-up)
+3. [Mapping inputs to IR codes](#mapping-inputs-to-ir-codes)
+4. [References](#references)
 
 ## Setting up the pi to use IR
 

@@ -17,6 +17,8 @@ a:visited {
 }
 
 table {
+    margin-top: 20px;
+    margin-bottom: 20px;
     width: 100%;
 
     td, th {
@@ -203,6 +205,10 @@ main ol {
 
     .footer-details {
         font-weight: 100;
+
+        a {
+            color: white;
+        }
     }
 }
 

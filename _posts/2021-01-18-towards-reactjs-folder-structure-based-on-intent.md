@@ -6,6 +6,7 @@ image: /images/posts/2021-01-18-towards-reactjs-folder-structure-based-on-intent
 type: article
 published: true
 status: published
+table_of_contents: 2021-01-18-towards-reactjs-folder-structure-based-on-intent/table-of-contents.md
 categories:
 - web
 tags:
@@ -47,13 +48,6 @@ Eventough there are attempts for structuring reactjs
 {% cite reactjs_architecture_essentials --file 2021-01-18-towards-reactjs-folder-structure-based-on-intent %}
 apps none has gotten an official stamp, probably it will not happen, but it is
 possible to become a common standard.
-
-## Table of contents
-
-1. [The default](#the-default)
-2. [A new approach](#a-new-approach)
-  - [Proof of concept](#poc)
-3. [References](#references)
 
 ## The default
 
