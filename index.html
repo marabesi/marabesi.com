@@ -47,6 +47,9 @@ tags:
                         <a href="{{ post.url | prepend: site.baseurl }}" class="link no-underline hover:underline">
                             {{ post.title }}
                         </a>
+                        <p class="mt-2">
+                            {{ post.content | markdownify | strip_html | truncatewords: 50 }}
+                        </p>
                     </div>
                 </div>
             </div>

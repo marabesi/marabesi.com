@@ -3,11 +3,12 @@ layout: default
 ---
 
 <div class="page-content container flex flex-col p-1 m-auto">
-  <h1>{{ page.title }}</h1>
 
   {% if page.table_of_contents %}
     <main class="mb-5 lg:flex">
       <div class="w-full lg:w-3/4">
+        <h1>{{ page.title }}</h1>
+
         {{ content }}
       </div>
       <div class="hidden w-1/4 lg:block">
@@ -19,6 +20,7 @@ layout: default
     </main>
   {% else %}
     <main class="mb-5">
+      <h1>{{ page.title }}</h1>
       {{ content }}
     </main>
   {% endif %}
