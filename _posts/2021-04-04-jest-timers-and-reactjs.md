@@ -3,6 +3,7 @@ layout: post
 title: Jest timers and reactjs
 date: 2021-04-04 01:06:05.000000000 -03:00
 image: /images/posts/2021-04-04-jest-timers-and-reactjs/cover.jpg 
+table_of_contents: 2021-04-04-jest-timers-and-reactjs/table-of-contents.md
 type: article
 published: true
 status: published
@@ -39,14 +40,6 @@ Dave Farley in his webinar about acceptance testing also recommends this approac
 for controlling time variables {% cite  dave_farley_acceptance_testing --file 2021-04-04-jest-timers-and-reactjs %}, Dave shows code
 examples in java, which spot this idea of controlling time across
 programming languages, the concept is the important bit.
-
-## Table of contents
-
-- [Context](#context)
-- [Fake times](#fake-times)
-- [Run all timers](#run-all-timers)
-- [Advance timers by time](#advance-timers-by-time)
-- [References](#references)
 
 > NOTE: this post assumes testing knowledge as well as jest features, such as:
 > describe and test.

@@ -6,13 +6,13 @@ layout: default
 
   {% if page.table_of_contents %}
     <main class="mb-5 lg:flex">
-      <div class="w-full lg:w-3/4">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
         <h1>{{ page.title }}</h1>
 
         {{ content }}
       </div>
       <div class="hidden w-1/4 lg:block">
-        <div class="sticky pin-t pl-2 xl:top-20">
+        <div class="sticky pin-t pl-2 xl:top-30">
           {% capture my_include %}{% include {{page.table_of_contents}} %}{% endcapture %}
           {{ my_include | markdownify }}
         </div>
