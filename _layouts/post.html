@@ -12,7 +12,7 @@ layout: default
         {{ content }}
       </div>
       <div class="hidden w-1/4 lg:block">
-        <div class="sticky pin-t mt-5">
+        <div class="sticky pin-t pl-2 xl:top-20">
           {% capture my_include %}{% include {{page.table_of_contents}} %}{% endcapture %}
           {{ my_include | markdownify }}
         </div>

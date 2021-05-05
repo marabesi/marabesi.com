@@ -41,12 +41,17 @@ table {
     }
 }
 
+main ul {
+    margin-left: -20px;
+}
+
 main ul li {
-    margin: 20px;
+    margin: 10px;
 }
 
 main ol {
     margin-top: 20px;
+    margin-left: -20px;
 }
 
 .top-menu {

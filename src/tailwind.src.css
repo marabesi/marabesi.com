@@ -60,4 +60,9 @@
  * @import "utilities/background-patterns";
  * @import "utilities/skew-transforms";
  */
- 
+
+ @responsive {
+  .top-20 {
+    top: 20px;
+  }
+}

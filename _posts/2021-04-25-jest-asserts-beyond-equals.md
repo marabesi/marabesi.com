@@ -6,6 +6,7 @@ image: /images/posts/2021-04-25-jest-asserts-beyond-equals/cover.png
 type: article
 published: true
 status: published
+table_of_contents: 2021-04-25-jest-asserts-beyond-equals/table-of-contents.md
 categories:
 - web
 tags:
@@ -166,7 +167,7 @@ Jest provides an API for a more readable test code and to assert async
 functions. It is easy to fall under the trap of using assert equals after a
 promises has been fullfilled, but this is some test smells. 
 
-### resolve
+### Resolves
 
 Testing async code comes with challenges and the approach to test also changes.
 One way to test is to use the variable that comes from the it callback, something
@@ -206,7 +207,7 @@ Callbacks are the heart of javascript and when testing them an async style
 is used as well, as the callback might/might not be called in a different time
 in the execution flow.
 
-### to HaveBeen Called
+### to Have Been Called
 
 Asserting that a callback has been invoked can be achieved in different ways,
 for this purpose the first approach (and not recommend) is to use the
