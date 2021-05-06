@@ -15,6 +15,12 @@ layout: default
         <div class="sticky pin-t pl-2 xl:top-30">
           {% capture my_include %}{% include {{page.table_of_contents}} %}{% endcapture %}
           {{ my_include | markdownify }}
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            {% include share-buttons.html %}
+          </div>
         </div>
       </div>
     </main>
@@ -23,9 +29,10 @@ layout: default
       <h1>{{ page.title }}</h1>
       {{ content }}
     </main>
+
+    {% include share-buttons.html %}
   {% endif %}
 
-  {% include share-buttons.html %}
 
   <div id="disqus_thread"></div>
 </div>
