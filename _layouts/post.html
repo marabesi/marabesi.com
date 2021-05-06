@@ -3,7 +3,6 @@ layout: default
 ---
 
 <div class="page-content container flex flex-col p-1 m-auto">
-
   {% if page.table_of_contents %}
     <main class="mb-5 lg:flex">
       <div class="w-full pl-5 pr-5 lg:w-3/4">
@@ -21,6 +20,37 @@ layout: default
           <div class="flex -ml-2">
             {% include share-buttons.html %}
           </div>
+
+          <h2>You also might like</h2>
+
+          {% assign maxRelated = 4 %}
+          {% assign minCommonTags =  2 %}
+          {% assign maxRelatedCounter = 0 %}
+
+          {% for post in site.posts %}
+            {% assign sameTagCount = 0 %}
+            {% assign commonTags = '' %}
+
+            {% for tag in post.tags %}
+              {% if post.url != page.url %}
+                {% if page.tags contains tag %}
+                  {% assign sameTagCount = sameTagCount | plus: 1 %}
+                  {% capture tagmarkup %} <span>{{ tag }}</span> {% endcapture %}
+                  {% assign commonTags = commonTags | append: tagmarkup %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+            {% if sameTagCount >= minCommonTags %}
+              <div class="mt-4 mb-4">
+                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a>
+              </div>
+              {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
+              {% if maxRelatedCounter >= maxRelated %}
+                {% break %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
         </div>
       </div>
     </main>
