@@ -3,6 +3,7 @@ layout: post
 title: Firebase UI localization
 date: 2021-03-15 01:06:05.000000000 -03:00
 image: /images/posts/2021-03-15-firebase-ui-localization/cover.jpg
+table_of_contents: 2021-03-15-firebase-ui-localization/table-of-contents.md
 type: article
 published: true
 status: published

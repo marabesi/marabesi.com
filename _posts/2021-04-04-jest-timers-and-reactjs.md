@@ -50,9 +50,8 @@ The react component used in this post is a component that display different
 content basedon the props given, and also, it uses animation to introduce
 them. as such, the animation takes time to finish and to complete its
 life cycle. Jest timers are used to avoid the needed to delay the test
-suite execution.
-
-For further details on the test file and implementation refer to:
+suite execution. For further details on the test file and implementation refer
+to:
 
 - [Scene.spec.tsx (test)](https://github.com/marabesi/testable/blob/master/webapp/src/components/ui/interface/scene-manager/Scene.spec.tsx){:target="_blank"}
 - [Scene.tsx (implementation)](https://github.com/marabesi/testable/blob/master/webapp/src/components/ui/interface/scene-manager/Scene.tsx){:target="_blank"}

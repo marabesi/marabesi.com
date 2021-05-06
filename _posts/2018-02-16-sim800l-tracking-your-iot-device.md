@@ -4,6 +4,7 @@ title: SIM800L tracking your IoT device
 date: 2018-02-16 20:39:18.000000000 -02:00
 type: article
 image: /images/posts/2018-02-16-sim800l-tracking-your-iot-device/cover.jpeg
+table_of_contents: 2018-02-16-sim800l-tracking-your-iot-device/table-of-contents.md
 published: true
 status: publish
 categories:
