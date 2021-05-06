@@ -14,7 +14,6 @@ if ('serviceWorker' in navigator) {
         worker.addEventListener('statechange', function () {
           if (worker.state === 'installed') {
             updateButton.classList.remove('hidden');
-            menuWrapper.classList.add('mt-10')
           }
         });
       });
