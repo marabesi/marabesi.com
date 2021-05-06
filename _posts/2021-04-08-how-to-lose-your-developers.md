@@ -3,6 +3,7 @@ layout: post
 title: How to lose your developers
 date: 2021-04-08 01:06:05.000000000 -03:00
 image: /images/posts/2021-04-08-how-to-lose-your-developers/cover.jpg
+table_of_contents: 2021-04-08-how-to-lose-your-developers/table-of-contents.md
 type: article
 published: true
 status: published
