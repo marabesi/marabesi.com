@@ -36,7 +36,7 @@ tags:
 
 ![Books read in 2020](/images/posts/2021-02-11-2020-a-year-of-reading/featured.jpg)
 
-This section provides my thouthgs on each of them, my personal opinions and the book I enjoied the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
+This section provides my thouthgs on each of them, my personal opinions and the book I enjoyed the most {% cite good_reads_2020 --file 2021-02-11-2020-a-year-of-reading %}.
 
 ## Table of contents
 

@@ -39,11 +39,13 @@ the developer uses the most during the TDD
 
 The gist of the assertion API {% cite jest_expect --file 2021-04-25-jest-asserts-beyond-equals %}
 is to compare values, as such the equals matcher is the most used. Being one of
-the most used can also point to a lack of knowledge in the different matchers
+the most used can also point to a lack of knowledge in the different assertions
 that the testing framework offers.
 
-This post aims to cover different assertions, to avoid using always the matcher
-`toEqual` and make the test case more expressive.
+This post aims to cover different assertions, to avoid using always
+`toEqual` and make the test case more expressive. For each example, I try
+to first depict how it would be with `toEqual`, then I show another way
+using a different assertion.
 
 ## Assertions
 
@@ -96,7 +98,7 @@ expect(expectedFruits).toEqual(expect.arrayContaining(actualFruits))
 
 ### to Be
 
-`toBe` is a strictier way of asserting values.
+`toBe` is a stricter way of asserting values.
 
 ### to Have Length
 
@@ -128,7 +130,7 @@ const actual = 3
 expect(expected > actual).toEqual(true)
 ```
 
-The disadivantage here is that when reading the assertion it takes a bit more
+The disadvantage here is that when reading the assertion it takes a bit more
 to interpret the code in our head. For that, jest offers an assertion that
 is more readable to follow (and also gives a more friendly message when failing).
 
@@ -165,7 +167,7 @@ The `.not` operator can be used across different assertions within jest.
 
 Jest provides an API for a more readable test code and to assert async
 functions. It is easy to fall under the trap of using assert equals after a
-promises has been fullfilled, but this is some test smells. 
+promises has been fulfilled, but this is some test smells. 
 
 ### Resolves
 
@@ -184,7 +186,7 @@ it('my async test', done => {
 ```
 
 The code above depicts how to assert a value once the promise resolves. Jest
-provides a more readable way of doing things with `resolve`:
+provides a more readable way of doing things with `resolves`:
 
 ```js
 it('my async test', async () => { // <--- 1

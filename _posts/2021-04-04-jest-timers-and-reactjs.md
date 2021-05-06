@@ -24,8 +24,8 @@ tags:
 - beforeEach
 ---
 
-This post explores the possibilitites to use fake timers with jest. Such
-feature is needed for async testing, whreas is needed to await for
+This post explores the possibilities to use fake timers with jest. Such
+feature is needed for async testing, whereas is needed to await for
 some computation to finish. Such computation can vary on time, for example,
 1 second, or 10 minutes. In a test case scenario, the waiting for this
 computation is not needed {% cite jest_fake_timer --file 2021-04-04-jest-timers-and-reactjs %}.
