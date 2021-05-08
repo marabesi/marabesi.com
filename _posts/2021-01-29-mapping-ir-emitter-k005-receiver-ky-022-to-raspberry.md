@@ -3,6 +3,7 @@ layout: post
 title: Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor
 date: 2021-01-29 01:06:05.000000000 -03:00
 image: /images/posts/2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/cover.jpg 
+table_of_contents: 2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/table-of-contents.md
 type: article
 published: true
 status: published
@@ -50,13 +51,6 @@ used is as follows:
 you prefer to setup the hardware part first, then read the section 2 and then section 1.
 Therefore, if you prefer to setup the software first (as I prefer), you can
 keep the suggested order.
-
-## Table of contents
-
-1. [Setting up the pi to use IR](#setting-up-the-pi-to-use-ir)
-2. [Wiring up](#wiring-up)
-3. [Mapping inputs to IR codes](#mapping-inputs-to-ir-codes)
-4. [References](#references)
 
 ## Setting up the pi to use IR
 

@@ -5,6 +5,7 @@ date: 2021-01-16 01:06:05.000000000 -03:00
 image: 
 type: article
 published: true
+table_of_contents: 2021-01-16-node-certification-jsnad-streams/table-of-contents.md
 status: published
 categories:
 - nodejs

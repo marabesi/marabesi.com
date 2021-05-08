@@ -3,6 +3,7 @@ layout: post
 title: Tips for writting docker files
 date: 2020-05-15 01:06:05.000000000 -03:00
 image: /images/posts/2020-05-15-tips-for-writting-docker-files/cover.png
+table_of_contents: 2020-05-15-tips-for-writting-docker-files/table-of-contents.md
 type: article
 published: true
 status: published
@@ -186,7 +187,9 @@ with the root user, then start to trick around permissions with a specific user.
 ### 4. Separate concerns, avoid building different services into one image
 
 As a best practice the recommended way to build containers is: one container equals
-to one process. Which can avoid problems when it comes to managing them. 
+to one process. Which can avoid problems when it comes to managing them
+as {% cite best_practices_docker_hub --file 2020-05-15-tips-for-writting-docker-files %}
+describes in the section "Decouple applications".
 
 ### 5. setup docker file first, and then move to docker compose (if needed)
 

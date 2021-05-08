@@ -3,6 +3,7 @@ layout: post
 title: Introduction to OOP with PHP (Classes, Encapsulation, Inheritance)
 date: 2019-06-25 02:06:05.000000000 -03:00
 image: /images/posts/2019-06-25-intro-oop-php/cover.jpg
+table_of_contents: 2019-06-25-intro-oop-php/table-of-contents.md
 type: article
 published: true
 status: published
@@ -58,7 +59,8 @@ structured programming is addressed with a switch / case.
 
 ## Classes
 
-A class can be represented by its behavior (methods) and attributes (variables).
+A class can be represented by its behavior (methods) and attributes (variables)
+{% cite pablo_dalloglio --file 2019-06-25-intro-oop-php %}
 
 ``` php
 <?php
@@ -89,7 +91,7 @@ class Person {
 }
 ```
 
-Note: methods that begin with __ in your name have a special meaning in PHP.
+**NOTE**: methods that begin with __ in your name have a special meaning in PHP.
 These methods are known as magic methods, which have a certain behavior
 depending on the type of method invoked.
 
@@ -98,9 +100,11 @@ depending on the type of method invoked.
 Encapsulation provides a process of allowing / denying access to behavior and
 data that a given class has through the visibility modifiers.
 
-*Note: One of the first approaches of PHP (PHP 4) object orientation did not have implemented visibility. All attributes were public and accessible. (https://subscription.packtpub.com/book/web_development/9781847192561/1/ch01lvl1sec09/difference-of-oop-in-php4-and-php5)*
+**NOTE**: One of the first approaches of PHP (PHP 4) object orientation did not
+have implemented visibility. All attributes were public and accessible
+{% cite difference_php4_php5 --file 2019-06-25-intro-oop-php %}.
 
-**Note 2: With php 7.4, it is now possible to take properties of a class*
+**NOTE 2**: With php 7.4, it is now possible to take properties of a class
 
 PHP has three types of public, private, and protected visibility modifiers.
 Modifiers are used in the attributes and methods of a class and classes that

@@ -44,14 +44,6 @@ For purpose of test I started using the Raspberry Pi (model B+) board but ended 
 facility of send the skecth out to the Arduino. While in the Raspberry Pi you should wait till the board is up
 and running. Further tests can lead me back to the Pi, but for this post the examples will be on Arduino.
 
-What you is going to see in this post:
-
-* [The requirements to use SIM800L](#sim800l)
-* [Setup the wiring](#wiring)
-* [Test the serial connection with AT commands](#sketch-commands-at-101)
-* [Locate(get lat and lnt) the SIM card with AT commands](#enabling-gsm-location)
-* [References for further reading](#references)
-
 ## SIM800L
 
 The board used is the SIM800L without any specific breakboard or something like that. Newest versions of the SIM like

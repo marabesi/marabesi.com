@@ -5,6 +5,7 @@ date: 2021-01-04 01:06:05.000000000 -03:00
 image: 
 type: article
 published: true
+table_of_contents: 2021-01-04-aws-cloud-practitioner-notes-ec2/table-of-contents.md
 status: published
 categories:
 - aws
@@ -41,26 +42,6 @@ AWS provides. Besides that, a brief introductino to the model pay as you go that
 AWS uses.
 
 Previous: [AWS Cloud Practitioner Notes]({% post_url 2021-01-20-aws-cloud-practitioner-notes %})
-
-## Table of contents
-
-- [Course overview](#course-overview)
-- [Module 1 - Introduction AWS](#module-1---introduction-aws)
-- [Module 2 - Introduction EC2 (CaaS)](#module-2---introduction-ec2-caas)
-  - [Modules 2 - EC2 Instance types]()
-  - [Modules 2 - EC2 pricing]()
-  - [Modules 2 - EC2 scaling]()
-  - [Modules 2 - Elastic load balancing (ELB)]()
-  - [Modules 2 - Message and queueing]()
-- [Modules 2 - Additional compute services - AWS lambda]()
-- [Modules 2 - Additional compute services - AWS ECS (Elastic container service) or EKS (Elastic Kubernetes service)]()
-
-## Course overview
-
-- Lessons includes videos and additional resources such as links
-- For each module there is a quiz to check on the material knownledge
-
-In the end there will be a 30 question assesment of the exam.
 
 ## Module 1 - Introduction AWS
 

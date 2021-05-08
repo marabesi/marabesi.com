@@ -3,6 +3,7 @@ layout: post
 title: Running PHP with Arduino
 date: 2017-03-01 01:06:05.000000000 -03:00
 image: /images/posts/2017-03-01-running-php-with-arduino/cover.jpg
+table_of_contents: 2017-03-01-running-php-with-arduino/table-of-contents.md
 type: article
 published: true
 status: published

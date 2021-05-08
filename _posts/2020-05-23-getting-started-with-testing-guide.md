@@ -5,6 +5,7 @@ date: 2020-05-23 01:06:05.000000000 -03:00
 image: 
 type: article
 published: true
+table_of_contents: 2020-05-23-getting-started-with-testing-guide/table-of-contents.md
 status: published
 categories:
 - testing
