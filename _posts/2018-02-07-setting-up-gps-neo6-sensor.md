@@ -3,6 +3,7 @@ layout: post
 title: Setting up GPS NEO 6 sensor
 date: 2018-02-07 17:30:18.000000000 -02:00
 image: /images/posts/2018-02-07-setting-up-gps-neo6-sensor/cover.jpg
+table_of_contents: 2018-02-07-setting-up-gps-neo6-sensor/table-of-contents.md
 type: article
 published: true
 status: publish
@@ -25,7 +26,11 @@ tags:
 - uart,
 - gpio,
 - GPIO,
-- iot
+- iot,
+- port,
+- client,
+- signal,
+- work
 ---
 
 Recently I have had the chance to set up a basic IoT project which consists of localization by GPS.

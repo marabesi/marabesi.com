@@ -26,9 +26,13 @@ tags:
 - COPY,
 - run,
 - host,
-- flag
+- flag,
+- npm,
+- Online,
+- https
 redirect_from:
   - /devops/tips-for-writting-docker-files
+  - /docker/tips
 ---
 
 Docker has revolutionized how developers build and deploy applications, being

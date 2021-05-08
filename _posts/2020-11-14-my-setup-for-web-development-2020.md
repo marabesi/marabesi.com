@@ -6,6 +6,7 @@ image: /images/posts/2020-11-14-my-setup-for-web-development-2020/cover.png
 type: article
 published: true
 status: published
+table_of_contents: 2020-11-14-my-setup-for-web-development-2020/table-of-contents.md
 categories:
 - development
 tags:
@@ -33,12 +34,6 @@ provide details on configuration and why the decision to chose a given tool.
 
 Disclaimer: this is my personal setup, I am not endorsing any particular
 tool over another.
-
-The content distributed as follows:
-
-1. [Operating system](#operating-system)
-2. [Development environment](#development-environment)
-3. [IDE'S and text editors](#ides-and-text-editors)
 
 ## Operating system
 

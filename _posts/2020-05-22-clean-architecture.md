@@ -3,6 +3,7 @@ layout: post
 title: Clean architecture
 date: 2020-05-22 01:06:05.000000000 -03:00
 image: 
+table_of_contents: 2020-05-22-clean-architecture/table-of-contents.md
 type: article
 published: true
 status: published
@@ -30,13 +31,6 @@ I have published my own thoughts on that matter as well, and then I discovered
 the clean architecture book {% cite clean_architecture_book --file 2020-05-22-clean-architecture %},
 which dives much deeper on that subject and also explores the pros of
 having a architecture in place.
-
-## Table of contents
-
-1. [Architectural styles compared to the clean architecture](#architectural-styles-compared-to-the-clean-architecture)
-2. [Clean architecture in a glance](#clean-architecture-in-a-glance)
-3. [Implementation details](#implementaion-details)
-4. [References](#references)
 
 ## Architectural styles compared to the clean architecture
 

@@ -6,7 +6,7 @@ layout: default
   {% if page.table_of_contents %}
     <main class="mb-5 lg:flex">
       <div class="w-full pl-5 pr-5 lg:w-3/4">
-        <h1>{{ page.title }}</h1>
+        <h1 id="{{ page.slug }}">{{ page.title }}</h1>
 
         {{ content }}
       </div>
@@ -35,7 +35,7 @@ layout: default
               {% if post.url != page.url %}
                 {% if page.tags contains tag %}
                   {% assign sameTagCount = sameTagCount | plus: 1 %}
-                  {% capture tagmarkup %} <span>{{ tag }}</span> {% endcapture %}
+                  {% capture tagmarkup %} <span class="text-marabesi-pink">{{ tag }}</span> {% endcapture %}
                   {% assign commonTags = commonTags | append: tagmarkup %}
                 {% endif %}
               {% endif %}
@@ -43,7 +43,7 @@ layout: default
 
             {% if sameTagCount >= minCommonTags %}
               <div class="mt-4 mb-4">
-                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}{{ commonTags }}</a>
+                <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }} [ {{ commonTags }} ]</a>
               </div>
               {% assign maxRelatedCounter = maxRelatedCounter | plus: 1 %}
               {% if maxRelatedCounter >= maxRelated %}
@@ -56,7 +56,7 @@ layout: default
     </main>
   {% else %}
     <main class="mb-5">
-      <h1>{{ page.title }}</h1>
+      <h1 id="{{ page.slug }}">{{ page.title }}</h1>
       {{ content }}
     </main>
 

@@ -3,6 +3,7 @@ layout: post
 title: ReactJs patterns - A study based on google search
 date: 2020-06-22 01:06:05.000000000 -03:00
 image: /images/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/cover.png
+table_of_contents: 2020-06-22-reactjs-patterns-a-study-based-on-google-search/table-of-contents.md
 type: article
 published: true
 status: published
@@ -55,17 +56,6 @@ Besides the questions to be answered in this post, the aim is also to be a sourc
 to access when in doubt of which reactjs pattern to learn first and also a guide
 to help beginners to have a picture of the patterns that developers most talk
 about.
-
-## Table of contents
-
-1. [Finding reactjs patterns articles](#finding-reactjs-patterns-articles)
-2. [Mining results](#mining-results)
-3. [Analyzing the results](#analyzing-the-results)
-4. [Discussion](#discussion)
-5. [Related work](#related-work)
-6. [Conclusion](#conclusion)
-7. [References](#references)
-8. [Appendix](#appendix)
 
 ## Finding reactjs patterns articles
 
