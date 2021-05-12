@@ -2,6 +2,7 @@
 layout: post
 title: e2e testing with Cypress, ReactJs and Firebase
 date: 2019-10-13 01:06:05.000000000 -03:00
+table_of_contents: 2019-10-13-cypress-and-firebase-reactjs-app/table-of-contents.md
 image: 
 type: article
 published: true
@@ -88,8 +89,8 @@ state as needed **[12]**.
 This solution is interesting, as it isolates the dependency from Firebase. It
 is like `cy.route` in this sense. Testable is a project that follows this approach
 **[11]**. To understand the big picture of the implementation is recommended
-to check the [`userReducer.js`](https://github.com/marabesi/testable/blob/master/webapp/src/reducers/userReducer.js){:target="_blank"},
-this file follows the first rule. In addition to the the file [`index.js`](https://github.com/marabesi/testable/blob/master/webapp/src/index.js){:target="_blank"} exposes the store to the `window` object, as described before.
+to check the [`userReducer.js`](https://github.com/marabesi/testable/blob/master/webapp/src/data-flow/redux/reducers/userReducer.ts){:target="_blank"},
+this file follows the first rule. In addition to the the file [`index.js`](https://github.com/marabesi/testable/blob/master/webapp/src/index.tsx){:target="_blank"} exposes the store to the `window` object, as described before.
 
 The second rule can be checked in the `pages` and `components` directory, as
 all of them should't dispatch Firebase interactions.

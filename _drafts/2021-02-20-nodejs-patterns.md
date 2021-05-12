@@ -25,3 +25,4 @@ in the book.
 
 ## Callbacks and events
 
+<!-- https://loige.co/javascript-iterator-patterns -->

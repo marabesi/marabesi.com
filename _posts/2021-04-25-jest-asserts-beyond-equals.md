@@ -3,6 +3,8 @@ layout: post
 title: Jest asserts beyond equals
 date: 2021-04-25 01:06:05.000000000 -03:00
 image: /images/posts/2021-04-25-jest-asserts-beyond-equals/cover.png
+featured_image: /images/posts/2021-04-25-jest-asserts-beyond-equals/featured.jpg
+featured_reference: https://unsplash.com/photos/58Z17lnVS4U
 type: article
 published: true
 status: published
