@@ -1,6 +1,6 @@
 ---
 layout: post
-title: On unhandred percent code coverage
+title: On one hundred percent code coverage
 date: 2021-05-29 01:06:05.000000000 -03:00
 image: 
 table_of_contents: 2021-05-29-on-100-percent-code-coverage/table-of-contents.md
@@ -10,14 +10,19 @@ status: published
 categories:
 - thoughts
 tags:
+- code,
 - coverage,
 - TDD,
 - test,
-- test suite
+- test suite,
+- testing,
+- software,
+- development,
+- quality
 ---
 
 The mindset for testing for developers has changed over the years as the software
-industry is evolving. Even though, testing practice is not whide used, it is integrated in the
+industry is evolving. Even though, testing practice is not wide used, it is integrated in the
 development cycle of the application. As such, code coverage became a popular subject
 among developers and discussions have been rise in order to agree on a consensus of
 code coverage.
@@ -25,7 +30,7 @@ code coverage.
 This post aims to give this discussion a push and share what I think about code coverage,
 what I see teams doing and what I understand that is effective or not.
 
-## Test driven develompent
+## Test driven development
 
 Test driven development has been adopted for developers in order to achieve
 high quality software as well as to keep it evolving over time and avoid
@@ -46,7 +51,7 @@ and also a culture to follow.
 
 ## Quality gates
 
-Quality gates are used to inforce some minimum rules during the software development
+Quality gates are used to enforce some minimum rules during the software development
 life cycle. Among different rules we can list:
 
 - Code linting
@@ -57,7 +62,7 @@ life cycle. Among different rules we can list:
 Many would argue that code coverage would have its place, which I agree. We could
 use code coverage as a gate to not allow code into production, if the code base
 has less than X percentage we fail the release process.  Therefore, besides being
-a wuality gate, it should be a indication of the test suite.
+a quality gate, it should be a indication of the test suite.
 
 The team, should trust the test suite and the coverage should reflect the health
 of the suite. Which, in many cases this is not what happens. The common approach
