@@ -44,6 +44,7 @@ what I see teams doing and what I understand that is effective or not.
 Test driven development has been adopted for developers in order to achieve
 high quality software as well as to keep it evolving over time and avoid
 the fear of change. Therefore, {% cite tdd_by_example_kent_beck --file 2021-05-29-on-100-percent-code-coverage %}
+and {% cite martin_fowler_tdd --file 2021-05-29-on-100-percent-code-coverage %}
 describes as TDD being a three stage flow (red-green-blue), is not what I
 identify in the projects I have worked on.
 

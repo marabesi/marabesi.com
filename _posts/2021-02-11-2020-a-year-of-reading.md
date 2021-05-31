@@ -84,7 +84,10 @@ pleaseant readings of the year. The history of agile is written in this
 book, the new approach to develop software in pairs and focusing on code
 was a "crazy" idea at that time.
 
-Unfortunately the XP is followed not as much as SCRUM, which in my opinion is the XP, but focused on process for managers, not programmers.
+Unfortunately the XP is followed not as much as SCRUM, which in my opinion is the XP,
+but focused on process for managers, not programmers. This is also what
+Martin Fowler states on his blog post entitled "FlaccidScrum"
+{% cite flaccid_scrum --file 2021-02-11-2020-a-year-of-reading %}.
 
 ## Redis for dummies
 
@@ -94,9 +97,11 @@ ideas on how to use it.
 ## Get your hands dirty on clean architecture
 
 Software architecture has been a subject of interest for me
-for long time. I started to practice TDD then followed with
-software architecture. The clean architecture is one of the most
-popular style among developers.
+for long time. I started to practice TDD,
+{% cite not_using_tdd_part_i --file 2021-02-11-2020-a-year-of-reading %} then I
+followed with software architecture. The clean architecture is one of the most
+popular style among the developers I know, it became a standard for
+getting started on the subject.
 
 Uncle bob defined the clean architecture based on different styles,
 fetching what each one of the others has to offer best and then
