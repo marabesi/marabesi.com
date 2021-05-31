@@ -2,7 +2,7 @@
 layout: post
 title: On one hundred percent code coverage
 date: 2021-05-29 01:06:05.000000000 -03:00
-image: 
+image: /images/posts/2021-05-29-on-100-percent-code-coverage/cover.png
 table_of_contents: 2021-05-29-on-100-percent-code-coverage/table-of-contents.md
 type: article
 published: true

@@ -114,7 +114,7 @@
     <div class="shell-content">
       {% if page.featured_image %}
         <div class="hidden md:block">
-          <div style="background-image: url('{{ page.featured_image }}'); background-size: cover; width: 100%; height: 600px;"></div>
+          <div style="background-image: url('{{ page.featured_image }}'); background-size: cover; background-position-y: center; width: 100%; height: 600px;"></div>
           <small class="mt-1 mr-1 flex justify-end">Image from: {{ page.featured_reference }}</small>
         </div>
       {% else %}
