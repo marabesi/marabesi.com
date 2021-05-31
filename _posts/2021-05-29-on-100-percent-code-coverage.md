@@ -18,7 +18,16 @@ tags:
 - testing,
 - software,
 - development,
-- quality
+- developers,
+- quality,
+- suite,
+- Test,
+- percent,
+- driven,
+- Code,
+- rules,
+- gates,
+- test driven development
 ---
 
 The mindset for testing for developers has changed over the years as the software
@@ -67,6 +76,31 @@ a quality gate, it should be a indication of the test suite.
 The team, should trust the test suite and the coverage should reflect the health
 of the suite. Which, in many cases this is not what happens. The common approach
 is to target X percent of coverage no matter what.
+
+## Avoiding wrong metrics
+
+My experience tells that for many developers tests are a matter of needed, kind
+of obligation. They write the tests not because they want to be proud of the
+work they do, or because they want to give the next developer (that will
+maintain that in the future) a hint on what the code was built to support or
+not.
+
+As such managers, try to enforce the idea that forcing developers to
+reach X percentage of coverage will increase the code base quality.
+{% cite emily_bache_refactoring_kata --file 2021-05-29-on-100-percent-code-coverage %}
+recorded a 3 series video going through the famous Gilded Rosa kata, which
+to goal is to refactor the code given. Around the minute 15:59 of the first
+video she depicts an issue in the tests that she had. Even though she
+changed a critical parte of the production code, the tests were passing. The
+code had one hundread pecent coverage. It was not giving the desired feedback.
+
+Of course it was a kata and she beautifuly depicts this problem as she goes
+through the code.
+
+Still, I see developers making they proud of themselves because they have X
+percentage of coverage.
+
+This video series alone points how useless matric of X percentage coverage is.
 
 ## References
 
