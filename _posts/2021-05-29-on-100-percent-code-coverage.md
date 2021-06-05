@@ -53,11 +53,15 @@ the test was given to a QA professional. In this scenario, the team wasn't
 getting any value at the time to keep the tests up to date or even to
 write them. This is a entire discussion that I will not approach here, though,
 it is what possibly leads to miss leading metrics. As often management
-try to force developers to reach 100% coverage just for the sake of, or because
+try to force developers to reach 100% coverage just for the sake of it, or because
 they saw they could use that to force some kind of behavior on developers.
+James Carr catalogue named this anti-pattern as "The Liar", which Dave Farley
+uses as a base line to discuss the subject on his video
+{% cite dave_farley_the_liar_pattern --file 2021-05-29-on-100-percent-code-coverage %}.
 
 TDD is a safe net for developers to keep improving the code, communicate intention
-and also a culture to follow.
+and also a culture to follow. As Dave Farley says on his video: practice TDD and
+avoid the liar trap.
 
 ## Quality gates
 
