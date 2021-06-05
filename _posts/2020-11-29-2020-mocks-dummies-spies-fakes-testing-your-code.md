@@ -2,7 +2,7 @@
 layout: post
 title: Mocks, dummies, spies, fakes - testing your code
 date: 2020-11-29 01:06:05.000000000 -03:00
-image:
+image: /images/posts/2020-11-29-2020-mocks-dummies-spies-fakes-testing-your-code/cover.png
 type: article
 published: true
 status: published

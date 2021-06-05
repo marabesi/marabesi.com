@@ -3,7 +3,7 @@ layout: post
 title: e2e testing with Cypress, ReactJs and Firebase
 date: 2019-10-13 01:06:05.000000000 -03:00
 table_of_contents: 2019-10-13-cypress-and-firebase-reactjs-app/table-of-contents.md
-image: 
+image: /images/posts/2019-10-13-cypress-and-firebase-reactjs-app/cover.jpg 
 type: article
 published: true
 status: published

@@ -110,6 +110,10 @@ PHP has three types of public, private, and protected visibility modifiers.
 Modifiers are used in the attributes and methods of a class and classes that
 inherit can modify the behavior of the parent class.
 
+Andy Hunt and Dave Thomes touch on this point in a article published by the
+IEEE softrware in a nice and clean example, in which they elaborate on
+the enbugging term and as well as the code design {% cite the_art_of_enbugging --file 2019-06-25-intro-oop-php %}.
+
 ## Inheritance
 
 Inheritance is known is the act of inheriting all behavior from one class to
