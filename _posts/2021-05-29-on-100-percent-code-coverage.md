@@ -4,6 +4,8 @@ title: On one hundred percent code coverage
 date: 2021-05-29 01:06:05.000000000 -03:00
 image: /images/posts/2021-05-29-on-100-percent-code-coverage/cover.png
 table_of_contents: 2021-05-29-on-100-percent-code-coverage/table-of-contents.md
+featured_image: /images/posts/2021-05-29-on-100-percent-code-coverage/featured.jpg
+featured_reference: https://wallpapersafari.com/w/HYUtdS
 type: article
 published: true
 status: published
