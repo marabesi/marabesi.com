@@ -34,15 +34,15 @@ tags:
 
 Testing with jest is an activity that developers do to keep the application
 maintainable and time proof. Therefore, learning a testing framework
-can be a consuming task, often it has many features to master. The assertion
-API usually is one of the most important ones, as this is the one that
-the developer uses the most during the TDD
+can be a consuming task, often it has many features to explore. The assertion
+API (Application Programming Interface) usually is one of the most important ones, as this is the one that
+the developer uses the most during the TDD (Test Driven Development)
 {% cite kent_beck_tdd_by_example --file 2021-04-25-jest-asserts-beyond-equals %} flow.
 
 The gist of the assertion API {% cite jest_expect --file 2021-04-25-jest-asserts-beyond-equals %}
-is to compare values, as such the equals matcher is the most used. Being one of
-the most used can also point to a lack of knowledge in the different assertions
-that the testing framework offers.
+is to compare values, as such the equals match is the most used (in my experience). On
+the other hand being one of the most used can also point to a lack of knowledge
+in the different assertions that the testing framework offers.
 
 This post aims to cover different assertions, to avoid using always
 `toEqual` and make the test case more expressive. For each example, I try
@@ -53,8 +53,8 @@ using a different assertion.
 
 This section focuses on the assertions that we can use and alternatives to
 "assertion smells". To make this point, the post follows an approach
-comparing a `assert.toEqual` approach against a better assertion
-for the test case.
+comparing the `assert.toEqual` approach against a more expressive assertion
+for the scenario.
 
 ### Any
 
@@ -64,7 +64,7 @@ the type is.
 ```js
 const isNumber = number => number
 
-expect(type of isNumber(2)).toEqual('number')
+expect(typeof isNumber(2)).toEqual('number')
 ```
 
 An alternative to this approach would be to use the any:
@@ -219,7 +219,7 @@ async style as in the previous example:
 
 ```js
 it('callback has been invoked', done => {
-  callAsyncFunc(() => {the 
+  callAsyncFunc(() => {
     expect(true).toEqual(true) <--- assumes it has been called
   })
 })
