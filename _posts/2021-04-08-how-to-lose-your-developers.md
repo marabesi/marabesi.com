@@ -119,7 +119,9 @@ the code that is in place, modifying it and often, add something on top of
 it.
 
 It gets worse when the code base is not focused on technical excellence, thus,
-making the previous steps even harder.
+making the previous steps even harder. {% cite forsgren2018accelerate --file 2021-04-08-how-to-lose-your-developers %}
+Highlights the importance of such technical skills to delivery as fast as possible
+to the business.
 
 Let's say that all the steps have been finished up and the bug or feature
 has been deployed to staging, on the developer side, it is a lot of
