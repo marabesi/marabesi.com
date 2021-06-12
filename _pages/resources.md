@@ -35,7 +35,6 @@ links, podcasts, books and influencers to follow.
 ## Podcasts
 
 - [Fullstack radio](http://www.fullstackradio.com){:target="_blank"}
-- [PHP Round table](https://www.phproundtable.com){:target="_blank"}
 - [Shop Talk](http://shoptalkshow.com){:target="_blank"}
 - [Javascript Jabber](https://devchat.tv/js-jabber){:target="_blank"}
 - [Laranews podcast](https://laravel-news.com/podcast){:target="_blank"}
@@ -47,6 +46,13 @@ links, podcasts, books and influencers to follow.
 - [Stackoverflow podcast](https://stackoverflow.blog/podcast){:target="_blank"}
 - [php[podcast]](https://www.phparch.com/podcast){:target="_blank"}
 - [Serverless chats](https://www.serverlesschats.com){:target="_blank"}
+- [Codurance podcast](https://www.codurance.com/publications/tag/podcasts){:target="_blank"}
+- [GeePawHill.org](https://www.geepawhill.org/tag/podcast){:target="_blank"}
+- [Data engineering podcast](https://www.dataengineeringpodcast.com/episodes){:target="_blank"}
+- [ThoughtWorks Technology Podcast](https://www.thoughtworks.com/podcasts){:target="_blank"}
+- [Frontmatter podcast](https://leanpub.com/podcasts/frontmatter){:target="_blank"}
+- [The Tech Lead Journal](https://techleadjournal.dev){:target="_blank"}
+- [HTTP 203](https://developers.google.com/web/shows/http203/podcast){:target="_blank"}
 
 ## Trends
 
