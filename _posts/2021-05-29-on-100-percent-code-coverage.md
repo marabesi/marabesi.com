@@ -33,9 +33,9 @@ tags:
 ---
 
 The mindset for testing for developers has changed over the years as the software
-industry is evolving. Even though, testing practice is not wide used, it is integrated in the
+industry is evolving. Even though, testing practice is not widely used, it is integrated in the
 development cycle of the application. As such, code coverage became a popular subject
-among developers and discussions have been rise in order to agree on a consensus of
+among developers and discussions have been risen in order to agree on a consensus of
 code coverage.
 
 This post aims to give this discussion a push and share what I think about code coverage,
@@ -75,13 +75,13 @@ life cycle. Among different rules we can list:
 - Security checks
 - Performance budget
 
-Many would argue that code coverage would have its place, which I agree. We could
+Many would argue that code coverage would have its place, which **I agree**. We could
 use code coverage as a gate to not allow code into production, if the code base
-has less than X percentage we fail the release process.  Therefore, besides being
-a quality gate, it should be a indication of the test suite.
+has less than X percentage we fail the release process. Therefore, besides being
+a quality gate, it should be a indication of the test suite health.
 
-The team, should trust the test suite and the coverage should reflect the health
-of the suite. Which, in many cases this is not what happens. The common approach
+The team, should trust the test suite and **the coverage should reflect the health
+of the suite**. Which, in many cases this is **not what happens**. The common approach
 is to target X percent of coverage no matter what.
 
 ## Avoiding wrong metrics
