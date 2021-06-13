@@ -28,6 +28,7 @@ this time, the focus is to compare the differences and similarities between
 ## Naming things
 
 The first subject address here is the naming convention that is stated by
-both books to be  extremelly important, as we are coding for humans and not
-for machines.
-
+both books to be important, as the argument being that we are coding for humans
+and not for machines. The study path created by {% cite study_path --file 2020-08-23-clean-code-and-the-art-of-redable-code-a-brief-summary %}
+gives a point of attention for naming as well, as it is one of the
+sections listed to be read on the Clean code book.
