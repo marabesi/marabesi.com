@@ -169,7 +169,10 @@ The `.not` operator can be used across different assertions within jest.
 
 Jest provides an API for a more readable test code and to assert async
 functions. It is easy to fall under the trap of using assert equals after a
-promises has been fulfilled, but this is some test smells. 
+promises has been fulfilled. Besides that,
+Martin Fowler points out that asynchronous behavior is part of the non
+determinism club, which can lead to tests failing without any change in the code
+{% cite non_determinism_martin_fowler --file 2021-04-25-jest-asserts-beyond-equals %}.
 
 ### Resolves
 
