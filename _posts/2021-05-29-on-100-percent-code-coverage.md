@@ -43,7 +43,7 @@ what I see teams doing and what I understand that is effective or not.
 
 ## Test driven development
 
-Test driven development has been adopted for developers in order to achieve
+Test driven development has been (TDD) adopted for developers in order to achieve
 high quality software as well as to keep it evolving over time and avoid
 the fear of change. Therefore, {% cite tdd_by_example_kent_beck --file 2021-05-29-on-100-percent-code-coverage %}
 and {% cite martin_fowler_tdd --file 2021-05-29-on-100-percent-code-coverage %}
@@ -59,7 +59,10 @@ try to force developers to reach 100% coverage just for the sake of it, or becau
 they saw they could use that to force some kind of behavior on developers.
 James Carr catalogue named this anti-pattern as "The Liar", which Dave Farley
 uses as a base line to discuss the subject on his video
-{% cite dave_farley_the_liar_pattern --file 2021-05-29-on-100-percent-code-coverage %}.
+{% cite dave_farley_the_liar_pattern --file 2021-05-29-on-100-percent-code-coverage %}
+({% cite dave_farley_bdd_explained --file 2021-05-29-on-100-percent-code-coverage %})
+also mention the coverage goal being a missleading understading on his video
+about Behaviour Driven Development).
 
 TDD is a safe net for developers to keep improving the code, communicate intention
 and also a culture to follow. As Dave Farley says on his video: practice TDD and
@@ -108,6 +111,11 @@ Still, I see developers making they proud of themselves because they have X
 percentage of coverage.
 
 This video series alone points how useless matric of X percentage coverage is.
+
+Code coverage should be a side effect of the test suite quality
+{% cite dave_farley_bdd_explained --file 2021-05-29-on-100-percent-code-coverage %},
+which software developers can rely on and understand that tests are a safe net
+for continuous improvement of the code.
 
 ## References
 
