@@ -29,7 +29,9 @@ tags:
 - Code,
 - rules,
 - gates,
-- test driven development
+- test driven development,
+- tests,
+- Farley
 ---
 
 The mindset for testing for developers has changed over the years as the software
@@ -51,7 +53,7 @@ describes as TDD being a three stage flow (red-green-blue), is not what I
 identify in the projects I have worked on.
 
 Most of those projects were using a combination of ITL(interactive test last) or not testing at all,
-the test was given to a QA professional. In this scenario, the team wasn't
+the test was given to a QA (Quality assurance) professional. In this scenario, the team wasn't
 getting any value at the time to keep the tests up to date or even to
 write them. This is a entire discussion that I will not approach here, though,
 it is what possibly leads to miss leading metrics. As often management
