@@ -42,7 +42,7 @@ suggest any other reference you might want to be listed here.
 ### To keep up to date
 
 - 🗞 [arxiv.org/list/cs.SE/recent](https://arxiv.org/list/cs.SE/recent)
-- 🗞 [Thought works radar](https:/www.thoughtworks.com/radar)
+- 🗞 [Thought works radar](https://www.thoughtworks.com/radar)
 - 🗞 [infoQ ](https://www.nfoq.com)
 
 ### Software architecture
