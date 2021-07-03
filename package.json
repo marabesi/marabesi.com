@@ -5,7 +5,8 @@
   "main": "src/main.js",
   "scripts": {
     "compress": "node utils/image-compressor",
-    "build": "npm run build:tailwind && webpack --production && bundle exec jekyll build --config _config.yml",
+    "build:development": "npm run build:tailwind && webpack --production && bundle exec jekyll build --config _config.yml",
+    "build": "npm run build:tailwind && webpack --production",
     "watch": "concurrently --kill-others \"webpack --watch\" \"npm run build:tailwind && bundle exec jekyll serve --livereload --incremental --config _config.yml,_config_local.yml\"",
     "watch:drafts": "concurrently --kill-others \"webpack --watch\" \"npm run build:tailwind && bundle exec jekyll serve --livereload --incremental --drafts --config _config.yml,_config_local.yml\"",
     "http:serve": "npm run build:tailwind && webpack --production && http-server -p 4003 ./_site",
