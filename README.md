@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/marabesi/marabesi.com.svg?branch=master)](https://travis-ci.org/marabesi/marabesi.com)
+![Build Status](https://github.com/marabesi/marabesi.com/actions/workflows/jekyll_deploy.yml/badge.svg?branch=master)
 
 # Hello welcome to my personal website : )
 
