@@ -32,6 +32,12 @@ kramdown:
 scholar:
   style: ieee-with-url
 
+languages: ["en", "pt-br"]
+default_lang: "en"
+exclude_from_localization: ["javascript", "images", "css", "public"]
+parallel_localization: true
+lang_from_path: true
+
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -54,3 +60,4 @@ plugins:
   - jekyll/scholar
   - jekyll-figure
   - jekyll-redirect-from
+  - jekyll-polyglot

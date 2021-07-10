@@ -9,6 +9,7 @@ featured_reference: https://wallpapersafari.com/w/HYUtdS
 type: article
 published: true
 status: published
+lang: en
 categories:
 - thoughts
 tags:
