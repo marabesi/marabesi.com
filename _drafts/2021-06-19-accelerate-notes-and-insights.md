@@ -14,3 +14,13 @@ tags:
 - devops
 ---
 
+Deliverying software fast and keeping the quality is challenging. Accelerate brings
+the light through data on the devops culture and practices. Devops has been adopted
+by the industry for a while and Accelerate dives into the practices on what makes
+successfull teams to delivery software fast and also what hold teams back
+to improve the delivery process.
+
+This post follow the same structure as the book, but instead of three, it will be
+split into two parts. The first, will go through the results found and the second,
+will dive into the research process.
+
