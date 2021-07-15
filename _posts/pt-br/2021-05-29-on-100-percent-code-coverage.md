@@ -23,7 +23,10 @@ tags:
 - Suíte de teste,
 - Verificações de segurança,
 - Orçamento de desempenho,
-- desenvolvimento
+- desenvolvimento,
+- 100 de cobertura,
+- cobertura de código,
+- teste de software
 ---
 
 A mentalidade de teste para desenvolvedores mudou ao longo dos anos, à medida que o software
