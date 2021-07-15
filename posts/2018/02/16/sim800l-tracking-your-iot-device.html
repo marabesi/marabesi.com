@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>SIM800L tracking your IoT device</title>
+    <meta name="description"
+      content="After a while testing the GPS NEO6 I ordered a new guyto play around with GSM connection and GPS at the same time. The sensor this time is the SIM800L, which...">
+
+    <link rel="canonical" href="https://marabesi.com/posts/2018/02/16/sim800l-tracking-your-iot-device.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="SIM800L tracking your IoT device" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/posts/2018/02/16/sim800l-tracking-your-iot-device.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2018-02-16-sim800l-tracking-your-iot-device/cover.jpeg" />
+    <meta property="og:description"
+      content="After a while testing the GPS NEO6 I ordered a new guyto play around with GSM connection and GPS at the same time. The sensor this time is the SIM800L, which..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="SIM800L tracking your IoT device">
+    <meta name="twitter:description"
+      content="After a while testing the GPS NEO6 I ordered a new guyto play around with GSM connection and GPS at the same time. The sensor this time is the SIM800L, which...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2018-02-16-sim800l-tracking-your-iot-device/cover.jpeg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2018-02-16 22:39:18 +0000">
+
+    <meta name="keywords" content="SIM,APN,web,arduino,Arduino,Uno,board,command,Command,sim800l,iot,tracking,serial,Serial,SAPBR,gps,gps neo6,at,at commands,password,location,gsm" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="sim800l-tracking-your-iot-device">SIM800L tracking your IoT device</h1>
+
+        <p>After a while testing the <a href="/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html">GPS NEO6</a> I ordered a new guy
+to play around with GSM connection and GPS at the same time. The sensor this time is the SIM800L, which basically
+is an interface between the SIM card and the Arduino Uno (could be any board, not Arduino Uno only).</p>
+
+<p>The version used is the <em>Arduino Uno</em>, so everytime you see Arduino in the text I am talking about the Uno version.</p>
+
+<p>For purpose of test I started using the Raspberry Pi (model B+) board but ended up with Arduino, the switch is given by the
+facility of send the skecth out to the Arduino. While in the Raspberry Pi you should wait till the board is up
+and running. Further tests can lead me back to the Pi, but for this post the examples will be on Arduino.</p>
+
+<h2 id="sim800l">SIM800L</h2>
+
+<p>The board used is the SIM800L without any specific breakboard or something like that. Newest versions of the SIM like
+SIM900 comes with a antenna and a bigger board.</p>
+
+<p>Besides the board is needed to have a <em>micro SIM</em> card. In my case I had to use an adapter to transfor the nano SIM I
+have into the micro.</p>
+
+<p><a href="http://c.mi.com/thread-46072-1-0.html" target="_blank"><img src="/images/posts/2018-02-16-sim800l-tracking-your-iot-device/sim-type.jpeg" alt="Font: Mi.com" /></a></p>
+
+<p><small>Fonte: Mi.com</small></p>
+
+<p><strong>IMPORTANT</strong>: Make sure to have a SIM card with 2G, 3G or 4G anabled (you can test it plugin the SIM card on yout phone
+and try to access any web page), and have in hands the APN, the APN user and APN password.</p>
+
+<h2 id="wiring">Wiring</h2>
+
+<p>This sensor requires just 4 wires to start with, but there is a gap in the voltage that it operates. The following
+table holds the pins where the wires should go to.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>SIM800L</th>
+      <th>Arduino Uno</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>NET</td>
+      <td>Antenna connection</td>
+    </tr>
+    <tr>
+      <td>VCC</td>
+      <td>5v</td>
+    </tr>
+    <tr>
+      <td>RST</td>
+      <td>-</td>
+    </tr>
+    <tr>
+      <td>RX</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <td>TX</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <td>GND</td>
+      <td>GNG</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>To make it easier to understand, the following image illustrates how the wiring should be done.</p>
+
+<p><img src="/images/posts/2018-02-16-sim800l-tracking-your-iot-device/sim800.png" alt="SIM800L wiring" target="_blank" /></p>
+
+<p><small><a href="http://www.lelong.com.my/arduino-sim800l-gprs-gsm-tracking-module-antena-sim-slot-robotedu-183929865-2018-10-Sale-P.htm" target="_blank">SIM800L Font: Lelong.my</a></small></p>
+
+<p><small><a href="http://www.nooelec.com/store/arduino-uno-r3.html" target="_blank">Arduino Uno Font: Nooelec</a></small></p>
+
+<blockquote>
+  <p>If you are planning to use your device for a long time, it is good to mention that
+there is an resistor to add and deliver the 4.2v instead of 5v. For that check this <a href="https://github.com/cristiansteib/Sim800l" target="_blank">repo</a>
+and make sure to wire up using the resistor.</p>
+
+  <p>As this post has the goal to keep as simple as possible, I am not going to use the resitor.</p>
+</blockquote>
+
+<h2 id="sketch-commands-at-101">Sketch (commands AT 101)</h2>
+
+<p><strong>IMPORTANT 2</strong>: Here I assume that you can compile and run a scketch into the Arduino,
+if not, please find out how to to that and come back later.</p>
+
+<p>Before we go any deeper on the libraries available out there, the proposal here is to upload a simple
+sketch to interact with the serial port. The reason behind it is that the SIM800L handles AT (<a href="https://www.codeproject.com/Articles/85636/Introduction-to-AT-commands-and-its-uses" target="_blank">instructions
+to command a modem</a>)
+commands into the SIM card, and in order to understand what is going on we need to
+understand the AT commands first. The following sketch reads and writes to the serial port.</p>
+
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#include &lt;SoftwareSerial.h&gt;
+</span>
+<span class="n">SoftwareSerial</span> <span class="nf">gsm</span><span class="p">(</span><span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span> <span class="p">{</span>
+   <span class="n">Serial</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+
+   <span class="k">while</span><span class="p">(</span><span class="o">!</span><span class="n">Serial</span><span class="p">);</span>
+
+   <span class="n">gsm</span><span class="p">.</span><span class="n">begin</span><span class="p">(</span><span class="mi">9600</span><span class="p">);</span>
+   <span class="n">delay</span><span class="p">(</span><span class="mi">1000</span><span class="p">);</span>
+
+   <span class="n">Serial</span><span class="p">.</span><span class="n">println</span><span class="p">(</span><span class="s">"Ready to receive commands"</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span> <span class="p">{</span>
+   <span class="k">if</span><span class="p">(</span><span class="n">gsm</span><span class="p">.</span><span class="n">available</span><span class="p">()){</span>
+     <span class="n">Serial</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">gsm</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>
+   <span class="p">}</span>
+
+   <span class="k">if</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">available</span><span class="p">()){</span>
+     <span class="n">gsm</span><span class="p">.</span><span class="n">write</span><span class="p">(</span><span class="n">Serial</span><span class="p">.</span><span class="n">read</span><span class="p">());</span>
+   <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Once we have the sketch up and running in our Arduino, is time to understand the AT commands. The first thing
+to send trhough the serial interface is the command <code class="language-plaintext highlighter-rouge">AT</code>. This is the most basic command
+to see if the sensor is up and running, if everything is correct an <code class="language-plaintext highlighter-rouge">OK</code> is printed back.</p>
+
+<p><img src="/images/posts/2018-02-16-sim800l-tracking-your-iot-device/arduino-serial.png" alt="AT command" target="_blank" /></p>
+
+<p>The next step is to understand what is required to setup the GPRS mode in our SIM card. For that we are
+going to rely a lot on the SIM800L official documentation
+available <a href="https://www.elecrow.com/download/SIM800%20Series_AT%20Command%20Manual_V1.09.pdf" target="_blank">here</a>.</p>
+
+<h2 id="enabling-gsm-location">Enabling GSM location</h2>
+
+<p>By default the SIM cards doesn’t come with any configuration, we should setup manually for every action
+we would like to do with it. To enable the tracking (that is our goal) we should do the following:</p>
+
+<ol>
+  <li>Enable the GSM location mode</li>
+  <li>Authenticate with the APN</li>
+  <li>Request the data regarding the SIM location</li>
+</ol>
+
+<p>To enable the GMS location mode is a matter of sending the correct <code class="language-plaintext highlighter-rouge">AT</code> command through the serial.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+SAPBR=3,1,"CONTYPE","GPRS"
+</code></pre></div></div>
+
+<p>Next step is to authenticate the APN, we do that in four steps, first setting the APN, followed
+by the username, the password and finally activate the bearer. Each command should be executed
+separately and before execute the next one, macke sure to get an <strong>OK</strong> response from the serial.</p>
+
+<blockquote>
+  <p>There is an website with the possible APNS around the world, if you don’t know which one
+is yours, access this <a href="https://www.hw-group.com/products/HWg-Ares/HWg-Ares_GSM_APN_en.html" target="_blank">link</a></p>
+</blockquote>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+SAPBR=3,1,"APN","{here goes your APN}"
+</code></pre></div></div>
+
+<p>After the APN replace the text <code class="language-plaintext highlighter-rouge">{here goes your APN}</code> with your APN provider.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+SAPBR=3,1,"USER","{here goes your username}"
+</code></pre></div></div>
+
+<p>After the USER replace the text <code class="language-plaintext highlighter-rouge">{here goes your username}</code> with your APN username (sometimes it
+will be empty, so just leave as it is).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+SAPBR=3,1,"PWD","{here goes your password}"
+</code></pre></div></div>
+
+<p>After the PWD replace the text <code class="language-plaintext highlighter-rouge">{here goes your password}</code> with your password (sometimes it
+will be empty, so just leave as it is).</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+SAPBR=1,1
+</code></pre></div></div>
+
+<p>By now the led sensor should start blinking more frequently than it used to, it indicates that
+a connection has been stablished and now you can communicate freelly with the GSM network. To
+guarantee that everything is working as expected, there is one command to retrieve the current
+IP in use by the SIM card.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+SAPBR=2,1
+</code></pre></div></div>
+
+<p>The command response should be something similar to the figure below, other than that or only <code class="language-plaintext highlighter-rouge">0.0.0.0</code> indicates
+that something went wrong.</p>
+
+<p>Finally we are ready to request the latitude and longitude to know where our SIM card is in the world. As you may
+have imagined it is done through an <code class="language-plaintext highlighter-rouge">AT</code> command as well.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>AT+CIPGSMLOC=1,1
+</code></pre></div></div>
+
+<p>It should return an string containing the latitude, longitude, current date, and current time. The figure below
+illustrates the response receive in the serial monitor.</p>
+
+<p><img src="/images/posts/2018-02-16-sim800l-tracking-your-iot-device/current-location.png" alt="Response from SIM800L after requireing the current location" target="_blank" /></p>
+
+<h2 id="edit-04032018">Edit 04/03/2018</h2>
+
+<p>During a few tests with the SIM, it turns out that the accuracy in the latitude and longitude is not so good as expected.
+Sometimes it gives the same location even with 10 meters of change.</p>
+
+<h2 id="references">References</h2>
+
+<p><a href="/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html" target="_blank">Tracking with GPS NEO 6</a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Subscriber_identity_module" target="_blank">SIM (Subscriber Identity Module)</a></p>
+
+<p><a href="http://c.mi.com/thread-46072-1-0.html" target="_blank">SIM Card types</a></p>
+
+<p><a href="https://www.arduino.cc/en/Tutorial/SoftwareSerialExample" target="_blank">Arduino Serial</a></p>
+
+<p><a href="https://www.codeproject.com/Articles/85636/Introduction-to-AT-commands-and-its-uses" target="_blank">AT commands</a></p>
+
+<p><a href="https://www.elecrow.com/download/SIM800%20Series_AT%20Command%20Manual_V1.09.pdf" target="_blank">SIMCOM AT commands PDF</a></p>
+
+<p><a href="https://www.hw-group.com/products/HWg-Ares/HWg-Ares_GSM_APN_en.html" target="_blank">APN providers worldwide</a></p>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#sim800l">The requirements to use SIM800L</a></li>
+  <li><a href="#wiring">Setup the wiring</a></li>
+  <li><a href="#sketch-commands-at-101">Test the serial connection with AT commands</a></li>
+  <li><a href="#enabling-gsm-location">Locate(get lat and lnt) the SIM card with AT commands</a></li>
+  <li><a href="#references">References for further reading</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/posts/2018/02/16/sim800l-tracking-your-iot-device.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/posts/2018/02/16/sim800l-tracking-your-iot-device.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/posts/2018/02/16/sim800l-tracking-your-iot-device.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html">Configuring reactjs and relay 2019 version [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html">MySQL 5.7 on Ubuntu 19.04 and 19.10 [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">command,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/iot/raspberrypi/php/2019/01/12/errors-compiling-php-from-source-on-a-raspberry-pi.html">Errors compiling PHP from source on a Raspberry Pi [  <span class="text-marabesi-pink">command,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html">Setting up GPS NEO 6 sensor [  <span class="text-marabesi-pink">gps,</span>  <span class="text-marabesi-pink">command,</span>  <span class="text-marabesi-pink">serial,</span>  <span class="text-marabesi-pink">iot,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

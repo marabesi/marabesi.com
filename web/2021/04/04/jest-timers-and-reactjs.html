@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Jest timers and reactjs</title>
+    <meta name="description"
+      content="This post explores the possibilities to use fake timers with jest. Suchfeature is needed for async testing, whereas is needed to await forsome computation to...">
+
+    <link rel="canonical" href="https://marabesi.com/web/2021/04/04/jest-timers-and-reactjs.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Jest timers and reactjs" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/web/2021/04/04/jest-timers-and-reactjs.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2021-04-04-jest-timers-and-reactjs/cover.jpg" />
+    <meta property="og:description"
+      content="This post explores the possibilities to use fake timers with jest. Suchfeature is needed for async testing, whereas is needed to await forsome computation to..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Jest timers and reactjs">
+    <meta name="twitter:description"
+      content="This post explores the possibilities to use fake timers with jest. Suchfeature is needed for async testing, whereas is needed to await forsome computation to...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2021-04-04-jest-timers-and-reactjs/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-04-04 04:06:05 +0000">
+
+    <meta name="keywords" content="reactjs,jest,timers,fake,test,time,Scene,use,describe,wrapper,suite,beforeEach" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="jest-timers-and-reactjs">Jest timers and reactjs</h1>
+
+        <p>This post explores the possibilities to use fake timers with jest. Such
+feature is needed for async testing, whereas is needed to await for
+some computation to finish. Such computation can vary on time, for example,
+1 second, or 10 minutes. In a test case scenario, the waiting for this
+computation is not needed <a class="citation" href="#jest_fake_timer">[1]</a>.</p>
+
+<p>Jest offers fake times, to advance in time or run peding computations
+without the need to wait for them to complete. Jest is not used in reactjs
+projects only, therefore, the examples used here use reactjs as
+a library to build web interfaces. For pure nodejs examples with times
+it is recommended to go to the official documentation <a class="citation" href="#jest_fake_timer">[1]</a>.</p>
+
+<p>Dave Farley in his webinar about acceptance testing also recommends this approach
+for controlling time variables <a class="citation" href="#dave_farley_acceptance_testing">[2]</a>, Dave shows code
+examples in java, which spot this idea of controlling time across
+programming languages, the concept is the important bit.</p>
+
+<blockquote>
+  <p>NOTE: this post assumes testing knowledge as well as jest features, such as:
+describe and test.</p>
+</blockquote>
+
+<h2 id="context">Context</h2>
+
+<p>The react component used in this post is a component that display different
+content basedon the props given, and also, it uses animation to introduce
+them. as such, the animation takes time to finish and to complete its
+life cycle. Jest timers are used to avoid the needed to delay the test
+suite execution. For further details on the test file and implementation refer
+to:</p>
+
+<ul>
+  <li><a href="https://github.com/marabesi/testable/blob/master/webapp/src/components/ui/interface/scene-manager/Scene.spec.tsx" target="_blank">Scene.spec.tsx (test)</a></li>
+  <li><a href="https://github.com/marabesi/testable/blob/master/webapp/src/components/ui/interface/scene-manager/Scene.tsx" target="_blank">Scene.tsx (implementation)</a></li>
+</ul>
+
+<h2 id="fake-times">Fake times</h2>
+
+<p>The first step to use the fake timers is to have them set. There are two options
+to achieve that. The first one is to call <code class="language-plaintext highlighter-rouge">useFakeTimers</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">jest</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">my test suite</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// test cases</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The second options is to set the function inside the <code class="language-plaintext highlighter-rouge">beforeEach</code>:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">my test suite</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">jest</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
+  <span class="p">})</span>
+
+  <span class="c1">// test cases</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The second option is the prefered one if the test suite has multiple tests
+that depends on the timer, as the official jest documentation says:</p>
+
+<blockquote>
+  <p>If running multiple tests inside of one file or describe block, <strong>jest.useFakeTimers()</strong>
+can be called before each test manually or with a setup function such as
+<strong>beforeEach</strong>. Not doing so will result in the internal usage counter not being reset.</p>
+</blockquote>
+
+<p>On the other hand, the first approach has no way to reset the mocks set, for
+achieve that we would have to make use of the function <strong>afterAll</strong> from jest.
+All in all,  the approach used for the post is the following:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">my test suite</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">jest</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">()</span>
+  <span class="p">})</span>
+
+  <span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">jest</span><span class="p">.</span><span class="nx">restoreAllMocks</span><span class="p">()</span>
+  <span class="p">})</span>
+
+  <span class="c1">// test cases</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="run-all-timers">Run all timers</h2>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">mount</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">enzyme</span><span class="dl">'</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">act</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-dom/test-utils</span><span class="dl">'</span>
+<span class="k">import</span> <span class="nx">Scene</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./Scene</span><span class="dl">'</span>
+
+<span class="nx">describe</span><span class="p">(</span><span class="dl">'</span><span class="s1">Scene component</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+
+  <span class="nx">beforeEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">jest</span><span class="p">.</span><span class="nx">useFakeTimers</span><span class="p">();</span>
+  <span class="p">})</span>
+
+  <span class="nx">afterEach</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">jest</span><span class="p">.</span><span class="nx">restoreAllMocks</span><span class="p">();</span>
+  <span class="p">})</span>
+
+  <span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">should handle next scene</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">const</span> <span class="nx">handleLastScene</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span> 
+    <span class="kd">const</span> <span class="nx">handleNextScene</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+
+    <span class="kd">const</span> <span class="nx">wrapper</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span>
+      <span class="p">&lt;</span><span class="nc">Scene</span>
+        <span class="na">lastScene</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+        <span class="na">handleLastScene</span><span class="p">=</span><span class="si">{</span><span class="nx">handleLastScene</span><span class="si">}</span>
+        <span class="na">next</span><span class="p">=</span><span class="si">{</span><span class="nx">handleNextScene</span><span class="si">}</span>
+        <span class="na">text</span><span class="p">=</span><span class="si">{</span><span class="nx">fakeText</span><span class="si">}</span>
+        <span class="na">showNextButton</span><span class="p">=</span><span class="si">{</span><span class="mi">1</span><span class="si">}</span>           <span class="c1">// Time in milliseconds to display the button</span>
+        <span class="na">releaseButton</span><span class="p">=</span><span class="si">{</span><span class="mi">1</span><span class="si">}</span>            <span class="c1">// TIme in milliseconds to enable the interaction with the button</span>
+      <span class="p">/&gt;</span>
+    <span class="p">)</span>
+
+    <span class="nx">act</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">jest</span><span class="p">.</span><span class="nx">runAllTimers</span><span class="p">();</span>           <span class="c1">// Run all peding timers (setTimeout, setInterval, clearTimeout, clearInterval)</span>
+    <span class="p">})</span>
+
+    <span class="nx">wrapper</span><span class="p">.</span><span class="nx">update</span><span class="p">()</span>
+    <span class="nx">wrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">Button</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">)</span>
+
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">handleLastScene</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="nx">handleNextScene</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>In the test case, the button depends on two specific timers, one for
+displaying the button and the other one to enable the interaction with
+the button again. The latter is to prevent to call the button events twice
+or even more times.</p>
+
+<p><code class="language-plaintext highlighter-rouge">runAllTimers</code> as specified in the jest documentation, is desired to use
+when there is no recursive timers, otherwise <code class="language-plaintext highlighter-rouge">runAllTimers</code> will end up
+in a endless loop <a class="citation" href="#jest_fake_timer">[1]</a>.</p>
+
+<h2 id="advance-timers-by-time">Advance timers by time</h2>
+
+<p>Another approach to use in the test case provided in the previous section
+would be to use <code class="language-plaintext highlighter-rouge">advanceTimersByTime</code>. As long as the time provided by the
+function is greater than the time passed in <code class="language-plaintext highlighter-rouge">showNextButton</code>, it should
+work. For example:</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// imports and describe have been removed, this snippet</span>
+<span class="c1">// focus on jest.advanceTimersByTime only</span>
+<span class="nx">test</span><span class="p">(</span><span class="dl">'</span><span class="s1">should handle next scene</span><span class="dl">'</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">handleLastScene</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span> 
+  <span class="kd">const</span> <span class="nx">handleNextScene</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+
+  <span class="kd">const</span> <span class="nx">wrapper</span> <span class="o">=</span> <span class="nx">mount</span><span class="p">(</span>
+    <span class="p">&lt;</span><span class="nc">Scene</span>
+      <span class="na">lastScene</span><span class="p">=</span><span class="si">{</span><span class="kc">false</span><span class="si">}</span>
+      <span class="na">handleLastScene</span><span class="p">=</span><span class="si">{</span><span class="nx">handleLastScene</span><span class="si">}</span>
+      <span class="na">next</span><span class="p">=</span><span class="si">{</span><span class="nx">handleNextScene</span><span class="si">}</span>
+      <span class="na">text</span><span class="p">=</span><span class="si">{</span><span class="nx">fakeText</span><span class="si">}</span>
+      <span class="na">showNextButton</span><span class="p">=</span><span class="si">{</span><span class="mi">1</span><span class="si">}</span>
+      <span class="na">releaseButton</span><span class="p">=</span><span class="si">{</span><span class="mi">1</span><span class="si">}</span>
+    <span class="p">/&gt;</span>
+  <span class="p">)</span>
+
+  <span class="nx">act</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">jest</span><span class="p">.</span><span class="nx">advanceTimersByTime</span><span class="p">(</span><span class="mi">2000</span><span class="p">);</span>               <span class="c1">// advance time by 2 seconds</span>
+  <span class="p">})</span>
+
+  <span class="nx">wrapper</span><span class="p">.</span><span class="nx">update</span><span class="p">()</span>
+  <span class="nx">wrapper</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="nx">Button</span><span class="p">).</span><span class="nx">simulate</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">)</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">handleLastScene</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">handleNextScene</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>Using <code class="language-plaintext highlighter-rouge">advanceTimersByTime</code> advance all timers as well as recursive timers. Both
+of the approaches depicted work without having to wait for the actual time
+to pass, thus, the test suite runs as fast as it can and there is no
+“real” delay.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="jest_fake_timer">[1]Jest, “Timer Mocks,” 2021 [Online]. Available at: <a href="https://jestjs.io/docs/timer-mocks" target="_blank">https://jestjs.io/docs/timer-mocks</a>. [Accessed: 04-Apr-2021]</span></li>
+<li><span id="dave_farley_acceptance_testing">[2]D. Farley, “Acceptance Testing | Webinar,” 2021 [Online]. Available at: <a href="https://youtu.be/SuDIYk9GBpE?t=1828" target="_blank">https://youtu.be/SuDIYk9GBpE?t=1828</a>. [Accessed: 17-Feb-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#context">Context</a></li>
+  <li><a href="#fake-times">Fake times</a></li>
+  <li><a href="#run-all-timers">Run all timers</a></li>
+  <li><a href="#advance-timers-by-time">Advance timers by time</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/web/2021/04/04/jest-timers-and-reactjs.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/web/2021/04/04/jest-timers-and-reactjs.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/web/2021/04/04/jest-timers-and-reactjs.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/thoughts/2021/05/29/on-100-percent-code-coverage.html">On one hundred percent code coverage [  <span class="text-marabesi-pink">test,</span>  <span class="text-marabesi-pink">suite,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2021/04/25/jest-asserts-beyond-equals.html">Jest asserts beyond equals [  <span class="text-marabesi-pink">jest,</span>  <span class="text-marabesi-pink">test,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html">Towards a reactjs folder structure based on intent (WIP) [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">reactjs,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/test/2019/10/13/cypress-and-firebase-reactjs-app.html">e2e testing with Cypress, ReactJs and Firebase [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">test,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

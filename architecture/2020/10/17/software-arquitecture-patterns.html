@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Software arquitecture patterns</title>
+    <meta name="description"
+      content="This is a short post on the book Software architecture patterns by Mark Richards,published by O’Reilly. The book catalogs five architectural styles: Layered,...">
+
+    <link rel="canonical" href="https://marabesi.com/architecture/2020/10/17/software-arquitecture-patterns.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Software arquitecture patterns" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/architecture/2020/10/17/software-arquitecture-patterns.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/manifest/icon-192x192.png" />
+    <meta property="og:description"
+      content="This is a short post on the book Software architecture patterns by Mark Richards,published by O’Reilly. The book catalogs five architectural styles: Layered,..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Software arquitecture patterns">
+    <meta name="twitter:description"
+      content="This is a short post on the book Software architecture patterns by Mark Richards,published by O’Reilly. The book catalogs five architectural styles: Layered,...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/manifest/icon-192x192.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2020-10-17 04:06:05 +0000">
+
+    <meta name="keywords" content="architecture,pattern,based,one,microkernel,applications,product,application,concept" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="software-arquitecture-patterns">Software arquitecture patterns</h1>
+      <p>This is a short post on the book Software architecture patterns by Mark Richards,
+published by O’Reilly. The book catalogs five architectural styles: Layered,
+Event-Driven, Microkernel, Microservices and Space-Based. For each of them
+the author goes through six aspects and rank them
+<a class="citation" href="#software_architectural_patterns">[1]</a>, that collects a broader
+named:</p>
+
+<ul>
+  <li>Overall agility</li>
+  <li>Ease of deployment</li>
+  <li>Testability</li>
+  <li>Performance</li>
+  <li>Scalability</li>
+  <li>Ease of development</li>
+</ul>
+
+<p>The book covers in high level scenarios for each pattern to be used and also
+diagrams that helps the reader to understand the details. Therefore, the book
+does’t have code examples or concrete implementations, which might open the
+definition to different implementations. Furthermore, for building up this material
+I used heavily the content provided by the original author. For each arquitectural
+style I used the original definition, and in addition to that, I merged my
+thouthgs on each one of them.</p>
+
+<h2 id="layered">Layered</h2>
+
+<p>Components within the layered architecture pattern are organized
+into horizontal layers, each layer performing a specific role within
+the application. Popular frameworks for any language that uses the MVC (3 layers) as
+a foundation usually are bound to the layered architecture.</p>
+
+<p>One of the powerful features of the layered architecture pattern is
+the separation of concerns among components.</p>
+
+<p>The layers of isolation concept means that changes made in one
+layer of the architecture generally don’t impact or affect components
+in other layers, which in the MVC style follows this definitions. The
+view is the layer that display data and receives the user interaction,
+the controller handles the data from the view, and the model intereacts
+with the database.</p>
+
+<p>Web frameworks that follows this approach:</p>
+
+<ul>
+  <li>Laravel</li>
+  <li>CakePHP</li>
+  <li>Codeigniter</li>
+</ul>
+
+<h2 id="event-driven">Event-driven</h2>
+
+<p>The event-driven architecture pattern is a popular distributed
+asynchronous architecture pattern used to produce highly scalable
+applications</p>
+
+<p>The event-driven architecture pattern consists of two main topolo‐
+gies, the mediator and the broker</p>
+
+<p>The event-driven architecture pattern is a relatively complex pattern
+to implement, primarily due to its asynchronous distributed nature.</p>
+
+<h2 id="microkernel">Microkernel</h2>
+
+<p>The microkernel architecture pattern (sometimes referred to as the
+plug-in architecture pattern) is a natural pattern for implementing
+product-based applications. A product-based application is one that
+is packaged and made available for download in versions as a typical
+third-party product.</p>
+
+<p>The core system of the microkernel architecture pattern tradition‐
+ally contains only the minimal functionality required to make the
+system operational.</p>
+
+<p>Perhaps the best example of the microkernel architecture is the
+Eclipse IDE. However, once you start adding
+plug-ins, it becomes a highly customizable and useful product. Another
+example is <a href="https://wordpress.com" target="_blank">wordpress</a>, users can
+download as many plugins as needed. Pat Kua <a class="citation" href="#kua2017evolutionary">[2]</a> in his talk named the following softwares that were built using microkernel architecture:</p>
+
+<ul>
+  <li><a href="https://maven.apache.org" target="_blank">Apache Maven</a></li>
+  <li><a href="https://www.eclipse.org/ide" target="_blank">Eclipse IDE</a></li>
+  <li><a href="https://www.mozilla.org" target="_blank">Firefox</a></li>
+</ul>
+
+<p>One great thing about the microkernel architecture pattern is that it
+can be embedded or used as part of another architecture pattern.</p>
+
+<p>For product-based applications, the microkernel architecture pat‐
+tern should always be your first choice as a starting architecture.</p>
+
+<h2 id="microservices">Microservices</h2>
+
+<p>The microservices architecture pattern is quickly gaining ground in
+the industry as a viable alternative to monolithic applications and
+service-oriented architectures.</p>
+
+<p>The first of these concepts is the notion of separately
+deployed units. Perhaps the most important concept to understand with this pattern
+is the notion of a service component.</p>
+
+<p>Designing the right level of service component granularity is
+one of the biggest challenges within a microservices architecture.</p>
+
+<p>Another key concept within the microservices architecture pattern
+is that it is a distributed architecture, meaning that all the compo‐
+nents within the architecture are fully decoupled from one other
+and accessed through some sort of remote access protocol (e.g.,
+JMS, AMQP, REST, SOAP, RMI, etc.).</p>
+
+<p>While there are literally dozens of ways to implement a microservi‐
+ces architecture pattern, three main topologies stand out as the most
+common and popular: the API REST-based topology, application
+REST-based topology, and the centralized messaging topology.</p>
+
+<h2 id="spaced-based">Spaced-based</h2>
+
+<p>In any high-volume application with an extremely large concurrent
+user load, the database will usually be the final limiting factor in
+how many transactions you can process concurrently.
+The space-based architecture pattern is specifically designed to
+address and solve scalability and concurrency issues.</p>
+
+<p>This pattern gets its name from the concept of tuple
+space, the idea of distributed shared memory. High scalability is
+achieved by removing the central database constraint and using
+replicated in-memory data grids instead.</p>
+
+<p>The space-based architecture pattern is a complex and expensive
+pattern to implement. It is a good architecture choice for smaller
+web-based applications with variable load (e.g., social media sites,
+bidding and auction sites).</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="software_architectural_patterns">[1]R. Mark, <i>Software Architecture Patterns</i>. O’Reilly Media, Inc, 2015. </span></li>
+<li><span id="kua2017evolutionary">[2]P. Kua, <i>Evolutionary Architecture by Patrick Kua</i>. Devoxx, 2017 [Online]. Available at: <a href="https://youtu.be/iDYAtys2oK0" target="_blank">https://youtu.be/iDYAtys2oK0</a></span></li></ol>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/architecture/2020/10/17/software-arquitecture-patterns.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/architecture/2020/10/17/software-arquitecture-patterns.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/architecture/2020/10/17/software-arquitecture-patterns.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

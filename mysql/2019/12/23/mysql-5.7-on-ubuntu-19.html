@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>MySQL 5.7 on Ubuntu 19.04 and 19.10</title>
+    <meta name="description"
+      content="Ubuntu 19.04/19.10 as default comes with MySQL 8.0 as it’s default version to work with.Projects that need to use a 5.* version might run into problems in th...">
+
+    <link rel="canonical" href="https://marabesi.com/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="MySQL 5.7 on Ubuntu 19.04 and 19.10" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2019-12-23-mysql-5.7-on-ubuntu-19/cover.jpg" />
+    <meta property="og:description"
+      content="Ubuntu 19.04/19.10 as default comes with MySQL 8.0 as it’s default version to work with.Projects that need to use a 5.* version might run into problems in th..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="MySQL 5.7 on Ubuntu 19.04 and 19.10">
+    <meta name="twitter:description"
+      content="Ubuntu 19.04/19.10 as default comes with MySQL 8.0 as it’s default version to work with.Projects that need to use a 5.* version might run into problems in th...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2019-12-23-mysql-5.7-on-ubuntu-19/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2019-12-23 04:06:05 +0000">
+
+    <meta name="keywords" content="web,ubuntu,Ubuntu,version,ubuntu 19,ubuntu 19.10,MySQL,mysql,command,amd,mysql 5.7,mysql 5.7.*,tar,deb,server,installation,apt,linux,shell,mysql-server,mysql-community-server,mysql-core,download" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="mysql-5.7-on-ubuntu-19">MySQL 5.7 on Ubuntu 19.04 and 19.10</h1>
+
+        <p>Ubuntu 19.04/19.10 as default comes with MySQL 8.0 as it’s default version to work with.
+Projects that need to use a 5.* version might run into problems in the downgrade
+process. This post aims to guide the installation of MySQL 5.7 on ubuntu 19.04
+and ubuntu 19.10.</p>
+
+<p>After trying to set up MySQL following different sources <strong>[1][2]</strong> and fail over everyone,
+an alternative might be the installation via .deb packages through the official
+MySQL website, which is explored here.</p>
+
+<h2 id="set-up">Set up</h2>
+
+<p>For this approach two assumptions take place, named:</p>
+
+<ol>
+  <li>Ubuntu 19 is up and running</li>
+  <li>Expertise handling commands via terminal (shell)</li>
+</ol>
+
+<p>Lastly, if previous tries to install mysql 5.7 on ubuntu have been done, follow
+the checklist:</p>
+
+<ol>
+  <li>Remove any MySQL installation via apt-get with the command: <code class="language-plaintext highlighter-rouge">sudo apt-get remove --purge mysql-server mysql-client mysql-common -y</code></li>
+  <li>Remove old MySQL configuration from <code class="language-plaintext highlighter-rouge">/etc/mysql</code> with the command: <code class="language-plaintext highlighter-rouge">sudo rm -rf /etc/mysql</code></li>
+  <li>Keep the apt in a clean state with the command <code class="language-plaintext highlighter-rouge">sudo apt-get update --fix-missing</code></li>
+</ol>
+
+<h2 id="before-installation-check-list">Before installation check list</h2>
+
+<p>Ubuntu 19 comes with MySQL 8 as the defaul version to be installed, to double check that
+run the following command in the command line <code class="language-plaintext highlighter-rouge">sudo apt list | grep mysql-server</code>,
+the output should display the MySQL version current in use by apt.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql-server-8.0/eoan-updates,eoan-security 8.0.18-0ubuntu0.19.10.1 amd64
+mysql-server-core-8.0/eoan-updates,eoan-security 8.0.18-0ubuntu0.19.10.1 amd64
+mysql-server/eoan-updates,eoan-security 8.0.18-0ubuntu0.19.10.1 all
+</code></pre></div></div>
+
+<p>As expected, the version is 8. Even though previous references have shown how
+to change the MySQL via apt <strong>[1][2]</strong> in early versions of ubuntu, this approach in my
+experienced was not effective on ubuntu 19.*.</p>
+
+<p>The explored solution might work on docker containers based on ubuntu 19.* as well.</p>
+
+<h2 id="installing-mysql-via-deb-files">Installing MySQL via .deb files</h2>
+
+<p>The first step is to download MySQL 5.7 from <a href="https://www.cyberpratibha.com/how-to-install-mysql-in-ubuntu">MySQL website</a> <strong>[3]</strong>,
+chose the ubuntu version and hit the download button, in the next pase hit “No thanks, just start my download”. It should take a few minutes
+to download the entire package.</p>
+
+<p>Disclaimer: this installation process requires a GUI, for terminal only installations
+use the direct download solution to download the <code class="language-plaintext highlighter-rouge">.tar</code> file:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>wget https://dev.mysql.com/get/Downloads/MySQL-5.7/mysql-server_5.7.28-1ubuntu19.04_amd64.deb-bundle.tar
+</code></pre></div></div>
+
+<p>Once the download has been completed, the .tar file should be availble in the
+downlods folder (or in the folder where the <code class="language-plaintext highlighter-rouge">wget</code> was executed), for any standard browser
+installation the folder will be <code class="language-plaintext highlighter-rouge">~/Downloads</code>. - For now on this is the path
+refered, for custom directories replace <code class="language-plaintext highlighter-rouge">~/Downlodas</code> with the appropriated path.</p>
+
+<p>In the terminal change the directory to where the downloaded file is located,
+with the command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">cd</span> ~/Downloads
+</code></pre></div></div>
+
+<p>Once in the folder, unpack all the files with the tar <strong>[4]</strong> command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">tar</span> <span class="nt">-xvf</span> mysql-server_5.7.28-1ubuntu19.04_amd64.deb-bundle.tar
+</code></pre></div></div>
+
+<p>Once the command has run, the extracted files list should contain the MySQL 5.7.*
+deb files:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>mysql-client_5.7.28-1ubuntu19.04_amd64.deb
+mysql-common_5.7.28-1ubuntu19.04_amd64.deb
+mysql-community-client_5.7.28-1ubuntu19.04_amd64.deb
+mysql-community-server_5.7.28-1ubuntu19.04_amd64.deb
+mysql-community-source_5.7.28-1ubuntu19.04_amd64.deb
+mysql-server_5.7.28-1ubuntu19.04_amd64.deb
+mysql-testsuite_5.7.28-1ubuntu19.04_amd64.deb
+mysql-community-test_5.7.28-1ubuntu19.04_amd64.deb
+</code></pre></div></div>
+
+<p>To prevent uneeded issues, the test packages can be removed as they aren’t
+required to install or run MySQL server. To remove those files run the
+following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">rm</span> <span class="nt">-rf</span> mysql-testsuite_5.7.28-1ubuntu19.04_amd64.deb mysql-community-test_5.7.28-1ubuntu19.04_amd64.deb
+</code></pre></div></div>
+
+<p>The final command to execute the installation is:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dpkg <span class="nt">-i</span> mysql-<span class="k">*</span>.deb
+</code></pre></div></div>
+
+<p>The command will select all files that start with <code class="language-plaintext highlighter-rouge">mysql-</code> that has .deb extension
+and will start the installation process.</p>
+
+<p>Once the command has completed execution, check MySQL server status with
+the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>/etc/init.d/mysql status
+</code></pre></div></div>
+
+<p>Which in turn, should output:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code> <span class="k">*</span> MySQL Community Server 5.7.28 is started
+</code></pre></div></div>
+
+<p>Usually the MySQL service starts by default after the installation - if this is
+not the case the command <code class="language-plaintext highlighter-rouge">/etc/init.d/mysql start</code> can be used to start the
+service.</p>
+
+<h2 id="troubleshooting">Troubleshooting</h2>
+
+<p>Errors related due the lack of dependent packages, usually can be fixed
+running the command <code class="language-plaintext highlighter-rouge">sudo apt-get update --fix-missing</code> after the
+error message. Ubuntu will try to install the missing dependencies automatically.</p>
+
+<h2 id="edit-may-19-2020">EDIT: May 19 2020</h2>
+
+<p>Another approach to avoid the need to install MySQL on Ubuntu 19.04 or 19.10 is
+to use the docker image - This solution applies to users that have the minimum
+understanding of docker.</p>
+
+<p>The following command, runs MySQL 5.7 on por 3306, without the need to install
+it:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run <span class="nt">--name</span> mysql-5-7 <span class="nt">--restart</span> always <span class="nt">-p</span> 3306:3306 <span class="nt">-e</span> <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>my-secret-pw <span class="nt">-d</span> mysql:5.7
+</code></pre></div></div>
+
+<p>Docker will create a MySQL container running on port 3306 with the <code class="language-plaintext highlighter-rouge">root</code> user and
+the <code class="language-plaintext highlighter-rouge">secret</code> password.</p>
+
+<h2 id="references">References</h2>
+
+<p>[1] How To Install MySQL 5.7 on Ubuntu 16.04 [Online]. Available: <a href="https://www.fosstechnix.com/install-mysql5-on-ubuntu" target="_blank">https://www.fosstechnix.com/install-mysql5-on-ubuntu</a>. [Accessed: 26 - Dec - 2019]</p>
+
+<p>[2]  How to Install MySQL 5.7 on Ubuntu 16.04 LTS [Online]. Available: <a href="https://tecadmin.net/install-mysql-5-on-ubuntu" target="_blank">https://tecadmin.net/install-mysql-5-on-ubuntu</a>. [Accessed: 26 - Dec - 2019]</p>
+
+<p>[3] MySQL Community Downloads [Online]. Available: <a href="https://dev.mysql.com/downloads/mysql/5.7.html" target="_blank">https://dev.mysql.com/downloads/mysql/5.7.html</a>. [Accessed: 26 - Dec - 2019]</p>
+
+<p>[4] How to open a tar file in Unix or Linux [Online]. Available: <a href="https://www.pendrivelinux.com/how-to-open-a-tar-file-in-unix-or-linux" target="_blank">https://www.pendrivelinux.com/how-to-open-a-tar-file-in-unix-or-linux</a>. [Accessed: 26 - Dec - 2019]</p>
+
+<p>[5] MySQL Docker official image [Online]. Available: <a href="https://hub.docker.com/_/mysql" target="_blank">https://hub.docker.com/_/mysql</a>. [Accessed: 19 - May - 2020]</p>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#set-up">Set up</a></li>
+  <li><a href="#before-installation-check-list">Before installation checklist</a></li>
+  <li><a href="#installing-mysql-via-deb-files">Installing MySQL via .deb files</a></li>
+  <li><a href="#troubleshooting">Troubleshooting</a></li>
+  <li><a href="#edit-may-19-2020">Edit May 19 2020 - Installing MySQL via docker</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html">Configuring reactjs and relay 2019 version [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/iot/raspberrypi/php/2019/01/12/errors-compiling-php-from-source-on-a-raspberry-pi.html">Errors compiling PHP from source on a Raspberry Pi [  <span class="text-marabesi-pink">version,</span>  <span class="text-marabesi-pink">command,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/posts/2018/02/16/sim800l-tracking-your-iot-device.html">SIM800L tracking your IoT device [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">command,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2015/05/07/getting-started-xpath.html">Getting started with Xpath [  <span class="text-marabesi-pink">version,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

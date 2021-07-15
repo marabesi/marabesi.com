@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Running PHP with Arduino</title>
+    <meta name="description"
+      content="Lately I’e been playing with Arduino and PHP to create simple demos and see how the interactionbetween them works. For my surprise it worked really well and ...">
+
+    <link rel="canonical" href="https://marabesi.com/post/2017/03/01/running-php-with-arduino.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Running PHP with Arduino" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/post/2017/03/01/running-php-with-arduino.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2017-03-01-running-php-with-arduino/cover.jpg" />
+    <meta property="og:description"
+      content="Lately I’e been playing with Arduino and PHP to create simple demos and see how the interactionbetween them works. For my surprise it worked really well and ..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Running PHP with Arduino">
+    <meta name="twitter:description"
+      content="Lately I’e been playing with Arduino and PHP to create simple demos and see how the interactionbetween them works. For my surprise it worked really well and ...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2017-03-01-running-php-with-arduino/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2017-03-01 04:06:05 +0000">
+
+    <meta name="keywords" content="stream,public,Arduino,path,PHP,register,file,read,fopen,contents,arduino,php,serial,iot,wrapper" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="running-php-with-arduino">Running PHP with Arduino</h1>
+
+        <p>Lately I’e been playing with Arduino and PHP to create simple demos and see how the interaction
+between them works. For my surprise it worked really well and I could at least do the blink example with few lines
+of code.</p>
+
+<p>From now on I’ assuming that you’e played around with Arduino and feel familiar with some terms like, execution loop,
+setup, pins and LED.</p>
+
+<p>I used Arduino Uno to keep the things as simple as possible, but any Arduino family board is supported.</p>
+
+<h2 id="understanding-a-bit-of-streams">Understanding a bit of streams</h2>
+
+<p>The first thing that came to my mind at least was to use the command line to interact with the serial port in the 
+Arduino board. It could have worked as expected but for sure is not the best approach, since we are using a workaround.</p>
+
+<p>I say workaround based on other languages where we can have native integration with those devices, have you ever heard
+about pi4j? What about Jhonnyfive? Those libraries provide a simple, elegant and the most important a native connection
+direct to the board.</p>
+
+<p>To interact via command line with our Arduino we would simply do, something like this (assuming that the Arduino is
+connected via USB cable)</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s1">'1'</span> <span class="o">&gt;&gt;</span> /dev/cu.wchusbserial1410
+</code></pre></div></div>
+
+<p>The command above will send 1 to the Arduino serial port and blink the RX LED in the Arduino board.</p>
+
+<p>We have taken the first step and communicated successfully to our Arduino board, but it is terminal only. Our
+goal here is do it via PHP, and as programmers we usually take the easiest path. Which means to send this command
+line through PHP script.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nb">shell_exec</span><span class="p">(</span><span class="s2">"echo '1' &gt;&gt; /dev/cu.wchusbserial1410"</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>The PHP script above does the job well, but its not elegant. The error handling is terrible.</p>
+
+<p>Comes in place PHP streams, I’m sure you’ve used them before. PHP developers are used to streams and don’ know that.</p>
+
+<h3 id="streams">Streams</h3>
+
+<p>Streams are accessible by any function that handles files on PHP, such as <em>fopen</em> and <em>file_get_contents</em>. The magic happens when
+we use what is known as <strong>wrappers</strong> to handle different resources. Wrappers allow SSH connection, FTP handling or even 
+read zipped files content without extracting them.</p>
+
+<p>PHP comes with 12 wrappers ready to use as shown in the list bellow, and if is needed something specific that PHP does not 
+has is possible to create custom streams using the function <strong>stream_wrapper_register</strong>.</p>
+
+<ol>
+  <li>file://</li>
+  <li>http://</li>
+  <li>ftp://</li>
+  <li>php://</li>
+  <li>zlib://</li>
+  <li>data://</li>
+  <li>glob://</li>
+  <li>phar://</li>
+  <li>ssh2://</li>
+  <li>rar://</li>
+  <li>ogg://</li>
+  <li>expect://</li>
+</ol>
+
+<p>The magic here is to create a Arduino wrapper, so we could do something like</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$resource</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">'arduino://ttyUSB0'</span><span class="p">,</span> <span class="s1">'r+'</span><span class="p">);</span>
+<span class="k">print</span> <span class="nb">fread</span><span class="p">(</span><span class="nv">$resource</span><span class="p">,</span> <span class="mi">1024</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<h3 id="arduino">arduino://</h3>
+
+<p>PHP has a good documentation about creating your own wrapper, but I’m going to clarify a few points here.</p>
+
+<p>The first is the class <em>streamWrapper</em>, which is a prototype to follow and create our own class. Though the weird part
+is that we don’t extend anything we just need to declare the right methods and it’ll just work.</p>
+
+<p>The class is big but luckily we don’t need to implement every method, described below.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">streamWrapper</span> <span class="p">{</span>
+    <span class="cm">/* Properties */</span>
+    <span class="k">public</span> <span class="kt">resource</span> <span class="nv">$context</span> <span class="p">;</span>
+    <span class="cm">/* Methods */</span>
+    <span class="nf">__construct</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="nf">__destruct</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">dir_closedir</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">dir_opendir</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$options</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">dir_readdir</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">dir_rewinddir</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nb">mkdir</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$mode</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$options</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nb">rename</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path_from</span> <span class="p">,</span> <span class="n">string</span> <span class="nv">$path_to</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nb">rmdir</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$options</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">resource</span> <span class="nf">stream_cast</span> <span class="p">(</span> <span class="n">int</span> <span class="nv">$cast_as</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">void</span> <span class="nf">stream_close</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_eof</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_flush</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_lock</span> <span class="p">(</span> <span class="n">int</span> <span class="nv">$operation</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_metadata</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$option</span> <span class="p">,</span> <span class="n">mixed</span> <span class="nv">$value</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_open</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">,</span> <span class="n">string</span> <span class="nv">$mode</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$options</span> <span class="p">,</span> <span class="n">string</span> <span class="o">&amp;</span><span class="nv">$opened_path</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">string</span> <span class="nf">stream_read</span> <span class="p">(</span> <span class="n">int</span> <span class="nv">$count</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_seek</span> <span class="p">(</span> <span class="n">int</span> <span class="nv">$offset</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$whence</span> <span class="o">=</span> <span class="no">SEEK_SET</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_set_option</span> <span class="p">(</span> <span class="n">int</span> <span class="nv">$option</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$arg1</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$arg2</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">array</span> <span class="nf">stream_stat</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">stream_tell</span> <span class="p">(</span> <span class="n">void</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nf">stream_truncate</span> <span class="p">(</span> <span class="n">int</span> <span class="nv">$new_size</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="nf">stream_write</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$data</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">bool</span> <span class="nb">unlink</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">)</span>
+    <span class="k">public</span> <span class="kt">array</span> <span class="nf">url_stat</span> <span class="p">(</span> <span class="n">string</span> <span class="nv">$path</span> <span class="p">,</span> <span class="n">int</span> <span class="nv">$flags</span> <span class="p">)</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><small>
+    The code above was taken from PHP.net official documentation and you can see it at
+    <a href="http://php.net/manual/en/class.streamwrapper.php" target="_blank">http://php.net/manual/en/class.streamwrapper.php</a>
+</small></p>
+
+<p>The methods we are going to needs are:</p>
+
+<ul>
+  <li>stream_open
+    <ul>
+      <li>This method is called when we invoke any function that will operate in our wrapper</li>
+    </ul>
+  </li>
+  <li>stream_read
+    <ul>
+      <li>This method is going to be invoked when is needed to read data from the source</li>
+    </ul>
+  </li>
+  <li>stream_write
+    <ul>
+      <li>This method is the opposite of stream_read, it will write in a given source. Usually we use this with <em>fwrite</em> or <em>file_put_contents</em></li>
+    </ul>
+  </li>
+  <li>stream_eof
+    <ul>
+      <li>This method is used to know when the stream has reached the end of its content, we can read eof as End Of File</li>
+    </ul>
+  </li>
+</ul>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kn">namespace</span> <span class="nn">Arduino</span><span class="p">;</span>
+
+<span class="kd">class</span> <span class="nc">Wrapper</span>
+<span class="p">{</span>
+
+    <span class="k">private</span> <span class="k">static</span> <span class="nv">$wrapperName</span> <span class="o">=</span> <span class="s1">'arduino'</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$path</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">self</span><span class="o">::</span><span class="nf">register</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">stream_open</span><span class="p">(</span><span class="nv">$path</span><span class="p">,</span> <span class="nv">$mode</span><span class="p">,</span> <span class="nv">$options</span> <span class="o">=</span> <span class="kc">null</span><span class="p">,</span> <span class="o">&amp;</span><span class="nv">$opened_path</span> <span class="o">=</span> <span class="kc">null</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$realPath</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="s1">'arduino://'</span><span class="p">,</span> <span class="s1">''</span><span class="p">,</span> <span class="nv">$path</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">path</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="nv">$realPath</span><span class="p">,</span> <span class="s1">'r+'</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">stream_read</span><span class="p">(</span><span class="nv">$count</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">,</span> <span class="nv">$count</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">stream_write</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">fwrite</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">,</span> <span class="nv">$data</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">stream_eof</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">fclose</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="n">path</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="n">register</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// if we already defined the wrapper just return false</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nb">stream_get_wrappers</span><span class="p">()</span> <span class="k">as</span> <span class="nv">$wrapper</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nv">$wrapper</span> <span class="o">==</span> <span class="k">self</span><span class="o">::</span><span class="nv">$wrapperName</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+
+        <span class="nb">stream_wrapper_register</span><span class="p">(</span><span class="k">self</span><span class="o">::</span><span class="nv">$wrapperName</span><span class="p">,</span> <span class="k">self</span><span class="o">::</span><span class="n">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The last step is to register the wrapper before call it. In order to do that, just call the function <em>stream_wrapper_register</em>
+passing the wrapper name(alias) and the class name.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nb">stream_wrapper_register</span><span class="p">(</span><span class="s1">'arduino'</span><span class="p">,</span> <span class="nc">Arduino\Wrapper</span><span class="o">::</span><span class="n">class</span><span class="p">);</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>In our Wrapper class we have a register method already, to turn easier the wrapper registration, instead
+of using the PHP function you could call <em>\Arduino\Wrapper::register()</em>.</p>
+</blockquote>
+
+<p>In conclusion to write a simple wrapper is easy. I would say that it is easier than build a simple CURD, the class
+we created is very small but does the jog really well.</p>
+
+<p>To test it, just connect your Arduino USB in any port and use the wrapper with any function that you like, I prefer
+to use <em>fopen</em>, but the examples below are with both, <em>fopen</em> and <em>file_put_contents</em>.</p>
+
+<p>Are you wondering why do I wrote two times the sleep function call? This is very simple, Arduino takes at least 1 second
+to set everything up and start to respond through the serial port. Adding 2 seconds we guarantee that all the date
+that we send to it will be received.</p>
+
+<h3 id="fopen">fopen</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="err">\</span><span class="nc">Arduino\Wrapper</span><span class="o">::</span><span class="nf">register</span><span class="p">();</span>
+
+<span class="nv">$resource</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">'arduino://ttyUSB0'</span><span class="p">,</span> <span class="s1">'r+'</span><span class="p">);</span>
+<span class="k">print</span> <span class="nb">fwrite</span><span class="p">(</span><span class="s1">'hello Arduino'</span><span class="p">);</span> 
+</code></pre></div></div>
+
+<h3 id="file_put_contents">file_put_contents</h3>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="err">\</span><span class="nc">Arduino\Wrapper</span><span class="o">::</span><span class="nf">register</span><span class="p">();</span>
+
+<span class="k">print</span> <span class="nb">file_put_contents</span><span class="p">(</span><span class="s1">'arduino://hello Arduino'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="real-usages">Real usages</h2>
+
+<p>A good example of using custom PHP streams is Amazon and it’ storage service called S3. Amazon provides a SDK
+in PHP which uses a custom wrapper to store data in the cloud.</p>
+
+<p><small>
+    Official documentation can be found at
+    <a href="http://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html" target="_blank">http://docs.aws.amazon.com/aws-sdk-php/v3/guide/service/s3-stream-wrapper.html</a>
+</small></p>
+
+<p>With S3 wrapper to download a file is a matter of calling the function file_get_contents</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$data</span> <span class="o">=</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'s3://bucket/key'</span><span class="p">);</span> 
+</code></pre></div></div>
+
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#understanding-a-bit-of-streams">Understanding a bit of streams</a>
+    <ul>
+      <li><a href="#streams">Streams</a></li>
+      <li><a href="#arduino">Arduino</a></li>
+      <li><a href="#fopen">Fopen</a></li>
+      <li><a href="#file_put_contents">file_put_contents</a></li>
+    </ul>
+  </li>
+  <li><a href="#real-usages">Real usage of php streams</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/post/2017/03/01/running-php-with-arduino.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/post/2017/03/01/running-php-with-arduino.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/post/2017/03/01/running-php-with-arduino.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/nodejs/jsnad/2021/01/16/node-certification-jsnad-streams.html">Node.js certification JSNAD - Streams [  <span class="text-marabesi-pink">stream,</span>  <span class="text-marabesi-pink">file,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/aws/2020/12/20/deploying-git-bot-release-to-aws-lambda.html">Deploying git bot release to AWS lambda [  <span class="text-marabesi-pink">php,</span>  <span class="text-marabesi-pink">file,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2020/04/05/php-import-checker-vscode-extension.html">PHP import checker - VScode extension to support PHP developers [  <span class="text-marabesi-pink">PHP,</span>  <span class="text-marabesi-pink">php,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2019/06/25/intro-oop-php.html">Introduction to OOP with PHP (Classes, Encapsulation, Inheritance) [  <span class="text-marabesi-pink">php,</span>  <span class="text-marabesi-pink">PHP,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

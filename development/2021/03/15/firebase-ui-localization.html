@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Firebase UI localization</title>
+    <meta name="description"
+      content="Firebase ui has helped me to build an application with social loginwith almost no code to write, the ui library provides an implementationof firebase authent...">
+
+    <link rel="canonical" href="https://marabesi.com/development/2021/03/15/firebase-ui-localization.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Firebase UI localization" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/development/2021/03/15/firebase-ui-localization.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2021-03-15-firebase-ui-localization/cover.jpg" />
+    <meta property="og:description"
+      content="Firebase ui has helped me to build an application with social loginwith almost no code to write, the ui library provides an implementationof firebase authent..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Firebase UI localization">
+    <meta name="twitter:description"
+      content="Firebase ui has helped me to build an application with social loginwith almost no code to write, the ui library provides an implementationof firebase authent...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2021-03-15-firebase-ui-localization/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-03-15 04:06:05 +0000">
+
+    <meta name="keywords" content="firebase,Firebase,firebaseui,reactjs,i18n,localization,build,npm,language,run,css,web,install,files,process,esm,anonymous,project" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="firebase-ui-localization">Firebase UI localization</h1>
+
+        <p>Firebase ui has helped me to build an application with social login
+with almost no code to write, the ui library provides an implementation
+of firebase authentication for web ready to use. As such, the expectation
+of easy to use also points to an localization easy to integrate.</p>
+
+<p>Therefore, the i18n for the firebaseui <a class="citation" href="#firebaseui_github">[1]</a> has some tricks and is not as
+straight forward as it could be, it requires manual building for
+each specific language, and also it is required to ship the generated
+bundle with the application. In this post, I am going to explore my experience
+with the firebase library trying to implement the localization in the
+Testable<a class="citation" href="#testable_github">[2]</a> project.</p>
+
+<p><strong>NOTE</strong>: This post does not cover using the firebase CDN (Content Delivery Network)
+<a class="citation" href="#cdn">[3]</a>
+for translations.<a class="citation" href="#firebaseui_github_localized_cdn">[4]</a></p>
+
+<h2 id="requirements">Requirements</h2>
+
+<ol>
+  <li>This post assumes basic knowledge of firebase on the client side (web project) and also in ReactJs.</li>
+  <li>Nodejs 14+ and npm 7+ installed</li>
+  <li>Java installed (openjdk 8+)</li>
+</ol>
+
+<h2 id="setting-up-firebase-ui">Setting up Firebase UI</h2>
+
+<p>The first step is to get the firebase ui up and running locally, the following
+commands are available in the README of the project as well.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>git clone https://github.com/firebase/firebaseui-web.git <span class="o">&amp;&amp;</span>
+<span class="nb">cd </span>firebaseui-web <span class="o">&amp;&amp;</span>
+npm <span class="nb">install</span>
+</code></pre></div></div>
+
+<p><strong>Note</strong>: The build process is triggered right after the npm install the modules.</p>
+
+<p>Besides node and npm the build process require more dependencies, for example,
+the JRE is needed, if you don’t have java available, the following error
+will show up:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[17:35:31] Finished 'build-ts' after 5.56 ms
+[17:35:31] Starting 'build-js'...
+[17:35:31] Starting 'build-js-en'...
+[17:35:31] Starting 'build-firebaseui-js-en'...
+[17:35:31] Starting 'build-externs'...
+[17:35:31] Starting 'build-ts'...
+[17:35:31] Starting 'build-soy'...
+Note: Closure Builder will run with an limited feature set!
+
+
+[Closure Templates Error] Java (JRE) is needed!
+
+
+[17:35:31] The following tasks did not complete: default, build-js, build-js-en, &lt;parallel&gt;, build-firebaseui-js-en, &lt;parallel&gt;, build-externs, build-ts, build-soy
+[17:35:31] Did you forget to signal async completion?
+</code></pre></div></div>
+
+<p>To fix install the open JDK as follows:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo </span>apt-get <span class="nb">install</span> <span class="nt">-y</span> openjdk-8-jre-headless
+</code></pre></div></div>
+
+<p>The build process for firebaseui also requires google chrome installed
+and available in the path as <code class="language-plaintext highlighter-rouge">google-chrome</code>. As such, if you don’t have it
+install the browser first. Otherise if you try to run <code class="language-plaintext highlighter-rouge">npm run build</code> you will
+see the following error:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[17:42:52] I/launcher - Running 1 instances of WebDriver
+[17:42:52] I/direct - Using ChromeDriver directly...                          
+[17:42:52] E/launcher - unknown error: cannot find Chrome binary
+  (Driver info: chromedriver=89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}),platform=Linux 4.15.0-112-generic x86_64)
+[17:42:52] E/launcher - WebDriverError: unknown error: cannot find Chrome binary
+  (Driver info: chromedriver=89.0.4389.23 (61b08ee2c50024bab004e48d2b1b083cdbdac579-refs/branch-heads/4389@{#294}),platform=Linux 4.15.0-112-generic x86_64)
+</code></pre></div></div>
+
+<p>Once google chrome has been installed <a class="citation" href="#installing_google_chrome">[5]</a> and available in the path, the build
+command should run successfully, before build the assets for any specific
+language, try to build the project as it is, with the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build
+</code></pre></div></div>
+
+<p>The output for that command should be something like:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>[100%] soy_files [Done] (0.6 sec)
+[17:47:26] Finished 'build-soy' after 599 ms
+[17:47:26] Starting '&lt;anonymous&gt;'...
+[17:47:42] Finished '&lt;anonymous&gt;' after 16 s
+[17:47:42] Finished 'build-firebaseui-js-en' after 17 s
+[17:47:42] Starting '&lt;anonymous&gt;'...
+[17:47:45] Finished '&lt;anonymous&gt;' after 3.01 s
+[17:47:45] Finished 'build-esm-en' after 20 s
+[17:47:45] Starting '&lt;anonymous&gt;'...
+[17:47:45] Finished '&lt;anonymous&gt;' after 2.45 ms
+[17:47:45] Finished 'build-esm' after 20 s
+[17:47:45] Starting 'build-css'...
+[17:47:45] Finished 'build-css' after 245 ms
+[17:47:45] Starting 'build-css-rtl'...
+[17:47:46] Finished 'build-css-rtl' after 201 ms
+[17:47:46] Starting 'clean'...
+[17:47:46] Finished 'clean' after 5.51 ms
+</code></pre></div></div>
+
+<p>The firebase ui, builds all assets for each specific language and 
+stores it under specific files, the output of the process is store under the
+<code class="language-plaintext highlighter-rouge">dist/</code> directory, listing the files , should give the following output:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dist/
+├── esm__en.js
+├── esm.js
+├── externs
+│   └── firebaseui-externs.js
+├── firebaseui.css
+├── firebaseui__en.js
+├── firebaseui.js
+├── firebaseui-rtl.css
+├── index.d.ts
+├── npm__en.js                            &lt;---- English
+└── npm.js
+
+1 directory, 10 files
+</code></pre></div></div>
+
+<p>By default, the only language that is built is english, for the purpose
+of this post, the file that is important to note here is <code class="language-plaintext highlighter-rouge">npm__en.js</code>, it
+has the firebase bundle in English, the build process for other languages
+is the sabe as running <code class="language-plaintext highlighter-rouge">npm run build</code> and specifying the desired language.</p>
+
+<p>To build firebaseui with Spanish support, the followig build command should
+be run:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run build build-npm-es
+</code></pre></div></div>
+
+<p>The build process for Spanish, will output a new file under the <code class="language-plaintext highlighter-rouge">dist/</code>
+called <code class="language-plaintext highlighter-rouge">npm__es.js</code>, it means that we have support for English and Spanish.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dist/
+├── esm__en.js
+├── esm.js
+├── externs
+│   └── firebaseui-externs.js
+├── firebaseui.css
+├── firebaseui__en.js
+├── firebaseui.js
+├── firebaseui-rtl.css
+├── index.d.ts
+├── npm__en.js                            &lt;----- English
+├── npm__es.js                            &lt;----- Spanish
+└── npm.js
+</code></pre></div></div>
+
+<h2 id="import-localized-firebaseui">Import localized firebaseui</h2>
+
+<p>Having the files translated is half way done, the other piece is to
+import the translated files in the frontend project. Before using,
+the localized approach, let’s dive into the standard way of using firebaseui
+in a reactjs application.</p>
+
+<p>The usage is as any other library, just importing it and then later on
+in the code invoking its functions:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="o">*</span> <span class="k">as</span> <span class="nx">firebaseui</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">firebaseui</span><span class="dl">'</span>
+
+<span class="c1">// at some point in the code</span>
+<span class="kd">const</span> <span class="nx">ui</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">firebaseui</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">AuthUI</span><span class="p">(</span><span class="nx">firebase</span><span class="p">.</span><span class="nx">auth</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>The import approach takes english as the standard language, and for a
+localized approach with firebaseui, the import should be based
+on the language, for example:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">firebaseResolver</span> <span class="o">=</span> <span class="nx">language</span> <span class="o">=&gt;</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">../../third-party/wrappers/firebaseui/npm__</span><span class="dl">'</span> <span class="o">+</span> <span class="nx">language</span><span class="p">);</span>
+
+<span class="c1">// at some point in the code</span>
+
+<span class="kd">const</span> <span class="nx">firebaseui</span> <span class="o">=</span> <span class="nx">firebaseResolver</span><span class="p">(</span><span class="dl">'</span><span class="s1">es</span><span class="dl">'</span><span class="p">)</span> <span class="c1">// imports firebase in Spanish</span>
+<span class="kd">const</span> <span class="nx">ui</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">firebaseui</span><span class="p">.</span><span class="nx">auth</span><span class="p">.</span><span class="nx">AuthUI</span><span class="p">(</span><span class="nx">firebase</span><span class="p">.</span><span class="nx">auth</span><span class="p">())</span>
+</code></pre></div></div>
+
+<p>The localized firebaseui approach has some drawbacks, and the first one is
+that it will increse the application bundle size as for each language,
+the <code class="language-plaintext highlighter-rouge">npm__*</code> file created has around 200kbs.</p>
+
+<p>The second is that it requires a page reload, so then it reflects
+the selected language as it should:</p>
+
+<p><a href="/images/posts/2021-03-15-firebase-ui-localization/localized-firebaseui.gif" target="_blank"><img src="/images/posts/2021-03-15-firebase-ui-localization/localized-firebaseui.gif" alt="Reloading the page with localized firebaseui" /></a></p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="firebaseui_github">[1]Firebase, “firebaseui-web,” 2021 [Online]. Available at: <a href="https://github.com/firebase/firebaseui-web" target="_blank">https://github.com/firebase/firebaseui-web</a>. [Accessed: 20-Mar-2021]</span></li>
+<li><span id="testable_github">[2]M. Marabesi, “Testable - gamified tool to improve unit testing teaching,” 2019 [Online]. Available at: <a href="https://github.com/marabesi/testable#testable—gamified-tool-to-improve-unit-testing-teaching" target="_blank">https://github.com/marabesi/testable#testable—gamified-tool-to-improve-unit-testing-teaching</a>. [Accessed: 28-Mar-2021]</span></li>
+<li><span id="cdn">[3]Wikipedia, “Content delivery network,” 2021 [Online]. Available at: <a href="https://en.wikipedia.org/wiki/Content_delivery_network" target="_blank">https://en.wikipedia.org/wiki/Content_delivery_network</a>. [Accessed: 21-Mar-2021]</span></li>
+<li><span id="firebaseui_github_localized_cdn">[4]Firebase, “firebaseui-web,” 2021 [Online]. Available at: <a href="https://github.com/firebase/firebaseui-web" target="_blank">https://github.com/firebase/firebaseui-web</a>. [Accessed: 20-Mar-2021]</span></li>
+<li><span id="installing_google_chrome">[5]A. Prakash, “Install Google Chrome on Ubuntu [Beginner’s Tutorial],” 2020 [Online]. Available at: <a href="https://itsfoss.com/install-chrome-ubuntu/#install-chrome-terminal" target="_blank">https://itsfoss.com/install-chrome-ubuntu/#install-chrome-terminal</a>. [Accessed: 20-Mar-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#requirements">Requirements</a></li>
+  <li><a href="#setting-up-firebase-ui">Setting up firebase ui</a></li>
+  <li><a href="#import-localized-firebaseui">Import localized firebase ui</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/development/2021/03/15/firebase-ui-localization.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/development/2021/03/15/firebase-ui-localization.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/development/2021/03/15/firebase-ui-localization.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html">Towards a reactjs folder structure based on intent (WIP) [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">reactjs,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/development/2021/01/02/creating-web-firebase-app.html">Creating web firebase app (browser based not server) [  <span class="text-marabesi-pink">firebase,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html">ReactJs patterns - A study based on google search [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/devops/2020/05/15/tips-for-writting-docker-files.html">Tips for writting docker files [  <span class="text-marabesi-pink">build,</span>  <span class="text-marabesi-pink">files,</span>  <span class="text-marabesi-pink">run,</span>  <span class="text-marabesi-pink">npm,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

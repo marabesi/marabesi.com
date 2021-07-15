@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>My setup for web development, 2020 edition</title>
+    <meta name="description"
+      content="Usually I like to jump from one setup to another just for fun of learningsome new tricks, I have worked on windows, linux and macos. Currently, mysetup is li...">
+
+    <link rel="canonical" href="https://marabesi.com/development/2020/11/14/my-setup-for-web-development-2020.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="My setup for web development, 2020 edition" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/development/2020/11/14/my-setup-for-web-development-2020.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2020-11-14-my-setup-for-web-development-2020/cover.png" />
+    <meta property="og:description"
+      content="Usually I like to jump from one setup to another just for fun of learningsome new tricks, I have worked on windows, linux and macos. Currently, mysetup is li..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="My setup for web development, 2020 edition">
+    <meta name="twitter:description"
+      content="Usually I like to jump from one setup to another just for fun of learningsome new tricks, I have worked on windows, linux and macos. Currently, mysetup is li...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2020-11-14-my-setup-for-web-development-2020/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2020-11-14 04:06:05 +0000">
+
+    <meta name="keywords" content="tmux,docker,setup,development,zsh,version,vscode,IDE,system,text,vim,configuration" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="my-setup-for-web-development-2020">My setup for web development, 2020 edition</h1>
+
+        <p>Usually I like to jump from one setup to another just for fun of learning
+some new tricks, I have worked on windows, linux and macos. Currently, my
+setup is linux, though, previously I used a macos. The latest version
+that I got in touch was macos Catalina.</p>
+
+<p>This post aims to cover my currently setup that I have been using in 2020 and
+provide details on configuration and why the decision to chose a given tool.</p>
+
+<p>Disclaimer: this is my personal setup, I am not endorsing any particular
+tool over another.</p>
+
+<h2 id="operating-system">Operating system</h2>
+
+<p>There are two major distros that I have been using, <a href="https://elementary.io" target="_blank">Elementary OS</a> for work and
+my personal laptop has <a href="https://manjaro.org" target="_blank">Manjaro (Gnome version)</a>. The Manjaro specs are as follows:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>OS Name              Manjaro Linux; Build ID: rolling
+OS                   Type64-bit
+Gnome version        3.38.1
+Windowing system     X11
+</code></pre></div></div>
+
+<h2 id="development-environment">Development environment</h2>
+
+<p>My development environment changes based on the type of application that
+I am working on, but for this section, I am describing the tools that I use
+for the overall development cycle, which means that I will use those
+regardless of the app I am building.</p>
+
+<h3 id="fonts">Fonts</h3>
+
+<p>For font I use <a href="https://github.com/ryanoasis/nerd-fonts" target="_blank">nerd font</a>,
+which provides a lot of custom fonts and also icons (based on the font) for the terminal.</p>
+
+<h3 id="zsh">Zsh</h3>
+
+<p>Personally I use the zsh shell instead of the default one that comes with linux distros.
+Besides that I also use the plugin <a href="https://github.com/ohmyzsh/ohmyzsh" target="_blank">oh my zsh</a>
+that provides extra functionality to the zsh shell. It has been a companion of mine
+for many years, despite of its ease of installation it helps me to keep a
+acceptable productive level, avoiding repetitive key strokes and auto completing
+my terminal commands.</p>
+
+<p>The plugins that I have enabled on my configuration are:</p>
+
+<ul>
+  <li><a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/git" target="_blank">git</a></li>
+  <li><a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/dotenv" target="_blank">dotenv</a></li>
+  <li><a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker" target="_blank">docker</a></li>
+  <li><a href="https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/docker-compose" target="_blank">docker-compose</a></li>
+  <li><a href="https://github.com/zsh-users/zsh-autosuggestions" target="_blank">zsh-autosuggestions</a></li>
+  <li><a href="https://github.com/zsh-users/zsh-syntax-highlighting" target="_blank">zsh-syntax-highlighting</a></li>
+  <li><a href="https://github.com/marlonrichert/zsh-autocomplete" target="_blank">zsh-autocomplete</a></li>
+</ul>
+
+<p>Besides that I personally have a few aliases that I configured to help me to
+avoiding typing repetitive commands, the follow list depicts the custom aliases:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">alias </span><span class="nv">hh</span><span class="o">=</span><span class="s2">"cd ~/Projects"</span>
+</code></pre></div></div>
+
+<p>As a theme for zsh I use <a href="https://github.com/romkatv/powerlevel10k" target="_blank">powerlevel10k</a>
+which provides a easy to setup, custom terminal look.</p>
+
+<h3 id="tmux">Tmux</h3>
+
+<p>For a more productive terminal I stopped using the terminal tabs in favor of
+<a href="https://github.com/tmux/tmux" target="_blank">tmux</a> windows/panes. The tmux approach allows me to create, delete, split, resize
+panes with a few key binding and the most important, without leaving the keyboard.</p>
+
+<p>As a companion to tmux I use a plugin called <a href="https://github.com/gpakosz/.tmux" target="_blank">.tmux</a> that self describes it as a “oh my tmux”,
+which I think is influenced by the “oh my zsh” and also provides extra functionality
+to tmux, without the need of trcking the tmux config yourself.</p>
+
+<h3 id="docker">Docker</h3>
+
+<p>I got started in the virtualization via virtual box and specifically for development
+with Laravel homestead, then, I decided to move to docker as it setup require
+less steps compared to the virtualization approach.</p>
+
+<p>Besides docker, I often use docker compose to compose my services. Currently
+the versions that I am using are:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>Docker version 19.03.13-ce, build 4484c46d9d
+
+docker-compose version 1.26.2, build eefe0d31
+</code></pre></div></div>
+
+<p>Docker became the standard for for any dependency that the apps I am building
+depend on, for example, if I need redis, I will use docker for setting up
+the service, the same applies for databases, those are the docker images that I
+use often in my flow:</p>
+
+<ul>
+  <li>mysql</li>
+  <li>redis</li>
+  <li>nodejs</li>
+  <li>python</li>
+  <li>php</li>
+  <li>rabbitmq</li>
+</ul>
+
+<p>Instead of have those dependencies installed locally, I setup them using docker
+instead. For example, the most common workflow with nodejs is to use nvm and
+switch between node version locally:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>nvm install 12
+</code></pre></div></div>
+
+<p>Once the version is installed, the nodejs is available in the path, such as:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>node --version
+</code></pre></div></div>
+
+<p>My approach is to use docker first, instead of nvm:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>docker run --rm node:12 -v $(pwd):/app -w /app node --version
+</code></pre></div></div>
+
+<p>The gotcha is to use the flag <code class="language-plaintext highlighter-rouge">w</code> (workspace) and <code class="language-plaintext highlighter-rouge">v</code>(volume). Those flags
+translate into something like: I have an app in this directory and I want
+to map them to the container, and also I want to use <code class="language-plaintext highlighter-rouge">/app</code> as the default
+directory to execute the commands inside the container.</p>
+
+<h2 id="ides-and-text-editors">IDE’s and text editors</h2>
+
+<p>I have used a bunch of IDE’s and text editors, professionally and also as a hobby
+just to get the gist of it. I remember using, netbeans for php, eclipse for java,
+and sometimes notepad++ as well for simple HTML editting.</p>
+
+<p>During the years I became more familiar with: vim, vscode and PHPStorm. Those
+are the ones I use most often.</p>
+
+<h3 id="vim">Vim</h3>
+
+<p>Vim has been one of the text editor that I use the most due its key bindings. I
+previously discussed about vim and how was the process of adopting it as a full
+time text editor <a class="citation" href="#vim_30_days">[1]</a>
+<a class="citation" href="#30_days_of_vim_one_week_after">[2]</a>.</p>
+
+<p>I still use vim but in another flavor, neovim. Besides that used to setup
+my vim configuration using vim bootstrap, but since I discovered SpaceVim, I switched
+to it.</p>
+
+<p>I often use this setup to edit configuration files related to the operating system.
+For development, I use vscode.</p>
+
+<h3 id="vscode">Vscode</h3>
+
+<p>Vscode is the text editor that I spend most time in, as it has support for
+javascript/typescript out of the box. I do not use vscode as it comes, I have
+a list of plugins that I work with to make it as productive as possible
+for my use case. The extension list is as follows:</p>
+
+<ol>
+  <li>vim</li>
+  <li>eslint</li>
+  <li>settings sync</li>
+  <li>file utils</li>
+  <li>formate: CSS/LESS/CSS</li>
+  <li>gitlens</li>
+  <li>jest runner</li>
+  <li>macrosRe</li>
+  <li>tailwind CSS Intellisense</li>
+  <li>wakatime</li>
+</ol>
+
+<p>Theme used:</p>
+
+<ul>
+  <li><a href="https://marketplace.visualstudio.com/items?itemName=zhuangtongfa.Material-theme" target="_blank">Onde dark pro</a></li>
+</ul>
+
+<p>Font:</p>
+
+<ul>
+  <li><a href="https://www.jetbrains.com/lp/mono" target="_blank">JetBrainsMono</a></li>
+</ul>
+
+<p>The vim (1) extension is the one I use the most, as it brings the vim key bindings to
+vscode, in a normal workflow I often use a mix of vim and vscode bindings.</p>
+
+<p>Sync settings (2) is the first extension that I get working on a fresh install
+of vscode, in two special ocasions: New laptop or new operating system installed.
+The extension helps me to get the extensions, fonts, themes and custom
+settings up in seconds.</p>
+
+<h3 id="phpstorm">Phpstorm</h3>
+
+<p>PHPstorm is my preferred IDE to edit PHP files or to do refactoring. I tried
+to keep all my use cases in PHP on vscode code but the intelisense and experience
+that PHPStorm has for PHP is better.</p>
+
+<h3 id="dbeaver">DBeaver</h3>
+
+<p>DBeaver is been the DBMS that I have used the most for MySQL and postgres.
+Previously I used MySQL workbench for MySQL, but since I started to require
+more than one type of database, DBeaver suited better my needs.</p>
+
+<h3 id="robo-3t">Robo 3T</h3>
+
+<p>For mongodb the GUI that helped my since I started is Robo 3T, which provides
+a simple interface and with the features I need to go through collections,
+connect to different servers and query data.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="vim_30_days">[1]M. Marabesi, “30 days of VIM,” 2020 [Online]. Available at: <a href="https://marabesi.com/thoughts/2018/01/22/30-days-of-vim.html" target="_blank">https://marabesi.com/thoughts/2018/01/22/30-days-of-vim.html</a>. [Accessed: 20-Nov-2020]</span></li>
+<li><span id="30_days_of_vim_one_week_after">[2]M. Marabesi, “30 days of VIM - One week after,” 2020 [Online]. Available at: <a href="https://marabesi.com/thoughts/2018/01/29/30-days-of-vim-1-week-after.html" target="_blank">https://marabesi.com/thoughts/2018/01/29/30-days-of-vim-1-week-after.html</a>. [Accessed: 20-Nov-2020]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#my-setup-for-web-development-2020">Introduction</a></li>
+  <li><a href="#operating-system">Operating system</a></li>
+  <li><a href="#development-environment">Development environment</a></li>
+  <li><a href="#ides-and-text-editors">IDE’S and text editors</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/development/2020/11/14/my-setup-for-web-development-2020.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/development/2020/11/14/my-setup-for-web-development-2020.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/development/2020/11/14/my-setup-for-web-development-2020.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/devops/2020/05/15/tips-for-writting-docker-files.html">Tips for writting docker files [  <span class="text-marabesi-pink">docker,</span>  <span class="text-marabesi-pink">setup,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/thoughts/2018/01/22/30-days-of-vim.html">30 days of VIM [  <span class="text-marabesi-pink">vim,</span>  <span class="text-marabesi-pink">IDE,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html">Requirements Engineering - A tool for Use Case [  <span class="text-marabesi-pink">development,</span>  <span class="text-marabesi-pink">version,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

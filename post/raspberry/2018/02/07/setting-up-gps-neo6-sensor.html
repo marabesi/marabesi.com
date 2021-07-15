@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Setting up GPS NEO 6 sensor</title>
+    <meta name="description"
+      content="Recently I have had the chance to set up a basic IoT project which consists of localization by GPS.The decision was to work with the Raspberry board over the...">
+
+    <link rel="canonical" href="https://marabesi.com/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Setting up GPS NEO 6 sensor" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2018-02-07-setting-up-gps-neo6-sensor/cover.jpg" />
+    <meta property="og:description"
+      content="Recently I have had the chance to set up a basic IoT project which consists of localization by GPS.The decision was to work with the Raspberry board over the..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Setting up GPS NEO 6 sensor">
+    <meta name="twitter:description"
+      content="Recently I have had the chance to set up a basic IoT project which consists of localization by GPS.The decision was to work with the Raspberry board over the...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2018-02-07-setting-up-gps-neo6-sensor/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2018-02-07 19:30:18 +0000">
+
+    <meta name="keywords" content="gps,GPS,NEO,command,neo 6,raspberry,Raspberry,pi,gpsd,cgps,sensor,serial,uart,gpio,GPIO,iot,port,client,signal,work" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="setting-up-gps-neo6-sensor">Setting up GPS NEO 6 sensor</h1>
+
+        <p>Recently I have had the chance to set up a basic IoT project which consists of localization by GPS.
+The decision was to work with the Raspberry board over the arduino based on the number os shields
+that arduino would use.</p>
+
+<p>To get start with we would need a Wi-Fi(or GSM) shield, which on raspberry is just an adapter. The
+second point was the MQTT protocol and the code maintenability. Whereas on arduino is just plain C,
+with Raspberry we have more options. One could argue that we can use the standard firmata
+to avoid using C, but just for clarity this wasn’t the crucial point.</p>
+
+<p>After deciding which board to use the time was to gather the GPS. As you might have guesses the GPS
+NEO 6 was the chose one (most of NEO6 comes with an external antena, but here I used one
+with a internal antena).</p>
+
+<p>In this post you will see the following:</p>
+
+<ol>
+  <li>Wiring up the components</li>
+  <li>How to configure the Raspberry Pi and read data from the GPS</li>
+  <li>Enable the UART mode in a specific GPIO</li>
+  <li>Gotchas, a few tricks and tips to help you mitigate problems</li>
+</ol>
+
+<h2 id="important---edit-0501">IMPORTANT - EDIT 05/01</h2>
+
+<p>The antenna that comes with this sensor is really cheap and takes time to receive the signal from the satellites.
+Make sure to be outside, and with a clear vision from the sky to improve your success of getting a signal.</p>
+
+<p>The sensor has a PPS indicator (green light), when blinking it indicates that the signal is comming and
+therefore you are receiving the correct information. Otherwise the light will keep on, which means that
+it is trying to connect.</p>
+
+<h2 id="wiring-up">Wiring up</h2>
+
+<p><em>IMPORTANT</em>: Before we start, the version of Raspberry Pi that I used is the model 2 B+, but it should
+be really simple to adapt for any Pi version.</p>
+
+<p>The first thing to be in mind is the wiring, be careful while seeting up the wires RX and TX. I just made
+a mistake that was plugin TX on TX and RX to RX. To avoid any further erros, the table below
+show the pin name (from the GPS NEO 6) and where it should go on the Raspberry Pi.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>GPS NEO 6</th>
+      <th>Raspberry Pi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">RX   -&gt;</code></td>
+      <td>TX - GPIO 15</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">TX   -&gt;</code></td>
+      <td>RX - GPIO 16</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">VCC  -&gt;</code></td>
+      <td>3.3v or 5v</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">GND  -&gt;</code></td>
+      <td>GND</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The table below was build looking at the <a href="http://pi4j.com/pins/model-b-plus.html" target="_blank">pi4j</a> project, which has an
+image to better illustrate the pins. For now the figure below should do the work.</p>
+
+<p><img src="/images/posts/2018-02-07-setting-up-gps-neo6-sensor/wires.png" alt="GPS NEO 6 wires" /></p>
+
+<p>If you follow everything as described in the table and in the figure, you should see a green light on
+the GPS NEO 6. This means that at least the power was plugged correctly. The next step
+is to check the RX and TX connections which will send to use the data through the serial port.</p>
+
+<p>The first test doesn’t need any special software, we are going to connect using the cat command
+directly to the serial port.</p>
+
+<blockquote>
+
+  <p><em>IMPORTANT</em>: Before testing the signal from the sensor is needed to convert the GPIO from IN to
+UART in order to do that we need the GPIO numbers that we connected our GPS, in our case
+it is 15 and 16.</p>
+
+  <p>Next just type the following command to switch the GPIO mode:</p>
+
+  <p><code class="language-plaintext highlighter-rouge">shell gpio mode 15 ALT0; gpio mode 16 ALT0</code></p>
+
+  <p>Doing that will the work, but keep in mind that once you restart the Pi the default configuration
+will be restored. The ideal step here is to add this command into the <code class="language-plaintext highlighter-rouge">/etc/rc.local</code>, so
+everytime the Pi restarts it will run this command automatically.</p>
+</blockquote>
+
+<p>Access your Raspberry Pi through SSH or plugin an keyboard and monitor to get to the shell. Once
+you are in, type the following command:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">sudo cat</span> /dev/serial0
+</code></pre></div></div>
+
+<p>If everything is correct you should see the following response:</p>
+
+<p><a href="https://www.waveshare.com/wiki/UART_GPS_NEO-6M" target="_blank"><img src="https://www.waveshare.com/w/upload/b/bb/UART-GPS-NEO-6M-User-Manual-2.png" alt="Font: Waveshare.com" /></a></p>
+
+<p><small>Font: Waveshare.com</small></p>
+
+<p>The serial port <code class="language-plaintext highlighter-rouge">/dev/serial0</code> is an alias to the real one <code class="language-plaintext highlighter-rouge">/dev/ttyAMA0</code>. If for some reason your serial
+port is not the same as this post, first find it and replace the serial with the correct one.</p>
+
+<p>Finally we have everything done to use the GPS daemon and client. If you have a look at the raw
+logs from the serial port, the text has an pattern but is difficult to understand and difficult
+to interact with (parse and use the data for an application). For that reason the project
+<a href="http://www.catb.org/gpsd" target="_blank">GPSD</a> exists, which is a library to help to communicate with the GPS sensor (
+not to mention the amazing interface between the sensor and the client).</p>
+
+<p>To use it, just run the <code class="language-plaintext highlighter-rouge">apt-get</code> command as the following:</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>sudo apt-get install gpsd gpsd-clients
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">gpsd</code> is the deamon that runs in the backgroud to fill up the GPS client, without the deamon
+is not possible to fetch the data that comes from the GPS. Even if you try to access the client
+with the command <code class="language-plaintext highlighter-rouge">cgps</code> it will give you a error message.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pi@raspberrypi:~ <span class="nv">$ </span>cgps
+cgps: no gpsd running or network error: <span class="nt">-6</span>, can<span class="s1">'t connect to host/port pair
+</span></code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">cgps</code> is the client that comes from the package <code class="language-plaintext highlighter-rouge">gpsd-clients</code> that we’ve installed.</p>
+
+<p>To prevent the error we need to start the deamon passing as an argument the serial
+port in which our GPS is connected to.</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpsd /dev/serial0
+</code></pre></div></div>
+
+<p>The command <code class="language-plaintext highlighter-rouge">cgps</code> should work as a spected now. The picture below ilustrates the result
+after invoking the command.</p>
+
+<p><img src="/images/posts/2018-02-07-setting-up-gps-neo6-sensor/cgps.png" alt="cgps client response" /></p>
+
+<p>obs: The response given by the <code class="language-plaintext highlighter-rouge">cgps</code> is a JSON, to understand the content of each key
+check out the <a href="http://www.catb.org/gpsd/gpsd_json.html" target="_blank">official documentation</a>.</p>
+
+<h2 id="gotchas">Gotchas</h2>
+
+<p>In my experience the GPS NEO 6 takes a long time to start receiving signal from the satellites accross the earth.
+It takes from 30 minutes to 2 hours, when it suposed to be less than 1 minute. Keep in mind that it can happen
+to you as well but don’t worry, just wait and keep an eye in the logs.</p>
+
+<h2 id="references">References</h2>
+
+<ul>
+  <li><a href="http://www.instructables.com/id/Raspberry-Pi-the-Neo-6M-GPS" target="_blank">RASPBERRY PI &amp; THE NEO 6M GPS</a></li>
+  <li><a href="http://www.catb.org/gpsd" target="_blank">gpsd — a GPS service daemon</a></li>
+</ul>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#setting-up-gps-neo6-sensor">Introduction</a></li>
+  <li><a href="#important---edit-0501">Important - Edit 05/01/2018</a></li>
+  <li><a href="#wiring-up">Wiring up</a></li>
+  <li><a href="#gotchas">Gotchas</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/iot/2021/01/29/mapping-ir-emitter-k005-receiver-ky-022-to-raspberry.html">Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor [  <span class="text-marabesi-pink">sensor,</span>  <span class="text-marabesi-pink">gpio,</span>  <span class="text-marabesi-pink">iot,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/posts/2018/02/16/sim800l-tracking-your-iot-device.html">SIM800L tracking your IoT device [  <span class="text-marabesi-pink">command,</span>  <span class="text-marabesi-pink">iot,</span>  <span class="text-marabesi-pink">serial,</span>  <span class="text-marabesi-pink">gps,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/post/2017/03/01/running-php-with-arduino.html">Running PHP with Arduino [  <span class="text-marabesi-pink">serial,</span>  <span class="text-marabesi-pink">iot,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/iot/php/2016/05/31/bringing-php-iot-together.html">Bringing PHP and IoT together [  <span class="text-marabesi-pink">iot,</span>  <span class="text-marabesi-pink">serial,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

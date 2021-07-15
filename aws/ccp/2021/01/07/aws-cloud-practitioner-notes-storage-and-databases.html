@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>AWS cloud practitioner notes - Storage and databases</title>
+    <meta name="description"
+      content="Introduction">
+
+    <link rel="canonical" href="https://marabesi.com/aws/ccp/2021/01/07/aws-cloud-practitioner-notes-storage-and-databases.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="AWS cloud practitioner notes - Storage and databases" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/aws/ccp/2021/01/07/aws-cloud-practitioner-notes-storage-and-databases.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/manifest/icon-192x192.png" />
+    <meta property="og:description"
+      content="Introduction" />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="AWS cloud practitioner notes - Storage and databases">
+    <meta name="twitter:description"
+      content="Introduction">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/manifest/icon-192x192.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-01-07 04:06:05 +0000">
+
+    <meta name="keywords" content="Amazon,aws,AWS,S3,EBS,database,Database,data,databases,DynamoDB,Module,RDS,objects,storage,type,service,migration,files,application,volumes,,store,Use case" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="aws-cloud-practitioner-notes-storage-and-databases">AWS cloud practitioner notes - Storage and databases</h1>
+      <h2 id="introduction">Introduction</h2>
+
+<p>This module describes the AWS services for storage and databases. AWS has
+different services that goes from file storaging service to serverless
+database.</p>
+
+<h2 id="module-5---instance-stores-and-amazon-elastic-block-store">Module 5 - Instance stores and Amazon Elastic Block Store</h2>
+
+<p>Block storage level are places to store files, EC2 has different types
+of storage as well.</p>
+
+<ul>
+  <li>instance store volumes (physical attached to AWS host) - temporary type <a class="citation" href="#ec2_instance_store">[1]</a></li>
+  <li>EBS are virtual hard drives or EBS volumes - persistant type</li>
+</ul>
+
+<p>Incremental snapshops (backup) can be taken from EBS volumes and restored later.</p>
+
+<h2 id="module-5---amazon-simple-storae-service-amazon-s3">Module 5 - Amazon Simple Storae Service (Amazon S3)</h2>
+
+<p>Amazon S3 is a storage service that allows you to store and retrieve files at any scale and pay only for what you use.</p>
+
+<ul>
+  <li>Store data as object</li>
+  <li>Storage objects in buckets</li>
+  <li>Upload maximum object size of 5TB</li>
+  <li>Version objects</li>
+  <li>Create multiple buckets</li>
+</ul>
+
+<h3 id="s3-classes-or-tiers">S3 classes (or tiers)</h3>
+
+<ul>
+  <li>S3 standard 99,99999999999% of durability</li>
+  <li>S3 standard infrequent access (backups, disaster recovery files)</li>
+  <li>S3 One Zone-Infrequent access (S3 one Zone-IA)</li>
+  <li>S3 intelligent-Tiering (unkown or changing access patterns)</li>
+  <li>AWS Glacier to archive data (Able to retrieve objects in minutes)</li>
+  <li>AWS Glacier deep archive (Able to retrieve objects within 12 hours)</li>
+</ul>
+
+<p>It is possible to move objects between tiers through S3 lifecycle management. For example, from s3 standard to s3 infrequent access.</p>
+
+<h3 id="comparing-amazon-ebs-and-amazon-s3">Comparing Amazon EBS and Amazon S3</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>EBS</th>
+      <th>S3</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>up to 16TB</td>
+      <td>Unlimited storage</td>
+    </tr>
+    <tr>
+      <td>Survive EC2 termination</td>
+      <td>Indiviual objects up to 5 TB</td>
+    </tr>
+    <tr>
+      <td>Solid state by default</td>
+      <td>Write once/read many</td>
+    </tr>
+    <tr>
+      <td>HDD options</td>
+      <td>99,99999999999% durability</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="use-case-1---app-to-upload-a-photo-file">Use case 1 - App to upload a photo file</h4>
+
+<p>S3 is the prefered approach here, for the following reasons:</p>
+
+<ul>
+  <li>Web enabled</li>
+  <li>Regionally distributed</li>
+  <li>Offers cost savings</li>
+  <li>Serverless</li>
+</ul>
+
+<h4 id="use-case-2---video-editing-on-a-file">Use case 2 - Video editing on a file</h4>
+
+<p>Object storage treats every file as a complete discreate object, perfect for files that are consumed as a whole.</p>
+
+<p>Block storage breaks the files in smaller pieces (blocks), for a bunch of a small changes, EBS is preverable.</p>
+
+<p>Complete changes = S3
+Complex read, write, change functions = EBS</p>
+
+<h2 id="module-5---amazon-elastic-file-system-efs">Module 5 - Amazon Elastic File System (EFS)</h2>
+
+<p>Multiple instances can access the data in EFS at the same time, it scales
+up and down as needed. The differences between EBS and EFS are:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>EBS</th>
+      <th>EFS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Amazon EBS are attached to EC2 instances</td>
+      <td>Multiple instances reading and writing simultaneosly</td>
+    </tr>
+    <tr>
+      <td>Availability zone level resource</td>
+      <td>True file system/multiple availability zones</td>
+    </tr>
+    <tr>
+      <td>Need to be in the same availability zone to the attached EC2 instance</td>
+      <td>Regional resource</td>
+    </tr>
+    <tr>
+      <td>EBS volumes do not automatically scales</td>
+      <td>Automatically scales up and down</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="module-5---amazon-relational-database-service-rds">Module 5 - Amazon Relational Database Service (RDS)</h2>
+
+<ul>
+  <li>Automated patching</li>
+  <li>Backups</li>
+  <li>Redundancy</li>
+  <li>Failover</li>
+  <li>Disaster recovery</li>
+</ul>
+
+<h3 id="amazon-aurora">Amazon Aurora</h3>
+
+<ul>
+  <li>MySQL or PostgreSQL support</li>
+  <li>1/10th cost of commercial databases</li>
+  <li>Data replication</li>
+  <li>Up to 15 read replicas</li>
+  <li>Automated backup to S3</li>
+</ul>
+
+<h2 id="module-5---amazon-dynamodb">Module 5 - Amazon DynamoDB</h2>
+
+<p>DynamoDB is serverless in a sense that you don’t have to provision or, install, maintain or operate the server that the database is in. DynamoDB
+scales automatically to adjust the changes in the database.</p>
+
+<ul>
+  <li>Non-relational databasel</li>
+  <li>Milisecond response time</li>
+  <li>Fully managed</li>
+  <li>Highly scalable</li>
+</ul>
+
+<h3 id="comparing-amazon-rds-and-dynamodb">Comparing Amazon RDS and DynamoDB</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>RDS</th>
+      <th>DynamoDB</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Automatic high availability</td>
+      <td>Key-value</td>
+    </tr>
+    <tr>
+      <td>Customer ownership of data</td>
+      <td>Massive throughput capabilities</td>
+    </tr>
+    <tr>
+      <td>Customer ownership of schema</td>
+      <td>PB size potential</td>
+    </tr>
+    <tr>
+      <td>Customer control of network</td>
+      <td>Granular API access</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="use-case-1---sales-supply-chain-application">Use case 1 - sales supply chain application</h4>
+
+<p>RDS is the choice as its application is built for analytics and requires
+complex relationships between the data.</p>
+
+<h4 id="use-case-2---employee-contact-list-application">Use case 2 - Employee contact list application</h4>
+
+<p>Single table territory, potentially relational, but not required as the
+relationship between data would create an overead maintaining the
+relationships.</p>
+
+<h2 id="module-5---amazon-redshift">Module 5 - Amazon Redshift</h2>
+
+<p>Amazon Redshift is a dataware house service used for analytics. You
+can collect data from many sources and see the relationships accross
+the data.</p>
+
+<h2 id="module-5---amazon-database-migration-service-aws-dms">Module 5 - Amazon Database Migration Service (AWS DMS)</h2>
+
+<p>Amazon Database Migration Service helps you to migrate databases into
+aws.</p>
+
+<h3 id="homogenous-databases">Homogenous databases</h3>
+
+<p>The first type of migration is: homogeonous. Homogenous databases are migrations across the same database type. For example:</p>
+
+<ul>
+  <li>MySQL to Amazon RDS for MySQL</li>
+  <li>Microsoft SQL Server to Amazon RDS for SQL Server</li>
+  <li>Oracle to Amazon RDS for Oracle</li>
+</ul>
+
+<h3 id="heterogeneous-databases">Heterogeneous databases</h3>
+
+<p>The second type of migration is: heterogeneous databases. Which provides
+a migration for different database vendors.</p>
+
+<p>For this type of migration there are two steps, the first is the convertion from the database source into the origin database. Then
+the last step is to do the migration.</p>
+
+<h2 id="module-5---additional-database-services">Module 5 - Additional database services</h2>
+
+<ul>
+  <li>Amazon DocumentDB - document database that supports MongoDB</li>
+  <li>Amazon Neptune - Graph database service</li>
+  <li>Amazon Quantum Ledger Database - Review a complete history of all the changes that have been mande to your application data</li>
+  <li>Amazon Managed Blockchain - A service used to create managed blockchain networks</li>
+  <li>Amazon ElastiCache - A service that adds caching layer to improve application response time</li>
+  <li>Amazon DynamoDB accelerator - In memory cache for DynamoDB</li>
+</ul>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="ec2_instance_store">[1]AWS, “Amazon EC2 instance store,” 2021 [Online]. Available at: <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html" target="_blank">https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html</a>. [Accessed: 07-Jan-2021]</span></li></ol>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/aws/ccp/2021/01/07/aws-cloud-practitioner-notes-storage-and-databases.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/aws/ccp/2021/01/07/aws-cloud-practitioner-notes-storage-and-databases.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/aws/ccp/2021/01/07/aws-cloud-practitioner-notes-storage-and-databases.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

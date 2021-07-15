@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Clean architecture</title>
+    <meta name="description"
+      content="Separation of consern, isolating pieces of code that repeats and decouplingresponsabilities from differents parts of the code base seems to be acommon approa...">
+
+    <link rel="canonical" href="https://marabesi.com/architecture/2020/05/22/clean-architecture.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Clean architecture" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/architecture/2020/05/22/clean-architecture.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/manifest/icon-192x192.png" />
+    <meta property="og:description"
+      content="Separation of consern, isolating pieces of code that repeats and decouplingresponsabilities from differents parts of the code base seems to be acommon approa..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Clean architecture">
+    <meta name="twitter:description"
+      content="Separation of consern, isolating pieces of code that repeats and decouplingresponsabilities from differents parts of the code base seems to be acommon approa...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/manifest/icon-192x192.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2020-05-22 04:06:05 +0000">
+
+    <meta name="keywords" content="architecture,clean,hexagonal,code,approach,book,Screaming architecture,DCI,BCE" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="clean-architecture">Clean architecture</h1>
+
+        <p>Separation of consern, isolating pieces of code that repeats and decoupling
+responsabilities from differents parts of the code base seems to be a
+common approach among experienced developers. Therefore, through the experience
+comes the opinionated approach, some developers might decide to create
+specific directories or others might use longer file names to express intent.</p>
+
+<p>I have published my own thoughts on that matter as well, and then I discovered
+the clean architecture book <a class="citation" href="#clean_architecture_book">[1]</a>,
+which dives much deeper on that subject and also explores the pros of
+having a architecture in place.</p>
+
+<h2 id="architectural-styles-compared-to-the-clean-architecture">Architectural styles compared to the clean architecture</h2>
+
+<p>As I first started my path through the clean architecture I often found asking myself: is
+hexagonal architecture <a class="citation" href="#hexagonal_architecutre">[2]</a>
+the same as clean architecutre? The clean architecture, shares decisions compared
+with the hexagonal architecture, as <a class="citation" href="#clean_architecture_article">[3]</a>
+states that the clean architecture is an attempt to integrate the hexagonal
+architecture and other as well, named:</p>
+
+<ol>
+  <li>Hexagonal architecture / Onion architecutre</li>
+  <li>Screaming architecture</li>
+  <li>DCI</li>
+  <li>BCE</li>
+</ol>
+
+<p>The clean architecture is an attempt to combine those styles together to produce
+an output.</p>
+
+<h2 id="clean-architecture-in-a-glance">Clean architecture in a glance</h2>
+
+<p>Clean architecture focuses on the separation of concerns and also it takes
+care of the evolution of the code, the evolution is one of key aspects of the
+clean architecture as it has a dedicated section in the first chapter, “The Total Cost of Owning a Mess”,
+<a class="citation" href="#clean_architecture_book">[1]</a>
+that depicts the fact that the productivity degrades as the time goes. Which
+is caused by the lack of care with code and also the software maintainability. 
+The following diagram taken from <a class="citation" href="#clean_architecture_article">[3]</a>
+depicts the clean architecture overview.</p>
+
+<p><a href="/images/posts/2020-05-22-clean-architecture/CleanArchitecture.jpg" target="_blank"><img src="/images/posts/2020-05-22-clean-architecture/CleanArchitecture.jpg" alt="Clean architecture diagram" /></a></p>
+
+<p>The structure I am following next is the same presented by <a class="citation" href="#clean_architecture_article">[3]</a>,
+so then I can follow some line of thought, besides that I also give my contribution
+to each section.</p>
+
+<h3 id="the-dependency-rule">The dependency rule</h3>
+
+<p>The depdency rule follows basicaly the same principle as the layered architecture.
+<a class="citation" href="#software_architectural_patterns">[4]</a>. Anything
+in the inner circle should not know anything about the outer circle, the same principle
+in the layered architecture, to keep layers following a same direction.</p>
+
+<h3 id="entities">Entities</h3>
+
+<p>Entities are the objects that represents the business.</p>
+
+<h3 id="use-cases">Use cases</h3>
+
+<p>Use cases are the business rule that the application executes. Here is the place
+to add the business logic. In a comparison with MVC, the use case, is the place
+as where the controller is.</p>
+
+<h3 id="frameworks-and-adapters">Frameworks and adapters</h3>
+
+<p>Opposed to what MVC frameworks impose in the architecture for web applications,
+the clean architecture does not take the framework as something that is the core
+of the application, instead the framework is something that is a “implementation
+detail”, meaning that it is possible to change the framework choice if needed,
+without impacting the use cases. The same way as the framework is a detail
+the database is as well <a class="citation" href="#clean_architecture_article">[3]</a>.</p>
+
+<h2 id="implementaion-details">Implementaion details</h2>
+
+<p>The book comes with code examples to ilustrate the scenarios and also to make
+statements on the point being made, therefore, there is no folder structure,
+file name convention or waht so ever to “glue the pieces together”. This is a
+point to improve, but not necessary in the book. I would argue that for any programmer
+with a few years of experience, the concepts given are understandable, but
+there are programmers like me that like some sort of guide lines so the
+it is possible to compare implementations.</p>
+
+<p><a class="citation" href="#hands_dirty_on_clean_architecture">[5]</a>
+provides a implemention of clean architecture using java. It goes along the
+clean architecture definitions and depicts folder structure, files, boundaries,
+abstractions and also reinforce definitions on the use cases.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="clean_architecture_book">[1]R. C. Martin, “Clean Architecture A Craftsman’s Guide To Software Structure And Design,” 2017 [Online]. Available at: <a href="https://archive.org/details/CleanArchitecture/page/n179/mode/2up" target="_blank">https://archive.org/details/CleanArchitecture/page/n179/mode/2up</a>. [Accessed: 2020-Jun-11AD]</span></li>
+<li><span id="hexagonal_architecutre">[2]A. Cockburn, “Hexagonal architecture,” 2012 [Online]. Available at: <a href="https://alistair.cockburn.us/hexagonal-architecture" target="_blank">https://alistair.cockburn.us/hexagonal-architecture</a>. [Accessed: 13-Aug-2012]</span></li>
+<li><span id="clean_architecture_article">[3]R. C. Martin, “The Clean Architecture,” 2020 [Online]. Available at: <a href="https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html" target="_blank">https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html</a>. [Accessed: 07-Oct-2020]</span></li>
+<li><span id="software_architectural_patterns">[4]R. Mark, <i>Software Architecture Patterns</i>. O’Reilly Media, Inc, 2015. </span></li>
+<li><span id="hands_dirty_on_clean_architecture">[5]T. Hombergs, “Get Your Hands Dirty on Clean Architecture - A Hands-on Guide to Creating Clean Web Applications with Code Examples in Java,” 2020 [Online]. Available at: <a href="https://leanpub.com/get-your-hands-dirty-on-clean-architecture" target="_blank">https://leanpub.com/get-your-hands-dirty-on-clean-architecture</a>. [Accessed: 30-Jan-2020]</span></li></ol>
+
+<!-- 12 factors to consider when chosing frameworks https://www.zend.com/blog/php-frameworks-top-12-factors-consider
+student summary: http://courses.cecs.anu.edu.au/courses/CSPROJECTS/19S2/reports/u6052043_report.pdf
+another student summary: http://courses.cecs.anu.edu.au/courses/CSPROJECTS/19S1/reports/u6022913_report.pdf
+https://www.youtube.com/watch?v=5OjqD-ow8GE GOTO 2018 - Modular Monoliths - Simon Brown -->
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#clean-architecture">Introduction</a></li>
+  <li><a href="#architectural-styles-compared-to-the-clean-architecture">Architectural styles compared to the clean architecture</a></li>
+  <li><a href="#clean-architecture-in-a-glance">Clean architecture in a glance</a></li>
+  <li><a href="#implementaion-details">Implementation details</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/architecture/2020/05/22/clean-architecture.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/architecture/2020/05/22/clean-architecture.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/architecture/2020/05/22/clean-architecture.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/review/2021/02/11/2020-a-year-of-reading.html">2020, a year of reading [  <span class="text-marabesi-pink">architecture,</span>  <span class="text-marabesi-pink">book,</span>  <span class="text-marabesi-pink">clean,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/review/2015/01/22/the-art-of-readable-code.html">The Art of Readable Code [  <span class="text-marabesi-pink">book,</span>  <span class="text-marabesi-pink">code,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Marabesi - Listing posts on page 1</title>
+    <meta name="description"
+      content="Trying to inspire people through software development. Here you will find posts related to web development and software engineering.
+">
+
+    <link rel="canonical" href="https://marabesi.com/">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://marabesi.com/" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/manifest/icon-192x192.png" />
+    <meta property="og:description"
+      content="Trying to inspire people through software development. Here you will find posts related to web development and software engineering.
+" />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description"
+      content="Trying to inspire people through software development. Here you will find posts related to web development and software engineering.
+">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/manifest/icon-192x192.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="">
+
+    <meta name="keywords" content="PHP,Code,Introduction,Listing,posts,page,compiling,source,Service,legacy,test,development,AWS,Node.js" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <main class="page-container container m-auto md:flex md:flex-col">
+    
+        <h1 class="hidden">Listing posts on page 1</h1>
+    
+
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="My technical reading path - Software engineering journey">
+                <a href="/thoughts/2021/06/23/my-technical-reading-path-software-engineering.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <div class="post-image rounded-full flex justify-center items-center">
+                                <span class="text-3xl font-bold text-marabesi-purple">M</span>
+                            </div>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/thoughts/2021/06/23/my-technical-reading-path-software-engineering.html" class="link no-underline hover:underline">
+                            Jun 23, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/thoughts/2021/06/23/my-technical-reading-path-software-engineering.html" class="link no-underline hover:underline">
+                            My technical reading path - Software engineering journey
+                        </a>
+                        <p class="mt-2">
+                            This is a list of readings on software engineering related topics, have fun and suggest any other reference you might want to be listed here. 📚 books 🗞 links 🎵 audio Software engineeing 📚 Head First Software Development: A Learner’s Companion to Software Development 🗞 https://engsoftmoderna.info 🗞 Software Engineering: A...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="On one hundred percent code coverage">
+                <a href="/thoughts/2021/05/29/on-100-percent-code-coverage.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-05-29-on-100-percent-code-coverage/cover.png" alt="Image of On one hundred percent code coverage"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/thoughts/2021/05/29/on-100-percent-code-coverage.html" class="link no-underline hover:underline">
+                            May 29, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/thoughts/2021/05/29/on-100-percent-code-coverage.html" class="link no-underline hover:underline">
+                            On one hundred percent code coverage
+                        </a>
+                        <p class="mt-2">
+                            The mindset for testing for developers has changed over the years as the software industry is evolving. Even though, testing practice is not widely used, it is integrated in the development cycle of the application. As such, code coverage became a popular subject among developers and discussions have been risen...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="Kubernetes quick notes deployment (WIP)">
+                <a href="/devops/2021/05/01/kubernetes-quick-notes-deployment.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-05-01-kubernetes-quick-notes-deployment/cover.png" alt="Image of Kubernetes quick notes deployment (WIP)"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/devops/2021/05/01/kubernetes-quick-notes-deployment.html" class="link no-underline hover:underline">
+                            May 1, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/devops/2021/05/01/kubernetes-quick-notes-deployment.html" class="link no-underline hover:underline">
+                            Kubernetes quick notes deployment (WIP)
+                        </a>
+                        <p class="mt-2">
+                            As opposed to docker that operates on the container level directly, kubernetes has a different approach as such there are a set of steps required to get the application running into the cluster. For example, in docker a simple docker run creates the container and starts it. In kubernetes, first...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="Jest asserts beyond equals">
+                <a href="/web/2021/04/25/jest-asserts-beyond-equals.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-04-25-jest-asserts-beyond-equals/cover.png" alt="Image of Jest asserts beyond equals"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/web/2021/04/25/jest-asserts-beyond-equals.html" class="link no-underline hover:underline">
+                            Apr 25, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/web/2021/04/25/jest-asserts-beyond-equals.html" class="link no-underline hover:underline">
+                            Jest asserts beyond equals
+                        </a>
+                        <p class="mt-2">
+                            Testing with jest is an activity that developers do to keep the application maintainable and time proof. Therefore, learning a testing framework can be a consuming task, often it has many features to explore. The assertion API (Application Programming Interface) usually is one of the most important ones, as this...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="How to lose your developers">
+                <a href="/thoughts/2021/04/08/how-to-lose-your-developers.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-04-08-how-to-lose-your-developers/cover.jpg" alt="Image of How to lose your developers"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/thoughts/2021/04/08/how-to-lose-your-developers.html" class="link no-underline hover:underline">
+                            Apr 8, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/thoughts/2021/04/08/how-to-lose-your-developers.html" class="link no-underline hover:underline">
+                            How to lose your developers
+                        </a>
+                        <p class="mt-2">
+                            This post is randoms thoughts around software development from a developer point of view. The content covered is mainly based on my career, and the opinions expressed might not fit all scenarios. Do not take the text as a saint grail or a tutorial, it is more like a conversation...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="Jest timers and reactjs">
+                <a href="/web/2021/04/04/jest-timers-and-reactjs.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-04-04-jest-timers-and-reactjs/cover.jpg" alt="Image of Jest timers and reactjs"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/web/2021/04/04/jest-timers-and-reactjs.html" class="link no-underline hover:underline">
+                            Apr 4, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/web/2021/04/04/jest-timers-and-reactjs.html" class="link no-underline hover:underline">
+                            Jest timers and reactjs
+                        </a>
+                        <p class="mt-2">
+                            This post explores the possibilities to use fake timers with jest. Such feature is needed for async testing, whereas is needed to await for some computation to finish. Such computation can vary on time, for example, 1 second, or 10 minutes. In a test case scenario, the waiting for this...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="Firebase UI localization">
+                <a href="/development/2021/03/15/firebase-ui-localization.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-03-15-firebase-ui-localization/cover.jpg" alt="Image of Firebase UI localization"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/development/2021/03/15/firebase-ui-localization.html" class="link no-underline hover:underline">
+                            Mar 15, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/development/2021/03/15/firebase-ui-localization.html" class="link no-underline hover:underline">
+                            Firebase UI localization
+                        </a>
+                        <p class="mt-2">
+                            Firebase ui has helped me to build an application with social login with almost no code to write, the ui library provides an implementation of firebase authentication for web ready to use. As such, the expectation of easy to use also points to an localization easy to integrate. Therefore, the...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="2020, a year of reading">
+                <a href="/review/2021/02/11/2020-a-year-of-reading.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-02-11-2020-a-year-of-reading/cover.png" alt="Image of 2020, a year of reading"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/review/2021/02/11/2020-a-year-of-reading.html" class="link no-underline hover:underline">
+                            Feb 11, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/review/2021/02/11/2020-a-year-of-reading.html" class="link no-underline hover:underline">
+                            2020, a year of reading
+                        </a>
+                        <p class="mt-2">
+                            2020 was a mixed year for reading, in my list I had technical subjects, productivity, algorithms, software architecture, programming methodologies, microservices and leadership. In total I read 1k pages across the listed subjects. This section provides my thouthgs on each of them, my personal opinions and the book I enjoyed...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor">
+                <a href="/iot/2021/01/29/mapping-ir-emitter-k005-receiver-ky-022-to-raspberry.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <img class="post-image rounded-full" height="100" width="100" data-src="/images/posts/2021-01-29-mapping-ir-emitter-k005-receiver-ky-022-to-raspberry/cover.jpg" alt="Image of Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor"/>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/iot/2021/01/29/mapping-ir-emitter-k005-receiver-ky-022-to-raspberry.html" class="link no-underline hover:underline">
+                            Jan 29, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/iot/2021/01/29/mapping-ir-emitter-k005-receiver-ky-022-to-raspberry.html" class="link no-underline hover:underline">
+                            Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor
+                        </a>
+                        <p class="mt-2">
+                            For the past few days I have been playing with the kit ELEGOO 37-in-1 Kit and the first project I wanted to build was a remote control using raspberry pi and the sensor KY-022 that comes with the kit. Giving the different sensors and boards I took some time to...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="p-5 w-4/5 m-auto lg:w-1/2">
+            <div class="post-content" alt="AWS cloud practitioner notes">
+                <a href="/aws/ccp/2021/01/20/aws-cloud-practitioner-notes.html" class="post-link no-underline hidden sm:block">
+                    <div class="cover-image">
+                        
+                            <div class="post-image rounded-full flex justify-center items-center">
+                                <span class="text-3xl font-bold text-marabesi-purple">A</span>
+                            </div>
+                        
+                    </div>
+                </a>
+
+                <div class="post-details">
+                    <div class="post-date font-bold">
+                        <a href="/aws/ccp/2021/01/20/aws-cloud-practitioner-notes.html" class="link no-underline hover:underline">
+                            Jan 20, 2021
+                        </a>
+                    </div>
+                    <div class="post-description pt-2">
+                        <a href="/aws/ccp/2021/01/20/aws-cloud-practitioner-notes.html" class="link no-underline hover:underline">
+                            AWS cloud practitioner notes
+                        </a>
+                        <p class="mt-2">
+                            This post aims to expose the path I took to take the AWS cloud practitioner certification. This post was inspired by [1] and some of the resources I am going to share here were taken from his post as well my own notes from the free official training [2] that...
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+    <div class="pagination p-5 w-4/5 m-auto lg:w-1/2">
+        
+            <span class="previous">Previous</span>
+        
+            <span class="page_number ">
+                Page: 1 of 9
+            </span>
+        
+            <a href="/posts/page2" class="next">Next</a>
+        
+    </div>
+</main>
+
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

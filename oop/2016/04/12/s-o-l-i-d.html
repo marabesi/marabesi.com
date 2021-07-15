@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>S.O.L.I.D - Practices for Object Oriented Programming (code examples in PHP)</title>
+    <meta name="description"
+      content="Being able to write better is a achievement that every programmer want to.SOLID is a great thing to start to and particularly one of the best things tobe fol...">
+
+    <link rel="canonical" href="https://marabesi.com/oop/2016/04/12/s-o-l-i-d.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="S.O.L.I.D - Practices for Object Oriented Programming (code examples in PHP)" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/oop/2016/04/12/s-o-l-i-d.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2016-04-12-s-o-l-i-d/cover.png" />
+    <meta property="og:description"
+      content="Being able to write better is a achievement that every programmer want to.SOLID is a great thing to start to and particularly one of the best things tobe fol..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="S.O.L.I.D - Practices for Object Oriented Programming (code examples in PHP)">
+    <meta name="twitter:description"
+      content="Being able to write better is a achievement that every programmer want to.SOLID is a great thing to start to and particularly one of the best things tobe fol...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2016-04-12-s-o-l-i-d/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2016-04-12 04:06:05 +0000">
+
+    <meta name="keywords" content="class,public,function,code,file,principle,solid,single,responsability,open,close,liskov,interface,segregation,dependency,inversion,s.o.l.i.d,php" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="s-o-l-i-d">S.O.L.I.D - Practices for Object Oriented Programming (code examples in PHP)</h1>
+
+        <p>Being able to write better is a achievement that every programmer want to.
+SOLID is a great thing to start to and particularly one of the best things to
+be followed by TDD.</p>
+
+<h2 id="single-responsability">Single responsability</h2>
+
+<p>A class should have only a single responsability (i.e. only one potential change
+in the software’s specification should be able to affect the specification of
+the class)
+<a class="citation" href="#solid_wikipedia">[1]</a>
+<a class="citation" href="#solid_samuel_oloruntoba">[2]</a>
+<a class="citation" href="#solid_derick_bailey">[3]</a>.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">Upload</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$file</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">(</span><span class="nv">$file</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">file</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">validate</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// apply validation rules</span>
+    <span class="p">}</span>
+       
+    <span class="k">public</span> <span class="k">function</span> <span class="n">moveFile</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// move file</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">rename</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// rename file</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>We have our class Upload doing too many things at once, named:</p>
+
+<ul>
+  <li>Validates the file</li>
+  <li>Move the file</li>
+  <li>Renaming the file</li>
+  <li>Lack of file object</li>
+</ul>
+
+<p>A better approach to it is to create a new class to validate it, to move it and
+finally to handle it to a new place, let’s see some code:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">File</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">ValidateFile</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">MoveFile</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">TransformFile</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">Upload</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$file</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">__construct</span><span class="p">(</span><span class="kt">File</span> <span class="nv">$file</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">file</span> <span class="o">=</span> <span class="nv">$file</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">validate</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// apply validation rules</span>
+    <span class="p">}</span>
+       
+    <span class="k">public</span> <span class="k">function</span> <span class="n">moveFile</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// move file</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">rename</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="c1">// rename file</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Side note: Michael Feathers uses the SRP refering to improve code design
+on his talk <a class="citation" href="#synergy_testability_good_design">[4]</a>.</p>
+
+<h2 id="openclose">Open/Close</h2>
+
+<p>software entities … should be open for extension, but closed for modification
+<a class="citation" href="#solid_wikipedia">[1]</a>
+<a class="citation" href="#solid_samuel_oloruntoba">[2]</a>
+<a class="citation" href="#solid_derick_bailey">[3]</a>.</p>
+
+<p>This principle is followed by many vendors to allow developers extend features
+without change the original source code. Lets first understand the problem we
+want to solve.</p>
+
+<p>Let’s imagine we have a class to send data through a webservice and at the time
+we have only the XML handler to send this but you client requested you to
+implement the feature to support JSON, what would you do?</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">Webservice</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">sendXml</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle the send here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In the code above we have unfortunately only one choice, add a method
+<strong>sendJson</strong>, but that would not follow the Open/Close principle. With this
+action we would had to change the original source code to add a new feature
+(should be open for extension, but <strong>closed for modification</strong>).
+How can we fix this code?</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">abstract</span> <span class="kd">class</span> <span class="nc">Type</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">XML</span> <span class="kd">extends</span> <span class="nc">Type</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">XML</span> <span class="kd">extends</span> <span class="nc">Json</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">Webservice</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">send</span><span class="p">(</span><span class="kt">Type</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// handle the send here</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>To easily refactor this code accordinly with open/close principle we would first
+to create a new generic class called <strong>Type</strong>, this class will abstract the XMl
+and JSON type, which we can then give to the send date as a parameter.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$type</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Json</span><span class="p">();</span>
+
+<span class="nv">$webservice</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Webservice</span><span class="p">();</span>
+<span class="nv">$webservice</span><span class="o">-&gt;</span><span class="nf">send</span><span class="p">(</span><span class="nv">$json</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>This approach is much cleaner and easier to create a new extension to it, we can extend the <strong>Type</strong> class and create as many types as we want.</p>
+
+<h2 id="liskov-substitution">Liskov Substitution</h2>
+
+<p>Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program
+<a class="citation" href="#solid_wikipedia">[1]</a>
+<a class="citation" href="#solid_samuel_oloruntoba">[2]</a>
+<a class="citation" href="#solid_derick_bailey">[3]</a>.</p>
+
+<p>This principle is connected with inheritance one of the most features used in the Object Oriented Programming. The principle says that the subtype should not alter the result of the program.</p>
+
+<p>In the following example we have a class called <strong>Door</strong>, inside what we have is a simple method
+that tell us when the door is open or not.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">class</span> <span class="nc">Door</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$open</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">isOpen</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$open</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">open</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">open</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">close</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="n">open</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>A simply class and easy to use, then we have our client code, who uses that class</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">class</span> <span class="nc">Client</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">execute</span><span class="p">(</span><span class="kt">Door</span> <span class="nv">$door</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$door</span><span class="o">-&gt;</span><span class="nf">isOpen</span><span class="p">())</span> <span class="p">{</span>
+            <span class="nv">$door</span><span class="o">-&gt;</span><span class="nf">close</span><span class="p">();</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="p">();</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">(</span><span class="k">new</span> <span class="nc">Door</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>Now let’ say we have other door but this time this door is a decorated one.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">class</span> <span class="nc">DecoratedDoor</span> <span class="kd">extends</span> <span class="nc">Door</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">isOpen</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">parent</span><span class="o">::</span><span class="nf">isOpen</span><span class="p">())</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="err">\</span><span class="nf">Exception</span><span class="p">(</span><span class="s1">'Door is closed'</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The code above is valid but if the client decided to use the <strong>DecoratedDoor</strong> his code will break. We are not following the Liskov principle “Objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program”.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="c1">// Original code</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="p">();</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">(</span><span class="k">new</span> <span class="nc">Door</span><span class="p">());</span>
+
+<span class="cd">/**
+ * The client can't use the DecoratedDoor because it throws an Exception
+ */</span>
+<span class="nv">$client</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Client</span><span class="p">();</span>
+<span class="nv">$client</span><span class="o">-&gt;</span><span class="nf">execute</span><span class="p">(</span><span class="k">new</span> <span class="nc">DecoratedDoor</span><span class="p">());</span>
+</code></pre></div></div>
+
+<p>In other words to fix this problem and follow the Liskov principle we need just provide for the client class
+the same result that he expects from the <strong>Door</strong> class, true or false.</p>
+
+<h2 id="interface-segregation">Interface Segregation</h2>
+
+<p>Many client-specific interfaces are better than one general-purpose interface
+<a class="citation" href="#solid_wikipedia">[1]</a>
+<a class="citation" href="#solid_samuel_oloruntoba">[2]</a>
+<a class="citation" href="#solid_derick_bailey">[3]</a>.</p>
+
+<p>This I think is the easier one to understand, the quote above is really clear. So let’ dive into the source code
+and get our hands dirty.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">interface</span> <span class="nc">Bird</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">fly</span><span class="p">();</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">eat</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The interface above has two methods to our Bird, and we can implement this interface really easy and well, as the code below shows:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">ConcreteBird</span> <span class="kd">implements</span> <span class="nc">Bird</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">fly</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s1">'I can fly'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">eat</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s1">'I can eat'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This kind of generalization works fine and there is just one problem with it, what if I have a bird who doesn’t fly or doesn’t eat?</p>
+
+<p>We do not have many options though, we have to implement all methods, therefore what we can do to identify when a bird can’t fly or eat is thrown an exception.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">class</span> <span class="nc">ConcreteBirdWithoutFly</span> <span class="kd">implements</span> <span class="nc">Bird</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">fly</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="err">\</span><span class="nf">Exception</span><span class="p">(</span><span class="s1">'I cannot fly'</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">eat</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s1">'I can eat'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="kd">class</span> <span class="nc">ConcreteBirdWithoutEat</span> <span class="kd">implements</span> <span class="nc">Bird</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">fly</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s1">'I can fly'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">eat</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="err">\</span><span class="nf">Exception</span><span class="p">(</span><span class="s1">'I cannot eat'</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>For many of us its just ok to do this, but the true is that we are implementing a method that we don’t need.</p>
+
+<p>Then comes Interface Segregation to save us, “Many client-specific interfaces are better than one general-purpose interface.”. To deal with that we simply create  a new interface with the method eat.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="kd">interface</span> <span class="nc">Bird</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">fly</span><span class="p">();</span>
+<span class="p">}</span>
+
+<span class="kd">interface</span> <span class="nc">Eatable</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">eat</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>With this approach we can finally implements the specific interface instead of jus throw exceptions if the class doesn’t support the contract. The following code supports both <strong>Bird</strong> and <strong>Eatable</strong>.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">class</span> <span class="nc">ConcreteBirdWithoutEat</span> <span class="kd">implements</span> <span class="nc">Bird</span><span class="p">,</span> <span class="nc">Eatable</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">fly</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s1">'I can fly'</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">eat</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="k">print</span> <span class="s1">'I can eat'</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>This code is more flexible as well, we just implement what we are going to need.</p>
+
+<h2 id="dependency-inversion">Dependency inversion</h2>
+
+<p>One should “Depend upon Abstractions. Do not depend upon concretions”
+<a class="citation" href="#solid_wikipedia">[1]</a>
+<a class="citation" href="#solid_samuel_oloruntoba">[2]</a>
+<a class="citation" href="#solid_derick_bailey">[3]</a>.</p>
+
+<p>The following code just clarify the idea of abstraction and how to depend on it instead of a concrete instance.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="k">abstract</span> <span class="kd">class</span> <span class="nc">Drivable</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">Driver</span> <span class="kd">extends</span> <span class="nc">Drivable</span> <span class="p">{}</span>
+
+<span class="kd">class</span> <span class="nc">Car</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="n">run</span><span class="p">(</span><span class="kt">Drivable</span> <span class="nv">$driver</span><span class="p">)</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The following approach allow us to implement as many drivers as we want and give
+it as a parameter to the run method.</p>
+
+<p>You can complain that we could easy depend directly on <strong>Driver</strong>, but if we do
+that we will block the flexibility of the code.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="solid_wikipedia">[1]Wikipedia, “SOLID,” 2021 [Online]. Available at: <a href="https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)" target="_blank">https://en.wikipedia.org/wiki/SOLID_(object-oriented_design)</a>. [Accessed: 03-Apr-2021]</span></li>
+<li><span id="solid_samuel_oloruntoba">[2]S. Oloruntoba, “SOLID: The First 5 Principles of Object Oriented Design,” 2020 [Online]. Available at: <a href="https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design" target="_blank">https://www.digitalocean.com/community/conceptual_articles/s-o-l-i-d-the-first-five-principles-of-object-oriented-design</a>. [Accessed: 17-Dec-2020]</span></li>
+<li><span id="solid_derick_bailey">[3]D. Bailey, “S.O.L.I.D. Software Development, One Step at a Time,” 2020 [Online]. Available at: <a href="https://www.codemag.com/article/1001061" target="_blank">https://www.codemag.com/article/1001061</a>. [Accessed: 28-Sep-2020]</span></li>
+<li><span id="synergy_testability_good_design">[4]M. Feathers, “the deep synergy between testability and good design,” 2013 [Online]. Available at: <a href="https://www.youtube.com/watch?v=4cVZvoFGJTU" target="_blank">https://www.youtube.com/watch?v=4cVZvoFGJTU</a>. [Accessed: 23-May-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#single-responsability">Single responsability</a></li>
+  <li><a href="#openclose">Open/Close</a></li>
+  <li><a href="#liskov-substitution">Liskov Substitution</a></li>
+  <li><a href="#interface-segregation">Interface Segregation</a></li>
+  <li><a href="#dependency-inversion">Dependency inversion</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/oop/2016/04/12/s-o-l-i-d.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/oop/2016/04/12/s-o-l-i-d.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/oop/2016/04/12/s-o-l-i-d.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2019/06/25/intro-oop-php.html">Introduction to OOP with PHP (Classes, Encapsulation, Inheritance) [  <span class="text-marabesi-pink">class,</span>  <span class="text-marabesi-pink">code,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/01/14/strategies-to-test-legacy-code.html">Strategies to test legacy code - PART 1 [  <span class="text-marabesi-pink">code,</span>  <span class="text-marabesi-pink">class,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2017/06/21/queues-and-slow-jobs-with-laravel.html">Queues and slow jobs with Laravel [  <span class="text-marabesi-pink">file,</span>  <span class="text-marabesi-pink">php</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2017/05/31/laravel-custom-validator.html">Custom validator with Laravel 5 + (5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 and 6.0) [  <span class="text-marabesi-pink">class,</span>  <span class="text-marabesi-pink">function,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

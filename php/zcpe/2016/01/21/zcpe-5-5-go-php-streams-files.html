@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>ZCPE 5.5 here we go – PHP Streams (Files/Http)</title>
+    <meta name="description"
+      content="PHP has a great section about stream which is not used frequently by developers.Streams as the PHP documentation says:">
+
+    <link rel="canonical" href="https://marabesi.com/php/zcpe/2016/01/21/zcpe-5-5-go-php-streams-files.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="ZCPE 5.5 here we go – PHP Streams (Files/Http)" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/php/zcpe/2016/01/21/zcpe-5-5-go-php-streams-files.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2016-01-21-zcpe-5-5-go-php-streams-files/cover.jpg" />
+    <meta property="og:description"
+      content="PHP has a great section about stream which is not used frequently by developers.Streams as the PHP documentation says:" />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="ZCPE 5.5 here we go – PHP Streams (Files/Http)">
+    <meta name="twitter:description"
+      content="PHP has a great section about stream which is not used frequently by developers.Streams as the PHP documentation says:">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2016-01-21-zcpe-5-5-go-php-streams-files/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2016-01-21 11:44:36 +0000">
+
+    <meta name="keywords" content="file,php,streams,zcpe,zce,phar,ssh2,rar,data,data flow" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="zcpe-5-5-go-php-streams-files">ZCPE 5.5 here we go – PHP Streams (Files/Http)</h1>
+      <p>PHP has a great section about stream which is not used frequently by developers.
+Streams as the PHP documentation says:</p>
+
+<p>“In its simplest definition, a stream is a resource object which exhibits
+streamable behavior. That is, it can be read from or written to in a linear
+fashion” - <a href="http://php.net/manual/en/intro.stream.php" target="_blank">php.net</a>.
+In many cases streams are used  unconsciously when handling a file for example.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'http://www.marabesi.com/my_file.php'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Look the code above where we are using the <strong>http://</strong> wrapper. Wrapper is what we use to handle a stream in PHP and there are a couple of wrappers in PHP <strong>file://</strong>, <strong>http://</strong>,** ftp://<strong>,</strong> php://<strong>, **zlib://</strong>, <strong>data://</strong>, <strong>glob://</strong>, <strong>phar://</strong>, <strong>ssh2://</strong>, <strong>rar://</strong>,** ogg://<strong>, **expect://</strong>. Each wrapper is used for a specific purpose in our example we used http because we are reading a file in a server, to access a file in a FTP server instead we might use <strong>ftp://</strong> or to find files in a given pattern we might use <strong>glob://</strong> and so on.
+By default when no one is spefied PHP uses <strong>file://</strong>.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'/foo/bar/file.txt'</span><span class="p">);</span>
+
+<span class="k">print</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'file:///foo/bar/file.txt'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Both reproduce the same result. A interesting point is you can use PHP with any
+function that handles I/O.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nb">fopen</span><span class="p">(</span><span class="s1">'file:///foo/bar/file.txt'</span><span class="p">,</span> <span class="s1">'r'</span><span class="p">);</span>
+
+<span class="k">print</span> <span class="nb">fgets</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Write to is very simple with streams as well.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nb">file_put_contents</span><span class="p">(</span><span class="s1">'file:///foo/bar/file.txt'</span><span class="p">,</span> <span class="s1">'text data'</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="adding-context">Adding context</h2>
+
+<p>Some times when using <strong>http://</strong> wrapper we need to add some context such as
+headers in the request and to achieve that we need to use
+<a href="http://php.net/manual/en/function.stream-context-create.php" target="_blank"><strong>stream_context_create</strong></a>.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$http</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="s1">'http'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="s1">'method'</span> <span class="o">=&gt;</span> <span class="s1">'GET'</span><span class="p">,</span>
+    <span class="s1">'header'</span><span class="o">=&gt;</span> <span class="s1">'Token: my_token'</span>
+  <span class="p">]</span>
+<span class="p">];</span>
+
+<span class="nv">$context</span> <span class="o">=</span> <span class="nb">stream_context_create</span><span class="p">(</span><span class="nv">$http</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Think about context as our scenario, something that we need to have to complete
+an action. Once created our context we just need apply it to a stream.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="k">print</span> <span class="nb">file_get_contents</span><span class="p">(</span><span class="s1">'http://marabesi.com/file.txt'</span><span class="p">,</span> <span class="kc">false</span><span class="p">,</span> <span class="nv">$context</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>In our example we are trying to read a file protected by a token. To read the
+file successfully we pass the token through the header in the request using our
+context, if we didn’t pass the token we weren’t able to read the file. If you
+aren’t convinced yet, lets move to the next example where we need to read a file
+over HTTP protocol within a proxy. How would you do that?</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$context</span> <span class="o">=</span> <span class="nb">stream_context_create</span><span class="p">([</span>
+    <span class="s1">'http'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'timeout'</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">'proxy'</span> <span class="o">=&gt;</span> <span class="s1">'tcp://my_proxy:3128'</span><span class="p">,</span>
+        <span class="s1">'request_fulluri'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</code></pre></div></div>
+
+<p>With streams we just created a context to apply in or <strong>file_get_contents</strong>
+function. But in our proxy settings we don’t use any authentication, to do that
+we need to add  a header in our context.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="nv">$auth</span> <span class="o">=</span> <span class="nb">base64_encode</span><span class="p">(</span><span class="s1">'user:password'</span><span class="p">);</span>
+
+<span class="nv">$context</span> <span class="o">=</span> <span class="nb">stream_context_create</span><span class="p">([</span>
+    <span class="s1">'http'</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">'timeout'</span> <span class="o">=&gt;</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">'proxy'</span> <span class="o">=&gt;</span> <span class="s1">'tcp://my_proxy:3128'</span><span class="p">,</span>
+        <span class="s1">'header'</span> <span class="o">=&gt;</span> <span class="s2">"Proxy-Authorization: Basic </span><span class="nv">$auth</span><span class="s2">"</span><span class="p">,</span>
+        <span class="s1">'request_fulluri'</span> <span class="o">=&gt;</span> <span class="kc">true</span><span class="p">,</span>
+    <span class="p">]</span>
+<span class="p">]);</span>
+</code></pre></div></div>
+
+<h2 id="consider-to-use-streams">Consider to use streams</h2>
+
+<p>Streams are powerful and help us to build more robust PHP programs, in the past
+I used to use CURL to consume a simple web service, until I discover streams.
+Just look how good streams are:</p>
+
+<ul>
+  <li>No extension needed (not true for all, some of them need eg: <strong>ssh2://</strong> and <strong>ogg://</strong>)</li>
+  <li>Easy to use, to write we just to have to use functions like <strong>file_put_contenst</strong> or <strong>fwrite</strong> (depends if you are using with resource or a real file)</li>
+  <li>Handle errors are much easier</li>
+</ul>
+
+<p>CURL is a amazing extension but we can do better natively with PHP, but it is
+up to you! Just check out the official documentation about streams
+<a href="http://php.net/manual/en/wrappers.php" target="_blank">here</a>.</p>
+
+<p>You may wondering where you find all context options you can use with
+<strong>stream_create_context</strong> and this question is easily answered if you visit the
+PHP documentation in
+<a href="http://php.net/manual/en/context.php" target="_blank">http://php.net/manual/en/context.php</a>.
+There you can find all of them and use it as you wish.</p>
+
+<h2 id="edit-jun25-2016">Edit: Jun 25, 2016</h2>
+
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/17RreQzcXK45Dl" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" width="100%" height="485" style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" allowfullscreen=""></iframe>
+
+<h2 id="edit-may31-2016">Edit: May 31, 2016</h2>
+
+<iframe width="100%" height="485" style="border: 1px solid #CCC; border-width: 1px; margin-bottom: 5px; max-width: 100%;" src="//www.slideshare.net/slideshow/embed_code/key/16zvfeBdq17ErP" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen="allowfullscreen"></iframe>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/php/zcpe/2016/01/21/zcpe-5-5-go-php-streams-files.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/php/zcpe/2016/01/21/zcpe-5-5-go-php-streams-files.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/php/zcpe/2016/01/21/zcpe-5-5-go-php-streams-files.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

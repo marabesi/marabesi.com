@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Laration - A simple way to visualize your configs</title>
+    <meta name="description"
+      content="Some times during our development work we need to check wheter a config has been defined, andin most of the times we just jump to the file, which means to se...">
+
+    <link rel="canonical" href="https://marabesi.com/post/2016/11/26/laration.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Laration - A simple way to visualize your configs" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/post/2016/11/26/laration.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2016-11-26-laration/cover.png" />
+    <meta property="og:description"
+      content="Some times during our development work we need to check wheter a config has been defined, andin most of the times we just jump to the file, which means to se..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Laration - A simple way to visualize your configs">
+    <meta name="twitter:description"
+      content="Some times during our development work we need to check wheter a config has been defined, andin most of the times we just jump to the file, which means to se...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2016-11-26-laration/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2016-11-26 04:06:05 +0000">
+
+    <meta name="keywords" content="Laration,Laravel,application,command,list,artisan,commands,composer,inside,package,installed,laravel,packages,php,laration,env,variables,open source,github,laravel 5.1,laravel 5.2,laravel 5.3,laravel 5.4,laravel 5.5,laravel 5.6,laravel 5.7,laravel 5.8,laravel 6,laravel print all env variables,env variables" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="laration">Laration - A simple way to visualize your configs</h1>
+      <p>Some times during our development work we need to check wheter a config has been defined, and
+in most of the times we just jump to the file, which means to seek the file, open it and
+change it (or just see the value and leave it as it was).</p>
+
+<p>Laravel provide us a really simple way to find the configs. This is because Laravel uses
+the dot file pattern, where the configuration needed will be inside of an .env file in the 
+root of the project.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">APP_ENV</span><span class="o">=</span><span class="nb">local
+</span><span class="nv">APP_KEY</span><span class="o">=</span><span class="nb">base64</span>:IYCeNxLZFcUKLn6IoeCzKFiW0WmVjt6gU36kCBOfr9A<span class="o">=</span>
+<span class="nv">APP_DEBUG</span><span class="o">=</span><span class="nb">true
+</span><span class="nv">APP_LOG_LEVEL</span><span class="o">=</span>debug
+<span class="nv">APP_URL</span><span class="o">=</span>http://localhost
+
+<span class="nv">DB_CONNECTION</span><span class="o">=</span>mysql
+<span class="nv">DB_HOST</span><span class="o">=</span>127.0.0.1
+<span class="nv">DB_PORT</span><span class="o">=</span>3306
+<span class="nv">DB_DATABASE</span><span class="o">=</span>homestead
+<span class="nv">DB_USERNAME</span><span class="o">=</span>homestead
+<span class="nv">DB_PASSWORD</span><span class="o">=</span>secret
+</code></pre></div></div>
+
+<p>This solution is the basic one and there is nothing wrong with it, let’s resume the needed steps
+to get where we want:</p>
+
+<ol>
+  <li>Go to the root of your project.</li>
+  <li>Find the variable that you want.</li>
+  <li>Change it or just check it’s value.</li>
+</ol>
+
+<p>Laravel also provide us with some defaults, when the Laravel engine don’t find the needed
+configuration it will assume a default. The default values are defined inside the <strong>configs/</strong>
+folder.</p>
+
+<p>The first problem comes when we try to find each default value, to achieve that we will need to first go to the
+.env file, and only if the value doesn’t exists we will try to find it on the config folder.
+This approach is the most common but as we probably noticed, we spend much time just to try to find what we need.</p>
+
+<p>The approach above also revels a new kind of problem, what if we would like to see all the environment variables at once ?
+Unfortunatelly this is not possible without programming something inside Laravel, by creating a controller and exposing
+all the configs throughout the helper <strong>config()</strong>;</p>
+
+<ol>
+  <li>Go to the root of your project.</li>
+  <li>Find the variable that you want.</li>
+  <li>Go to the configs folder and find the default value.</li>
+  <li>Change the default value or just check it.</li>
+</ol>
+
+<p>The step number 3 will require more time if you don’t know in which file the variable that you want is. This behavior
+is a consequence of Laravel’s structure, for each section of configuration you will have different files.</p>
+
+<p><img src="/images/posts/2016-11-26-laration/configs.png" alt="Laravel config files" title="Laravel config files" /></p>
+
+<p>To solve the probles listed above, Laration was born a simple Laravel package to list your configurations being used by your application.</p>
+
+<h2 id="laration">Laration</h2>
+
+<p>Laration is a small package (actually has only one class) and can manage your environment variables really easy. The 
+package can be found on <a href="https://github.com/marabesi/laration" target="_blank">github</a> and easily installed using composer.</p>
+
+<p>Laration provides an interface in your command line to list the variables being used by your application
+divided into sections, by this you can simply see the variables from your cache, session, services and many others
+in your terminal, right way, without looking for further files.</p>
+
+<p>From now on I’ll assume that you have composer installed in your machine,
+if don’t please follow <a href="https://getcomposer.org/download" target="_blank">this</a>
+link and make sure you have composer globally installed.</p>
+
+<h2 id="creating-simple-laravel-application">Creating simple Laravel application</h2>
+
+<p>First of all you need to have a Laravel application, if you have already skip to the next part of this post, othersie
+keep reading and set up your first Laravel application.</p>
+
+<p>Before move on, let’s install the Laravel installar on composer with the following command:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer global require <span class="s2">"laravel/installer"</span>
+</code></pre></div></div>
+
+<p>Two bullets to pay attention, you do need to have composer already installed in your machine and to proceed
+this command should being executed with success. If any error occurrs please step back and fix it.</p>
+
+<p>The next step here is to install the Laravel application, this is a matter to execute a second command
+in your terminal. The following command will create a new Laravel application inside a folder called 
+<strong>laration_demo</strong>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer create-project <span class="nt">--prefer-dist</span> laravel/laravel laration_demo <span class="o">&amp;&amp;</span> <span class="nb">cd </span>laration_demo
+</code></pre></div></div>
+
+<p>The image below shows us that an application has been created successfully and is ready to use. Make sure to see the same
+result in your terminal, if not, something went wrong. In this case try to start from the begining.</p>
+
+<p><img src="/images/posts/2016-11-26-laration/installed-successfully.png" alt="Laravel successfully installed" title="Laravel successfully installed" /></p>
+
+<p>Now let’s serve our newest application using Laravel’s built-in server. To complete this task we are going to use 
+Artisan.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan serve
+</code></pre></div></div>
+
+<p>The command above will start a local web server and it will be available to access through the port 8000, to access it
+go in your prefered browser and type <strong><a href="http://localhost:8000" target="_blank">http://localhost:8000</a></strong></p>
+
+<p>The message <strong>Laravel development server started on http://localhost:8000</strong> should be displayed, and you 
+will have the same as in the figure below:</p>
+
+<p><img src="/images/posts/2016-11-26-laration/welcome-laravel.png" alt="Laravel welcome page" title="Laravel welcome page" /></p>
+
+<p>Finally we’ve got a Laravel application running, the next step will show how
+to install the <strong>Laration</strong> package and how to configure it.</p>
+
+<h2 id="installing-laration">Installing Laration</h2>
+
+<p>The Laration package will work only in a Laravel based application, to install it we need to change
+code inside the Laravel application and the first step is to add the dependency in the <strong>composer.json</strong>.
+Open the file composer.json and add the following dependency to it :</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+    </span><span class="nl">"marabesi/laration"</span><span class="p">:</span><span class="w"> </span><span class="s2">"dev-master"</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>In the end you’ll have something similar to the following image:</p>
+
+<p><img src="/images/posts/2016-11-26-laration/composer.png" alt="Adding laration as a dependency" title="Adding laration as a dependency" /></p>
+
+<p>We are almost done, the last step is to update the dependencies. To do this go back to your terminal inside the <strong>laration_demo</strong>
+folder and execute the following:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>composer update
+</code></pre></div></div>
+
+<p>The command will update all the dependencies inside your Laravel application, but as we just added one new dependency
+and no one has been changed you will see that composer just added the Laration package, as shown in the image below:</p>
+
+<p><img src="/images/posts/2016-11-26-laration/laration.png" alt="Composer command output" title="Composer command output" /></p>
+
+<p>Finally we have both, the Laravel application and the Laration package. The last step to see Laration in action
+is to add the command inside the Laravel. To achieve this we are going to add a single line of code
+inside the file located in <strong>app/Console/Kernel.php</strong></p>
+
+<p><img src="/images/posts/2016-11-26-laration/kernel.png" alt="Laravel kernel file (app/Console/Kernel.php)" title="Laravel kernel file (app/Console/Kernel.php)" /></p>
+
+<p>The Kernel.php file has an attribute called <strong>$commands</strong>, this attribute is where we must register all the commands
+available to be used in the application, there we are going to add the Laration command. By default it comes with and simple one line comment, as demonstrated 
+in the code bellow:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="cd">/**
+ * The Artisan commands provided by your application.
+ *
+ * @var array
+ */</span>
+ <span class="k">protected</span> <span class="nv">$commands</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="c1">//</span>
+ <span class="p">];</span>
+</code></pre></div></div>
+
+<p>The change will be to remove the one comment line and add the code <strong>\Marabesi\Laration::class</strong>. The final
+code should be the same as the below:</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+<span class="cd">/**
+ * The Artisan commands provided by your application.
+ *
+ * @var array
+ */</span>
+ <span class="k">protected</span> <span class="nv">$commands</span> <span class="o">=</span> <span class="p">[</span>
+     <span class="err">\</span><span class="nc">Marabesi\Laration</span><span class="o">::</span><span class="n">class</span>
+ <span class="p">];</span>
+</code></pre></div></div>
+
+<p>Of course that you may have other commands available to you application, it really depends what you have already built.
+In this case just append the Laration command to the end of the <strong>$command</strong> attribute.
+Now you’ve successfully installed the Laravel framework within an applicatino and the Laration package.</p>
+
+<p>The last test will be on the command line. let’s invoke our friend Artisan and see if the Laration has been installed.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan | <span class="nb">grep </span>laration
+</code></pre></div></div>
+
+<p>The command should return something like the image below.</p>
+
+<p><img src="/images/posts/2016-11-26-laration/laration-artisan.png" alt="Verifying Laration installation" title="Verifying Laration installation" /></p>
+
+<p>The frase “List all environment variables used” confirm that the Laration
+has been installed. In the same result you will be allow to see all the commands
+available to use within Laration.</p>
+
+<h2 id="playing-around-with-laration">Playing around with Laration</h2>
+
+<p>The Laration package comes with a series of commands to list the environment
+variables. To get start with, we are going to see all the application variables.
+In order to do that we can easly invoke Laration to do this job for us.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>php artisan laration:list app
+</code></pre></div></div>
+
+<p>All the variables used by the application will be shown, in this case the values should be different in the picture
+and yours, because the application that you have may be different. It will be the same result if you like me have installed
+a fresh copy of Laravel.</p>
+
+<p><img src="/images/posts/2016-11-26-laration/laration-app.png" alt="Laration successfull command output" /></p>
+
+<p>In the left side the keys are displayed and in the right side it’s value. If the key is an array it will keep repeating itself
+till the last element be reached, in the picture we can see the key <strong>providers</strong> as an example of it.</p>
+
+<p>For each section of configuration Laration give us a different command,
+but the pattern still the same. The project on github is well documented,
+but just for simplicity I’m going to post here all the commands and its
+description.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Configuration section</th>
+      <th>Laration command</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>app</td>
+      <td>php artisan laration:list app</td>
+    </tr>
+    <tr>
+      <td>broadcasting</td>
+      <td>php artisan laration:list broadcasting</td>
+    </tr>
+    <tr>
+      <td>cache</td>
+      <td>php artisan laration:list cache</td>
+    </tr>
+    <tr>
+      <td>database</td>
+      <td>php artisan laration:list database</td>
+    </tr>
+    <tr>
+      <td>filesystem</td>
+      <td>php artisan laration:list filesystem</td>
+    </tr>
+    <tr>
+      <td>mail</td>
+      <td>php artisan laration:list mail</td>
+    </tr>
+    <tr>
+      <td>queue</td>
+      <td>php artisan laration:list queue</td>
+    </tr>
+    <tr>
+      <td>session</td>
+      <td>php artisan laration:list session</td>
+    </tr>
+    <tr>
+      <td>view</td>
+      <td>php artisan laration:list view</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>As you can see the pattern still the same, but the section changes, what turns
+Laration easy to use and to remember it’s commands. There is a deeper content
+when it comes to custom enrivoments variables but it will be covered in other
+post in the future.</p>
+
+<p>Laration came to help us in the daily bases when we are trying only to get a
+given value in the application environment. Laration allow us to spend the time
+in what is important and not trying to find where the variable needed is.</p>
+
+<p>There is no way to change a given variable value by the time of this post,
+but of course it can change along the way.</p>
+
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/post/2016/11/26/laration.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/post/2016/11/26/laration.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/post/2016/11/26/laration.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

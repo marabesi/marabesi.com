@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>AWS cloud practitioner notes - EC2</title>
+    <meta name="description"
+      content="This post as the free official course from AWS [2]is the first on a series to cover the envire course content. The focus on thispost is to co over the EC2 se...">
+
+    <link rel="canonical" href="https://marabesi.com/aws/ccp/2021/01/04/aws-cloud-practitioner-notes-ec2.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="AWS cloud practitioner notes - EC2" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/aws/ccp/2021/01/04/aws-cloud-practitioner-notes-ec2.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/manifest/icon-192x192.png" />
+    <meta property="og:description"
+      content="This post as the free official course from AWS [2]is the first on a series to cover the envire course content. The focus on thispost is to co over the EC2 se..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="AWS cloud practitioner notes - EC2">
+    <meta name="twitter:description"
+      content="This post as the free official course from AWS [2]is the first on a series to cover the envire course content. The focus on thispost is to co over the EC2 se...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/manifest/icon-192x192.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-01-04 04:06:05 +0000">
+
+    <meta name="keywords" content="aws,AWS,demand,servers,ECS,Application,computing,manage,code,ec2,instance,resources,modules,service,messages,cloud,on-demand,ec2 instance,high performance,aws cloud,cloud computing,instance types" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="aws-cloud-practitioner-notes-ec2">AWS cloud practitioner notes - EC2</h1>
+
+        <p>This post as the free official course from AWS <a class="citation" href="#aws_free_training">[1]</a>
+is the first on a series to cover the envire course content. The focus on this
+post is to co over the EC2 service as well as another computing services that
+AWS provides. Besides that, a brief introductino to the model pay as you go that
+AWS uses.</p>
+
+<p>Previous: <a href="/aws/ccp/2021/01/20/aws-cloud-practitioner-notes.html">AWS Cloud Practitioner Notes</a></p>
+
+<h2 id="module-1---introduction-aws">Module 1 - Introduction AWS</h2>
+
+<p>The first module goes on the basics of cloud computing, what it is, and AWS
+pay as you go model, remember:</p>
+
+<ol>
+  <li>Cloud computing is: On-demand delivery of IT resources and applications through the internet with pay-as-you-go pricing</li>
+  <li>Pay on-demand: The aggregated cloud usage from a large number of customers results in lower pay-as-you-go prices.</li>
+</ol>
+
+<h2 id="module-2---introduction-ec2-caas">Module 2 - Introduction EC2 (CaaS)</h2>
+
+<p>EC2 takes care of the part of setting up physical servers. Such as buying them,
+setting them up in a datacenter (or even rent a hack to put it in) and the
+security part as well. You can spin up a new server or take it down as you will.</p>
+
+<p>Multitenancy: AWS EC2 uses the server as a host which can have multiple
+servers (EC2 instances) on it.</p>
+
+<p>Provision a EC2 instance with the following OS’s:</p>
+
+<ul>
+  <li>Linux</li>
+  <li>Windows</li>
+</ul>
+
+<p>Besides that you are in the control of network aspect of the EC2 as well.</p>
+
+<p>In short, EC2 is:</p>
+
+<ul>
+  <li>Flexible</li>
+  <li>Reliable</li>
+  <li>Scalable</li>
+</ul>
+
+<p>Using EC2 you are responsable for:</p>
+
+<ol>
+  <li>Set up and manage your instances</li>
+  <li>Responsible for patching instances</li>
+  <li>Setting up scale</li>
+  <li>Architecting in a highly available setup</li>
+</ol>
+
+<h3 id="modules-2---ec2-instance-types">Modules 2 - EC2 Instance types</h3>
+
+<p>Each EC2 instance type is grouped under an instance family. Instance types offer
+different combinations of storage, memory, processing power.</p>
+
+<p>For the following list, consider the term <strong>resources</strong> as the group of: compute, memory and networking.</p>
+
+<ul>
+  <li>General purpose (Balanced resources: Web servers/code repository)</li>
+  <li>Computer optimized (Compute intensive tasks: Gaming servers, high performance computing - HPC, Scientific modeling, batch processing)</li>
+  <li>Memory optimized (Memory intensive tasks)</li>
+  <li>Accelerated computing (Floating point number calculations, Graphics processing, Data pattern matching, hardware accelerators)</li>
+  <li>Storage optimized (High performance for locally stored data)</li>
+</ul>
+
+<h3 id="modules-2---ec2-pricing">Modules 2 - EC2 pricing</h3>
+
+<p>The EC2 pricing model vary based on the EC2 buying option:</p>
+
+<ul>
+  <li><strong>On-demand</strong></li>
+  <li><strong>Savings plans</strong> (low prices, in exchange for commitments in one or three year term, leading up to 72% of saving compared to on-demand)</li>
+  <li><strong>Reserved instances</strong> (predictable usage up to 75% of savings compared to on-demand)</li>
+  <li><strong>Spot instances</strong> (Ideal for flexible workloads - therefore AWS can terminate the instance at any time). Up to 90% discount compared to On-Demand prices. <a class="citation" href="#overview_aws_white_paper">[2]</a></li>
+  <li><strong>Dedicated</strong>  (No shared tenancy of the host)</li>
+</ul>
+
+<p>Besides that, the price can vary based on:</p>
+
+<ul>
+  <li>Instance type (micro, small, large, etc). Instance type refers to a combination of resources such as CPU, memory, storage, and networking capacity.</li>
+  <li>Selected region</li>
+  <li>Number of instances</li>
+  <li>Load balancing</li>
+  <li>Allocated elastic IP addresses</li>
+</ul>
+
+<h3 id="modules-2---ec2-scaling">Modules 2 - EC2 scaling</h3>
+
+<ol>
+  <li>Vertical scaling: EC2 are resizable as well, you can upgrade or downgrade hardware
+aspects of the instance such as: processing power, memory and HD.</li>
+  <li>Horizontally - creating new intances and adding them to the pool</li>
+</ol>
+
+<ul>
+  <li>Dynamic scaling: responds to changing demand- Auto scaling.</li>
+  <li>Predictive scaling: schedule the right number of EC2 based on predicted demand.</li>
+</ul>
+
+<h3 id="modules-2---elastic-load-balancing-elb">Modules 2 - Elastic load balancing (ELB)</h3>
+
+<p>Load balancing distributes incoming application traffic accross
+multiple resources and its built on regional construct, it runs on regional level. The ELB has the following characteristics:</p>
+
+<ul>
+  <li>High performance</li>
+  <li>Cost-efficient</li>
+  <li>Highly available</li>
+  <li>Automatically scalable</li>
+</ul>
+
+<p>AWS provides different ELB solutions for each kind of work load <a class="citation" href="#overview_aws_white_paper">[2]</a>:</p>
+
+<ul>
+  <li><strong>Application load balancer</strong>: load balancing of HTTP and HTTPS traffic</li>
+  <li><strong>Network load balancer</strong>: load balancing TCP traffic</li>
+  <li><strong>Classic load balancer</strong>: basic load balancing across multiple Amazon EC2 instances. The classic load balancer is intended for applications that were built within the EC2-classic network.</li>
+</ul>
+
+<h3 id="modules-2---message-and-queueing">Modules 2 - Message and queueing</h3>
+
+<p>Applications that communicates directly are defined as: Tighlty coupled architecture. If a single compnent fails or changes, it causes issues
+to the entire system.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                    talks to
+Application A --------------------&gt; Application B
+</code></pre></div></div>
+
+<p>Loosely coupled architectures are defined as single failure won’t cause cascading failures.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>              sends to                  process
+                      _________________
+Application A ------&gt; | message queue | &lt;-------- Application B
+                      |_______________|
+</code></pre></div></div>
+
+<p>For decoupled solutions, AWS provides two services:</p>
+
+<ol>
+  <li>AWS SQS (simple queue service)</li>
+</ol>
+
+<p>SQS queues are places where messages are storaged until they are processed.</p>
+
+<ul>
+  <li>send messages (data within a message: payload. It is protected until delivery)</li>
+  <li>store messages</li>
+  <li>receive messages</li>
+  <li>at any volume (without loosing messages)</li>
+</ul>
+
+<ol>
+  <li>AWS SNS (simple notification service)</li>
+</ol>
+
+<p>SNS is a channel for messages to be delivered, pub-sub pattern.Subscribers can be web servers,email, lambda functions, etc.</p>
+
+<h3 id="modules-2---additional-compute-services">Modules 2 - Additional compute services</h3>
+
+<h4 id="aws-lambda">AWS lambda</h4>
+
+<p>AWS lambda is a service that allows you to upload your code
+to be executed. The code is executed in a managed environment.</p>
+
+<ul>
+  <li>lambda is designed to run code in 15 minutes</li>
+  <li>automatically scale</li>
+</ul>
+
+<h4 id="aws-ecs-elastic-container-service-or-eks-elastic-kubernetes-service">AWS ECS (Elastic container service) or EKS (Elastic Kubernetes service)</h4>
+
+<p>ECS is designed to orchestrated your containers at scale, without
+the hassel to manage your own cluster. ECS can run on top of EC2, so then
+you can manage details under the hood.
+Also AWS offers Fargate to deploy containers, which is a managed service
+that removes the access to low level components such as the operational system. In short:</p>
+
+<ol>
+  <li>ECS on EC2 you manage</li>
+  <li>ECS on Fargate AWS manages</li>
+</ol>
+
+<h2 id="up-next">Up next</h2>
+
+<p><a href="/aws/ccp/2021/01/05/aws-cloud-practitioner-notes-infrastructure-and-reliability.html"><strong>Infrastructure and reliability</strong></a></p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="aws_free_training">[1]A. W. S. training and certification, “AWS Cloud Practitioner Essentials,” 2020 [Online]. Available at: <a href="https://www.aws.training/Details/eLearning?id=60697" target="_blank">https://www.aws.training/Details/eLearning?id=60697</a>. [Accessed: 2021-Apr-1AD]</span></li>
+<li><span id="overview_aws_white_paper">[2]AWS, “Overview of Amazon Web Services,” 2021 [Online]. Available at: <a href="https://d1.awsstatic.com/whitepapers/aws-overview.pdf" target="_blank">https://d1.awsstatic.com/whitepapers/aws-overview.pdf</a>. [Accessed: 2021-Jan-26AD]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#module-1---introduction-aws">Module 1 - Introduction AWS</a></li>
+  <li><a href="#module-2---introduction-ec2-caas">Module 2 - Introduction EC2 (CaaS)</a>
+    <ul>
+      <li><a href="#modules-2---ec2-instance-types">Modules 2 - EC2 Instance types</a></li>
+      <li><a href="#modules-2---ec2-pricing">Modules 2 - EC2 pricing</a></li>
+      <li><a href="#modules-2---ec2-scaling">Modules 2 - EC2 scaling</a></li>
+      <li><a href="#modules-2---elastic-load-balancing-elb">Modules 2 - Elastic load balancing (ELB)</a></li>
+      <li><a href="#modules-2---message-and-queueing">Modules 2 - Message and queueing</a></li>
+      <li><a href="#aws-lambda">Modules 2 - Additional compute services - AWS lambda</a></li>
+      <li><a href="#aws-ecs-elastic-container-service-or-eks-elastic-kubernetes-service">Modules 2 - Additional compute services - AWS ECS (Elastic container service) or EKS (Elastic Kubernetes service)</a></li>
+    </ul>
+  </li>
+  <li><a href="#up-next">Up next</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/aws/ccp/2021/01/04/aws-cloud-practitioner-notes-ec2.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/aws/ccp/2021/01/04/aws-cloud-practitioner-notes-ec2.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/aws/ccp/2021/01/04/aws-cloud-practitioner-notes-ec2.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/aws/ccp/2021/01/20/aws-cloud-practitioner-notes.html">AWS cloud practitioner notes [  <span class="text-marabesi-pink">aws,</span>  <span class="text-marabesi-pink">AWS,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/aws/ccp/2021/01/12/aws-cloud-practitioner-notes-the-cloud-journey.html">AWS cloud practitioner notes - The cloud journey [  <span class="text-marabesi-pink">aws,</span>  <span class="text-marabesi-pink">AWS,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/aws/ccp/2021/01/11/aws-cloud-practitioner-notes-migration-and-innovation.html">AWS cloud practitioner notes - Migration and innovation [  <span class="text-marabesi-pink">aws,</span>  <span class="text-marabesi-pink">AWS,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/aws/ccp/2021/01/10/aws-cloud-practitioner-notes-pricing-and-support.html">AWS cloud practitioner notes - Pricing and support [  <span class="text-marabesi-pink">aws,</span>  <span class="text-marabesi-pink">AWS,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

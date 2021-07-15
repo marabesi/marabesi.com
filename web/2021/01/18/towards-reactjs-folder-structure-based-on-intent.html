@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Towards a reactjs folder structure based on intent (WIP)</title>
+    <meta name="description"
+      content="This post is geared towards a reactjs folder structure based on roles, thataims to favor:">
+
+    <link rel="canonical" href="https://marabesi.com/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Towards a reactjs folder structure based on intent (WIP)" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2021-01-18-towards-reactjs-folder-structure-based-on-intent/cover.png" />
+    <meta property="og:description"
+      content="This post is geared towards a reactjs folder structure based on roles, thataims to favor:" />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Towards a reactjs folder structure based on intent (WIP)">
+    <meta name="twitter:description"
+      content="This post is geared towards a reactjs folder structure based on roles, thataims to favor:">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2021-01-18-towards-reactjs-folder-structure-based-on-intent/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-01-18 04:06:05 +0000">
+
+    <meta name="keywords" content="reactjs,structure,reactjs,js,json,folder,components,ui,UI,intent,communication,RCA,React create app,UI,user interface,Third party,Data flow,package,architecture,approach" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="towards-reactjs-folder-structure-based-on-intent">Towards a reactjs folder structure based on intent (WIP)</h1>
+
+        <p>This post is geared towards a reactjs folder structure based on roles, that
+aims to favor:</p>
+
+<ul>
+  <li>intent</li>
+  <li>communication</li>
+</ul>
+
+<p>Both of them are connected in somehow and in this post I am going to address
+the issue that is to organize reactjs componentes in a “meaningful” way, given
+that the official reactjs documentation does not provide
+an official file structure
+<a class="citation" href="#reactjs_official_file_structure">[1]</a>.</p>
+
+<p>Eventough there are attempts for structuring reactjs
+<a class="citation" href="#reactjs_architecture_essentials">[2]</a>
+apps none has gotten an official stamp, probably it will not happen, but it is
+possible to become a common standard.</p>
+
+<h2 id="the-default">The default</h2>
+
+<p>React create app (RCA) comes with no opinion in how you should structure your
+components. As it is a unofficial approach to create a folder named <code class="language-plaintext highlighter-rouge">components</code>,
+and uses it to hold all components needed for the application. A
+basic RCA scafolding looks like:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── node_modules
+├── package.json
+├── package-lock.json
+├── public
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── README.md
+└── src
+    ├── App.css
+    ├── App.js
+    ├── App.test.js
+    ├── index.css
+    ├── index.js
+    ├── logo.svg
+    ├── reportWebVitals.js
+    └── setupTests.js
+</code></pre></div></div>
+
+<p>As the scaffolding does not provides any kind of guidance on structuring the
+folders by default, I assume that this is on purpose, and the reactjs team
+doesn’t really care about it. Therefore, it opens a wide range of options, for
+use, developers to create such a structure.</p>
+
+<p>Its been a few years since I started to work with reactjs and since then, I
+will make a bullet list of the structures that I have used over the last few
+years:</p>
+
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── LICENSE
+├── node_modules
+├── package.json
+├── package-lock.json
+├── postcss.config.js
+├── public
+│   ├── assets
+│   ├── docs
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── lemming.js
+│   └── manifest.json
+├── README.md
+├── src
+│   ├── actions
+│   ├── components
+│   ├── constants
+│   ├── css
+│   ├── emitter
+│   ├── engine
+│   ├── index.spec.ts
+│   ├── index.tsx
+│   ├── locale
+│   ├── pages
+│   ├── queue
+│   ├── react-app-env.d.ts
+│   ├── reducers
+│   ├── registerServiceWorker.js
+│   ├── scss
+│   ├── setupTests.ts
+│   ├── store
+│   ├── tailwind.js
+│   └── __test__
+└── tsconfig.json
+</code></pre></div></div>
+
+<p>From that structure, the only thing that is easy to follow is the lack of organization. At least
+for me, it is hard to tell, which part has what and where I can find a specific
+piece of code that I am interested in. This is the first issue mentioned earlier
+in the post, the <code class="language-plaintext highlighter-rouge">intent</code> issue. As such there is no clear intent of what the
+things are.</p>
+
+<p>The common pattern during the development was to drop any file into a subfolder
+of <code class="language-plaintext highlighter-rouge">src</code>, leading to a structure that does not express any meaning for
+the project itself.</p>
+
+<h2 id="related-work">Related work</h2>
+
+<p>There are attempts to structure reactjs applications in a opionated way and
+without a consensus. For that reason, developers publish materias such as this
+one aimed to create a standard.</p>
+
+<p>For example, <a class="citation" href="#akash_joshi">[3]</a>
+states in the blog post a better way to structure reactjs projects following
+a principle of responsabilities and adapters. Therefore, it is shallow in
+the content of the intent. It assumes that the project uses context,
+which might vary from project to project.</p>
+
+<p>Even the official website from reactjs offers a file structure to
+be a pattern across reactjs applications
+<a class="citation" href="#reactjs_official_file_structure">[1]</a>,
+therefore, it gives a few common approaches such as grouping by features and
+grouping by file type.</p>
+
+<h2 id="a-new-approach">A new approach</h2>
+
+<p>As a developer, for me <code class="language-plaintext highlighter-rouge">intent</code> and <code class="language-plaintext highlighter-rouge">communication</code> is a key player for developing
+applications. The goal is to understand as fast as possible the <code class="language-plaintext highlighter-rouge">intent</code> and
+keep progressing in the development cycle. For that, I found a folder structure
+that makes me comfortable to work with. The structure is based on <code class="language-plaintext highlighter-rouge">intent</code> and
+<code class="language-plaintext highlighter-rouge">communication</code>.</p>
+
+<p>The structure has three main pillars, named:</p>
+
+<ul>
+  <li>UI (user interface)</li>
+  <li>Third party</li>
+  <li>Data flow</li>
+  <li>Packages</li>
+</ul>
+
+<p>The division between those two approaches are inspired by different architectural
+styles such as hexagonal architecture <a class="citation" href="#hexagonal_architecutre">[4]</a> and clean architecture <a class="citation" href="#clean_architecture_book">[5]</a>.</p>
+
+<p>Starting from the UI, this is the place to have visual components. I call visual
+components, pure components without complex logic. For example, a container
+component can be a visual component as well.</p>
+
+<p>Third party is the place to wrapthrid party libraries that the application depends
+on, usually the third party is a dependency that is used across files and in
+different places. Moment is an example of third party library that falls on this
+category.</p>
+
+<p>Data flow, is the place to have everything related to the data that the UI depends
+on. As such, this is the place for redux, mobx or any other library that
+handles data flow and has data itself.</p>
+
+<p>The gotcha for this structure I believe for any complex application, lies in
+the gray area, between components, and how they communicate. To address this issue
+I suggest to use a specific place, a specific folder, named <code class="language-plaintext highlighter-rouge">packages</code>.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">packages</code> folder, in general would have a strict business rule, as such,
+it is the place to have, in this case, pure javascript/typescript code.</p>
+
+<h3 id="poc">POC</h3>
+
+<p>The structure presented in the previouse section was applied to the same
+project presented in the section <a href="#the-default">The default</a>.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>├── src
+│   ├── components
+│   │   ├── app
+│   │   └── ui
+│   ├── config.ts
+│   ├── css
+│   │   ├── index.css
+│   │   └── tailwind.css
+│   ├── data-flow
+│   │   └── redux
+│   ├── index.spec.ts
+│   ├── index.tsx
+│   ├── packages
+│   │   ├── emitter
+│   │   ├── engine
+│   │   ├── queue
+│   │   └── types
+│   ├── pages
+│   │   ├── completed-end
+│   │   ├── completed-intro
+│   │   ├── introduction
+│   │   ├── login
+│   │   ├── notfound
+│   │   ├── rocket-01
+│   │   ├── rocket-02
+│   │   ├── rocket-03
+│   │   ├── survey
+│   │   ├── tdd
+│   │   ├── tdd-intro
+│   │   ├── tutorial
+│   │   ├── tutorial-end
+│   │   ├── unit-testing
+│   │   ├── unit-testing-end
+│   │   └── unit-testing-intro
+│   ├── react-app-env.d.ts
+│   ├── registerServiceWorker.js
+│   ├── scss
+│   │   ├── attention.scss
+│   │   ├── fade-in-left.scss
+│   │   ├── fade-out-left.scss
+│   │   ├── levelup-animation.scss
+│   │   ├── logo-animation.scss
+│   │   ├── shake-horizontal.scss
+│   │   └── tailwind.src.scss
+│   ├── setupTests.ts
+│   ├── tailwind.js
+│   ├── __test__
+│   │   ├── stubs
+│   │   ├── withintlProvider.js
+│   │   └── withReduxProvider.js
+│   └── third-party
+├── static.json
+├── stryker.conf.js
+├── styleguide.config.js
+└── tsconfig.json
+</code></pre></div></div>
+
+<h2 id="future-work">Future work</h2>
+
+<p>The proposed architecture for reactjs applications require adoption to test
+if the approach brings any benefit or degrades any aspect of the software
+lyfice cicle development. Besides that, the suggested approach can be applied
+for different frameworks or libraries, it isnot coupled to reactjs. As such,
+further analysis is required to investigate the fit for other popular frameworks.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="reactjs_official_file_structure">[1]Reactjs, “File Structure,” 2021 [Online]. Available at: <a href="https://reactjs.org/docs/faq-structure.html" target="_blank">https://reactjs.org/docs/faq-structure.html</a>. [Accessed: 09-Feb-2021]</span></li>
+<li><span id="reactjs_architecture_essentials">[2]I. L. I. A. KNIAZEV, “The Essentials of a React Application Architecture,” 2021 [Online]. Available at: <a href="https://javascript.plainenglish.io/the-essentials-of-a-react-application-architecture-fe06f8d6aecd" target="_blank">https://javascript.plainenglish.io/the-essentials-of-a-react-application-architecture-fe06f8d6aecd</a>. [Accessed: 04-May-2021]</span></li>
+<li><span id="akash_joshi">[3]A. Joshi, “A better way to strcture react projects,” 2021 [Online]. Available at: <a href="https://www.freecodecamp.org/news/a-better-way-to-structure-react-projects" target="_blank">https://www.freecodecamp.org/news/a-better-way-to-structure-react-projects</a>. [Accessed: 09-Feb-2021]</span></li>
+<li><span id="hexagonal_architecutre">[4]A. Cockburn, “Hexagonal architecture,” 2012 [Online]. Available at: <a href="https://alistair.cockburn.us/hexagonal-architecture" target="_blank">https://alistair.cockburn.us/hexagonal-architecture</a>. [Accessed: 13-Aug-2012]</span></li>
+<li><span id="clean_architecture_book">[5]R. C. Martin, “Clean Architecture A Craftsman’s Guide To Software Structure And Design,” 2017 [Online]. Available at: <a href="https://archive.org/details/CleanArchitecture/page/n179/mode/2up" target="_blank">https://archive.org/details/CleanArchitecture/page/n179/mode/2up</a>. [Accessed: 2020-Jun-11AD]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#the-default">The default</a></li>
+  <li><a href="#a-new-approach">A new approach</a>
+    <ul>
+      <li><a href="#poc">Proof of concept</a></li>
+    </ul>
+  </li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html">ReactJs patterns - A study based on google search [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">components,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html">Configuring reactjs and relay 2019 version [  <span class="text-marabesi-pink">js,</span>  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">js,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/test/2019/10/13/cypress-and-firebase-reactjs-app.html">e2e testing with Cypress, ReactJs and Firebase [  <span class="text-marabesi-pink">js,</span>  <span class="text-marabesi-pink">reactjs,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

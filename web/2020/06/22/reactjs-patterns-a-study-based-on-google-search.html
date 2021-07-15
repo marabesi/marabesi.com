@@ -1,0 +1,1344 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>ReactJs patterns - A study based on google search</title>
+    <meta name="description"
+      content="ReactJS is among one of the most used javascript library according to GitHub it isone of the mos popular started repository. Given its popularity it is expec...">
+
+    <link rel="canonical" href="https://marabesi.com/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="ReactJs patterns - A study based on google search" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/cover.png" />
+    <meta property="og:description"
+      content="ReactJS is among one of the most used javascript library according to GitHub it isone of the mos popular started repository. Given its popularity it is expec..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="ReactJs patterns - A study based on google search">
+    <meta name="twitter:description"
+      content="ReactJS is among one of the most used javascript library according to GitHub it isone of the mos popular started repository. Given its popularity it is expec...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2020-06-22 04:06:05 +0000">
+
+    <meta name="keywords" content="React,patterns,pattern,Pattern,https,reactjs,search,google,study,study based,react,results,web,reactjs patterns,component,components,Online,hooks,props,render" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="reactjs-patterns-a-study-based-on-google-search">ReactJs patterns - A study based on google search</h1>
+
+        <p>ReactJS is among one of the most used javascript library according to GitHub it is
+one of the mos popular started repository. Given its popularity it is expected
+that the community around it will start to develop techniques, guides and tutorials
+around patterns.</p>
+
+<p>Inspired by the software systematic review literature paper
+<a class="citation" href="#tamburri2020success">[1]</a>, that collects a broader
+overview of the software engineering success and failure factors, this post has
+the goal to answer the following questions:</p>
+
+<ul>
+  <li><strong>Q1.</strong> What is the most popular ReactJS pattern?</li>
+  <li><strong>Q2.</strong> What are the themes that appears related to the patterns?</li>
+</ul>
+
+<p>Opposed to the scientific method presented by the authors (the research was
+conducted mining scientific bases, named: IEEE explorer, ACM digital library,
+science direct, springer link, scopus and engineering village), this post is
+a collection based on google search.</p>
+
+<p>Besides the questions to be answered in this post, the aim is also to be a source
+to access when in doubt of which reactjs pattern to learn first and also a guide
+to help beginners to have a picture of the patterns that developers most talk
+about.</p>
+
+<h2 id="finding-reactjs-patterns-articles">Finding reactjs patterns articles</h2>
+
+<p>Google blocks the crawling on search, in this case the approach taken was
+the google custom search (https://stackoverflow.com/a/30041104/2258921). The custom
+search (https://developers.google.com/custom-search/v1/using_rest) API allow
+developers to use google search programatically, and works as google search,
+the difference is that this integration allow calls programmatically.</p>
+
+<p>The first interaction with the API showed a particular behavior that this service
+has, as pointed by <a class="citation" href="#google_employee_search_results">[2]</a>,
+the total number in the result is not the real number, it is an approximation.</p>
+
+<p>The search string used for explore the first researching question, was “reactjs patterns”.
+Searching for this string in google.com, in the first page is shown 904 results.
+Executing the same query through the programmable search gives 161 results,
+and mining the results through the API, gives 96 results. This behavior
+is expected as pointed by <a class="citation" href="#google_employee_search_results">[2]</a>.</p>
+
+<p>To mine the results a javascript file was developed, the script executes recursively
+based on the number of pages that google returns till the last page of results
+for a given search string. In total 96 links were found and saved to a XLS file <a class="citation" href="#google_search_results">[3]</a>
+for further analysis described in the next section. Furthermore, the code used
+to search and generate the XLS file is available on <a href="https://github.com/marabesi/marabesi.com/tree/master/artifacts/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/search" target="_blank">github</a>.</p>
+
+<h2 id="mining-results">Mining results</h2>
+
+<p>A manual analysis of the results was made in the following steps:</p>
+
+<ol>
+  <li>Removed results that does not have reactjs patterns discussions, such as explaining a
+pattern or listing a pattern.</li>
+  <li>Classify each search result into a category.</li>
+</ol>
+
+<p>For 1, a manual approach was taken to go through each item in the search result
+to apply the exclusion criteria. As result 14 items were removed <a class="citation" href="#google_search_results">[3]</a> (the removed
+content can be found in the tab “mined”).</p>
+
+<p>For 2, the following categories were created to group the search results: book,
+course, meetup, post, question, slides, video. The categories were generated
+based on a manual review of each item.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Category</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>post</td>
+      <td>66</td>
+    </tr>
+    <tr>
+      <td>course</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <td>book</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <td>question</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>video</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>meetup</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>slides</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>The category <code class="language-plaintext highlighter-rouge">post</code> is the most popular, followed by <code class="language-plaintext highlighter-rouge">course</code> and <code class="language-plaintext highlighter-rouge">book</code>, <code class="language-plaintext highlighter-rouge">question</code> and
+<code class="language-plaintext highlighter-rouge">video</code> have the same number of items (2) and in the last two spots are <code class="language-plaintext highlighter-rouge">meetup</code> and <code class="language-plaintext highlighter-rouge">slides</code>.</p>
+
+<h2 id="analyzing-the-results">Analyzing the results</h2>
+
+<p>This section dives into the results found, presents a brief explanation of each
+item in the list. Therefore, this section does not cover the categories <code class="language-plaintext highlighter-rouge">question</code>,
+<code class="language-plaintext highlighter-rouge">meetup</code>, <code class="language-plaintext highlighter-rouge">video</code> and <code class="language-plaintext highlighter-rouge">slides</code> as they present less than three items.</p>
+
+<h3 id="posts">Posts</h3>
+
+<p>The post category is the most popular with 66, as a first exploration the posts
+were read, and for each of them a pattern name was manually assigned, based on the content
+of the post. Most of them have more than one pattern associated with it, for
+example, the first post, in the list covered 22 patterns.</p>
+
+<p>This process was repeated for each post in the list. Once the classification was done,
+the word cloud <a class="citation" href="#word_cloud">[4]</a>
+visualization was generated (the process is described in the next sentence).</p>
+
+<p><a href="/artifacts/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/word-cloud" target="_blank"><img src="/images/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/word_cloud.png" alt="Word cloud generated based on the classification" title="Word cloud generated based on the classification, click to see the visualization" /></a></p>
+
+<p>The raw classification was processed using the following steps:</p>
+
+<ol>
+  <li>Similar words were normalized, the word “component” and “components” were normalized
+to the word without s (singular form), resulting in “component”</li>
+  <li>Words with capital letter were normalized to use the lower case.</li>
+  <li>Different words used with common mean were normalized, for example, the higher order component
+is commonly used as HoC, the shorter version was used.</li>
+</ol>
+
+<p>The word cloud depicts the translation between the most cited patterns used in
+the dataset. The most cited pattern is Component, followed by props taking into
+consideration just a single word.</p>
+
+<h2 id="discussion">Discussion</h2>
+
+<p>This section dive deeper in the results depicted in the previous section, the
+first sub section focus on <strong>Q1</strong> and the second section focuses on <strong>Q2</strong>.</p>
+
+<h3 id="q1">Q1</h3>
+
+<p>For <strong>Q1</strong>, based on the pure pattern classification the results point to the most popular pattern being the “component”,
+followed by “props” which are the foundation of ReactJs, as everything is a component, and communication happens via props. A first hypothesis into this result is the repetition of those two patterns to explain more complex ones, for developers that are starting into the reactjs, components and props are the first principles to understand.</p>
+
+<p><a href="/artifacts/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/lollipop" target="_blank"><img src="/images/posts/2020-06-22-reactjs-patterns-a-study-based-on-google-search/lollipop.png" alt="lollipop graph" title="lollipop graph, top 10, click to see the visualization" /></a></p>
+
+<p>In addition to that complex patterns such as hooks and higher order components appear surrounding the component and prop pattern. Those are the patterns which requires from the developer a previous understanding of props and components as they are more complex, which in turn, can lead to less content related to those patterns.</p>
+
+<h3 id="q2">Q2</h3>
+
+<p>For <strong>Q2</strong> the surrounding elements are the focus, so for example, terms like
+best practices and design were found and are related to reactjs patterns.</p>
+
+<!-- Code reuse, separate of concerns, readability, easy to maintain,-->
+<p>As such, <a class="citation" href="#post_clean_code_dirty_code">[5]</a>,
+entitled “Clean Code vs. Dirty Code: React Best Practices”, enumerates 14 sections
+about best practices. Those sections are related to code standards, javascript
+features, naming variables and also about industry standard to follow when coding
+like DRY.</p>
+
+<h2 id="related-work">Related work</h2>
+
+<p>This section dives in the content of each post mined and group them in the
+different patterns found. It is possible for the same post to appear in different
+sections, as the content might explore more than one at time.</p>
+
+<h3 id="container-component">Container component</h3>
+
+<p><a class="citation" href="#post_react_patterns">[6]</a>
+uses the Jason Bonta’s definition of the container component: the container component fetches data, and then
+renders it’s corresponding sub component. That’s it. <a class="citation" href="#post_react_component_patterns">[7]</a> and <a class="citation" href="#post_simple_react_design_patterns_container_view">[8]</a> agrees on
+the same definition as <a class="citation" href="#post_react_patterns">[6]</a>
+and adds that, the container component is the place to connect to redux.</p>
+
+<p>The following code (adapted from <a class="citation" href="#post_react_patterns">[6]</a>) depicts
+the container component using class component. <a class="citation" href="#post_simple_react_patterns">[9]</a>
+also offers a code example.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span><span class="p">,</span> <span class="p">{</span> <span class="nx">useState</span><span class="p">,</span> <span class="nx">useEffect</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span>
+
+<span class="kd">const</span> <span class="nx">CommentList</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">comments</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">(</span>
+  <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="si">{</span><span class="nx">comments</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="nx">comment</span> <span class="o">=&gt;</span> <span class="p">(</span>
+      <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="si">{</span><span class="nx">comment</span><span class="p">.</span><span class="nx">body</span><span class="si">}</span>-<span class="si">{</span><span class="nx">comment</span><span class="p">.</span><span class="nx">author</span><span class="si">}</span>
+      <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">))</span><span class="si">}</span>
+  <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">);</span>
+
+<span class="kd">function</span> <span class="nx">CommentListContainer</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="p">[</span><span class="nx">comments</span><span class="p">,</span> <span class="nx">setComments</span><span class="p">]</span> <span class="o">=</span> <span class="nx">useState</span><span class="p">([]])</span>
+
+  <span class="nx">useEffect</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/my-comments.json</span><span class="dl">'</span><span class="p">)</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">())</span>
+      <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">comments</span> <span class="o">=&gt;</span> <span class="nx">setComments</span><span class="p">(</span><span class="nx">comments</span><span class="p">)</span>
+  <span class="p">},</span> <span class="p">[])</span>
+
+  <span class="nx">render</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">&lt;</span><span class="nc">CommentList</span> <span class="na">comments</span><span class="p">=</span><span class="si">{</span><span class="nx">comments</span><span class="si">}</span> <span class="p">/&gt;</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><a class="citation" href="#post_implementing_the_container_pattern_using_react_hooks">[10]</a>
+elaborates on the container component with hooks along side with a to-do list app that implements the pattern. Also the definition
+followed was the same as <a class="citation" href="#post_react_patterns">[6]</a>, it
+seems that there is a consensus that Jason Bonta defined the container component pattern
+and developers point to him. <a class="citation" href="#post_introduction_to_react_design_patterns">[11]</a>
+rates the container component as a pattern that provides: separation of concerns, it
+is reusable and it is testable.</p>
+
+<p><a class="citation" href="#post_the_react_redux_container_pattern">[12]</a> expands on
+the idea that container component is awere of redux, the same
+argument made by <a class="citation" href="#post_react_patterns">[6]</a>, but in
+this case, the author gives “the internet” the credit to agree on that. <a class="citation" href="#post_2019_reactjs_best_practices">[13]</a> has somehow
+a not so clean definition about container component, also the text mix HoC with
+presentational components and other patterns.</p>
+
+<h3 id="conditional-rendering">Conditional rendering</h3>
+
+<p><a class="citation" href="#post_evolving_patterns_in_react">[14]</a>
+gives his opinions on the conditional rendering pattern and also states that
+it is a natural step for developers to separate logic from the actual return code (the code
+given as example is a ternary if). As an alternative to the conditional
+rendering, the author suggests to use the JSX alternative with <code class="language-plaintext highlighter-rouge">&amp;&amp;</code>. <a class="citation" href="#post_react_conditional_rendering">[15]</a>
+expands on the JSX alternatives for conditional rendering.</p>
+
+<h3 id="compound-components">Compound Components</h3>
+
+<p><a class="citation" href="#post_advanced_react_component_patterns">[16]</a> and
+<a class="citation" href="#post_five_ways_to_advanced_react_patterns">[17]</a>
+share the same definition, the compound components are components that are distinct, but does not work without
+the other, they make sense together only. Furthermore, <a class="citation" href="#post_advanced_react_component_patterns">[16]</a> mentions the HTML
+<code class="language-plaintext highlighter-rouge">select</code> and <code class="language-plaintext highlighter-rouge">option</code> as an example of compound components. <a class="citation" href="#post_seven_patterns_by_example">[18]</a> uses
+the compount component pattern to build a radio group component, which the user can select only one option
+between the available options.</p>
+
+<h3 id="decorated-component">Decorated component</h3>
+
+<p>The decorated component is a pattern that does not not appear often,
+<a class="citation" href="#post_patterns_for_testable_react_components">[19]</a>
+demonstrates the decorated component as a way to decouple components, or even
+to enhance component features, Redux uses the decorated component pattern
+to enhance the component props.</p>
+
+<p>Therefore, the decorated pattern can be used as a way to decouple the component
+that fetch data with the one that actually uses the data. <a class="citation" href="#post_2019_reactjs_best_practices">[13]</a> states that
+the decorated pattern is the same as HoC.</p>
+
+<h3 id="higher-order-component">Higher-Order-Component</h3>
+
+<p><a class="citation" href="#post_evolving_patterns_in_react">[14]</a> and
+<a class="citation" href="#post_2019_reactjs_best_practices">[13]</a>
+agree on the definition that HoC, in a sense that HoC are decorators. <a class="citation" href="#post_advanced_react_component_patterns">[16]</a> though, has an
+argument that the HoC name is misnormer, which is based on his own thoughts.</p>
+
+<p>A HoC takes a reactjs component enhances it and then returns the new enhanced
+component to be used <a class="citation" href="#post_five_ways_to_advanced_react_patterns">[17]</a>
+<a class="citation" href="#post_simple_react_patterns">[9]</a>
+<a class="citation" href="#post_advanced_patterns_reactjs">[20]</a>
+<a class="citation" href="#post_reactjs_in_patterns">[21]</a> 
+<a class="citation" href="#post_higher_order_components">[22]</a>
+<a class="citation" href="#post_react_component_types_a_complete_overview">[23]</a>.</p>
+
+<p><a class="citation" href="#post_react_patterns_react_and_ramda">[24]</a> has a different
+definition, which states that the HoC receives a component as an argument and returns
+another component. This definition is weider than the previous one. Often the
+HoC receives a component and enhance the same component functionality, and returns
+the same camponent with added behavior, from <a class="citation" href="#post_react_patterns_react_and_ramda">[24]</a>
+would be possible to receive A and then return B.</p>
+
+<p>Therefore, <a class="citation" href="#post_patterns_for_data_fetching_in_react">[25]</a>
+states that HoC is responsible to fetch data and then propagate to child components. This definition is an addition
+to the previous agreed definition, but does not restrict the pattern to be used as data fetch only. <a class="citation" href="#post_5_react_data_fetching">[26]</a> adds that
+the HoC is used to fetch data and also split data fetching from data presentation.
+For the first time, the HoC is compared as a <code class="language-plaintext highlighter-rouge">container pattern</code> and not the 
+<code class="language-plaintext highlighter-rouge">decorated component pattern</code>.</p>
+
+<p><a class="citation" href="#post_how_advanced_react_patterns_changed_with_hooks">[27]</a>
+explores the HoC in the new era of react hooks. <a class="citation" href="#post_patterns_style_composition">[28]</a> has no definition statement, though the content is followed with HoC
+code examples.</p>
+
+<h3 id="render-props--render-callback">Render Props / Render callback</h3>
+
+<p>The <code class="language-plaintext highlighter-rouge">render props</code> or <code class="language-plaintext highlighter-rouge">render callback pattern</code> is used to render a given component
+based on a function callback <a class="citation" href="#post_react_patterns">[6]</a>
+<a class="citation" href="#post_five_ways_to_advanced_react_patterns">[17]</a>
+<a class="citation" href="#post_react_component_patterns">[7]</a>
+<a class="citation" href="#post_advanced_patterns_reactjs">[20]</a>
+<a class="citation" href="#post_introduction_to_react_design_patterns">[11]</a>, or
+as <a class="citation" href="#post_how_to_master_advanced_react_design_patterns">[29]</a> states,
+instead of rendering the children (which is as common technique in reactjs), this pattern
+renders the prop. Even though <a class="citation" href="#post_how_to_master_advanced_react_design_patterns">[29]</a> states that the render prop renders the prop, instead of the children, <a class="citation" href="#post_how_advanced_react_patterns_changed_with_hooks">[27]</a>,<a class="citation" href="#post_5_react_data_fetching">[26]</a> and <a class="citation" href="#post_common_i18n_patterns_in_react">[30]</a> describes the render prop
+using the children explicitly.</p>
+
+<p>Furthermore <a class="citation" href="#post_evolving_patterns_in_react">[14]</a>
+states that the pattern render props and HoC are interchangeable. The term render callback is clearer in the intention
+of the pattern, but the term, render props got more adoption from the
+community <a class="citation" href="#post_react_patterns_render_callback">[31]</a>.
+On the other hand <a class="citation" href="#post_simple_react_patterns">[9]</a>,
+states that there is discution between the effectiveness of the pattern.</p>
+
+<!-- ### Prop Collections and Getters
+
+<a class="citation" href="#post_advanced_react_component_patterns">[16]</a> -->
+
+<!-- ### State Initializers
+
+<a class="citation" href="#post_advanced_react_component_patterns">[16]</a> -->
+
+<!-- ### State reducer
+
+<a class="citation" href="#post_five_ways_to_advanced_react_patterns">[17]</a>
+
+<a class="citation" href="#post_react_state_reducer_pattern">[32]</a> -->
+
+<!-- ### Stateful
+
+<a class="citation" href="#post_react_component_patterns">[7]</a> -->
+
+<!-- ### Stateless
+
+<a class="citation" href="#post_react_component_patterns">[7]</a>
+
+<a class="citation" href="#post_patterns_style_composition">[28]</a> -->
+
+<!-- ### Controlled Components
+
+<a class="citation" href="#post_advanced_react_component_patterns">[16]</a>
+
+<a class="citation" href="#post_five_ways_to_advanced_react_patterns">[17]</a> -->
+
+<h3 id="provider--context">Provider / Context</h3>
+
+<p>The provider pattern is used in libraries such as react-redux and react-router. The idea  behind the provider pattern is to avoid passing
+props for each component in the three, instead, the pattern makes,
+the prop available for all the tree that uses the provider regardless
+of the tree depth <a class="citation" href="#post_advanced_react_component_patterns">[16]</a>. The
+provider pattern is an answer for the problem called <code class="language-plaintext highlighter-rouge">props-drilling</code> <a class="citation" href="#post_provider_pattern_in_react_using_react_context_api">[33]</a>
+<a class="citation" href="#post_8_no_flux_strategies_for_react">[34]</a>.</p>
+
+<p>The provider pattern is often related to reactjs context <a class="citation" href="#post_evolving_patterns_in_react">[14]</a> <a class="citation" href="#post_provider_pattern_in_react_using_react_context_api">[33]</a> as
+this is the feature that comes out of the box with reactjs.</p>
+
+<p><a class="citation" href="#post_four_patterns_for_global_state_with_react_hooks">[35]</a> says that
+if the component needs to share more than two levels deep, the recommended approach is to use reactjs context. <a class="citation" href="#post_angularjs_patterns_in_react">[36]</a> uses
+the provider/context pattern to implement a translation engine.</p>
+
+<h3 id="hooks">Hooks</h3>
+
+<p>Hooks are the highlight feature introduced in reactjs 16.8, mainly
+focused in sharing logic between components and no class syntax, instead,
+a functional approach is the preferred way<a class="citation" href="#reactjs_hooks_release">[37]</a><a class="citation" href="#post_react_hooks_design_patterns_creating_components_without_class">[38]</a>.
+<a class="citation" href="#post_best_practices_with_react_hooks">[39]</a> gives a
+introduction followed with reactjs hooks best practices, the material
+is recommended to any level of developer that wants to understand hooks,
+or for any developer that already knows hooks, it can be  a refresher. <a class="citation" href="#post_reusable_code_in_react">[40]</a> also states that hooks replace the mixins pattern for sharing code.</p>
+
+<p><a class="citation" href="#post_how_advanced_react_patterns_changed_with_hooks">[27]</a> depicts
+the difference between class components and functional components with
+hooks and th benefits of using it. <a class="citation" href="#post_patterns_for_data_fetching_in_react">[25]</a> and <a class="citation" href="#post_5_react_data_fetching">[26]</a>
+compares fetching data between the class approach and the functional approach with hooks, however
+<a class="citation" href="#post_implementing_the_container_pattern_using_react_hooks">[10]</a> refactor
+the container pattern using the class style with hooks.</p>
+
+<p><a class="citation" href="#post_the_facade_pattern_and_applying_to_react_hooks">[41]</a> integrates
+the facade design pattern into a javascript implementation, and then
+combines the pattern with reactjs hooks. <a class="citation" href="#post_production_level_patterns_for_react_hooks">[42]</a> builds
+a to-do app using hooks and uses a folder name called models to store
+custom hooks, and tries to relate this structure with the MVC pattern.</p>
+
+<p><a class="citation" href="#post_react_hooks_rebirth_of_state_management">[43]</a> and <a class="citation" href="#post_a_state_management_pattern_for_ionic_react">[44]</a>
+focus on the state management. <a class="citation" href="#post_react_hooks_rebirth_of_state_management">[43]</a> dives
+in mocking the redux implementation using hooks. The approach used
+is interesting for learning purposes. Therefore, the implementation
+for both authors are simplifications over a more complex implementation
+of redux. The benefits of implementing those state managements by hand
+comes with a drawback. Redux on the other hand is more complex, but
+it is a standard for state management, having a wide community that
+created different libraries to work with it (<code class="language-plaintext highlighter-rouge">redux-offline</code>).</p>
+
+<p>Finally, <a class="citation" href="#post_bloc_pattern_with_react_hooks">[45]</a> converts
+the BLoC pattern to be used with reactjs. The BLoC pattern was created
+to share code between flutter and angular dart.</p>
+
+<!-- <a class="citation" href="#post_discovering_patterns_with_react_hooks">[46]</a> down   -->
+
+<!-- <a class="citation" href="#post_friday_frontend_new_react_pattern">[47]</a> -->
+
+<!-- ### Controller view
+
+<a class="citation" href="#post_the_reactjs_controller_view_pattern">[48]</a> -->
+
+<!-- ### Adapter
+
+<a class="citation" href="#post_using_the_adapter_design_pattern_with_react">[49]</a> -->
+
+<!-- ### Dependency injection
+
+<a class="citation" href="#post_dependency_injection">[50]</a> -->
+
+<!-- ### Event listeners
+
+<a class="citation" href="#post_global_listener_patterns_in_react">[51]</a> -->
+
+<h3 id="redux">Redux</h3>
+
+<p>The redux pattern is an implementation of FLUX, the state management
+pattern created by Facebook to handle global state <a class="citation" href="#flux_facebook_pattern">[52]</a><a class="citation" href="#post_getting_to_know_the_redux_pattern">[53]</a>.
+<a class="citation" href="#post_redux_design_patterns_reduxsauce">[54]</a> provides
+an introduction to redux and its main components, namely: Action, Reducer and Store.</p>
+
+<!-- ### MVVM
+
+<a class="citation" href="#post_level_up_react_architecture">[55]</a>  -->
+
+<!-- ### BLoC
+
+<a class="citation" href="#post_bloc_pattern_with_react_hooks">[45]</a>  -->
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>ReactJs is among the most used UI libraries, as a result it has a lot of
+content created by the community and by Facebook (which is the company behind
+rectJS). The proposed study showed the most used reactjs patterns as well as
+the themes that surround the patterns. As it tuns out, the most popular patterns
+are components and props, which are the reactjs foundation and not advanced
+patterns for experienced reactjs developers. On the other hand, patterns
+like Higher order components, hooks and container component requires some previous
+knowledge to be used effectively, but those patterns that require
+more experience are the ones less popular as well.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="tamburri2020success">[1]D. A. Tamburri <i>et al.</i>, “Success and Failure in Software Engineering: a Followup Systematic Literature Review,” 2020. </span></li>
+<li><span id="google_employee_search_results">[2]D. (G. Employee), “Нow can I get 2500 results in one request in Google Search API?,” 2020 [Online]. Available at: <a href="https://support.google.com/programmable-search/thread/55399640?hl=en" target="_blank">https://support.google.com/programmable-search/thread/55399640?hl=en</a>. [Accessed: 25-Jun-2020]</span></li>
+<li><span id="google_search_results">[3]M. Marabesi, “ReactJs patterns - A study based on google search,” 2020 [Online]. Available at: <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vQvRdZOhkjolPlZ2td_3ocWJJwNoqvqInC-pAuECNDNMAEyjYa2nPZ6LLSwkR-Vrw/pubhtml" target="_blank">https://docs.google.com/spreadsheets/d/e/2PACX-1vQvRdZOhkjolPlZ2td_3ocWJJwNoqvqInC-pAuECNDNMAEyjYa2nPZ6LLSwkR-Vrw/pubhtml</a>. [Accessed: 05-Aug-2020]</span></li>
+<li><span id="word_cloud">[4]A. Mueller, “word_cloud,” 2020 [Online]. Available at: <a href="https://github.com/amueller/word_cloud" target="_blank">https://github.com/amueller/word_cloud</a>. [Accessed: 05-Aug-2020]</span></li>
+<li><span id="post_clean_code_dirty_code">[5]D. West, “Clean Code vs. Dirty Code: React Best Practices - American ...,” 2017 [Online]. Available at: https://americanexpress.io/clean-code-dirty-code. [Accessed: 16-Nov-2017]</span></li>
+<li><span id="post_react_patterns">[6]M. Chan, “React Patterns on GitHub,” 2020 [Online]. Available at: <a href="https://reactpatterns.com" target="_blank">https://reactpatterns.com</a>. [Accessed: 11-Jul-2020]</span></li>
+<li><span id="post_react_component_patterns">[7]G. Matheus, “React Component Patterns - Level Up Coding,” 2017 [Online]. Available at: <a href="https://levelup.gitconnected.com/react-component-patterns-ab1f09be2c82" target="_blank">https://levelup.gitconnected.com/react-component-patterns-ab1f09be2c82</a>. [Accessed: 26-Oct-2017]</span></li>
+<li><span id="post_simple_react_design_patterns_container_view">[8]C. Yick, “Simple React Design Patterns: Container/View - serendipidata,” 2019 [Online]. Available at: <a href="https://www.serendipidata.com/posts/react-design-patterns-container-view" target="_blank">https://www.serendipidata.com/posts/react-design-patterns-container-view</a>. [Accessed: 15-Feb-2019]</span></li>
+<li><span id="post_simple_react_patterns">[9]L. Reis, “Simple React Patterns,” 2017 [Online]. Available at: <a href="https://lucasmreis.github.io/blog/simple-react-patterns" target="_blank">https://lucasmreis.github.io/blog/simple-react-patterns</a>. [Accessed: 08-Oct-2017]</span></li>
+<li><span id="post_implementing_the_container_pattern_using_react_hooks">[10]S. Recio, “Implementing the Container Pattern using React Hooks,” 2019 [Online]. Available at: <a href="https://blog.bitsrc.io/implementing-the-container-pattern-using-react-hooks-f490a8492d05" target="_blank">https://blog.bitsrc.io/implementing-the-container-pattern-using-react-hooks-f490a8492d05</a>. [Accessed: 31-Dec-2019]</span></li>
+<li><span id="post_introduction_to_react_design_patterns">[11]B. Williams, “Introduction to React Design Patterns | DrupalCon,” 2018 [Online]. Available at: <a href="https://events.drupal.org/nashville2018/sessions/intro-react-design-patterns" target="_blank">https://events.drupal.org/nashville2018/sessions/intro-react-design-patterns</a>. [Accessed: 11-Apr-2018]</span></li>
+<li><span id="post_the_react_redux_container_pattern">[12]S. DeBenedetto, “The React + Redux Container Pattern,” 2016 [Online]. Available at: <a href="https://www.thegreatcodeadventure.com/the-react-plus-redux-container-pattern/" target="_blank">https://www.thegreatcodeadventure.com/the-react-plus-redux-container-pattern/</a>. [Accessed: 16-Nov-2016]</span></li>
+<li><span id="post_2019_reactjs_best_practices">[13]B. Kulbida, “2019 ReactJS Best Practices,” 2019 [Online]. Available at: <a href="https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a" target="_blank">https://medium.com/@konstankino/2019-reactjs-best-practices-design-patterns-516e1c3ca06a</a>. [Accessed: 09-Mar-2019]</span></li>
+<li><span id="post_evolving_patterns_in_react">[14]A. Moldovan, “Evolving Patterns in React,” 2018 [Online]. Available at: <a href="https://www.freecodecamp.org/news/evolving-patterns-in-react-116140e5fe8f" target="_blank">https://www.freecodecamp.org/news/evolving-patterns-in-react-116140e5fe8f</a>. [Accessed: 04-Feb-2018]</span></li>
+<li><span id="post_react_conditional_rendering">[15]C. Rippon, “React Conditional Rendering Patterns | Building SPAs,” 2018 [Online]. Available at: <a href="https://www.carlrippon.com/react-conditional-rendering-patterns" target="_blank">https://www.carlrippon.com/react-conditional-rendering-patterns</a>. [Accessed: 17-Apr-2018]</span></li>
+<li><span id="post_advanced_react_component_patterns">[16]K. C. Dodds, “Advanced React Component Patterns,” 2017 [Online]. Available at: <a href="https://kentcdodds.com/blog/advanced-react-component-patterns" target="_blank">https://kentcdodds.com/blog/advanced-react-component-patterns</a>. [Accessed: 05-Dec-2017]</span></li>
+<li><span id="post_five_ways_to_advanced_react_patterns">[17]Y. Aabed, “Five Ways to Advanced React Patterns - DEV,” 2019 [Online]. Available at: <a href="https://dev.to/yazanaabed/five-ways-to-advanced-react-patterns-2bai" target="_blank">https://dev.to/yazanaabed/five-ways-to-advanced-react-patterns-2bai</a>. [Accessed: 02-Apr-2019]</span></li>
+<li><span id="post_seven_patterns_by_example">[18]T. Deekens, “Seven patterns by example: The many ways to type=’radio’ in React,” 2017 [Online]. Available at: <a href="https://techblog.commercetools.com/seven-patterns-by-example-the-many-ways-to-type-radio-in-react-bfe14322bb6f" target="_blank">https://techblog.commercetools.com/seven-patterns-by-example-the-many-ways-to-type-radio-in-react-bfe14322bb6f</a>. [Accessed: 20-Dec-2017]</span></li>
+<li><span id="post_patterns_for_testable_react_components">[19]Zemuldo, “Zemuldo Blog - Patterns For Testable React Components,” 2019 [Online]. Available at: <a href="https://zemuldo.com/blog/patterns-for-testable-react-components-5e0a5b01bb17500012abfe11" target="_blank">https://zemuldo.com/blog/patterns-for-testable-react-components-5e0a5b01bb17500012abfe11</a>. [Accessed: 30-Dec-2019]</span></li>
+<li><span id="post_advanced_patterns_reactjs">[20]L. Maldonado, “Advanced Patterns in React,” 2019 [Online]. Available at: <a href="https://www.telerik.com/blogs/advanced-patterns-in-react" target="_blank">https://www.telerik.com/blogs/advanced-patterns-in-react</a>. [Accessed: 09-Apr-2019]</span></li>
+<li><span id="post_reactjs_in_patterns">[21]Krasimir, “React.js in patterns,” 2016 [Online]. Available at: <a href="https://krasimirtsonev.com/blog/article/react-js-in-design-patterns" target="_blank">https://krasimirtsonev.com/blog/article/react-js-in-design-patterns</a>. [Accessed: 20-Jul-2016]</span></li>
+<li><span id="post_higher_order_components">[22]J. Franklin, “Higher-order Components: A React Application Design Pattern ...,” 2017 [Online]. Available at: <a href="https://www.sitepoint.com/react-higher-order-components" target="_blank">https://www.sitepoint.com/react-higher-order-components</a>. [Accessed: 08-Sep-2017]</span></li>
+<li><span id="post_react_component_types_a_complete_overview">[23]R. O. B. I. N. WIERUCH, “React Component Types: A complete Overview - RWieruch,” 2019 [Online]. Available at: <a href="https://www.robinwieruch.de/react-component-types" target="_blank">https://www.robinwieruch.de/react-component-types</a>. [Accessed: 12-Mar-2019]</span></li>
+<li><span id="post_react_patterns_react_and_ramda">[24]T. Konrády, “React patterns | React and Ramda patterns,” 2018 [Online]. Available at: <a href="https://tommmyy.github.io/ramda-react-redux-patterns/pages/react-ramda.html" target="_blank">https://tommmyy.github.io/ramda-react-redux-patterns/pages/react-ramda.html</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_patterns_for_data_fetching_in_react">[25]G. Sayfan, “Patterns for data fetching in React - LogRocket Blog,” 2019 [Online]. Available at: <a href="https://blog.logrocket.com/patterns-for-data-fetching-in-react-981ced7e5c56" target="_blank">https://blog.logrocket.com/patterns-for-data-fetching-in-react-981ced7e5c56</a>. [Accessed: 24-Mar-2019]</span></li>
+<li><span id="post_5_react_data_fetching">[26]A. Mansour, “5 React Data-Fetching Patterns - Nordschool,” 2019 [Online]. Available at: <a href="https://nordschool.com/react-data-fetching" target="_blank">https://nordschool.com/react-data-fetching</a>. [Accessed: 23-Oct-2019]</span></li>
+<li><span id="post_how_advanced_react_patterns_changed_with_hooks">[27]N. Kulas, “How advanced React patterns changed with hooks | Sunscrapers,” 2019 [Online]. Available at: <a href="https://sunscrapers.com/blog/how-advanced-react-patterns-changed-with-hooks" target="_blank">https://sunscrapers.com/blog/how-advanced-react-patterns-changed-with-hooks</a>. [Accessed: 01-Jul-2019]</span></li>
+<li><span id="post_patterns_style_composition">[28]B. Jackson, “Patterns for Style Composition in React | Jxnblk,” 2016 [Online]. Available at: <a href="https://jxnblk.com/blog/patterns-for-style-composition-in-react" target="_blank">https://jxnblk.com/blog/patterns-for-style-composition-in-react</a>. [Accessed: 13-Aug-2016]</span></li>
+<li><span id="post_how_to_master_advanced_react_design_patterns">[29]S. D. Hutch, “How To Master Advanced React Design Patterns — Render Props,” 2018 [Online]. Available at: <a href="https://itnext.io/using-advanced-design-patterns-to-create-flexible-and-reusable-react-components-part-3-render-d7517dfe72bc" target="_blank">https://itnext.io/using-advanced-design-patterns-to-create-flexible-and-reusable-react-components-part-3-render-d7517dfe72bc</a>. [Accessed: 17-Apr-2018]</span></li>
+<li><span id="post_common_i18n_patterns_in_react">[30]T. Ehrlich, “Common i18n patterns in React — LinguiJS documentation,” 2018 [Online]. Available at: <a href="https://lingui.js.org/tutorials/react-patterns.html" target="_blank">https://lingui.js.org/tutorials/react-patterns.html</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_react_patterns_render_callback">[31]L. G. Crespo, “React Patterns - Render Callback | Lenny’s Blog,” 2020 [Online]. Available at: <a href="https://leoasis.github.io/posts/2017/03/27/react-patterns-render-callback" target="_blank">https://leoasis.github.io/posts/2017/03/27/react-patterns-render-callback</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_react_state_reducer_pattern">[32]Matt, “React’s State Reducer Pattern - DSC Engineering,” 2019 [Online]. Available at: <a href="https://engineering.dollarshaveclub.com/reacts-state-reducer-pattern-f66e82a82697" target="_blank">https://engineering.dollarshaveclub.com/reacts-state-reducer-pattern-f66e82a82697</a>. [Accessed: 19-Sep-2019]</span></li>
+<li><span id="post_provider_pattern_in_react_using_react_context_api">[33]G. Thakur, “Provider Pattern in React using React Context API,” 2019 [Online]. Available at: <a href="https://blog.flexiple.com/provider-pattern-with-react-context-api" target="_blank">https://blog.flexiple.com/provider-pattern-with-react-context-api</a>. [Accessed: 02-Feb-2019]</span></li>
+<li><span id="post_8_no_flux_strategies_for_react">[34]A. Farmer, “8 no-Flux strategies for React component communication,” 2020 [Online]. Available at: <a href="https://www.javascriptstuff.com/component-communication/" target="_blank">https://www.javascriptstuff.com/component-communication/</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_four_patterns_for_global_state_with_react_hooks">[35]D. A. I. S. H. I. KATO, “Four patterns for global state with React hooks: Context or Redux ...,” 2019 [Online]. Available at: <a href="https://blog.axlight.com/posts/four-patterns-for-global-state-with-react-hooks-context-or-redux" target="_blank">https://blog.axlight.com/posts/four-patterns-for-global-state-with-react-hooks-context-or-redux</a>. [Accessed: 27-Apr-2019]</span></li>
+<li><span id="post_angularjs_patterns_in_react">[36]G. Babiars, “AngularJS Patterns in React | Greg Babiars’s Blog,” 2019 [Online]. Available at: <a href="https://gregbabiars.com/angular-patterns-in-react/" target="_blank">https://gregbabiars.com/angular-patterns-in-react/</a>. [Accessed: 29-Apr-2019]</span></li>
+<li><span id="reactjs_hooks_release">[37]reactjs.org, “Introducing Hooks,” 2020 [Online]. Available at: <a href="https://reactjs.org/docs/hooks-intro.html" target="_blank">https://reactjs.org/docs/hooks-intro.html</a>. [Accessed: 26-Sep-2020]</span></li>
+<li><span id="post_react_hooks_design_patterns_creating_components_without_class">[38]C. Wilson, “React hooks design patterns and creating components without class,” 2019 [Online]. Available at: <a href="https://www.educative.io/blog/react-hooks-components-and-design-patterns" target="_blank">https://www.educative.io/blog/react-hooks-components-and-design-patterns</a>. [Accessed: 18-Jul-2019]</span></li>
+<li><span id="post_best_practices_with_react_hooks">[39]D. Adeneye, “Best Practices With React Hooks — Smashing Magazine,” 2020 [Online]. Available at: <a href="https://www.smashingmagazine.com/2020/04/react-hooks-best-practices" target="_blank">https://www.smashingmagazine.com/2020/04/react-hooks-best-practices</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_reusable_code_in_react">[40]B. McCormick, “Reusable Code In React: Inheritance, Composition, Decorators and ...,” 2020 [Online]. Available at: <a href="https://benmccormick.org/2019/02/11/reusable-react" target="_blank">https://benmccormick.org/2019/02/11/reusable-react</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_the_facade_pattern_and_applying_to_react_hooks">[41]M. Wanago, “The Facade pattern and applying it to React Hooks,” 2019 [Online]. Available at: <a href="https://wanago.io/2019/12/09/javascript-design-patterns-facade-react-hooks" target="_blank">https://wanago.io/2019/12/09/javascript-design-patterns-facade-react-hooks</a>. [Accessed: 09-Dec-2019]</span></li>
+<li><span id="post_production_level_patterns_for_react_hooks">[42]A. Burdette, “Production-Level Patterns for React Hooks  | FullStack Labs” [Online]. Available at: <a href="https://www.fullstacklabs.co/blog/production-level-patterns-for-react-hooks" target="_blank">https://www.fullstacklabs.co/blog/production-level-patterns-for-react-hooks</a></span></li>
+<li><span id="post_react_hooks_rebirth_of_state_management">[43]T. Linsley, “React Hooks, the rebirth of State Management and beyond.,” 2020 [Online]. Available at: <a href="https://blog.usejournal.com/react-hooks-the-rebirth-of-state-management-and-beyond-7d84f6026d87" target="_blank">https://blog.usejournal.com/react-hooks-the-rebirth-of-state-management-and-beyond-7d84f6026d87</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_a_state_management_pattern_for_ionic_react">[44]M. Lynch, “A state management pattern for Ionic React with React Hooks | The ...,” 2020 [Online]. Available at: <a href="https://ionicframework.com/blog/a-state-management-pattern-for-ionic-react-with-react-hooks" target="_blank">https://ionicframework.com/blog/a-state-management-pattern-for-ionic-react-with-react-hooks</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_bloc_pattern_with_react_hooks">[45]Martin, “BLoC Pattern with React Hooks — magarcia,” 2020 [Online]. Available at: <a href="https://magarcia.io/2019/02/18/bloc-pattern-with-react-hooks" target="_blank">https://magarcia.io/2019/02/18/bloc-pattern-with-react-hooks</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_discovering_patterns_with_react_hooks">[46]M. Pekala, “Discovering patterns with React hooks,” 2019 [Online]. Available at: <a href="https://ponyfoo.com/articles/discovering-patterns-with-react-hooks" target="_blank">https://ponyfoo.com/articles/discovering-patterns-with-react-hooks</a>. [Accessed: 13-Apr-2019]</span></li>
+<li><span id="post_friday_frontend_new_react_pattern">[47]K. Ball, “Friday Frontend: New React Patterns,” 2019 [Online]. Available at: <a href="https://zendev.com/2019/05/17/new-react-patterns-edition.html" target="_blank">https://zendev.com/2019/05/17/new-react-patterns-edition.html</a>. [Accessed: 17-Apr-2019]</span></li>
+<li><span id="post_the_reactjs_controller_view_pattern">[48]A. Ray, “The ReactJS Controller View Pattern,” 2015 [Online]. Available at: <a href="http://blog.andrewray.me/the-reactjs-controller-view-pattern" target="_blank">http://blog.andrewray.me/the-reactjs-controller-view-pattern</a>. [Accessed: 07-Jul-2015]</span></li>
+<li><span id="post_using_the_adapter_design_pattern_with_react">[49]S. G. Team, “Using the Adapter Design Pattern With React | SendGrid,” 2018 [Online]. Available at: <a href="https://sendgrid.com/blog/using-the-adapter-design-pattern-with-react" target="_blank">https://sendgrid.com/blog/using-the-adapter-design-pattern-with-react</a>. [Accessed: 26-Jun-2018]</span></li>
+<li><span id="post_dependency_injection">[50]K. Tsonev, “Dependency injection · React in patterns,” 2020 [Online]. Available at: <a href="https://krasimir.gitbooks.io/react-in-patterns/chapter-10" target="_blank">https://krasimir.gitbooks.io/react-in-patterns/chapter-10</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_global_listener_patterns_in_react">[51]T. Sallai, “Global listener patterns in React - Advanced Web Machinery,” 2016 [Online]. Available at: <a href="https://advancedweb.hu/global-listener-patterns-in-react/" target="_blank">https://advancedweb.hu/global-listener-patterns-in-react/</a>. [Accessed: 05-Jan-2016]</span></li>
+<li><span id="flux_facebook_pattern">[52]Facebook, “Flux - Application architecture for building user interfaces,” 2020 [Online]. Available at: <a href="https://facebook.github.io/flux" target="_blank">https://facebook.github.io/flux</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_getting_to_know_the_redux_pattern">[53]G. Fink, “Getting to Know the Redux Pattern | DotNetCurry,” 2020 [Online]. Available at: <a href="https://www.dotnetcurry.com/reactjs/1356/redux-pattern-tutorial" target="_blank">https://www.dotnetcurry.com/reactjs/1356/redux-pattern-tutorial</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_redux_design_patterns_reduxsauce">[54]P. J. Frias, “Redux design patterns &amp; Reduxsauce,” 2020 [Online]. Available at: <a href="https://blog.smartlogic.io/redux-design-patterns-reduxsauce" target="_blank">https://blog.smartlogic.io/redux-design-patterns-reduxsauce</a>. [Accessed: 27-Sep-2020]</span></li>
+<li><span id="post_level_up_react_architecture">[55]D. Vincijanovic, “Level up your React architecture with MVVM - COBE,” 2018 [Online]. Available at: <a href="https://medium.cobeisfresh.com/level-up-your-react-architecture-with-mvvm-a471979e3f21" target="_blank">https://medium.cobeisfresh.com/level-up-your-react-architecture-with-mvvm-a471979e3f21</a>. [Accessed: 30-Aug-2018]</span></li></ol>
+
+<h2 id="appendix">Appendix</h2>
+
+<p>This section presents extra resources created during the development of this
+content.</p>
+
+<h3 id="mined-content">Mined content</h3>
+
+<p>On the Title column, the original title from the source was preserved and on the right a short abstract was provided to illustrate what the source content is about.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Abstract</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>React Patterns</td>
+      <td><a class="citation" href="#post_react_patterns">[6]</a> provides a list with patterns used in reactjs, the list has a title and a brief description as well as the code snippet that represents the described pattern. The list works as a friendly guide for developers that need a way to quickly check how to compose a specific pattern.</td>
+    </tr>
+    <tr>
+      <td>Design Principles – React</td>
+      <td><a class="citation" href="#post_design_principles_react">[56]</a> is a collection of the ReactJs design principles that together composes the philosophy and key concepts implemented in ReactJs. Those are used as a guide fo ReactJs evolution and changes for the community around it.</td>
+    </tr>
+    <tr>
+      <td>2019 ReactJS Best Practices - Bogdan Kulbida - Medium</td>
+      <td><a class="citation" href="#post_2019_reactjs_best_practices">[13]</a> presents a best practices guide related to component creation, named: stateful components, stateless components, Higher order components and container components. For each pattern listed, the author goes in details for each one of them. The communication pattern between react components is also cited (known as data/props down, actions/events up).</td>
+    </tr>
+    <tr>
+      <td>Advanced React Component Patterns</td>
+      <td><a class="citation" href="#post_advanced_react_component_patterns">[16]</a> describes the patterns used in his course, named: compound components, Higher order components, render props, prop collection and getters, state initializers, controlled components an provider. The list just gives a brief description of what is covered in the course and not much detail is given, which might be difficult to understand without a proper context, the author also assumes that the reader already has previous knowledge in React (as the title says it is an advanced reactjs patterns).</td>
+    </tr>
+    <tr>
+      <td>Five Ways to Advanced React Patterns - DEV</td>
+      <td><a class="citation" href="#post_five_ways_to_advanced_react_patterns">[17]</a> covers the same patterns as <a class="citation" href="#post_advanced_react_component_patterns">[16]</a>, not all of them though, and also adds the pattern state reducer.</td>
+    </tr>
+    <tr>
+      <td>How To Master Advanced React Design Patterns — Render Props</td>
+      <td><a class="citation" href="#post_how_to_master_advanced_react_design_patterns">[29]</a> in covers exclusively the render props pattern, this post is part of a series of reactjs patterns that each post covers a single pattern.</td>
+    </tr>
+    <tr>
+      <td>Simple React Patterns | Lucas Reis’ Blog</td>
+      <td><a class="citation" href="#post_simple_react_patterns">[9]</a> gives code snippets for different reactjs patterns, named as “everyday patterns”, such as: container or view pattern (not to be confused by compound pattern), higher order component , render props and the provider pattern.</td>
+    </tr>
+    <tr>
+      <td>Advanced Patterns in React</td>
+      <td><a class="citation" href="#post_advanced_patterns_reactjs">[20]</a> dedicates the post to two specific reactjs patterns: higher order components  and render props.</td>
+    </tr>
+    <tr>
+      <td>React.js in patterns</td>
+      <td><a class="citation" href="#post_reactjs_in_patterns">[21]</a> the author starts by the communication flow that reactjs uses as a foundation as well as the children props, basically setting up a common ground, then the pattern higher order component is introduced.</td>
+    </tr>
+    <tr>
+      <td>React Component Patterns - Level Up Coding</td>
+      <td><a class="citation" href="#post_react_component_patterns">[7]</a> mentions for the first time in this list stateless and stateful components shows up, those patterns are often used to separate concerns between components. Besides that, the container, higher order component, render callback are presented. The author focus was to summarize his experience about those patterns.</td>
+    </tr>
+    <tr>
+      <td>Evolving Patterns in React</td>
+      <td><a class="citation" href="#post_evolving_patterns_in_react">[14]</a> starts with patterns that are considered to be simple, such as conditional rendering, passing down props (<a class="citation" href="#post_2019_reactjs_best_practices">[13]</a> also mentions the passing props), in the follow up the author mentions the destructuring pattern, which is a javascript functionality and not a reactjs pattern.</td>
+    </tr>
+    <tr>
+      <td>React Conditional Rendering Patterns | Building SPAs</td>
+      <td><a class="citation" href="#post_react_conditional_rendering">[15]</a> focus on the rendering patterns used in reactjs. Those patterns are directly connected to JSX, as reactjs uses JSX to render the component.</td>
+    </tr>
+    <tr>
+      <td>Patterns for Style Composition in React | Jxnblk</td>
+      <td><a class="citation" href="#post_patterns_style_composition">[28]</a> describes the patterns the he used to keep things organized, the goal as mentioned was to (but not limited to): create a well defined visual design, increase maintainability of visual styles and create reusable components. For that, the author used: stateless components (which is also discussed by <a class="citation" href="#post_react_component_patterns">[7]</a>), styles module, style functions, npm modules, base component and higher order components. Those patterns listed, were used focused on the visual part.</td>
+    </tr>
+    <tr>
+      <td>Simple React Design Patterns: Container/View - serendipidata</td>
+      <td><a class="citation" href="#post_simple_react_design_patterns_container_view">[8]</a> expose his thoughts on the container/view pattern rather than explain how the pattern works. The author gives his opinions and use cases for the pattern, also the author assumes that the read has already some experience with reactjs and knows the vocabulary of the patterns, such as higher order components.</td>
+    </tr>
+    <tr>
+      <td>Higher-order Components: A React Application Design Pattern …</td>
+      <td><a class="citation" href="#post_higher_order_components">[22]</a> focus on the higher order components pattern, the author starts with the basic idea of pure functions as a base for the reader to understand the pattern.</td>
+    </tr>
+    <tr>
+      <td>Patterns for data fetching in React - LogRocket Blog</td>
+      <td><a class="citation" href="#post_patterns_for_data_fetching_in_react">[25]</a>  explore the different patterns to use when fetching data from a server using reactjs.</td>
+    </tr>
+    <tr>
+      <td>10 React mini-patterns | Hacker Noon</td>
+      <td><a class="citation" href="#post_10_react_mini_patterns">[57]</a> explore different approaches and use cases for using react, the pattern passing props down (this same pattern was explored by <a class="citation" href="#post_2019_reactjs_best_practices">[13]</a>, <a class="citation" href="#post_evolving_patterns_in_react">[14]</a>) is the only reactjs pattern that is mentioned by the author.</td>
+    </tr>
+    <tr>
+      <td>5 React Data-Fetching Patterns - Nordschool</td>
+      <td><a class="citation" href="#post_5_react_data_fetching">[26]</a> is a shorter version of <a class="citation" href="#post_patterns_for_data_fetching_in_react">[25]</a> and a more detailed one taking care of diving the fetching patterns with a reactjs pattern.</td>
+    </tr>
+    <tr>
+      <td>The Facade pattern and applying it to React Hooks</td>
+      <td><a class="citation" href="#post_the_facade_pattern_and_applying_to_react_hooks">[41]</a>  explores the idea of the facade pattern and the hooks pattern, mixing those together to abstract the third parties libraries to the application. The main idea of the author is to explore the facade with reactjs hooks.</td>
+    </tr>
+    <tr>
+      <td>React hooks design patterns and creating components without class</td>
+      <td><a class="citation" href="#post_react_hooks_design_patterns_creating_components_without_class">[38]</a> gives a brief explanation about the hooks, its functional approach and a comparison between class components and functional components.  The author states that the reactjs patterns known by the class standard are shifting to hooks in a functional approach, and reactjs hooks is the future of react.</td>
+    </tr>
+    <tr>
+      <td>Common i18n patterns in React — LinguiJS documentation</td>
+      <td><a class="citation" href="#post_common_i18n_patterns_in_react">[30]</a> is all about i18n in reactjs. Due the different ways to render a translation string, the examples given uses the component approach and the render prop.</td>
+    </tr>
+    <tr>
+      <td>Implementing the Container Pattern using React Hooks</td>
+      <td><a class="citation" href="#post_implementing_the_container_pattern_using_react_hooks">[10]</a> implements the container pattern using hooks, a to-do app like is used as an example for the usage of the container pattern. Besides that, the interesting part is that the author uses class components and functional components in the code examples.</td>
+    </tr>
+    <tr>
+      <td>Introduction to React Design Patterns</td>
+      <td><a class="citation" href="#post_introduction_to_react_design_patterns">[11]</a> explores the container pattern and render props, also the flux pattern is introduced in the talk.</td>
+    </tr>
+    <tr>
+      <td>How advanced React patterns changed with hooks</td>
+      <td><a class="citation" href="#post_how_advanced_react_patterns_changed_with_hooks">[27]</a></td>
+    </tr>
+    <tr>
+      <td>Four patterns for global state with React hooks: Context or Redux</td>
+      <td><a class="citation" href="#post_four_patterns_for_global_state_with_react_hooks">[35]</a> shares his thoughts on global states in reactjs components, in the following order: prop passing, context and redux. Which for global state context and redux are popular solutions, therefore, passing props is a local state and not a global solution for that.</td>
+    </tr>
+    <tr>
+      <td>Zemuldo Blog - Patterns For Testable React Components</td>
+      <td><a class="citation" href="#post_patterns_for_testable_react_components">[19]</a> introduces a pattern named decorated components to make testing easier in react components. In fact, this is the first pattern mentioned with testing.</td>
+    </tr>
+    <tr>
+      <td>Discovering patterns with React hooks</td>
+      <td><a class="citation" href="#post_discovering_patterns_with_react_hooks">[46]</a></td>
+    </tr>
+    <tr>
+      <td>The ReactJS Controller View Pattern</td>
+      <td>The controller view pattern introduced by <a class="citation" href="#post_the_reactjs_controller_view_pattern">[48]</a> is used to delegates the responsibility of handling the state change to a single component.</td>
+    </tr>
+    <tr>
+      <td>Seven patterns by example: The many ways to <code class="language-plaintext highlighter-rouge">type="radio"</code> in React</td>
+      <td><a class="citation" href="#post_seven_patterns_by_example">[18]</a> focuses on the radios input type and based on the HTML input, the author starts to compose the reactjs patterns around it.</td>
+    </tr>
+    <tr>
+      <td>The React + Redux Container Pattern</td>
+      <td><a class="citation" href="#post_the_react_redux_container_pattern">[12]</a></td>
+    </tr>
+    <tr>
+      <td>React Component Types: A complete Overview - RWieruch</td>
+      <td>The complete guide of a reactjs component by <a class="citation" href="#post_react_component_types_a_complete_overview">[23]</a> goes from the create react class style (the first approach of the library), using mixins as a way to share code between components, ES6 classes and higher order components. In the second part the functional approach is introduced (as this is the latest and recommended way to write reactjs code). All in all, the complete guide shows the reactjs evolution through time and how new javascript features improved the library style of code and gave different approaches to solve common problems.</td>
+    </tr>
+    <tr>
+      <td>Production-Level Patterns for React Hooks | FullStack Labs</td>
+      <td><a class="citation" href="#post_production_level_patterns_for_react_hooks">[42]</a> introduces the idea of effects instead of life cycle events (as reactjs used to be before hooks), in his approach the to-do app is used to re-factor the code from a class component to a functional component that uses hooks to share logic and separate concerns.</td>
+    </tr>
+    <tr>
+      <td>A Model View Controller Pattern for React - Test Double | Our Blog</td>
+      <td><a class="citation" href="#post_a_model_view_controller_pattern">[58]</a> uses the same idea as <a class="citation" href="#post_production_level_patterns_for_react_hooks">[42]</a> to use MVC in reactjs. The difference here is that <a class="citation" href="#post_a_model_view_controller_pattern">[58]</a> goes in detail about why MVC.</td>
+    </tr>
+    <tr>
+      <td>Provider Pattern in React using React Context API</td>
+      <td><a class="citation" href="#post_provider_pattern_in_react_using_react_context_api">[33]</a> gives an introduction to the provider pattern. The author explains the concept of the provider pattern and why it exists (prop-drilling).</td>
+    </tr>
+    <tr>
+      <td>Using the Adapter Design Pattern With React | SendGrid</td>
+      <td>The pattern adapter in reactjs presented by <a class="citation" href="#post_using_the_adapter_design_pattern_with_react">[49]</a> introduces a pattern that aims to decouple the source data from the presentational layer. As the author states “Eventually, I decided that having the view so tightly coupled to the API was a poor decision.”, therefore, using the adapter pattern, offers the following benefits: reduced coupling, easier maintenance, the view layer focused on only the presentational aspect, updates to changes in the API becomes easier as there will be only one place to change.</td>
+    </tr>
+    <tr>
+      <td>Dependency injection · React in patterns</td>
+      <td><a class="citation" href="#post_dependency_injection">[50]</a> uses the dependency injection term to describe how reactjs pass props between components, in this sense, the dependency in a component is what in injected by the consumer.</td>
+    </tr>
+    <tr>
+      <td>AngularJS Patterns in React | Greg Babiars’s Blog</td>
+      <td><a class="citation" href="#post_angularjs_patterns_in_react">[36]</a> translates angular features, such as filters, directives, themes and slots, to its corresponding code in reactjs.</td>
+    </tr>
+    <tr>
+      <td>Global listener patterns in React - Advanced Web Machinery</td>
+      <td><a class="citation" href="#post_global_listener_patterns_in_react">[51]</a> provides patterns used in react to listen and remove listeners to global events. The first example uses the state to keep track of the listeners and also to  remove them once the reacjs component has been unmounted, as pointed by the author, this approach requires three reactjs life cycle methods , otherwise it might produce undesirable behavior. An alternative to that is a simpler approach that relies on the window object to register and remove the listener.</td>
+    </tr>
+    <tr>
+      <td>Level up your React architecture with MVVM - COBE</td>
+      <td><a class="citation" href="#post_level_up_react_architecture">[55]</a> introduces the MVVM pattern using reactjs, the pattern consists of separating the controller of updating the view with the responsible to control the update. This is the first time the MVVM appears in this list, which can open for further questions about the MVVM on reactjs.</td>
+    </tr>
+    <tr>
+      <td>React patterns | React and Ramda patterns</td>
+      <td><a class="citation" href="#post_react_patterns_react_and_ramda">[24]</a> expoes code snippets to bring the functional approach to reacjs, ramda is a javascrpt functional library. The reactjs is focusing on functional approaches as well (hooks for example), but the approach is different, given the fact that reacjs wasn’t created with functional from scratch.</td>
+    </tr>
+    <tr>
+      <td>Friday Frontend: New React Patterns</td>
+      <td><a class="citation" href="#post_friday_frontend_new_react_pattern">[47]</a> is a collection shared by the author with different tips around the reactjs ecosystem, it doesn’t focus on any specific subject, but it refers links to patterns such as hooks and recursive reactjs components.</td>
+    </tr>
+    <tr>
+      <td>React’s State Reducer Pattern - DSC Engineering</td>
+      <td><a class="citation" href="#post_react_state_reducer_pattern">[32]</a></td>
+    </tr>
+    <tr>
+      <td>The Unstated React Service Pattern - HMH Engineering</td>
+      <td><a class="citation" href="#post_the_unstated_react_service_patttern">[59]</a> describes the context pattern as an alternative to redux, mobx and apollo link state. The presented alternative is to use stated to manage the global state in reactjs.</td>
+    </tr>
+    <tr>
+      <td>Best Practices With React Hooks — Smashing Magazine</td>
+      <td><a class="citation" href="#post_best_practices_with_react_hooks">[39]</a> dives into the details of reactjs hooks,  for a beginner point of view and also for an intermediate developer that already knows hooks but wants to level up the understanding of the subject (section “hooks best practices”).</td>
+    </tr>
+    <tr>
+      <td>15 React Best Practices You Need to Follow in 2020</td>
+      <td><a class="citation" href="#post_15_react_best_practices_you_need_to_follow_in_2019">[60]</a> gathered 15 best practices that reactjs developers should follow, therefore, in those practices no specific pattern was mentioned.</td>
+    </tr>
+    <tr>
+      <td>React Patterns - Render Callback | Lenny’s Blog</td>
+      <td><a class="citation" href="#post_react_patterns_render_callback">[31]</a> presents the callback render as an alternative to render props, which has the same intent, the difference relies in the callback itself. Whereas the render props renders a given prop, the callback renders a function that is invoked before rendering.</td>
+    </tr>
+    <tr>
+      <td>Redux design patterns &amp; Redux sauce</td>
+      <td><a class="citation" href="#post_redux_design_patterns_reduxsauce">[54]</a> is a source around the redux and redux sauce and how the author used the flux pattern implementation.</td>
+    </tr>
+    <tr>
+      <td>React Hooks, the rebirth of State Management and beyond.</td>
+      <td><a class="citation" href="#post_react_hooks_rebirth_of_state_management">[43]</a> presents his experiments with reactjs hooks its usage with state management.</td>
+    </tr>
+    <tr>
+      <td>8 no-Flux strategies for React component communication</td>
+      <td><a class="citation" href="#post_8_no_flux_strategies_for_react">[34]</a> shows 8 different strategies to communicate data between reactjs. Even though the alternative claims to be an alternative to flux (the implementation most known is redux). Those alternatives are: props, instance methods, callback functions, event bubbling, parent component, observer pattern, global variables and context.</td>
+    </tr>
+    <tr>
+      <td>BLoC Pattern with React Hooks — magarcia</td>
+      <td><a class="citation" href="#post_bloc_pattern_with_react_hooks">[45]</a> BLoC stands for Business Logic Component. The focus of BLoC is to remain environment and platform independent, use exclusively observables and also contains business logic. The pattern was created to support angular dart and flutter, but the author suggests that it can be applicable to reactjs as well.</td>
+    </tr>
+    <tr>
+      <td>Getting to Know the Redux Pattern | DotNetCurry</td>
+      <td>(missing reference)  offers an approach to the redux pattern introducing the flux (which is the pattern definition - one way data flow) and also exposes a few examples in how to use it as a pure library (no reactjs). The content presented is a base to developers that want to understand how redux works and where it come from.</td>
+    </tr>
+    <tr>
+      <td>Clean Code vs. Dirty Code: React Best Practices - American …</td>
+      <td><a class="citation" href="#post_clean_code_dirty_code">[5]</a> introduces the idea behind clean code and also its counter parts “dirty code”. The content is a set of best practices guide instead of a clear pattern implementation.</td>
+    </tr>
+    <tr>
+      <td>ReactJS - GeeksforGeeks</td>
+      <td><a class="citation" href="#post_geeks_for_geeks">[61]</a> is a material created for beginners, it gives the foundation of reactjs, how it works, what it is, the naming and conventions. The material is recommended as a first approach to the reactjs ecosystem.</td>
+    </tr>
+    <tr>
+      <td>Reusable Code In React: Inheritance, Composition, Decorators and …</td>
+      <td><a class="citation" href="#post_reusable_code_in_react">[40]</a> goes around the oriented object programming style for sharing code, such as inheritance, composition and decorators. Besides that the mixins pattern is taken as a “deprecated” way for sharing code in favor of hooks.</td>
+    </tr>
+    <tr>
+      <td>Killing Switch Statements in React with the Strategy Pattern</td>
+      <td><a class="citation" href="#post_killing_switch_statements">[62]</a> presents an alternative to switch statements, as mentioned by the author, the switch statement in this case was a smell and with maintainability  issues.</td>
+    </tr>
+    <tr>
+      <td>A state management pattern for Ionic React with React Hooks</td>
+      <td><a class="citation" href="#post_a_state_management_pattern_for_ionic_react">[44]</a> uses reactjs hooks to replicate the redux library behavior.</td>
+    </tr>
+    <tr>
+      <td>Advanced React Concepts | React Resources</td>
+      <td><a class="citation" href="#post_advanced_react_concepts">[63]</a> is a collection of reactjs resources about advanced usage of reactjs.</td>
+    </tr>
+    <tr>
+      <td>Reactjs application development tips | Reactive</td>
+      <td><a class="citation" href="#post_reactjs_application_development_tips">[64]</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="web-almanac-css">Web almanac css</h3>
+
+<p>Web almanac <a class="citation" href="#web_almanac_2020">[65]</a> is a reasearch that focus on the web features used in the
+wild.</p>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#reactjs-patterns-a-study-based-on-google-search">Introduction</a></li>
+  <li><a href="#finding-reactjs-patterns-articles">Finding reactjs patterns articles</a></li>
+  <li><a href="#mining-results">Mining results</a></li>
+  <li><a href="#analyzing-the-results">Analyzing the results</a>
+    <ul>
+      <li><a href="#posts">Posts</a></li>
+    </ul>
+  </li>
+  <li><a href="#discussion">Discussion</a>
+    <ul>
+      <li><a href="#q1">Q1</a></li>
+      <li><a href="#q2">Q2</a></li>
+    </ul>
+  </li>
+  <li><a href="#related-work">Related work</a>
+    <ul>
+      <li><a href="#container-component">Container component</a></li>
+      <li><a href="#conditional-rendering">Conditional rendering</a></li>
+      <li><a href="#compound-components">Compound components</a></li>
+      <li><a href="#decorated-component">Decorated component</a></li>
+      <li><a href="#higher-order-component">Higher order component</a></li>
+      <li><a href="#render-props--render-callback">Reder props / Render callback</a></li>
+      <li><a href="#provider--context">Provider / Context</a></li>
+      <li><a href="#hooks">Hooks</a></li>
+      <li><a href="#redux">Redux</a></li>
+    </ul>
+  </li>
+  <li><a href="#conclusion">Conclusion</a></li>
+  <li><a href="#references">References</a></li>
+  <li><a href="#appendix">Appendix</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/development/2021/03/15/firebase-ui-localization.html">Firebase UI localization [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html">Towards a reactjs folder structure based on intent (WIP) [  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">components,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html">Configuring reactjs and relay 2019 version [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">react,</span>  <span class="text-marabesi-pink">component,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/test/2019/10/13/cypress-and-firebase-reactjs-app.html">e2e testing with Cypress, ReactJs and Firebase [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">reactjs,</span>  <span class="text-marabesi-pink">Online,</span>  <span class="text-marabesi-pink">https,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

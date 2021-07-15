@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Introduction to OOP with PHP (Classes, Encapsulation, Inheritance)</title>
+    <meta name="description"
+      content="The following content aims to introduce the concepts of OOP, complementing theseconcepts the PHP language is used to demonstrate practical examples, but can ...">
+
+    <link rel="canonical" href="https://marabesi.com/php/2019/06/25/intro-oop-php.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Introduction to OOP with PHP (Classes, Encapsulation, Inheritance)" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/php/2019/06/25/intro-oop-php.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2019-06-25-intro-oop-php/cover.jpg" />
+    <meta property="og:description"
+      content="The following content aims to introduce the concepts of OOP, complementing theseconcepts the PHP language is used to demonstrate practical examples, but can ..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Introduction to OOP with PHP (Classes, Encapsulation, Inheritance)">
+    <meta name="twitter:description"
+      content="The following content aims to introduce the concepts of OOP, complementing theseconcepts the PHP language is used to demonstrate practical examples, but can ...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2019-06-25-intro-oop-php/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2019-06-25 05:06:05 +0000">
+
+    <meta name="keywords" content="class,programming,private,classes,Person,object,type,final,methods,code,inheritance,web,oop,php,PHP,behaviors,oop,php oop examples,encapsulation php,encapsulation in php,types of inheritance in php,php final class" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="intro-oop-php">Introduction to OOP with PHP (Classes, Encapsulation, Inheritance)</h1>
+
+        <p>The following content aims to introduce the concepts of OOP, complementing these
+concepts the PHP language is used to demonstrate practical examples, but can be
+written in any programming language.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Object-oriented programming is a paradigm used in programming to approximate
+reality. In comparison to structured programming where each line of code
+executes a statement, object-oriented programming is distinguished by
+representing code in classes.</p>
+
+<ul>
+  <li>Classes: represents a prototype of an object. To create an object it is necessary to define a class beforehand.</li>
+  <li>Object is the concrete instance of a class, which has behaviors.</li>
+</ul>
+
+<p><em>The UML has a unique diagram for this type of approach, the class diagram. This diagram aims to represent how the interaction between classes is in a system</em></p>
+
+<p>One of the advantages of using OOP instead of structured programming is code
+reuse, also known as inheritance and polymorphism. On the other hand,
+structured programming reuses code through functions and nothing else, which in
+some scenarios makes it difficult to use the same logic. Such as a function
+that needs to behave in a way based on a parameter. Typically this approach in
+structured programming is addressed with a switch / case.</p>
+
+<h2 id="classes">Classes</h2>
+
+<p>A class can be represented by its behavior (methods) and attributes (variables)
+<a class="citation" href="#pablo_dalloglio">[1]</a></p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">Class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+
+   <span class="k">public</span> <span class="nv">$name</span><span class="p">;</span>
+   <span class="k">public</span> <span class="nv">$age</span><span class="p">;</span>
+   <span class="k">public</span> <span class="nv">$id</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In structured programming, this type of abstraction is done in a different way.
+For example in C is used struct to create a new data structure.</p>
+
+<p>Classes in particular have two behaviors, the constructors and the destructors.
+Constructors are used to define an initial state of an object, and destructors
+are used to define the final behavior, and are executed before an object is
+destroyed from memory.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">class</span> <span class="nc">Person</span> <span class="p">{</span>
+  <span class="nf">__construct</span><span class="p">()</span> <span class="p">{}</span>
+  <span class="nf">__destruct</span><span class="p">()</span> <span class="p">{}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><strong>NOTE</strong>: methods that begin with __ in your name have a special meaning in PHP.
+These methods are known as magic methods, which have a certain behavior
+depending on the type of method invoked.</p>
+
+<h2 id="encapsulation">Encapsulation</h2>
+
+<p>Encapsulation provides a process of allowing / denying access to behavior and
+data that a given class has through the visibility modifiers.</p>
+
+<p><strong>NOTE</strong>: One of the first approaches of PHP (PHP 4) object orientation did not
+have implemented visibility. All attributes were public and accessible
+<a class="citation" href="#difference_php4_php5">[2]</a>.</p>
+
+<p><strong>NOTE 2</strong>: With php 7.4, it is now possible to take properties of a class</p>
+
+<p>PHP has three types of public, private, and protected visibility modifiers.
+Modifiers are used in the attributes and methods of a class and classes that
+inherit can modify the behavior of the parent class.</p>
+
+<p>Andy Hunt and Dave Thomes touch on this point in a article published by the
+IEEE softrware in a nice and clean example, in which they elaborate on
+the enbugging term and as well as the code design <a class="citation" href="#the_art_of_enbugging">[3]</a>.</p>
+
+<h2 id="inheritance">Inheritance</h2>
+
+<p>Inheritance is known is the act of inheriting all behavior from one class to
+another, with the possibility of changing some particular desired behavior.
+The goal of inheritance is to reuse existing code.</p>
+
+<p>Following with the example of the person class, in an actual application, could
+have the difference of type, such as for example physical or legal person.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+
+   <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+   <span class="k">private</span> <span class="nv">$age</span><span class="p">;</span>
+   <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kd">class</span> <span class="nc">LegalPerson</span> <span class="kd">extends</span> <span class="nc">Person</span>
+<span class="p">{</span>
+
+   <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+   <span class="k">private</span> <span class="nv">$age</span><span class="p">;</span>
+   <span class="k">private</span> <span class="nv">$document</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p><em>Note: In this example we could go a little further and put a Person base class
+and create two other PersonPass and LegalPerson classes, so the cpf attribute
+would not be unusable in the legal class.</em></p>
+
+<p>Polymorphism refers to many forms, in the context of object orientation,
+we apply polymorphism so that classes derived from other classes (inheritance)
+have the same methods but different behaviors.</p>
+
+<p>This type of approach is used when programming for the parent class and not for
+a particular implementation.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="kd">Class</span> <span class="nc">Person</span>
+<span class="p">{</span>
+   <span class="k">private</span> <span class="nv">$name</span><span class="p">;</span>
+   <span class="k">private</span> <span class="nv">$age</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kd">Class</span> <span class="nc">LegalPerson</span> <span class="kd">extends</span> <span class="nc">Person</span>
+<span class="p">{</span>
+   <span class="k">private</span> <span class="nv">$document</span><span class="p">;</span>
+<span class="p">}</span>
+
+
+<span class="kd">Class</span> <span class="nc">NaturalPerson</span> <span class="kd">extends</span> <span class="nc">Person</span>
+<span class="p">{</span>
+   <span class="k">private</span> <span class="nv">$id</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>In a scenario where we want only the document value independent of the type of
+person, polymorphism becomes important.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="nv">$naturalPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NaturalPerson</span><span class="p">(</span><span class="s1">'john'</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">3232323</span><span class="p">);</span>
+<span class="nv">$legalPerson</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">LegalPerson</span><span class="p">(</span><span class="s1">'maria'</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">999999</span><span class="p">);</span>
+
+<span class="nv">$persons</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="nv">$naturalPerson</span><span class="p">,</span>
+  <span class="nv">$legalPerson</span>
+<span class="p">];</span>
+</code></pre></div></div>
+
+<p>This scenario illustrates the concept of abstraction and polymorphism, the final
+program, is concerned with the behaviors that exist in a person and not in
+specific behaviors of legal person or individual.</p>
+
+<h2 id="abstract-classes">abstract classes</h2>
+
+<p>Abstract classes are used for this purpose, to create an abstraction based on
+some behavior. In one sense of class hierarchy, the abstract class is used as
+the basis for all others.</p>
+
+<p><em>Note: At this point it is necessary to think exclusively about the hierarchy and
+how to use it, good programming practices, like testing, favor composition
+rather than inheritance.</em></p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="k">abstract</span> <span class="kd">class</span> <span class="nc">Person</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<p>With abstract class it is not possible to instantiate an object, since the
+concrete class is allowed.</p>
+
+<h2 id="final-classes">final classes</h2>
+
+<p>On the other hand, sometimes it is possible that a scenario of blocking any type
+of inheritance is imposed. For this the final classes were there, declaring a 
+class as final, it is not possible to extend it.</p>
+
+<div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?php</span>
+
+<span class="k">final</span> <span class="kd">class</span> <span class="nc">LegalPerson</span> <span class="p">{}</span>
+</code></pre></div></div>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="pablo_dalloglio">[1]P. Dall’Oglio, “PHP Programando com Orientação a Objetos. Ed 1.,” 2007. </span></li>
+<li><span id="difference_php4_php5">[2]H. Hayder, <i>Object-Oriented Programming with PHP5</i>. Packt, 2007 [Online]. Available at: <a href="https://subscription.packtpub.com/book/web_development/9781847192561/1/ch01lvl1sec09/difference-of-oop-in-php4-and-php5" target="_blank">https://subscription.packtpub.com/book/web_development/9781847192561/1/ch01lvl1sec09/difference-of-oop-in-php4-and-php5</a></span></li>
+<li><span id="the_art_of_enbugging">[3]A. Hunt and D. Thomas, “The Art of Enbugging,” 2003 [Online]. Available at: <a href="https://www2.ccs.neu.edu/research/demeter/related-work/pragmatic-programmer/jan_03_enbug.pdf" target="_blank">https://www2.ccs.neu.edu/research/demeter/related-work/pragmatic-programmer/jan_03_enbug.pdf</a>. [Accessed: 05-Jun-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#introduction">Introduction</a></li>
+  <li><a href="#classes">Classes</a></li>
+  <li><a href="#encapsulation">Encapsulation</a></li>
+  <li><a href="#inheritance">Inheritance</a></li>
+  <li><a href="#abstract-classes">Abstract classes</a></li>
+  <li><a href="#final-classes">Final classes</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/php/2019/06/25/intro-oop-php.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/php/2019/06/25/intro-oop-php.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/php/2019/06/25/intro-oop-php.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2020/04/05/php-import-checker-vscode-extension.html">PHP import checker - VScode extension to support PHP developers [  <span class="text-marabesi-pink">PHP,</span>  <span class="text-marabesi-pink">php,</span>  <span class="text-marabesi-pink">code,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html">Configuring reactjs and relay 2019 version [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">web,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/javascript/2019/01/14/strategies-to-test-legacy-code.html">Strategies to test legacy code - PART 1 [  <span class="text-marabesi-pink">code,</span>  <span class="text-marabesi-pink">class,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/iot/raspberrypi/php/2019/01/12/errors-compiling-php-from-source-on-a-raspberry-pi.html">Errors compiling PHP from source on a Raspberry Pi [  <span class="text-marabesi-pink">web,</span>  <span class="text-marabesi-pink">php,</span>  <span class="text-marabesi-pink">PHP,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

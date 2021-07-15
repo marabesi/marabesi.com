@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Jest asserts beyond equals</title>
+    <meta name="description"
+      content="Testing with jest is an activity that developers do to keep the applicationmaintainable and time proof. Therefore, learning a testing frameworkcan be a consu...">
+
+    <link rel="canonical" href="https://marabesi.com/web/2021/04/25/jest-asserts-beyond-equals.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Jest asserts beyond equals" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/web/2021/04/25/jest-asserts-beyond-equals.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2021-04-25-jest-asserts-beyond-equals/cover.png" />
+    <meta property="og:description"
+      content="Testing with jest is an activity that developers do to keep the applicationmaintainable and time proof. Therefore, learning a testing frameworkcan be a consu..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Jest asserts beyond equals">
+    <meta name="twitter:description"
+      content="Testing with jest is an activity that developers do to keep the applicationmaintainable and time proof. Therefore, learning a testing frameworkcan be a consu...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2021-04-25-jest-asserts-beyond-equals/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-04-25 04:06:05 +0000">
+
+    <meta name="keywords" content="jest,javascript,expect,equals,toequal,async,assertion,TDD,const,assert,toEqual,example,callback,called,test,result,approach,beyond" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="hidden md:block">
+          <div style="background-image: url('/images/posts/2021-04-25-jest-asserts-beyond-equals/featured.jpg'); background-size: cover; background-position-y: center; width: 100%; height: 600px;"></div>
+          <small class="mt-1 mr-1 flex justify-end">
+            Image from: <a href="https://unsplash.com/photos/58Z17lnVS4U" target="_blank">https://unsplash.com/photos/58Z17lnVS4U</a>
+          </small>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="jest-asserts-beyond-equals">Jest asserts beyond equals</h1>
+
+        <p>Testing with jest is an activity that developers do to keep the application
+maintainable and time proof. Therefore, learning a testing framework
+can be a consuming task, often it has many features to explore. The assertion
+API (Application Programming Interface) usually is one of the most important ones, as this is the one that
+the developer uses the most during the TDD (Test Driven Development)
+<a class="citation" href="#kent_beck_tdd_by_example">[1]</a> flow.</p>
+
+<p>The gist of the assertion API <a class="citation" href="#jest_expect">[2]</a>
+is to compare values, as such the equals match is the most used (in my experience). On
+the other hand being one of the most used can also point to a lack of knowledge
+in the different assertions that the testing framework offers.</p>
+
+<p>This post aims to cover different assertions, to avoid using always
+<code class="language-plaintext highlighter-rouge">toEqual</code> and make the test case more expressive. For each example, I try
+to first depict how it would be with <code class="language-plaintext highlighter-rouge">toEqual</code>, then I show another way
+using a different assertion.</p>
+
+<h2 id="assertions">Assertions</h2>
+
+<p>This section focuses on the assertions that we can use and alternatives to
+“assertion smells”. To make this point, the post follows an approach
+comparing the <code class="language-plaintext highlighter-rouge">assert.toEqual</code> approach against a more expressive assertion
+for the scenario.</p>
+
+<h3 id="any">Any</h3>
+
+<p><code class="language-plaintext highlighter-rouge">Any</code> is a generalization to use when the value of the result is not needed, rather
+the type is.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isNumber</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">=&gt;</span> <span class="nx">number</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="k">typeof</span> <span class="nx">isNumber</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="nx">toEqual</span><span class="p">(</span><span class="dl">'</span><span class="s1">number</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>An alternative to this approach would be to use the any:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isNumber</span> <span class="o">=</span> <span class="nx">number</span> <span class="o">=&gt;</span> <span class="nx">number</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">isNumber</span><span class="p">(</span><span class="mi">2</span><span class="p">)).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">expect</span><span class="p">.</span><span class="nx">any</span><span class="p">(</span><span class="nb">Number</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="array-containing">Array Containing</h3>
+
+<p>Thinking about <code class="language-plaintext highlighter-rouge">assert.equal</code>, an approach to assert an entry of arrays, would
+be to go through them and assert each of them, for example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">expectedFruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mango</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">watermelon</span><span class="dl">'</span><span class="p">]</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">expectedFruits</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">expectedFruits</span><span class="p">[</span><span class="mi">1</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="dl">'</span><span class="s1">mango</span><span class="dl">'</span><span class="p">)</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">expectedFruits</span><span class="p">[</span><span class="mi">0</span><span class="p">]).</span><span class="nx">toEqual</span><span class="p">(</span><span class="dl">'</span><span class="s1">watermalo</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Therefore another approach to assert such structure is using <code class="language-plaintext highlighter-rouge">arrayContaining</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">expectedFruits</span> <span class="o">=</span> <span class="p">[</span><span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mango</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">watermelon</span><span class="dl">'</span><span class="p">]</span>
+
+<span class="kd">const</span> <span class="nx">actualFruits</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="dl">'</span><span class="s1">banana</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">mango</span><span class="dl">'</span><span class="p">,</span> <span class="dl">'</span><span class="s1">watermelon</span><span class="dl">'</span><span class="p">]</span>
+
+<span class="nx">expect</span><span class="p">(</span><span class="nx">expectedFruits</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">expect</span><span class="p">.</span><span class="nx">arrayContaining</span><span class="p">(</span><span class="nx">actualFruits</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="to-be">to Be</h3>
+
+<p><code class="language-plaintext highlighter-rouge">toBe</code> is a stricter way of asserting values.</p>
+
+<h3 id="to-have-length">to Have Length</h3>
+
+<p>For checking the size of an array is possible using the <code class="language-plaintext highlighter-rouge">lenght</code> property. There
+are different ways to achieve that, for example, with assert equals, would be
+something:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">myList</span><span class="p">.</span><span class="nx">length</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c1">// &lt;---</span>
+</code></pre></div></div>
+
+<p>Therefore, jest offers a matcher specifically for that, instead of asserting
+the <code class="language-plaintext highlighter-rouge">length</code> property. The same snippet using <code class="language-plaintext highlighter-rouge">toHaveLength</code> would become:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myList</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">myList</span><span class="p">).</span><span class="nx">toHaveLength</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>   <span class="c1">// &lt;---</span>
+</code></pre></div></div>
+
+<h3 id="to-be-greater-than">to Be Greater Than</h3>
+
+<p>Asserting values grater than otherscan be achieved with raw <code class="language-plaintext highlighter-rouge">assert.equals</code>,
+such as:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">expected</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="kd">const</span> <span class="nx">actual</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">expected</span> <span class="o">&gt;</span> <span class="nx">actual</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The disadvantage here is that when reading the assertion it takes a bit more
+to interpret the code in our head. For that, jest offers an assertion that
+is more readable to follow (and also gives a more friendly message when failing).</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">expected</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="kd">const</span> <span class="nx">actual</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">actual</span><span class="p">).</span><span class="nx">toBeGreaterThan</span><span class="p">(</span><span class="nx">expected</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h2 id="modifiers">Modifiers</h2>
+
+<h3 id="not">not</h3>
+
+<p>The not modifier is handy when it comes to assert the negation of a given
+sentence. For context, a indication that <code class="language-plaintext highlighter-rouge">.not</code> is needed would
+be asserting false in some result, for example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isOff</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="nx">expect</span><span class="p">(</span><span class="o">!</span><span class="nx">isOff</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// &lt;--- this sometimes is tricky to spot</span>
+</code></pre></div></div>
+
+<p>Another way to achieve the same result but being explicity would be
+something as follows:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">isOff</span> <span class="o">=</span> <span class="kc">false</span>
+<span class="nx">expect</span><span class="p">(</span><span class="nx">isOff</span><span class="p">).</span><span class="nx">not</span><span class="p">.</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">.not</code> operator can be used across different assertions within jest.</p>
+
+<h2 id="async">Async</h2>
+
+<p>Jest provides an API for a more readable test code and to assert async
+functions. It is easy to fall under the trap of using assert equals after a
+promises has been fulfilled. Besides that,
+Martin Fowler points out that asynchronous behavior is part of the non
+determinism club, which can lead to tests failing without any change in the code
+<a class="citation" href="#non_determinism_martin_fowler">[3]</a>.</p>
+
+<h3 id="resolves">Resolves</h3>
+
+<p>Testing async code comes with challenges and the approach to test also changes.
+One way to test is to use the variable that comes from the it callback, something
+like:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">my async test</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">callAsyncFunc</span><span class="p">().</span>
+    <span class="nx">then</span><span class="p">((</span><span class="nx">value</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="nx">expect</span><span class="p">(</span><span class="nx">value</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span>
+      <span class="nx">done</span><span class="p">()</span>
+    <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The code above depicts how to assert a value once the promise resolves. Jest
+provides a more readable way of doing things with <code class="language-plaintext highlighter-rouge">resolves</code>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">my async test</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="c1">// &lt;--- 1</span>
+  <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">callAsyncFunc</span><span class="p">()).</span><span class="nx">resolves</span><span class="p">.</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="c1">// &lt;--- 2</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The same applies to a rejected promise, in this case we would change the <code class="language-plaintext highlighter-rouge">resolves</code>
+by <code class="language-plaintext highlighter-rouge">rejects</code>.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">my async test</span><span class="dl">'</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">await</span> <span class="nx">expect</span><span class="p">(</span><span class="nx">callAsyncFunc</span><span class="p">()).</span><span class="nx">rejects</span><span class="p">.</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">false</span><span class="p">)</span> <span class="c1">// &lt;--- 3</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<h2 id="callbacks">Callbacks</h2>
+
+<p>Callbacks are the heart of javascript and when testing them an async style
+is used as well, as the callback might/might not be called in a different time
+in the execution flow.</p>
+
+<h3 id="to-have-been-called">to Have Been Called</h3>
+
+<p>Asserting that a callback has been invoked can be achieved in different ways,
+for this purpose the first approach (and not recommend) is to use the
+async style as in the previous example:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">callback has been invoked</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">callAsyncFunc</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">expect</span><span class="p">(</span><span class="kc">true</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="kc">true</span><span class="p">)</span> <span class="o">&lt;---</span> <span class="nx">assumes</span> <span class="nx">it</span> <span class="nx">has</span> <span class="nx">been</span> <span class="nx">called</span>
+  <span class="p">})</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>A more readable assertion would be using <code class="language-plaintext highlighter-rouge">toHaveBeenCalled</code>, as it is human
+readable and might take less time to undestand what the test case is
+asserting</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">callback has been invoked</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span> <span class="c1">// 1 </span>
+  <span class="nx">callAsyncFunc</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toHaveBeenCalled</span><span class="p">()</span> <span class="c1">// 2</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<ol>
+  <li>jest uses this spy to assert calls against it</li>
+  <li>assert that the function has been called, regardless of the number of calls</li>
+</ol>
+
+<h3 id="to-have-been-called-times">to Have Been Called Times</h3>
+
+<p>Asserting that a function has been called is the most basic assertion in this
+respect. There are variants that are more strict than that. For example, it
+is possible to assert that a given function have been called X times, as
+opposed to <code class="language-plaintext highlighter-rouge">toHaveBeenCalled</code> that does not match exactly the number of calls.</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">it</span><span class="p">(</span><span class="dl">'</span><span class="s1">callback has been invoked</span><span class="dl">'</span><span class="p">,</span> <span class="nx">done</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">jest</span><span class="p">.</span><span class="nx">fn</span><span class="p">()</span>
+  <span class="nx">callAsyncFunc</span><span class="p">(</span><span class="nx">result</span><span class="p">)</span>
+
+  <span class="nx">expect</span><span class="p">(</span><span class="nx">result</span><span class="p">).</span><span class="nx">toHaveBeenCalledTimes</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
+<p>The code above assert that the given spy is called 4 times, any number different
+than that will fail the test case.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="kent_beck_tdd_by_example">[1]K. Beck, <i>TDD by example</i>. Addison-Wesley Professional, 2000. </span></li>
+<li><span id="jest_expect">[2]Jest, “Expect,” 2021 [Online]. Available at: <a href="https://jestjs.io/docs/expect" target="_blank">https://jestjs.io/docs/expect</a>. [Accessed: 26-Apr-2021]</span></li>
+<li><span id="non_determinism_martin_fowler">[3]M. Fowler, “Eradicating Non-Determinism in Tests,” 2011 [Online]. Available at: <a href="https://martinfowler.com/articles/nonDeterminism.html" target="_blank">https://martinfowler.com/articles/nonDeterminism.html</a>. [Accessed: 21-Jun-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#jest-asserts-beyond-equals">Introduction</a></li>
+  <li><a href="#assertions">Assertions</a>
+    <ul>
+      <li><a href="#any">Any</a></li>
+      <li><a href="#array-containing">Array containing</a></li>
+      <li><a href="#to-be">To be</a></li>
+      <li><a href="#to-have-length">To have length</a></li>
+      <li><a href="#to-be-greater-than">To be greater than</a></li>
+    </ul>
+  </li>
+  <li><a href="#modifiers">Modifiers</a>
+    <ul>
+      <li><a href="#not">Not</a></li>
+    </ul>
+  </li>
+  <li><a href="#async">Async</a>
+    <ul>
+      <li><a href="#resolves">Resolves</a></li>
+    </ul>
+  </li>
+  <li><a href="#callbacks">Callbacks</a>
+    <ul>
+      <li><a href="#to-have-been-called">To have been called</a></li>
+      <li><a href="#to-have-been-called-times">To have been called times</a></li>
+    </ul>
+  </li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/web/2021/04/25/jest-asserts-beyond-equals.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/web/2021/04/25/jest-asserts-beyond-equals.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/web/2021/04/25/jest-asserts-beyond-equals.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/thoughts/2021/05/29/on-100-percent-code-coverage.html">On one hundred percent code coverage [  <span class="text-marabesi-pink">TDD,</span>  <span class="text-marabesi-pink">test,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/web/2021/04/04/jest-timers-and-reactjs.html">Jest timers and reactjs [  <span class="text-marabesi-pink">jest,</span>  <span class="text-marabesi-pink">test,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/test/2019/10/13/cypress-and-firebase-reactjs-app.html">e2e testing with Cypress, ReactJs and Firebase [  <span class="text-marabesi-pink">javascript,</span>  <span class="text-marabesi-pink">test,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/tdd/2015/12/30/is-tdd-dead.html">Is TDD dead ? [  <span class="text-marabesi-pink">test,</span>  <span class="text-marabesi-pink">TDD,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

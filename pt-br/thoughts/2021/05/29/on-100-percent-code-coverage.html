@@ -1,0 +1,982 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Sobre 100% de cobertura de código</title>
+    <meta name="description"
+      content="A mentalidade de teste para desenvolvedores mudou ao longo dos anos, à medida que o softwarea indústria está evoluindo. Mesmo assim, a prática de teste não é...">
+
+    <link rel="canonical" href="https://marabesi.com/pt-br/thoughts/2021/05/29/on-100-percent-code-coverage.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/pt-br/feed.xml">
+
+    <meta property="og:title" content="Sobre 100% de cobertura de código" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/thoughts/2021/05/29/on-100-percent-code-coverage.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2021-05-29-on-100-percent-code-coverage/cover.png" />
+    <meta property="og:description"
+      content="A mentalidade de teste para desenvolvedores mudou ao longo dos anos, à medida que o softwarea indústria está evoluindo. Mesmo assim, a prática de teste não é..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Sobre 100% de cobertura de código">
+    <meta name="twitter:description"
+      content="A mentalidade de teste para desenvolvedores mudou ao longo dos anos, à medida que o softwarea indústria está evoluindo. Mesmo assim, a prática de teste não é...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2021-05-29-on-100-percent-code-coverage/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-05-29 04:06:05 +0000">
+
+    <meta name="keywords" content="código,cobertura,testes,desenvolvimento guiado por testes,TDD,Farley,Codificação,Suíte de teste,Verificações de segurança,Orçamento de desempenho,desenvolvimento,100 de cobertura,cobertura de código,teste de software" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/pt-br/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/pt-br/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/pt-br/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/pt-br/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="hidden md:block">
+          <div style="background-image: url('/images/posts/2021-05-29-on-100-percent-code-coverage/featured.jpg'); background-size: cover; background-position-y: center; width: 100%; height: 600px;"></div>
+          <small class="mt-1 mr-1 flex justify-end">
+            Image from: <a href="https://wallpapersafari.com/w/HYUtdS" target="_blank">https://wallpapersafari.com/w/HYUtdS</a>
+          </small>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="on-100-percent-code-coverage">Sobre 100% de cobertura de código</h1>
+
+        <p>A mentalidade de teste para desenvolvedores mudou ao longo dos anos, à medida que o software
+a indústria está evoluindo. Mesmo assim, a prática de teste não é amplamente utilizada, ela é integrada na
+ciclo de desenvolvimento da aplicação. Como tal, a cobertura de código se tornou um assunto popular
+entre os desenvolvedores e as discussões aumentaram a fim de chegar a um consenso de
+Cobertura de código.</p>
+
+<p>Esta postagem tem como objetivo dar um impulso a essa discussão e compartilhar o que penso sobre a cobertura de código
+o que vejo as equipes fazendo e o que entendo que é eficaz ou não.</p>
+
+<h2 id="desenvolvimento-guiado-por-testes">Desenvolvimento guiado por testes</h2>
+
+<p>O desenvolvimento dirigido por teste foi (TDD) adotado para desenvolvedores a fim de alcançar
+software de alta qualidade, bem como para mantê-lo evoluindo ao longo do tempo e evitar
+o medo da mudança. Portanto, <a class="citation" href="#tdd_by_example_kent_beck">[1]</a>
+e <a class="citation" href="#martin_fowler_tdd">[2]</a>
+descreve como TDD sendo um fluxo de três estágios (vermelho-verde-azul), não é o que eu
+identificar nos projetos em que trabalhei.</p>
+
+<p>A maioria desses projetos estava usando uma combinação de ITL (último teste interativo) ou não fazia nenhum teste,
+o teste foi aplicado a um profissional de controle de qualidade (garantia de qualidade). Neste cenário, a equipe não era
+obter qualquer valor no momento para manter os testes atualizados ou mesmo para
+escreva-os. Essa é uma discussão inteira que não vou abordar aqui, no entanto,
+é o que possivelmente leva a perder as principais métricas. Como sempre, gerenciamento
+tente forçar os desenvolvedores a alcançar 100% de cobertura apenas por causa disso, ou porque
+eles viram que poderiam usar isso para forçar algum tipo de comportamento nos desenvolvedores.
+O catálogo de James Carr chamou esse antipadrão de “The Liar”, que Dave Farley
+usa como base para discutir o assunto em seu vídeo
+<a class="citation" href="#dave_farley_the_liar_pattern">[3]</a>
+(<a class="citation" href="#dave_farley_bdd_explained">[4]</a>)
+também mencionam que a meta de cobertura é uma compreensão equivocada em seu vídeo
+sobre Desenvolvimento Orientado a Comportamento).</p>
+
+<p>TDD é uma rede segura para os desenvolvedores continuarem melhorando o código, comunicar a intenção
+e também uma cultura a seguir. Como Dave Farley diz em seu vídeo: pratique TDD e
+evite a armadilha do mentiroso.</p>
+
+<h2 id="portões-de-qualidade">Portões de qualidade</h2>
+
+<p>Portas de qualidade são usadas para fazer cumprir algumas regras mínimas durante o desenvolvimento de software
+ciclo da vida. Entre as diferentes regras, podemos listar:</p>
+
+<ul>
+  <li>Codificação</li>
+  <li>Suíte de teste</li>
+  <li>Verificações de segurança</li>
+  <li>Orçamento de desempenho</li>
+</ul>
+
+<p>Muitos argumentariam que a cobertura de código teria seu lugar, o que <strong>eu concordo</strong>. Poderíamos
+usar a cobertura de código como uma porta para não permitir a produção de código, se a base de código
+tem menos de X porcentagem que falha no processo de lançamento. Portanto, além de ser
+uma porta de qualidade, deve ser uma indicação da integridade do conjunto de testes.</p>
+
+<p>A equipe deve confiar no conjunto de testes e <strong>a cobertura deve refletir a saúde da suíte</strong>.
+O que, em muitos casos, <strong>não é o que acontece</strong>. A abordagem comum
+é ter como alvo X por cento de cobertura, não importa o quê.</p>
+
+<h2 id="evite-métricas-erroneas">Evite métricas erroneas</h2>
+
+<p>Minha experiência diz que, para muitos desenvolvedores, os testes são necessários,
+de obrigação. Eles escrevem os testes não porque querem se orgulhar do
+trabalho que eles fazem, ou porque querem dar ao próximo desenvolvedor (que irá
+manter isso no futuro) uma dica sobre o que o código foi construído para oferecer suporte ou
+não.</p>
+
+<p>Como tais gerentes, tentem impor a ideia de que forçar os desenvolvedores a
+alcançar X porcentagem de cobertura aumentará a qualidade da base do código.
+<a class="citation" href="#emily_bache_refactoring_kata">[5]</a>
+gravou um vídeo de 3 séries passando pelo famoso kata Gilded Rosa, que
+o objetivo é refatorar o código fornecido. Por volta do minuto 15:59 do primeiro
+vídeo que ela mostra um problema nos testes que ela fez. Embora ela
+mudou uma parte crítica do código de produção, os testes estavam passando. O
+o código tinha cobertura de um centavo de pecent. Não estava dando o feedback desejado.</p>
+
+<p>Claro que era um kata e ela descreve esse problema lindamente enquanto prossegue
+através do código.</p>
+
+<p>Ainda assim, vejo os desenvolvedores se orgulhando de si mesmos porque têm X
+porcentagem de cobertura.</p>
+
+<p>Esta série de vídeos por si só aponta como a matriz de cobertura percentual X é inútil.</p>
+
+<p>A cobertura do código deve ser um efeito colateral da qualidade do conjunto de testes
+<a class="citation" href="#dave_farley_bdd_explained">[4]</a>,
+em que os desenvolvedores de software podem confiar e entender que os testes são uma rede segura
+para a melhoria contínua do código.</p>
+
+<h2 id="referencias">Referencias</h2>
+
+<ol class="bibliography"><li><span id="tdd_by_example_kent_beck">[1]K. Beck, <i>TDD by example</i>. Addison-Wesley Professional, 2000. </span></li>
+<li><span id="martin_fowler_tdd">[2]M. Fowler, “TestDrivenDevelopment,” 2005 [Online]. Available at: <a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html" target="_blank">https://martinfowler.com/bliki/TestDrivenDevelopment.html</a>. [Accessed: 31-May-2021]</span></li>
+<li><span id="dave_farley_the_liar_pattern">[3]D. Farley, “When Test Driven Development Goes Wrong,” 2021 [Online]. Available at: <a href="https://youtu.be/UWtEVKVPBQ0?t=243" target="_blank">https://youtu.be/UWtEVKVPBQ0?t=243</a>. [Accessed: 05-Jun-2021]</span></li>
+<li><span id="dave_farley_bdd_explained">[4]D. Farley, “BDD Explained (Behaviour Driven Development,” 2021 [Online]. Available at: <a href="https://www.youtube.com/watch?v=zYj70EsD7uI" target="_blank">https://www.youtube.com/watch?v=zYj70EsD7uI</a>. [Accessed: 27-May-2020]</span></li>
+<li><span id="emily_bache_refactoring_kata">[5]E. Bache, “Introducing the Gilded Rose kata and writing test cases using Approval Tests,” 2018 [Online]. Available at: <a href="https://www.youtube.com/playlist?list=PLuvRKxeqrv4K-rn0zxHPNiXOWBkP9ZZIH" target="_blank">https://www.youtube.com/playlist?list=PLuvRKxeqrv4K-rn0zxHPNiXOWBkP9ZZIH</a>. [Accessed: 31-May-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="índice">Índice</h2>
+
+<ol>
+  <li><a href="#on-100-percent-code-coverage">Introdução</a></li>
+  <li><a href="#desenvolvimento-guiado-por-testes">Desenvolvimento guiado por testes</a></li>
+  <li><a href="#portões-de-qualidade">Portões de qualidade</a></li>
+  <li><a href="#evite-métricas-erroneas">Evite métricas erroneas</a></li>
+  <li><a href="#referencias">Referencias</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/thoughts/2021/05/29/on-100-percent-code-coverage.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/thoughts/2021/05/29/on-100-percent-code-coverage.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/thoughts/2021/05/29/on-100-percent-code-coverage.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

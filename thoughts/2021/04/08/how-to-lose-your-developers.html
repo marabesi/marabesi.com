@@ -1,0 +1,673 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>How to lose your developers</title>
+    <meta name="description"
+      content="This post is randoms thoughts around software development from a developerpoint of view. The content covered is mainly based on my career, andthe opinions ex...">
+
+    <link rel="canonical" href="https://marabesi.com/thoughts/2021/04/08/how-to-lose-your-developers.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="How to lose your developers" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/thoughts/2021/04/08/how-to-lose-your-developers.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2021-04-08-how-to-lose-your-developers/cover.jpg" />
+    <meta property="og:description"
+      content="This post is randoms thoughts around software development from a developerpoint of view. The content covered is mainly based on my career, andthe opinions ex..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="How to lose your developers">
+    <meta name="twitter:description"
+      content="This post is randoms thoughts around software development from a developerpoint of view. The content covered is mainly based on my career, andthe opinions ex...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2021-04-08-how-to-lose-your-developers/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2021-04-08 04:06:05 +0000">
+
+    <meta name="keywords" content="development,developers,mind mapping,hard skills,documentation,software,mind,subject,code,engineering,culture,start,bug,developer,team,time" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5 lg:flex">
+      <div class="w-full pl-5 pr-5 lg:w-3/4">
+        <h1 id="how-to-lose-your-developers">How to lose your developers</h1>
+
+        <p>This post is randoms thoughts around software development from a developer
+point of view. The content covered is mainly based on my career, and
+the opinions expressed might not fit all scenarios. Do not take
+the text as a saint grail or a tutorial, it is more like a conversation on what
+I think about developers, soft skills, hard skills and management.</p>
+
+<p>On top of that, I was inspired by the book Mind Map Mastery from Tony Buzan
+<a class="citation" href="#buzan2018mind">[1]</a> and
+also by The software craftsman: professionalism, Pragmatism, Pride by
+Sandro Mancuso <a class="citation" href="#mancuso2014software">[2]</a>,
+which I share the same opinions as he expressed in the book.</p>
+
+<p><a href="/images/posts/2021-04-08-how-to-lose-your-developers/mindmapping.jpg" target="_blank"><img src="/images/posts/2021-04-08-how-to-lose-your-developers/mindmapping.jpg" alt="Mind mapping - how to loose your developers" /></a></p>
+
+<p>The depicted mind map above is the result of my dive into mind mapping, the
+subject approach is what this post came to be.</p>
+
+<h2 id="the-well-known-path">The well known path</h2>
+
+<p>Developers usually start picking up a programming language and playing around
+it. The “standard” is to have a computer science (or any related subject) degree
+and then start working on for a company.</p>
+
+<p>Usually the shift from study only mode to working mode brings more things
+responsibilities. For example, dealing with deadlines, struggling with
+bugs, writing documentation, talking with business and trying out new
+technologies (just to name a few).</p>
+
+<h3 id="it-is-easy">it is easy</h3>
+
+<p>The first way to start a fight in the middle of a meeting with developers is
+to say the phrase: “its easy”. It is a bonus point if followed by “it’s just
+a button”. This impactful phrase can be taken as two-sided coin, if it comes
+from another developer, it will be more likely to be accepted, therefore,
+if it comes from a business or someone that is not part of the daily
+coding task of developers, it can be interpreted as an “insult”.</p>
+
+<p>I see no problem with those phrases, but, in a given context where developers
+are working under pressure, having to deal with meetings, support for clients
+and many other tasks besides coding, it can be a started for the developer
+to lose confidence and start to search for another job.</p>
+
+<h3 id="lack-of-documentation">Lack of documentation</h3>
+
+<p>Since the agile manifesto documentation has been a subject of a second matter.
+Even though, being a secondary subject doesn’t mean to not have it. Teams
+struggle with outdated documentation (when it exists). I personally think
+that people misinterpreted the manifesto and uses that as a shield to
+jump the documentation step. To achieve technical excellence, documentation
+is needed, as it can be used as a way to share knowledge among the team.</p>
+
+<h3 id="you-have-until-friday-to-finish-up">You have until Friday to finish up</h3>
+
+<p>Imposing deadlines on developers can lead to friction. Developers are not
+a “code machine”, writing code takes time, creation and problem-solving.
+Sometimes the step to actually write the code is the last of a chain that
+starts with the problem to solve.</p>
+
+<p>Building software is not an assembly line, that each stage is well-defined
+and workers have to do simple moves to accomplish a task. Building software
+is a solving problem and creative process.</p>
+
+<p>Imposing deadlines on developers uncovers illness under the hood of the
+team or even the organization. Imagine you going to your dentist and having
+the following conversation:</p>
+
+<ul>
+  <li>Dentist: it will take 2 days to finish up your treatment.</li>
+  <li>You:  2 days? I can’t wait, can you do in 1?</li>
+</ul>
+
+<p>This dialog is weird, as you that have no idea is trying to impose how long
+the dentist’s work is going to take. Did you find this weird? This is the feeling
+that developers have when managers or business start to pressure for
+sooner deliveries.</p>
+
+<h3 id="dont-worry-we-will-test-it-later">Don’t worry we will test it later</h3>
+
+<p>Developers deliver value through tasks, be it in a staging environment or in
+production, the final word should be from the users, or the ones that are
+responsible for the feature. It also applies for bug fixes, the one who
+wrote the bug ticket, should be the one to double-check it and
+give a positive feedback.</p>
+
+<p>There is a long journey to fix something or implement something. It requires
+communication both with the business and also code wise, then understanding
+the code that is in place, modifying it and often, add something on top of
+it.</p>
+
+<p>It gets worse when the code base is not focused on technical excellence, thus,
+making the previous steps even harder. <a class="citation" href="#forsgren2018accelerate">[3]</a>
+Highlights the importance of such technical skills to delivery as fast as possible
+to the business.</p>
+
+<p>Let’s say that all the steps have been finished up and the bug or feature
+has been deployed to staging, on the developer side, it is a lot of
+expectation because it is the time when the user will see
+the change and confirm that. This loop should be as short as possible, and
+not testing it right after it was delivered leads to:</p>
+
+<ul>
+  <li>Frustration</li>
+  <li>Lack of confidence with the team</li>
+</ul>
+
+<p>Longer feedback circles can also lead to the feature or bug to be reworked
+and change too may time, as the cycle is long, often it is difficult to
+keep track of all the changes and make decisions.</p>
+
+<h2 id="tackling-the-engineering-culture">Tackling the engineering culture</h2>
+
+<p>Pack Kua, in his talk <a class="citation" href="#pat_kua_engineering_culture">[4]</a>
+enumerates a few ideas that I would like to share here
+as they are engineering oriented. Those ideas are based on his experience working
+across different projects and companies.</p>
+
+<p>The part I enjoyed the most is the distinction between the enterprise scenario
+and the startup, on his talk those are totally different things and he uses
+that to contrast those two worlds.</p>
+
+<h2 id="references">References</h2>
+
+<ol class="bibliography"><li><span id="buzan2018mind">[1]T. Buzan, <i>Mind map mastery: The complete guide to learning and using the most powerful thinking tool in the universe</i>. Watkins Media Limited, 2018. </span></li>
+<li><span id="mancuso2014software">[2]S. Mancuso, <i>The software craftsman: professionalism, Pragmatism, Pride</i>. Pearson Education, 2014. </span></li>
+<li><span id="forsgren2018accelerate">[3]N. Forsgren, J. Humble, and G. Kim, “Accelerate—building and scaling high performing technology organizations (The science of lean software and DevOps),” 2018. </span></li>
+<li><span id="pat_kua_engineering_culture">[4]P. Kua, “Secrets of a Strong Engineering Culture,” 2020 [Online]. Available at: <a href="https://www.youtube.com/watch?v=bGNfKEKnEbk&amp;t=723s" target="_blank">https://www.youtube.com/watch?v=bGNfKEKnEbk&amp;t=723s</a>. [Accessed: 11-Apr-2021]</span></li></ol>
+
+      </div>
+      <div class="hidden w-1/4 lg:block">
+        <div class="sticky pin-t pl-2 xl:top-30">
+          
+          <h2 id="table-of-contents">Table of contents</h2>
+
+<ol>
+  <li><a href="#the-well-known-path">The well known path</a>
+    <ul>
+      <li><a href="#it-is-easy">it is easy</a></li>
+      <li><a href="#lack-of-documentation">Lack of documentation</a></li>
+      <li><a href="#you-have-until-friday-to-finish-up">You have until Friday to finish up</a></li>
+      <li><a href="#dont-worry-we-will-test-it-later">Don’t worry we will test it later</a></li>
+    </ul>
+  </li>
+  <li><a href="#tackling-the-engineering-culture">Tackling the engineering culture</a></li>
+  <li><a href="#references">References</a></li>
+</ol>
+
+
+          <h2>Share this on</h2>
+
+          <div class="flex -ml-2">
+            
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/thoughts/2021/04/08/how-to-lose-your-developers.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/thoughts/2021/04/08/how-to-lose-your-developers.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/thoughts/2021/04/08/how-to-lose-your-developers.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+          </div>
+
+          <h2>You also might like</h2>
+
+          
+          
+          
+
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/thoughts/2021/05/29/on-100-percent-code-coverage.html">On one hundred percent code coverage [  <span class="text-marabesi-pink">code,</span>  <span class="text-marabesi-pink">software,</span>  <span class="text-marabesi-pink">development,</span>  <span class="text-marabesi-pink">developers,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/testing/2020/09/01/rethinking-legacy-code-and-testing.html">Rethinking legacy code and testing [  <span class="text-marabesi-pink">code,</span>  <span class="text-marabesi-pink">development,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/testing/2020/05/23/getting-started-with-testing-guide.html">Getting started with testing (PHP and javascript) - PART 1 [  <span class="text-marabesi-pink">development,</span>  <span class="text-marabesi-pink">software,</span>  ]</a>
+              </div>
+              
+              
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+          
+            
+            
+
+            
+
+            
+              <div class="mt-4 mb-4">
+                <a href="/php/2020/04/05/php-import-checker-vscode-extension.html">PHP import checker - VScode extension to support PHP developers [  <span class="text-marabesi-pink">developers,</span>  <span class="text-marabesi-pink">code,</span>  ]</a>
+              </div>
+              
+              
+                
+        </div>
+      </div>
+    </main>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

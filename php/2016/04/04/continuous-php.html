@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Continuous PHP</title>
+    <meta name="description"
+      content="Continuous PHP is a amazing CI tool which provides a easy and quick way to run tests and automate deploy, at some pointof our application regardless of it’s ...">
+
+    <link rel="canonical" href="https://marabesi.com/php/2016/04/04/continuous-php.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Continuous PHP" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/php/2016/04/04/continuous-php.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2016-04-04-continuous-php/cover.png" />
+    <meta property="og:description"
+      content="Continuous PHP is a amazing CI tool which provides a easy and quick way to run tests and automate deploy, at some pointof our application regardless of it’s ..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Continuous PHP">
+    <meta name="twitter:description"
+      content="Continuous PHP is a amazing CI tool which provides a easy and quick way to run tests and automate deploy, at some pointof our application regardless of it’s ...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2016-04-04-continuous-php/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2016-04-04 04:20:14 +0000">
+
+    <meta name="keywords" content="PHP,Continuous,build,project,tests,repository,branch,deploy,Github,CI,continuous delivery,continuous php,php,improvement,team" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="continuous-php">Continuous PHP</h1>
+      <p>Continuous PHP is a amazing CI tool which provides a easy and quick way to run tests and automate deploy, at some point
+of our application regardless of it’s field you will need a CI server to automate things to you and then comes Continuous PHP.</p>
+
+<p>I confess I used travis CI for a long time and jenkins as well but the problem with those tools is that no one is
+specifically for PHP projects. Jenkins is a great example of that to use with PHP we need to install a couple of plugins, Travis CI is more flexible with it, therefore neither were built with PHP in mind.</p>
+
+<h2 id="meeting-continuous-php">Meeting continuous PHP</h2>
+
+<p>To see how is easy to use <strong>Continuous PHP</strong> I’m going to use it in a simple personal
+project (<a href="https://github.com/marabesi/use-case-management" target="_blank">https://github.com/marabesi/use-case-management</a>)
+which consist of a simple PHPUnit test suit.</p>
+
+<p>To follow this post you need to have:</p>
+
+<ol>
+  <li>You must have a Github account</li>
+  <li>You must have a project with PHPUnit tests</li>
+</ol>
+
+<p>The first step is to click in the login button on the right as you can see in the image below:</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp1.png" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp1.png" alt="Continuous PHP" /></a></p>
+
+<p>After click in login chose Connect with Github and then <strong>Continuous PHP</strong> will sync all your repositories and show to you a list with all your Github repositories.</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp2.png" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp2.png" alt="cp2" /></a></p>
+
+<p>As you can see in the image above I have one repository called <strong>marabesi/gnrephp</strong> configured with <strong>Continuous PHP</strong>
+and for my happiness everything is fine (you can see a green bar indicating that all tests passed since last build). For
+this post I’m going to do the same thing but with the repository <strong>marabesi/use-case-management</strong>.</p>
+
+<p>For each repository that is not configured with <strong>Continuous PHP</strong> we see a blue button in the right side “Setup”, we just need to click on that to start our configuration.</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp3.png" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp3.png" alt="cp3" /></a></p>
+
+<p>The “+” signal is to add a new step into the pipeline, click on that and you will see a list of branches of the
+repository and you can chose in which branch the item of the pipeline is going to be executed, as the project we are
+using don’t have any special branch just chose <strong>master</strong>. Then have a look below where we have some fields to configure
+our build properties, here we can chose as many versions of PHP as we want, and if in your project you have Phing you can specify a specific targets to be executed.</p>
+
+<p>On the right side there are credential settings and dependencies. For our dependencies we are using composer so we just
+need to specify the path of our composer.json file.</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp4.png" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp4.png" alt="cp4" /></a></p>
+
+<p>A good notice here is that Continuous PHP has four main steps:</p>
+
+<ol>
+  <li><strong>Build</strong> - is where we configure the environment properties like PHP version, targets from Phing, composer file and
+credentials (if needed)</li>
+  <li><strong>Testing</strong> - here we configure our unit tests to be run when is just it, nothing new. Continuous PHP supports many
+test frameworks such as  PHPUnit, Behat, Phpspec and so on.</li>
+  <li><strong>Package</strong> - We can chose in which format we would like to have the result deployed to. Imagine it as a snapshot of
+our whole application with all its dependencies ready to be send to any server or have it as a tar ball. Continuous PHP
+offers to you a bunch of options such as Generic tarball, AWS CodeDeploy, AWS ElasticBeanstalk and Zend Server.</li>
+  <li><strong>Deploy</strong> - Finally Continuous PHP give to us a way to easily deploy to a server. This step is directly connected
+with the previous one, in other words, you must to chose the correct package in order to deploy.</li>
+</ol>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp5.png" title="Continuous PHP pileline" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp5.png" alt="Continuous PHP pileline" /></a></p>
+
+<p>We just passed the Build step in Continuous PHP and now we can configure our tests. Continuous PHP is smart enough to
+know which framework you’re using, of course the framework must be in the list of supported frameworks and you can see
+the list in <a href="https://continuousphp.com/documentation/testing" target="_blank">https://continuousphp.com/documentation/testing</a>.</p>
+
+<p>The great thing is that you can select if your suit test will be blocking or
+not, which means that you can decide if the build goes on if the suit fails or
+not.</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp7.png" title="Continuous PHP testing" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp7.png" alt="Continuous PHP
+testing" /></a></p>
+
+<p>For our simple post we’re going to stop here. If you see the image above you will note that we have two more steps in
+the pipeline but they’re specially for packaging and deploy, by now we are ready to see our project running and receive
+notifications by email if anything fails. Just click in Next in the <strong>Packaging</strong> and <strong>Deploy</strong> steps and in the end
+click in the play button as the image below shows</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp8.png" title="Play button to start new build" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp8.png" alt="Play button to start new
+build" /></a></p>
+
+<p>Then a popup will appears asking which branch you would like to execute the build, just chose the branch you want to
+(usually is the master branch) and a build will start. To see whats is going on in the build you can follow the icon
+that looks like a console in the right side where is written <strong>Execution details</strong></p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp9-1.png" title="Build status" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp9-1.png" alt="Build status" /></a></p>
+
+<p>Doing that we will see our build running and what went wrong or what went ok like our next image</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp10.png" title="Build details" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp10.png" alt="Build details" /></a></p>
+
+<p>As you can see something went wrong in my build but its because some unit tests are failing, it need to be fixed in order to have a clean build with all green.</p>
+
+<h2 id="badge">Badge</h2>
+
+<p>Usually we see a lot of badges in Github to inform us if the build is passing or falling, how many downloads the
+repository had, the quality of code and so on. Continuous PHP also has it’s own badge that you can use in your
+repository.</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp-badge.png" title="Continuous PHP badge" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp-badge.png" alt="Continuous PHP
+badge" /></a></p>
+
+<p>To achieve that is really simple, just click in Status image and a list of options will appear to you. You can select
+between URL, HTML and Markdown and use it wherever you want to.</p>
+
+<p><a href="/images/posts/2016-04-04-continuous-php/cp-badge-img.png" title="Continuous PHP badge button" target="_blank"><img src="/images/posts/2016-04-04-continuous-php/cp-badge-img.png" alt="Continuous PHP badge
+button" /></a></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>The main difference that I noted compared to others CI’s is the simplicity that
+Continuous PHP offer to us. We do everything in a nice GUI and no configuration
+file is needed. Continuous PHP still implementing new features and is production
+ready, so you can taste it right now!</p>
+
+<h2 id="further-reading">Further reading</h2>
+
+<p><a href="https://continuousphp.com/tutorial/introduction-continuous-delivery" target="_blank">Introduction to continuous delyvering</a></p>
+
+<p><a href="https://continuousphp.com/tutorial/create-and-set-up-your-project-on-continuousphp" target="_blank">Set uo your project with continuous
+PHP</a></p>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/php/2016/04/04/continuous-php.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/php/2016/04/04/continuous-php.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/php/2016/04/04/continuous-php.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

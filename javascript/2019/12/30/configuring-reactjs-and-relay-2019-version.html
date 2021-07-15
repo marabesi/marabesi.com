@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Configuring reactjs and relay 2019 version</title>
+    <meta name="description"
+      content="Recently GraphQL started to gain attention from the open source communityas a production ready platform focused on the communication betweenclient and server...">
+
+    <link rel="canonical" href="https://marabesi.com/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Configuring reactjs and relay 2019 version" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/manifest/icon-192x192.png" />
+    <meta property="og:description"
+      content="Recently GraphQL started to gain attention from the open source communityas a production ready platform focused on the communication betweenclient and server..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Configuring reactjs and relay 2019 version">
+    <meta name="twitter:description"
+      content="Recently GraphQL started to gain attention from the open source communityas a production ready platform focused on the communication betweenclient and server...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/manifest/icon-192x192.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2019-12-30 04:06:05 +0000">
+
+    <meta name="keywords" content="web,js,app,schema,npm,reactjs,react,relay,graph,graphql,query,environment,component,compiler,web,js,eject reactjs,configuring relay js,A Step By Step Guide,relay-config npm,get-graphql-schema,relay-compiler,babel-plugin-relay,react-relay,getting started,howtographql" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="configuring-reactjs-and-relay-2019-version">Configuring reactjs and relay 2019 version</h1>
+      <p>Recently GraphQL started to gain attention from the open source community
+as a production ready platform focused on the communication between
+client and server. One of the advantages of GraphQL over REST is how the
+data is fetched from server to client, avoiding over fetching as well as
+under fetching.</p>
+
+<p>Relay is an open source library that abstracts away the data fetching from
+the developer and offers a render component to the developer. Though, to configure
+relay and reactjs a few steps are needed. Even when following the official
+realy documentation to get up and running with React, problems can pop up.</p>
+
+<p>The text follows with the reactjs set up using the create react app, then the
+relay configuration is presented guided by the relay official documentation and
+in conclusion the solution with the eject react app is presented.</p>
+
+<ul>
+  <li><strong>Disclaimer: To follow along NodeJs 10.* is a must as well as NPM 6.*.</strong></li>
+  <li><strong>Disclaimer 2: The following of this text assumes that a graphql server up and running on localhost port 4002.</strong></li>
+  <li><strong>Disclaimer 3: The text assumes general knowledge in handling terminal commands.</strong></li>
+</ul>
+
+<h2 id="related-work">Related work</h2>
+
+<p>Despite previous attempts to setup reactjs and relay without ejecting the create
+react app <strong>[7][8]</strong>, the approach to such options shows to not be effective
+as, the application created by create react by does not understand the
+configuration required for relay to work.</p>
+
+<p>The <code class="language-plaintext highlighter-rouge">relay.config.js</code> pointed by <strong>[7]</strong> demonstrates that the reactjs app
+has difficulties to interpret the configuration file, leading to a broken
+application state.</p>
+
+<p>In the same sense <strong>[8]</strong> provides three different alternatives to setup relay
+and reactjs, which the third options elaborates more on how to use relay
+without ejecting. This approach as the previous one mentioned leads to a
+broken state application.</p>
+
+<h2 id="setting-up-reactjs">Setting up ReactJs</h2>
+
+<p>Create react app <strong>[1]</strong> is a opinionated tool that comes with webpack configuration and
+scripts abstracted away from the developer, providing good defaults. Creating
+an app react based with create react app takes two steps:</p>
+
+<ol>
+  <li>Install create react app package (<code class="language-plaintext highlighter-rouge">npm i -g create-react-app</code>)</li>
+  <li>Executing the create react app (<code class="language-plaintext highlighter-rouge">create-react-app relay-app</code>)</li>
+</ol>
+
+<p>Once the command from step 2 is done the react app is available in the <code class="language-plaintext highlighter-rouge">relay-app</code>
+folder, make sure to move to that directory before proceeding  with the
+command <code class="language-plaintext highlighter-rouge">cd relay-app</code>.</p>
+
+<p>With the based app setup, the next step is to install all libraries required
+by relay to work.</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm i get-graphql-schema relay-compiler babel-plugin-relay <span class="nt">--save-dev</span> <span class="o">&amp;&amp;</span> npm i graphql react-relay <span class="nt">--save</span>
+</code></pre></div></div>
+
+<p><code class="language-plaintext highlighter-rouge">get-graphql-schema</code> <strong>[2]</strong> is a tool used for generating the graphql schema from a given
+graphql server.</p>
+
+<p><code class="language-plaintext highlighter-rouge">relay-compiler</code> <strong>[3]</strong> is used to convert graphql literals into generated
+files that live alongside your source files. This approach facilitates the
+usage of relay into reactjs project, preventing developers to write those files
+themselves. <code class="language-plaintext highlighter-rouge">babel-plugin-relay</code> is related as well, as it converts graphql to
+runtime artifacts - without this plugin is not possible to run relay in the
+browser.</p>
+
+<p>At this stage a check point would help to make sure that the dependencies
+have been installed and they are working as expected. For that, in the <code class="language-plaintext highlighter-rouge">package.json</code>
+file add the following scripts <strong>[4]</strong>:</p>
+
+<div class="language-js highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">scripts</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">export-schema</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">get-graphql-schema http://localhost:4002 &gt; ./schema.graphql</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">relay-compile</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">relay-compiler --src=./src --schema=./schema.graphql --artifactDirectory=./src/__generated__</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">relay</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">npm run export-schema &amp;&amp; npm run relay-compile</span><span class="dl">"</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>The script <code class="language-plaintext highlighter-rouge">export-schema</code> uses the library <code class="language-plaintext highlighter-rouge">get-graphql-schema</code> to fetch
+the schema definitions the the graphql server exposed at localhost:4002. The
+<code class="language-plaintext highlighter-rouge">schema.graphql</code> file is needed for the <code class="language-plaintext highlighter-rouge">relay-compiler</code> package in order to
+generate the query definitions.</p>
+
+<p><code class="language-plaintext highlighter-rouge">relay-compile</code> generates the metadata used by relay to query the graphql server.
+In this command the files and code generated are stored under <code class="language-plaintext highlighter-rouge">src/__generated__</code>.</p>
+
+<p>Finally, the <code class="language-plaintext highlighter-rouge">relay</code> script is used as a shortcut to execute <code class="language-plaintext highlighter-rouge">export-schema</code> and
+<code class="language-plaintext highlighter-rouge">relay-compile</code> in sequence.</p>
+
+<p>Once the scripts have been added, the last step is to run the script <code class="language-plaintext highlighter-rouge">relay</code>.
+For that in the terminal run the following command:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code>npm run relay
+</code></pre></div></div>
+
+<p>The output should be something like the following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> relay-app@0.1.0 relay /Projects/graph-ql/relay-app
+<span class="o">&gt;</span> npm run export-schema <span class="o">&amp;&amp;</span> npm run relay-compile
+
+
+<span class="o">&gt;</span> relay-app@0.1.0 export-schema /Projects/graph-ql/relay-app
+<span class="o">&gt;</span> get-graphql-schema http://localhost:4002 <span class="o">&gt;</span> ./schema.graphql
+<span class="sb">`</span>
+
+<span class="o">&gt;</span> relay-app@0.1.0 relay-compile /Projects/graph-ql/relay-app
+<span class="o">&gt;</span> relay-compiler <span class="nt">--src</span><span class="o">=</span>./src <span class="nt">--schema</span><span class="o">=</span>./schema.graphql <span class="nt">--artifactDirectory</span><span class="o">=</span>./src/__generated__
+
+HINT: pass <span class="nt">--watch</span> to keep watching <span class="k">for </span>changes.
+
+Writing js
+Unchanged: 0 files
+</code></pre></div></div>
+
+<p>The last line should reflect the project lack of graphql files, as in the last
+line it shows <code class="language-plaintext highlighter-rouge">Unchanged: 0 files</code>, which in this case is the desired
+behavior.</p>
+
+<h2 id="setting-up-relay-environment">Setting up relay environment</h2>
+
+<p>Relay requires an environment setup to work properly <strong>[5]</strong>. The environment
+provided by the official documentation is the one used here. Copy the following
+code and save it in a file called <code class="language-plaintext highlighter-rouge">environment.js</code>.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="p">{</span>
+  <span class="nx">Environment</span><span class="p">,</span>
+  <span class="nx">Network</span><span class="p">,</span>
+  <span class="nx">RecordSource</span><span class="p">,</span>
+  <span class="nx">Store</span><span class="p">,</span>
+<span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">relay-runtime</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">fetchQuery</span><span class="p">(</span>
+  <span class="nx">operation</span><span class="p">,</span>
+  <span class="nx">variables</span><span class="p">,</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="nx">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+    <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+    <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+      <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span><span class="p">,</span>
+    <span class="p">},</span>
+    <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span>
+      <span class="na">query</span><span class="p">:</span> <span class="nx">operation</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+      <span class="nx">variables</span><span class="p">,</span>
+    <span class="p">}),</span>
+  <span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">response</span><span class="p">.</span><span class="nx">json</span><span class="p">();</span>
+  <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="kd">const</span> <span class="nx">environment</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Environment</span><span class="p">({</span>
+  <span class="na">network</span><span class="p">:</span> <span class="nx">Network</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">fetchQuery</span><span class="p">),</span>
+  <span class="na">store</span><span class="p">:</span> <span class="k">new</span> <span class="nx">Store</span><span class="p">(</span><span class="k">new</span> <span class="nx">RecordSource</span><span class="p">()),</span>  
+<span class="p">});</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">environment</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>Next, comes the relay component to interact with the graphql server. The component
+used here is a react functional component that creates a list of products
+(file named <code class="language-plaintext highlighter-rouge">ProductList.js</code>). The point of attention here is the <code class="language-plaintext highlighter-rouge">environment</code> usage
+defined previously, followed by the <code class="language-plaintext highlighter-rouge">query</code> variable that holds the graphql query.
+The graphql query is passed to the <code class="language-plaintext highlighter-rouge">QueryRenderer</code> <strong>[6]</strong> relay component to fetch
+the graphql data.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ProductList.js</span>
+<span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span><span class="nx">graphql</span><span class="p">,</span> <span class="nx">QueryRenderer</span><span class="p">}</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react-relay</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">environment</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./environment</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">query</span> <span class="o">=</span> <span class="nx">graphql</span><span class="s2">`
+query ProductListQuery {
+  products {
+    title
+    image_link
+  }
+}`</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">ProductListQuery</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span>
+  <span class="p">&lt;</span><span class="nc">QueryRenderer</span>
+    <span class="na">environment</span><span class="p">=</span><span class="si">{</span><span class="nx">environment</span><span class="si">}</span>
+    <span class="na">query</span><span class="p">=</span><span class="si">{</span><span class="nx">query</span><span class="si">}</span>
+    <span class="na">render</span><span class="p">=</span><span class="si">{</span><span class="nx">RenderProductList</span><span class="si">}</span>
+  <span class="p">/&gt;;</span>
+
+<span class="kd">const</span> <span class="nx">style</span> <span class="o">=</span> <span class="p">{</span> <span class="na">color</span><span class="p">:</span> <span class="dl">'</span><span class="s1">red</span><span class="dl">'</span> <span class="p">};</span>
+
+<span class="k">export</span> <span class="kd">const</span> <span class="nx">RenderProductList</span> <span class="o">=</span> <span class="p">({</span> <span class="nx">error</span><span class="p">,</span> <span class="nx">props</span> <span class="p">})</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">(&lt;</span><span class="nt">div</span> <span class="na">style</span><span class="p">=</span><span class="si">{</span><span class="nx">style</span><span class="si">}</span><span class="p">&gt;</span><span class="si">{</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="si">}</span><span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;);</span>
+  <span class="p">}</span>
+
+  <span class="k">if</span> <span class="p">(</span><span class="nx">props</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">props</span><span class="p">.</span><span class="nx">products</span><span class="p">.</span><span class="nx">map</span><span class="p">((</span><span class="nx">item</span><span class="p">,</span> <span class="nx">index</span><span class="p">)</span> <span class="o">=&gt;</span>
+      <span class="p">&lt;</span><span class="nt">div</span>
+        <span class="na">key</span><span class="p">=</span><span class="si">{</span><span class="nx">index</span><span class="si">}</span>
+      <span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">)</span>
+  <span class="p">}</span>
+
+  <span class="k">return</span> <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;</span>Loading<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;;</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">ProductListQuery</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>The ProductList component is based on the component provided by the relay official
+documentation <strong>[6]</strong>. To actually use the ProductList component one more step
+is required: to invoke the component in the <code class="language-plaintext highlighter-rouge">App.js</code> file, as the following code does.</p>
+
+<div class="language-jsx highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">import</span> <span class="nx">React</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">react</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="nx">ProductList</span> <span class="k">from</span> <span class="dl">'</span><span class="s1">./ProductList</span><span class="dl">'</span><span class="p">;</span>
+<span class="k">import</span> <span class="dl">'</span><span class="s1">./App.css</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="kd">function</span> <span class="nx">App</span><span class="p">()</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">(</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">className</span><span class="p">=</span><span class="s">"App"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nc">ProductList</span> <span class="p">/&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+  <span class="p">);</span>
+<span class="p">}</span>
+
+<span class="k">export</span> <span class="k">default</span> <span class="nx">App</span><span class="p">;</span>
+
+</code></pre></div></div>
+
+<p>Once the code is in place, the expected behavior is to it to work, as the
+basic setup is completed. Unfortunately it doesn’t. Trying to run the code
+with the setup made so far throws an exception.</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>graphql: Unexpected invocation at runtime. Either the Babel transform was not set up, or it failed to identify this call site. Make sure it is being used verbatim as `graphql`.
+</code></pre></div></div>
+
+<p><img src="/images/posts/2019-12-30-configuring-reactjs-and-relay-2019-version/relay_reactjs_babel_error.jpg" alt="Error babel trying to execute relay without eject" title="Error babel trying to execute relay without eject" /></p>
+
+<p>The alternative solution proposed is to eject the reactjs app created with the
+create react app, the next section dives in details in how to achieve it.</p>
+
+<h2 id="the-solution-ejecting-reactjs">The solution ejecting reactjs</h2>
+
+<p>The solution for that is to eject the reactjs project running the command:
+<code class="language-plaintext highlighter-rouge">npm run eject</code>. Followed by changing the babel configuration used.
+The eject command reveals the magic behind the create react app, which results
+in more configuration files in the root directory and more scripts/dependencies
+in the <code class="language-plaintext highlighter-rouge">package.json</code> file.</p>
+
+<p>The next step is to create a new file named <code class="language-plaintext highlighter-rouge">.babelrc</code> in the root of the project
+and add the following content:</p>
+
+<div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
+  </span><span class="nl">"presets"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="s2">"react-app"</span><span class="w">
+  </span><span class="p">],</span><span class="w">
+  </span><span class="nl">"plugins"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w">
+    </span><span class="p">[</span><span class="w">
+      </span><span class="s2">"relay"</span><span class="w">
+    </span><span class="p">]</span><span class="w">
+  </span><span class="p">]</span><span class="w">
+</span><span class="p">}</span><span class="w">
+</span></code></pre></div></div>
+
+<p>To prevent any babel configuration conflict, remove the section <code class="language-plaintext highlighter-rouge">babel</code> inside
+the <code class="language-plaintext highlighter-rouge">package.json</code> file, and then, run again the command <code class="language-plaintext highlighter-rouge">npm run relay</code> to
+generate all required files by relay, this time time output should be something
+like the following:</p>
+
+<div class="language-sh highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span> relay-app@0.1.0 relay /Projects/relay-app
+<span class="o">&gt;</span> npm run export-schema <span class="o">&amp;&amp;</span> npm run relay-compile
+
+
+<span class="o">&gt;</span> relay-app@0.1.0 export-schema /Projects/relay-app
+<span class="o">&gt;</span> get-graphql-schema http://localhost:4002 <span class="o">&gt;</span> ./schema.graphql
+
+
+<span class="o">&gt;</span> relay-app@0.1.0 relay-compile /Projects/relay-app
+<span class="o">&gt;</span> relay-compiler <span class="nt">--src</span><span class="o">=</span>./src <span class="nt">--schema</span><span class="o">=</span>./schema.graphql <span class="nt">--artifactDirectory</span><span class="o">=</span>./src/__generated__
+
+HINT: pass <span class="nt">--watch</span> to keep watching <span class="k">for </span>changes.
+
+Writing js
+Created:
+ - ProductListQuery.graphql.js
+Unchanged: 0 files
+</code></pre></div></div>
+
+<p>Relay compiler is going to create one file, which is linked with the graphql query
+in the ProductList component.</p>
+
+<p>At this point, starting the app with the command <code class="language-plaintext highlighter-rouge">npm run start</code> should start the
+reactjs app and realy should be up and running as well.</p>
+
+<h2 id="references">References</h2>
+
+<p>[1] Create React App - Set up a modern web app by running one command [Online]. Available: <a href="https://create-react-app.dev" title="Create React App - Set up a modern web app by running one command" target="_blank">https://create-react-app.dev</a>. [Accessed: 31 - Dec - 2019]</p>
+
+<p>[2] Fetch and print the GraphQL schema from a GraphQL HTTP endpoint [Online]. Available: <a href="https://github.com/prisma-labs/get-graphql-schema" title="Fetch and print the GraphQL schema from a GraphQL HTTP endpoint" target="_blank">https://github.com/prisma-labs/get-graphql-schema</a>. [Accessed: 31 - Dec - 2019]</p>
+
+<p>[3] Set up relay-compiler [Online]. Available: <a href="https://relay.dev/docs/en/installation-and-setup#set-up-relay-compiler" title="Set up relay-compiler" target="_blank">https://relay.dev/docs/en/installation-and-setup#set-up-relay-compiler</a>. [Accessed: 31 - Dec - 2019]</p>
+
+<p>[4] How npm handles the “scripts” field [Online]. Available: <a href="https://docs.npmjs.com/misc/scripts" title="How npm handles the scripts field" target="_blank">https://docs.npmjs.com/misc/scripts</a>. [Accessed: 31 - Dec - 2019]</p>
+
+<p>[5] Relay environment [Online]. Available: <a href="https://relay.dev/docs/en/quick-start-guide#relay-environment" title="Relay environment" target="_blank">https://relay.dev/docs/en/quick-start-guide#relay-environment</a>. [Accessed: 31 - Dec - 2019]</p>
+
+<p>[6] Rendering GraphQL Queries [Online]. Available: <a href="https://relay.dev/docs/en/quick-start-guide#rendering-graphql-queries" title="Rendering GraphQL Queries" target="_blank">https://relay.dev/docs/en/quick-start-guide#rendering-graphql-queries</a>. [Accessed: 31 - Dec - 2019]</p>
+
+<p>[7] Set up Relay with a single config file [Online]. Available: <a href="https://relay.dev/docs/en/installation-and-setup#set-up-relay-with-a-single-config-file" title="Set up Relay with a single config file" target="_blank">https://relay.dev/docs/en/installation-and-setup#set-up-relay-with-a-single-config-file</a>. [Accessed: 01 - Jan - 2020]</p>
+
+<p>[8] Using Create React App with Relay Modern [Online]. Available: <a href="https://hackernoon.com/using-create-react-app-with-relay-modern-989c078fa892" title="Using Create React App with Relay Modern" target="_blank">https://hackernoon.com/using-create-react-app-with-relay-modern-989c078fa892</a>. [Accessed: 01 - Jan - 2020]</p>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

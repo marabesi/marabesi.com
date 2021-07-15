@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Introduction to Service Worker</title>
+    <meta name="description"
+      content="The following content is inspired by the udacity course with bits from othersources as well. The main goal is to identify what is a service workerand what it...">
+
+    <link rel="canonical" href="https://marabesi.com/javascript/2018/12/02/introduction-to-service-worker.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Introduction to Service Worker" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/javascript/2018/12/02/introduction-to-service-worker.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2018-12-02-introduction-to-service-worker/cover.png" />
+    <meta property="og:description"
+      content="The following content is inspired by the udacity course with bits from othersources as well. The main goal is to identify what is a service workerand what it..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Introduction to Service Worker">
+    <meta name="twitter:description"
+      content="The following content is inspired by the udacity course with bits from othersources as well. The main goal is to identify what is a service workerand what it...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2018-12-02-introduction-to-service-worker/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2018-12-02 04:06:05 +0000">
+
+    <meta name="keywords" content="worker,service,event,user,function,cached,content,Available,Accessed,web,js,javascript,pwa,service worker,chrome,google,HTML,cache,API,offline,udacity" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="introduction-to-service-worker">Introduction to Service Worker</h1>
+      <p>The following content is inspired by the udacity course with bits from <a href="#03---references">other
+sources as well</a>. The main goal is to identify what is a service worker
+and what it can offer to incorporate a progressive web app.</p>
+
+<h1 id="edit-may-14-2019---madridjs-talk">Edit May 14, 2019 - MadridJs talk</h1>
+
+<iframe src="//speakerdeck.com/player/ebcd7b3fea5744cf8e290a788f48bd68" width="100%" height="399" style="border:0; padding:0; margin:0; background:transparent;" frameborder="0" allowtransparency="true" allowfullscreen="allowfullscreen" mozallowfullscreen="true" webkitallowfullscreen="true"></iframe>
+
+<h1 id="01---offline-and-lie-fi-problem">01 - Offline and lie-fi problem</h1>
+
+<p>Service workers improves the user experience in the connectivity aspect.
+In the offline, which is the case when the user has no connection at all to the 
+internet and the lie-fi, which is a term related to bad connection and high 
+latency <strong>[1]</strong>.</p>
+
+<p>Therefore, once is not worse than the other, they are in essence bad for user
+experience. Offline means that the user will not receive new data and lie-fi
+makes the user disapointed with responses that often tend to show 
+the loading progress bar forever.</p>
+
+<h1 id="02---service-workers">02 - Service workers</h1>
+
+<p>A service worker is a script that sits between the request made by the browser
+and the response received by the user <strong>[2][7]</strong>, like a proxy server.</p>
+
+<p>The characteritcs that define a service woker are:</p>
+
+<ul>
+  <li>A isolated script that can’t access the DOM.</li>
+  <li>Intercept requests and decides when to go over the network or send a cached version.</li>
+  <li>Has a defined life cycle, installing, waiting and active.</li>
+  <li>Must have HTTPs. Though, it is allowed to use without on localhost for
+development purposes.</li>
+</ul>
+
+<p>The simplest service worker can be installed and cache assets to decrease the
+bandwith usage. The first part is to define what should be cached,
+as in the snippet 1.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//snippet 1</span>
+<span class="c1">// defines the cache name, this name is going to appear in the dev tools</span>
+<span class="c1">// under Application &gt; Cache Storage</span>
+<span class="kd">var</span> <span class="nx">CACHE_NAME</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">marabesi.com_v1</span><span class="dl">'</span><span class="p">;</span>
+
+<span class="c1">// what to cache, defined by URL, using / is going to cache everything</span>
+<span class="kd">var</span> <span class="nx">assetsToCache</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="dl">'</span><span class="s1">/</span><span class="dl">'</span>
+<span class="p">];</span>
+
+<span class="c1">// puts everything that maches the assetsToCache into the cache to use </span>
+<span class="c1">// later.</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">install</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">event</span><span class="p">){</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+        <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">)</span>
+            <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">cache</span><span class="p">.</span><span class="nx">addAll</span><span class="p">(</span><span class="nx">assetsToCache</span><span class="p">);</span>
+            <span class="p">})</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The <code class="language-plaintext highlighter-rouge">cache</code> API was introduced along the service worker
+specification <strong>[4]</strong>, and it is related with the snippets found in
+the internet, which verify only if the brower has the <code class="language-plaintext highlighter-rouge">serviceWorker</code>
+feature available <strong>[8][9][10]</strong>.</p>
+
+<p>Once the assets have beend cached, the service worker can start to serve the
+cached content. The event <code class="language-plaintext highlighter-rouge">fetch</code> is fired when a request is made and the
+service worker is active. This event decides to send the
+cached content to the user or to go over the network and fetch the data,
+as in the snippet 2.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// snippet 2</span>
+<span class="c1">// register a callback to respond to each fetch event</span>
+<span class="c1">// this event is fired when a request ismade by the browser</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">fetch</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">respondWith</span><span class="p">(</span>
+        <span class="c1">// verify if the request exists in the cache</span>
+        <span class="nx">caches</span><span class="p">.</span><span class="nx">match</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">).</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="kd">var</span> <span class="nx">responseToCache</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">clone</span><span class="p">();</span>
+
+            <span class="nx">caches</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="nx">CACHE_NAME</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cache</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="nx">cache</span><span class="p">.</span><span class="nx">put</span><span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">request</span><span class="p">,</span> <span class="nx">responseToCache</span><span class="p">);</span>
+                <span class="p">});</span>
+
+            <span class="k">return</span> <span class="nx">response</span><span class="p">;</span>
+        <span class="p">})</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The last piece is to register the service worker in the browser, so it can
+start to do his job. The recommended is to follow the progressive enhancement approach <strong>[3]</strong>,
+checking if the browser that the user is using supports the service worker, if
+not the service worker is ignored.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//snippet 3</span>
+<span class="c1">// if the serviceWorker property exists in the browser</span>
+<span class="c1">// it supports the feature and then registers the script</span>
+<span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">/service-worker.js</span><span class="dl">'</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>As the approach described so far is an enhancement in the user experience it does 
+lack the user control <strong>[5]</strong>, and there is no way to remove the old cache
+once a new verion is available.</p>
+
+<p>The only way to update the assets is to change the service worker code. The change
+can be as small as to change the cache version. In the snippet 1, for instance,
+the cache version is set to <code class="language-plaintext highlighter-rouge">marabesi.com_v1</code>, changing it to <code class="language-plaintext highlighter-rouge">marabesi.com_v2</code>
+would trigger an update event in the service worker and the content would be
+fetched and refresh the cache with the new data.</p>
+
+<p>Therefore, the service worker does not show the new content automatically, to
+show the new content cached by the new service worker, all instances of the
+current one must be terminated <strong>[2][6]</strong>. In this context terminated means, to close the
+current page or navigate to a new URL and then come back.</p>
+
+<p><img src="/images/posts/2018-12-02-introduction-to-service-worker/service_worker_flow.png" alt="Service work lifecycle" target="_blank" /></p>
+
+<p>The steps to have a site available offline is done, but with that approach the
+cache in the users browser would grow as every change made in the service worker.
+To address that the <code class="language-plaintext highlighter-rouge">activate</code> event is used to remove the old cache when a new
+version is available, as in the snippet 4:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">//snippet 4</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">activate</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">event</span><span class="p">.</span><span class="nx">waitUntil</span><span class="p">(</span>
+        <span class="nx">caches</span><span class="p">.</span><span class="nx">keys</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cacheNames</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">(</span>
+                <span class="nx">cacheNames</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cacheName</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">cacheName</span><span class="p">.</span><span class="nx">startsWith</span><span class="p">(</span><span class="dl">'</span><span class="s1">marabesi.com_</span><span class="dl">'</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+                        <span class="nx">cacheName</span> <span class="o">!=</span> <span class="nx">CACHE_NAME</span><span class="p">;</span>
+                <span class="p">}).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">cacheName</span><span class="p">)</span> <span class="p">{</span>
+                    <span class="k">return</span> <span class="nx">caches</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="nx">cacheName</span><span class="p">);</span>
+                <span class="p">})</span>
+            <span class="p">);</span>
+        <span class="p">})</span>
+    <span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>To address this issue the service worker API offers methods to control it in a
+sofisticaded manner. Giving to the user the ability to decide when to
+update the local content with the new one. With that the approach used change, from
+online first to offline first, starting serving the cached content and 
+checking for updates in the background.</p>
+
+<h1 id="letting-the-user-take-control">Letting the user take control</h1>
+
+<p>To give the user the ability to decide when to replace the current
+cached content with the new one, changes need to be made in the service worker
+that we created in the previous section.</p>
+
+<p>So far we used the following events to register the service worker and cache
+the assets:</p>
+
+<ul>
+  <li>install</li>
+  <li>fetch</li>
+</ul>
+
+<p>To interact with the user there are more events needed. The missing parts
+of our service worker is to identify when an update is available and when
+the new installed version is ready for use. The service worker API offer two
+events to accomplish that:</p>
+
+<ul>
+  <li>updatefound</li>
+  <li>statechange</li>
+</ul>
+
+<p>Those events are related to the service worker but they occurr in diferente objects.
+The used script to interact with <code class="language-plaintext highlighter-rouge">install</code> and <code class="language-plaintext highlighter-rouge">fetch</code> is the single javascript
+file <code class="language-plaintext highlighter-rouge">service-worker.js</code> (snippet 1).</p>
+
+<p><img src="/images/posts/2018-12-02-introduction-to-service-worker/service_worker_events.png" alt="Service worker types of events" target="_blank" /></p>
+
+<p>The events <code class="language-plaintext highlighter-rouge">updatefound</code> and <code class="language-plaintext highlighter-rouge">statechange</code>
+are events related to the <code class="language-plaintext highlighter-rouge">ServiceWorkerRegistration</code> object, which is returned 
+in the register method.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// snippet 5</span>
+<span class="c1">// setting up the button event and the event to send data from the current page</span>
+<span class="c1">// to the service worker</span>
+ <span class="k">if</span> <span class="p">(</span><span class="dl">'</span><span class="s1">serviceWorker</span><span class="dl">'</span> <span class="k">in</span> <span class="nb">navigator</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// a button defined in the HTML</span>
+    <span class="kd">var</span> <span class="nx">updateButton</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">.update-button</span><span class="dl">'</span><span class="p">);</span>
+    <span class="kd">var</span> <span class="nx">worker</span><span class="p">;</span>
+
+    <span class="c1">// sends a message with a json to the active service worker</span>
+    <span class="nx">updateButton</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">click</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nx">worker</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span> <span class="na">action</span><span class="p">:</span> <span class="dl">'</span><span class="s1">skip</span><span class="dl">'</span><span class="p">});</span>
+    <span class="p">});</span>
+
+    <span class="c1">// setting up the service worker resgistration events</span>
+    <span class="nb">window</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">load</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">registration</span> <span class="o">=</span> <span class="nb">navigator</span><span class="p">.</span><span class="nx">serviceWorker</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="dl">'</span><span class="s1">/service-worker.js</span><span class="dl">'</span><span class="p">)</span>
+
+        <span class="cm">/**
+         * @var registration ServiceWorkerRegistration
+         */</span>
+        <span class="nx">registration</span><span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">registration</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">registration</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">updatefound</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">worker</span> <span class="o">=</span> <span class="nx">registration</span><span class="p">.</span><span class="nx">installing</span><span class="p">;</span>
+
+                <span class="nx">worker</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">statechange</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                    <span class="k">if</span> <span class="p">(</span><span class="nx">worker</span><span class="p">.</span><span class="nx">state</span> <span class="o">==</span> <span class="dl">'</span><span class="s1">installed</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nx">updateButton</span><span class="p">.</span><span class="nx">classList</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="dl">'</span><span class="s1">hide</span><span class="dl">'</span><span class="p">);</span>
+                    <span class="p">}</span>
+                <span class="p">});</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Besides that, the service worker does not have access to the DOM in the page which
+makes the approach to interact with the user different. To communicate via 
+the current web page to the user the service worker provider a message based
+system.</p>
+
+<p>The main page (the page that has access to the DOM) send the desired message
+through the method <code class="language-plaintext highlighter-rouge">postMessage</code>, then the service worker listens to the
+<code class="language-plaintext highlighter-rouge">message</code> event.</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// snippet 5</span>
+<span class="c1">// listening to data coming from postMessage</span>
+<span class="nb">self</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="dl">'</span><span class="s1">message</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">action</span> <span class="o">===</span> <span class="dl">'</span><span class="s1">skipWaiting</span><span class="dl">'</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="nx">skipWaiting</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div></div>
+
+<p>The snippet 5 is the last part to give the user the control when the update
+should be applied. The following have been achieved:</p>
+
+<ul>
+  <li>The site data is cached in the service worker</li>
+  <li>The site is accessible in offline mode</li>
+  <li>The user has the control when to apply the update, but it happens automatically
+once the user leaves the site and comes back</li>
+</ul>
+
+<h1 id="03---references">03 - References</h1>
+
+<p><strong>[1]</strong> Michael Wales, ‘Offline Web Applications by Google’, 2016. [Online]. Available: <a href="https://eu.udacity.com/course/offline-web-applications--ud899" target="_blank">https://eu.udacity.com/course/offline-web-applications–ud899</a>. [Accessed: 20 - Dec - 2018]</p>
+
+<p><strong>[2]</strong> Matt Gaunt, ‘Service Workers: An Introduction’, 2018. [Online]. Available: <a href="https://developers.google.com/web/fundamentals/primers/service-workers" target="_blank">https://developers.google.com/web/fundamentals/primers/service-worker</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[3]</strong> W3C, ‘Graceful degradation versus progressive enhancement’, 2015. [Online]. Available: <a href="https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement" target="_blank">https://www.w3.org/wiki/Graceful_degradation_versus_progressive_enhancement</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[4]</strong> W3C, ‘Service Workers 1 - 
+W3C Working Draft, 2 November 2017’, 2017. [Online]. Available: <a href="https://www.w3.org/TR/service-workers-1/#cache-objects" target="_blank">https://www.w3.org/TR/service-workers-1/#cache-objects</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[5]</strong> Dean Hume, ‘How to display a “new version available” for a Progressive Web App’, 2018. [Online]. Available: <a href="https://deanhume.com/displaying-a-new-version-available-progressive-web-app" target="_blank">https://deanhume.com/displaying-a-new-version-available-progressive-web-app</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[6]</strong> Jake Archibald, ‘The Service Worker Lifecycle’, 2018. [Online]. Available: <a href="https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#aguardando" target="_blank">https://developers.google.com/web/fundamentals/primers/service-workers/lifecycle#aguardando</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[7]</strong> T. Ater, Building Progressive Web Apps. 2017, p. 22.</p>
+
+<p><strong>[8]</strong> Google, ‘Basic Service Worker Sample’, 2016. [Online]. Available: <a href="https://googlechrome.github.io/samples/service-worker/basic/#container" target="_blank">https://googlechrome.github.io/samples/service-worker/basic/#container</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[9]</strong> Mozilla, ‘ServiceWorker’, 2018. [Online]. Available: <a href="https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker#Examples" target="_blank">https://developer.mozilla.org/en-US/docs/Web/API/ServiceWorker#Examples</a>. [Accessed: 18 - Jan - 2019]</p>
+
+<p><strong>[10]</strong> S. Amarasinghe, Service Worker Development Cookbook. 2016, p. 18.</p>
+
+<!-- https://jakearchibald.com/2014/offline-cookbook/ -->
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/javascript/2018/12/02/introduction-to-service-worker.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/javascript/2018/12/02/introduction-to-service-worker.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/javascript/2018/12/02/introduction-to-service-worker.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

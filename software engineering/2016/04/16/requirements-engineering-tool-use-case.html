@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Requirements Engineering - A tool for Use Case</title>
+    <meta name="description"
+      content="Recently I’ve finished my MBA in software engineering and as a result my group and I ended up with and tool for use case management. We were aimed to develop...">
+
+    <link rel="canonical" href="https://marabesi.com/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Requirements Engineering - A tool for Use Case" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2016-04-16-requirements-engineering-tool-use-case/cover.jpg" />
+    <meta property="og:description"
+      content="Recently I’ve finished my MBA in software engineering and as a result my group and I ended up with and tool for use case management. We were aimed to develop..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Requirements Engineering - A tool for Use Case">
+    <meta name="twitter:description"
+      content="Recently I’ve finished my MBA in software engineering and as a result my group and I ended up with and tool for use case management. We were aimed to develop...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2016-04-16-requirements-engineering-tool-use-case/cover.jpg">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2016-04-16 23:13:33 +0000">
+
+    <meta name="keywords" content="actors,application,development,engineering,nasa,requirements,software,step,use case,version,mbauml diagram,uml" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="requirements-engineering-tool-use-case">Requirements Engineering - A tool for Use Case</h1>
+      <p>Recently I’ve finished my MBA in software engineering and as a result my group and I ended up with and tool for use case management. We were aimed to develop something that helps teams build a better software and we founded in requirements a gap to be fill.</p>
+
+<p>As usual in Brazil software development is a big issue (I’m specifically talking about Brazil because is my country and where I have experience) with impossible dead lines, crap documentation and bosses even worse. In resume software here is just a matter of money and doesn’t matter if you built it with quality or not, what matters is how much the company will earn with it.</p>
+
+<p>Software engineers should have the knowledge and power to change it. Therefore we also have a lack of tools to help us to build better software. Let’s assume a waterfall model to build software:</p>
+
+<p><a href="http://www.maxwideman.com/papers/linearity/waterfall.jpg" target="_blank"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/waterfall.jpg" alt="Waterfall model" title="Waterfall model" /></a></p>
+
+<p>Just looking to the diagram we identified that the problem is in the first three steps:</p>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/waterfall-problem.jpg" target="_blank"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/waterfall-problem.jpg" alt="Waterfall model and the problem" /></a></p>
+
+<p>Assuming that we did a research to confirm our thesis and let’s see what experts have to say to us:</p>
+
+<p>Problems of scope. The boundary of the system is ill-defined or the customers/users specify unnecessary technical detail that may confuse, rather than clarify, overall system objectives (PRESSMAN, Software Engineering - A PRACTITIONER ’ S APPROACH, page 121)</p>
+
+<h3 id="it-does-apply-to-agile-methods-as-well">IT DOES APPLY TO AGILE METHODS AS WELL</h3>
+
+<p>To us is very clear the problem is in the documentation and to improve this
+field we came up with an new tool to increase the requirements field.
+The tool is totally based in the Use Case from UML (The use case description).
+We believe that the use case is the very first step to have a good documentation
+and where both business and technology can understand for some reasons:</p>
+
+<ul>
+  <li>Use case is a simple matter of who does what</li>
+  <li>The diagram and the description is really intuitive</li>
+  <li>Once you learn how to create is really easy to repeat (in meetings where the user will be interviewed is common to use use case approach)</li>
+</ul>
+
+<p><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/use-cases-newspapar.gif" alt="Use case diagram" target="_blank" /></p>
+
+<p>Use case diagram Of course the diagram is much easier to understand than the description one. Just looking to the image you know that you’ll have a user with the journalist role and a reader, really easy isn’t it ? Unfortunately what we have is not the diagram itself in our tool rather we have the description one</p>
+
+<p><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/Description-of-Use-Cases.jpg" alt="Description use case" /></p>
+
+<p>Description use case Usually Use case descriptions are created and stored in word documents and as you can imagine they can be very hard to maintain and even create them. Our solution provides a easily way to create and store use case description based on an application. You can see the tool here <a href="https://shielded-headland-1947.herokuapp.com">https://shielded-headland-1947.herokuapp.com</a>.
+The following section will introduce to the tool and give to a explanation in how we ported the use case description.</p>
+
+<h2 id="application">Application</h2>
+
+<p>Once you have visited the link you’ll see the following image to create an application</p>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/application.png"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/application.png" alt="Use case management - Application" /></a></p>
+
+<p>The first screen is where you define your application, you can have as many
+application as you want. Usually when you are creating a use case you are creating
+it to a given application, for instance let’s say you are developing requirements
+to a application called <strong>Fly Cotrol</strong>, so you should use the same name in this
+screen. To understand the flow we propose I drawled the following flow chart:</p>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/flow.png" target="_blank"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/flow.png" alt="Basic flow to create use case" /></a></p>
+
+<p>Keep it in mind because we’re going to follow this as well</p>
+
+<h2 id="actor">Actor</h2>
+
+<p>As the name already said here we are going o manage our actor. You can insert,
+delete and update an actor.</p>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/actors.png"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/actors.png" alt="Use case management - Actors" /></a></p>
+
+<h2 id="version">Version</h2>
+
+<p>In this section is where you going to define the versions of your use cases. A simple example here is when you create the first version called 1.0.0, then comes the need to upgrade some functionalities and then you create the version 2.0.0 to specify only what has been changed.</p>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/version-1.png"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/version-1.png" alt="Use case management - Version" /></a></p>
+
+<h2 id="use-case">Use case</h2>
+
+<p>Finally we can now create our use case, here is where all we have done before get together. The first select box is where you select your application to create a use case:</p>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/use_case_-1.png"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/use_case_-1.png" alt="Use case management - Use case" /></a></p>
+
+<p>Then the select box of named Version comes, here is where you select which
+version your use case is going to use. Following the same idea you can select
+one or more actors to be in your use case.</p>
+
+<h2 id="steps">Steps</h2>
+
+<p><a href="/images/posts/2016-04-16-requirements-engineering-tool-use-case/steps.png"><img src="/images/posts/2016-04-16-requirements-engineering-tool-use-case/steps.png" alt="Use case management - Version" /></a></p>
+
+<p>Here we are in the last step to create our use case, this is the last section
+because is complex to explain. Here is where you use case is going to be detailed
+with each step and they can be <strong>Main</strong>, <strong>Alternate</strong> or <strong>Exception</strong>
+(if you are not understand the point go ahead and take a look in the use case
+description in the beginning of the post).</p>
+
+<h2 id="there-is-more-to-be-done">There is more to be done</h2>
+
+<p>The tool was just to prove our point of view in how requirements affects the
+software development and there are improvements to be done yet. The main features
+I can think now are: user authentication, generate use case diagram and allow
+relation between use cases.</p>
+
+<p>If you liked the tool or want to contribute with feel free to, all the code was
+developed in PHP and Laravel Framework you can see the source code in
+<a href="https://github.com/marabesi/use-case-management">https://github.com/marabesi/use-case-management</a>.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>In this study what I felt is that requirements and documentation is a business
+need and the problem resides on the developers hand. As a developer/software
+engineers we should demonstrate a path to the users and instigate them to give
+us the correct information.</p>
+
+<p>In the past we were addicted to word’s document and Excel sheets but nowadays
+its more than that, simple text documents doesn’t help us to delivery quality
+in our softwares. The Use Case management tool is a try to improve this field
+and prevent all issues in the software development.</p>
+
+<p>As a resume we learnt we HAVE TO elicit correctly requirements and
+Use Case Management toll helps a lot with that, storing all use cases need to a
+given application.</p>
+
+<h2 id="edit-may30-2016">Edit: May 30, 2016</h2>
+
+<iframe src="https://drive.google.com/file/d/0B8eXZIvTLcpjQUtKNEtmLXdrQ2p2c19sR2Z2REo5SkI1dDRv/preview" width="100%" height="480"></iframe>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

@@ -1,0 +1,874 @@
+[
+  
+    {
+      "title"    : "My technical reading path - Software engineering journey",
+      "category" : "",
+      "tags"     : "reading",
+      "url"      : "/thoughts/2021/06/23/my-technical-reading-path-software-engineering.html",
+      "date"     : "2021-06-23 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Sobre 100% de cobertura de código",
+      "category" : "",
+      "tags"     : "código,, cobertura,, testes,, desenvolvimento guiado por testes,, TDD,, Farley,, Codificação,, Suíte de teste,, Verificações de segurança,, Orçamento de desempenho,, desenvolvimento,, 100 de cobertura,, cobertura de código,, teste de software",
+      "url"      : "/thoughts/2021/05/29/on-100-percent-code-coverage.html",
+      "date"     : "2021-05-29 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Kubernetes quick notes deployment (WIP)",
+      "category" : "",
+      "tags"     : "kubernetes,, Kubernetes,, k8s,, deployment,, docker,, exposing,, kubectl,, container,, example,, pod,, Pod,, expose,, ReplicaSet,, image,, abstraction",
+      "url"      : "/devops/2021/05/01/kubernetes-quick-notes-deployment.html",
+      "date"     : "2021-05-01 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Jest asserts beyond equals",
+      "category" : "",
+      "tags"     : "jest,, javascript,, expect,, equals,, toequal,, async,, assertion,, TDD,, const,, assert,, toEqual,, example,, callback,, called,, test,, result,, approach,, beyond",
+      "url"      : "/web/2021/04/25/jest-asserts-beyond-equals.html",
+      "date"     : "2021-04-25 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "How to lose your developers",
+      "category" : "",
+      "tags"     : "development,, developers,, mind mapping,, hard skills,, documentation,, software,, mind,, subject,, code,, engineering,, culture,, start,, bug,, developer,, team,, time",
+      "url"      : "/thoughts/2021/04/08/how-to-lose-your-developers.html",
+      "date"     : "2021-04-08 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Jest timers and reactjs",
+      "category" : "",
+      "tags"     : "reactjs,, jest,, timers,, fake,, test,, time,, Scene,, use,, describe,, wrapper,, suite,, beforeEach",
+      "url"      : "/web/2021/04/04/jest-timers-and-reactjs.html",
+      "date"     : "2021-04-04 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Firebase UI localization",
+      "category" : "",
+      "tags"     : "firebase,, Firebase,, firebaseui,, reactjs,, i18n,, localization,, build,, npm,, language,, run,, css,, web,, install,, files,, process,, esm,, anonymous,, project",
+      "url"      : "/development/2021/03/15/firebase-ui-localization.html",
+      "date"     : "2021-03-15 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "2020, a year of reading",
+      "category" : "",
+      "tags"     : "architecture,, Architecture,, books,, book,, software,, microservices,, programming,, read,, reading,, review,, algorithms,, clean,, clean architecture,, software architecture,, books read,, architecture patterns,, extreme programming,, Extreme,, tech leads,, Software,, patterns",
+      "url"      : "/review/2021/02/11/2020-a-year-of-reading.html",
+      "date"     : "2021-02-11 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Mapping IR emitter module KY-005 sensor/receiver module KY-022-IR sensor",
+      "category" : "",
+      "tags"     : "lirc,, lircd,, https,, remote,, remotes,, receiver,, sensor,, pin,, gpio,, wiring,, section,, sudo,, dev,, dev lirc,, lircd conf,, config txt,, raspberry pi,, iot,, KY-002,, KY-005,, ELEGOO",
+      "url"      : "/iot/2021/01/29/mapping-ir-emitter-k005-receiver-ky-022-to-raspberry.html",
+      "date"     : "2021-01-29 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes",
+      "category" : "",
+      "tags"     : "aws,, AWS,, S3",
+      "url"      : "/aws/ccp/2021/01/20/aws-cloud-practitioner-notes.html",
+      "date"     : "2021-01-20 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Towards a reactjs folder structure based on intent (WIP)",
+      "category" : "",
+      "tags"     : "reactjs,, structure,, reactjs,, js,, json,, folder,, components,, ui,, UI,, intent,, communication,, RCA,, React create app,, UI,, user interface,, Third party,, Data flow,, package,, architecture,, approach",
+      "url"      : "/web/2021/01/18/towards-reactjs-folder-structure-based-on-intent.html",
+      "date"     : "2021-01-18 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Node.js certification JSNAD - Streams",
+      "category" : "",
+      "tags"     : "streams,, data,, node,, writable,, events,, stream,, error,, js,, csv,, Node,, readable,, console,, generator,, content,, Streams,, file,, memory,, stream events,, emitted when,, js streams,, data available,, passing through,, more data,, error occurred,, application,, developer",
+      "url"      : "/nodejs/jsnad/2021/01/16/node-certification-jsnad-streams.html",
+      "date"     : "2021-01-16 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - The cloud journey",
+      "category" : "",
+      "tags"     : "aws,, AWS,, S3",
+      "url"      : "/aws/ccp/2021/01/12/aws-cloud-practitioner-notes-the-cloud-journey.html",
+      "date"     : "2021-01-12 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Migration and innovation",
+      "category" : "",
+      "tags"     : "aws,, AWS,, S3",
+      "url"      : "/aws/ccp/2021/01/11/aws-cloud-practitioner-notes-migration-and-innovation.html",
+      "date"     : "2021-01-11 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Pricing and support",
+      "category" : "",
+      "tags"     : "aws,, AWS,, S3",
+      "url"      : "/aws/ccp/2021/01/10/aws-cloud-practitioner-notes-pricing-and-support.html",
+      "date"     : "2021-01-10 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Monitoring and Analytics",
+      "category" : "",
+      "tags"     : "aws,, AWS,, CloudWatch,, Amazon,, applications,, based,, Module,, metrics,, Advisor,, Monitoring,, Trusted,, CloudTrail,, resources,, time,, real,, dashboard,, Code,, Alarms,, location,, notes,, Analytics,, Amazon CloudWatch,, CloudWatch Alarms,, CloudWatch dashboard,, AWS CloudTrail,, AWS Trusted Advisor,",
+      "url"      : "/aws/ccp/2021/01/09/aws-cloud-practitioner-notes-monitoring-and-analytics.html",
+      "date"     : "2021-01-09 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Security",
+      "category" : "",
+      "tags"     : "aws,, AWS,, security,, data,, Module,, account,, permissions,, IAM,, cloud,, attack,, compliance,, Compliance,, group,, encryption,, service,, resource,, S3",
+      "url"      : "/aws/ccp/2021/01/08/aws-cloud-practitioner-notes-security.html",
+      "date"     : "2021-01-08 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Storage and databases",
+      "category" : "",
+      "tags"     : "Amazon,, aws,, AWS,, S3,, EBS,, database,, Database,, data,, databases,, DynamoDB,, Module,, RDS,, objects,, storage,, type,, service,, migration,, files,, application,, volumes,,, store,, Use case",
+      "url"      : "/aws/ccp/2021/01/07/aws-cloud-practitioner-notes-storage-and-databases.html",
+      "date"     : "2021-01-07 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Networking",
+      "category" : "",
+      "tags"     : "aws,, AWS,, VPC,, vpc,, private,, Private,, cloud,, gateway,, amazon,, internet,, subnets,, Virtual,, traffic,, direct,, internet gateway,, virtual private gateway,, AWS Direct connect",
+      "url"      : "/aws/ccp/2021/01/06/aws-cloud-practitioner-notes-networking.html",
+      "date"     : "2021-01-06 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - Infrastructure and reliability",
+      "category" : "",
+      "tags"     : "aws,, AWS,, global infrastructure,, availability zone,, AZ,, edge locations,, availability,, CloudFormation,, services,, locations,, regions,, calls,, data centers,, cloud,, operate,, infrastructure",
+      "url"      : "/aws/ccp/2021/01/05/aws-cloud-practitioner-notes-infrastructure-and-reliability.html",
+      "date"     : "2021-01-05 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "AWS cloud practitioner notes - EC2",
+      "category" : "",
+      "tags"     : "aws,, AWS,, demand,, servers,, ECS,, Application,, computing,, manage,, code,, ec2,, instance,, resources,, modules,, service,, messages,, cloud,, on-demand,, ec2 instance,, high performance,, aws cloud,, cloud computing,, instance types",
+      "url"      : "/aws/ccp/2021/01/04/aws-cloud-practitioner-notes-ec2.html",
+      "date"     : "2021-01-04 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Creating web firebase app (browser based not server)",
+      "category" : "",
+      "tags"     : "project,, app,, step,, analytics,, javascript,, create,, firebase,, database,, web,, post,, real,, console,, account",
+      "url"      : "/development/2021/01/02/creating-web-firebase-app.html",
+      "date"     : "2021-01-02 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Deploying git bot release to AWS lambda",
+      "category" : "",
+      "tags"     : "bref,, key,, section,, credentials,, command,, aws,, access,, setting,, php7,, serverless,, Serverless,, php,, application,, Stack,, app,, bot,, git,, deploy,, api,, file,, dependencies,, AWS",
+      "url"      : "/aws/2020/12/20/deploying-git-bot-release-to-aws-lambda.html",
+      "date"     : "2020-12-20 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Mocks, dummies, spies, fakes - testing your code",
+      "category" : "",
+      "tags"     : "test,, Test,, testing,, system,, mock,, Mocks,, mocks,, dummies,, spies,, Spies,, fakes,, Fakes,, code,, doubles,, Dummies,, stubs",
+      "url"      : "/development/2020/11/29/2020-mocks-dummies-spies-fakes-testing-your-code.html",
+      "date"     : "2020-11-29 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "My setup for web development, 2020 edition",
+      "category" : "",
+      "tags"     : "tmux,, docker,, setup,, development,, zsh,, version,, vscode,, IDE,, system,, text,, vim,, configuration",
+      "url"      : "/development/2020/11/14/my-setup-for-web-development-2020.html",
+      "date"     : "2020-11-14 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Production ready microservices - review",
+      "category" : "",
+      "tags"     : "microservices,",
+      "url"      : "/review/2020/10/26/production-ready-microservices.html",
+      "date"     : "2020-10-26 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Software arquitecture patterns",
+      "category" : "",
+      "tags"     : "architecture,, pattern,, based,, one,, microkernel,, applications,, product,, application,, concept",
+      "url"      : "/architecture/2020/10/17/software-arquitecture-patterns.html",
+      "date"     : "2020-10-17 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Rethinking legacy code and testing",
+      "category" : "",
+      "tags"     : "code,, testing,, development,, legacy,, strategy,, tdd",
+      "url"      : "/testing/2020/09/01/rethinking-legacy-code-and-testing.html",
+      "date"     : "2020-09-01 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Git release bot - PART 1",
+      "category" : "",
+      "tags"     : "version,, file,, gitbot,, release,, git,, commit,, update,, developer",
+      "url"      : "/devops/2020/07/19/git-release-bot-part-1.html",
+      "date"     : "2020-07-19 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Lambda (AWS) - first impressions",
+      "category" : "",
+      "tags"     : "lambda,, Lambda,, data,, aws,, AWS,, user,, export,, request,, time,, scalability,, web,, application,, PHP",
+      "url"      : "/web/2020/07/07/lambda-first-impressions.html",
+      "date"     : "2020-07-07 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "ReactJs patterns - A study based on google search",
+      "category" : "",
+      "tags"     : "React,, patterns,, pattern,, Pattern,, https,, reactjs,, search,, google,, study,, study based,, react,, results,, web,, reactjs patterns,, component,, components,, Online,, hooks,, props,, render",
+      "url"      : "/web/2020/06/22/reactjs-patterns-a-study-based-on-google-search.html",
+      "date"     : "2020-06-22 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Getting started with testing (PHP and javascript) - PART 1",
+      "category" : "",
+      "tags"     : "testing,, unit,, programming,, tests,, tools,, libraries,, development,, software,, tools,, theory",
+      "url"      : "/testing/2020/05/23/getting-started-with-testing-guide.html",
+      "date"     : "2020-05-23 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Clean architecture",
+      "category" : "",
+      "tags"     : "architecture,, clean,, hexagonal,, code,, approach,, book,, Screaming architecture,, DCI,, BCE",
+      "url"      : "/architecture/2020/05/22/clean-architecture.html",
+      "date"     : "2020-05-22 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Tips for writting docker files",
+      "category" : "",
+      "tags"     : "docker,, Docker,, image,, user,, build,, root,, network,, setup,, compose,, container,, files,, program,, flag,, COPY,, run,, host,, flag,, npm,, Online,, https",
+      "url"      : "/devops/2020/05/15/tips-for-writting-docker-files.html",
+      "date"     : "2020-05-15 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "PHP import checker - VScode extension to support PHP developers",
+      "category" : "",
+      "tags"     : "PHP,, color,, command,, highlight,, developers,, IDE,, php,, import,, checker,, visual,, studio,, code,, market,, place,, extension",
+      "url"      : "/php/2020/04/05/php-import-checker-vscode-extension.html",
+      "date"     : "2020-04-05 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Configuring reactjs and relay 2019 version",
+      "category" : "",
+      "tags"     : "web,, js,, app,, schema,, npm,, reactjs,, react,, relay,, graph,, graphql,, query,, environment,, component,, compiler,, web,, js,, eject reactjs,, configuring relay js,, A Step By Step Guide,, relay-config npm,, get-graphql-schema,, relay-compiler,, babel-plugin-relay,, react-relay,, getting started,, howtographql",
+      "url"      : "/javascript/2019/12/30/configuring-reactjs-and-relay-2019-version.html",
+      "date"     : "2019-12-30 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "MySQL 5.7 on Ubuntu 19.04 and 19.10",
+      "category" : "",
+      "tags"     : "web,, ubuntu,, Ubuntu,, version,, ubuntu 19,, ubuntu 19.10,, MySQL,, mysql,, command,, amd,, mysql 5.7,, mysql 5.7.*,, tar,, deb,, server,, installation,, apt,, linux,, shell,, mysql-server,, mysql-community-server,, mysql-core,, download",
+      "url"      : "/mysql/2019/12/23/mysql-5.7-on-ubuntu-19.html",
+      "date"     : "2019-12-23 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "e2e testing with Cypress, ReactJs and Firebase",
+      "category" : "",
+      "tags"     : "web,, js,, redux,, javascript,, reactjs,, ReactJs,, e2e,, cypress,, Cypress,, testing,, test,, solution,, docs,, firebase,, Firebase,, Online,, github,, sdk,, https,, store,, Redux",
+      "url"      : "/test/2019/10/13/cypress-and-firebase-reactjs-app.html",
+      "date"     : "2019-10-13 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Introduction to OOP with PHP (Classes, Encapsulation, Inheritance)",
+      "category" : "",
+      "tags"     : "class,, programming,, private,, classes,, Person,, object,, type,, final,, methods,, code,, inheritance,, web,, oop,, php,, PHP,, behaviors,, oop,, php oop examples,, encapsulation php,, encapsulation in php,, types of inheritance in php,, php final class",
+      "url"      : "/php/2019/06/25/intro-oop-php.html",
+      "date"     : "2019-06-25 05:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Strategies to test legacy code - PART 1",
+      "category" : "",
+      "tags"     : "test,, acceptance,, code,, unit,, suite,, change,, testing,, developer,, class,, refactoring,, software,, refactor,, strategies,, legacy code,, acceptance test,, confidence,, strategy,, slow,, pyramid,, unit test",
+      "url"      : "/javascript/2019/01/14/strategies-to-test-legacy-code.html",
+      "date"     : "2019-01-14 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Errors compiling PHP from source on a Raspberry Pi",
+      "category" : "",
+      "tags"     : "config,, creating,, configure,, version,, buildconf,, install,, command,, libxml,, found,, Solution,, web,, php,, PHP,, source,, php-src,, raspberry pi,, rasp,, compiling,, common erros,, errors,, sqlite3,, bison,, rec2c,, libxml2-dev",
+      "url"      : "/iot/raspberrypi/php/2019/01/12/errors-compiling-php-from-source-on-a-raspberry-pi.html",
+      "date"     : "2019-01-12 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Introduction to Service Worker",
+      "category" : "",
+      "tags"     : "worker,, service,, event,, user,, function,, cached,, content,, Available,, Accessed,, web,, js,, javascript,, pwa,, service worker,, chrome,, google,, HTML,, cache,, API,, offline,, udacity",
+      "url"      : "/javascript/2018/12/02/introduction-to-service-worker.html",
+      "date"     : "2018-12-02 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "SIM800L tracking your IoT device",
+      "category" : "",
+      "tags"     : "SIM,, APN,, web,, arduino,, Arduino,, Uno,, board,, command,, Command,, sim800l,, iot,, tracking,, serial,, Serial,, SAPBR,, gps,, gps neo6,, at,, at commands,, password,, location,, gsm",
+      "url"      : "/posts/2018/02/16/sim800l-tracking-your-iot-device.html",
+      "date"     : "2018-02-16 22:39:18 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Setting up GPS NEO 6 sensor",
+      "category" : "",
+      "tags"     : "gps,, GPS,, NEO,, command,, neo 6,, raspberry,, Raspberry,, pi,, gpsd,, cgps,, sensor,, serial,, uart,, gpio,, GPIO,, iot,, port,, client,, signal,, work",
+      "url"      : "/post/raspberry/2018/02/07/setting-up-gps-neo6-sensor.html",
+      "date"     : "2018-02-07 19:30:18 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "30 days of VIM - One week after",
+      "category" : "",
+      "tags"     : "Vim,, week,, find,, VScode,, book,, vim,, text editor,, a byte of vim,, vim adventures,, practical vim",
+      "url"      : "/thoughts/2018/01/29/30-days-of-vim-1-week-after.html",
+      "date"     : "2018-01-29 22:30:18 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "30 days of VIM",
+      "category" : "",
+      "tags"     : "web,, vim,, Vim,, PHPStorm, code,, Vscode,, write,, IDE,, editor,, PHP,, text editor,, vimgolf,, phpstorm,, vscode",
+      "url"      : "/thoughts/2018/01/22/30-days-of-vim.html",
+      "date"     : "2018-01-22 01:39:18 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Introduction to Easy CRUD - Laravel",
+      "category" : "",
+      "tags"     : "laravel,, crud,, CRUD,, project,, Laravel,, Easy,, database,, package,, operations,, models,, data,, migrations,, php,, easy crud,, packages,, packagist,, php",
+      "url"      : "/php/2017/09/21/easy-crud.html",
+      "date"     : "2017-09-21 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "PHPUnit coverage on vagrant",
+      "category" : "",
+      "tags"     : "vagrant,, laravel,, environment,, php,, tip,, PHPUnit,, run,, coverage,, xdebug,, PHP,, extension,, Homestead,, composer,, version",
+      "url"      : "/php/2017/09/08/phpunit-coverage-on-vagrant.html",
+      "date"     : "2017-09-08 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Queues and slow jobs with Laravel",
+      "category" : "",
+      "tags"     : "queue,, Laravel,, database,, default,, email,, table,, send,, file,, sync,, jobs,, failed,, configuration,, Queues,, queues,, laravel,, quickbooks,, php",
+      "url"      : "/php/2017/06/21/queues-and-slow-jobs-with-laravel.html",
+      "date"     : "2017-06-21 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Custom validator with Laravel 5 + (5.0, 5.1, 5.2, 5.3, 5.4, 5.5, 5.6, 5.7, 5.8 and 6.0)",
+      "category" : "",
+      "tags"     : "php,, laravel,, Laravel,, class,, validate,, request,, Request,, function,, required,, validation,, Validator,, namespace,, right way,, models,, framework,, laracast,, laranews,, validator,, custom validator,, laravel validator extend,, laravel custom validator class,, laravel validation service provider,, laravel extend validator,, laravel custom validation,, laravel validator::extend, laravel 5.2,, laravel 5.3,, laravel 5.4,, laravel 5.5,, laravel 5.6,, laravel 5.7,, laravel 6.0,, laravel 6,, rules",
+      "url"      : "/php/2017/05/31/laravel-custom-validator.html",
+      "date"     : "2017-05-31 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Is specification important?",
+      "category" : "",
+      "tags"     : "documentation,, end,, customer,, understand,, building,, Pressman,, client,, problem,, wrong,, developers,, questions,, implement,, specification,, business,, software",
+      "url"      : "/php/2017/03/31/is-specification-important.html",
+      "date"     : "2017-03-31 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Intel Galileo and Debian",
+      "category" : "",
+      "tags"     : "image,, Debian,, Intel,, error,, version,, SSH,, Yocto,, distribution,, Gen,, node,, interface,, Linux,, iot,, Galileo,, galileo,, gen2,, debian,, yocto,, linux",
+      "url"      : "/post/2017/03/13/intel-galileo-and-debian.html",
+      "date"     : "2017-03-13 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Running PHP with Arduino",
+      "category" : "",
+      "tags"     : "stream,, public,, Arduino,, path,, PHP,, register,, file,, read,, fopen,, contents,, arduino,, php,, serial,, iot,, wrapper",
+      "url"      : "/post/2017/03/01/running-php-with-arduino.html",
+      "date"     : "2017-03-01 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Laration - A simple way to visualize your configs",
+      "category" : "",
+      "tags"     : "Laration,, Laravel,, application,, command,, list,, artisan,, commands,, composer,, inside,, package,, installed,, laravel,, packages,, php,, laration,, env,, variables,, open source,, github,, laravel 5.1,, laravel 5.2,, laravel 5.3,, laravel 5.4,, laravel 5.5,, laravel 5.6,, laravel 5.7,, laravel 5.8,, laravel 6,, laravel print all env variables,, env variables",
+      "url"      : "/post/2016/11/26/laration.html",
+      "date"     : "2016-11-26 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Laravel the right way (PART 2 - Modules) - 10 Laravel meetup",
+      "category" : "",
+      "tags"     : "Laravel,, modules,, Modules,, system,, modular,, app,, community,, applications,, php,, laravel,, right way,, models,, framework,, laracast,, laranews",
+      "url"      : "/php/2016/09/13/laravel-the-right-way-part-2.html",
+      "date"     : "2016-09-13 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Laravel the right way (PART 1) - 10 Laravel meetup",
+      "category" : "",
+      "tags"     : "Laravel,, business,, data,, service,, layer,, right,, different,, application,, php,, laravel,, right way,, models,, framework,, laracast,, laranews",
+      "url"      : "/php/2016/09/13/laravel-the-right-way-part-1.html",
+      "date"     : "2016-09-13 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "9º Laravel Meetup",
+      "category" : "",
+      "tags"     : "laravel,, meetup,, php,, community,, middleware,, dev,, journey",
+      "url"      : "/post/2016/08/16/9-laravel-meetup.html",
+      "date"     : "2016-08-16 22:00:00 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Bringing PHP and IoT together",
+      "category" : "",
+      "tags"     : "arduino,, blink,, iot,, led,, nano,, php,, protoboard,, serial,, stream,, usb,, hardware",
+      "url"      : "/iot/php/2016/05/31/bringing-php-iot-together.html",
+      "date"     : "2016-05-31 21:42:15 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Requirements Engineering - A tool for Use Case",
+      "category" : "",
+      "tags"     : "actors,, application,, development,, engineering,, nasa,, requirements,, software,, step,, use case,, version,, mba, uml diagram,, uml",
+      "url"      : "/software%20engineering/2016/04/16/requirements-engineering-tool-use-case.html",
+      "date"     : "2016-04-16 23:13:33 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "S.O.L.I.D - Practices for Object Oriented Programming (code examples in PHP)",
+      "category" : "",
+      "tags"     : "class,, public,, function,, code,, file,, principle,, solid,, single,, responsability,, open,, close,, liskov,, interface,, segregation,, dependency,, inversion,, s.o.l.i.d,, php",
+      "url"      : "/oop/2016/04/12/s-o-l-i-d.html",
+      "date"     : "2016-04-12 04:06:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Continuous PHP",
+      "category" : "",
+      "tags"     : "PHP,, Continuous,, build,, project,, tests,, repository,, branch,, deploy,, Github,, CI,, continuous delivery,, continuous php,, php,, improvement,, team",
+      "url"      : "/php/2016/04/04/continuous-php.html",
+      "date"     : "2016-04-04 04:20:14 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "ZCPE 5.5 here we go – PHP Streams (Files/Http)",
+      "category" : "",
+      "tags"     : "file,, php,, streams,, zcpe,, zce,, phar,, ssh2,, rar,, data,, data flow",
+      "url"      : "/php/zcpe/2016/01/21/zcpe-5-5-go-php-streams-files.html",
+      "date"     : "2016-01-21 11:44:36 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Is TDD dead ?",
+      "category" : "",
+      "tags"     : "test,, TDD,, tests,, write,, unit,, Laravel,, application,, change,, code,, dead,, software,, tdd,, testing,, laravel,, symfony",
+      "url"      : "/tdd/2015/12/30/is-tdd-dead.html",
+      "date"     : "2015-12-30 01:33:11 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Software engineering, in the developer&#39;s hand?",
+      "category" : "",
+      "tags"     : "engineering,, graph,, software,, uml,, use case",
+      "url"      : "/oop/software%20engineering/2015/12/07/software-engineering-in-developers-hand.html",
+      "date"     : "2015-12-07 23:27:30 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Continuous Delivery",
+      "category" : "",
+      "tags"     : "book,, build,, CI,, commit,, Continuous,, Delivery,, Chapter,, martin fowler,, pipeline,, review,, strategy,, test,, stage,, software,, martin fowler,, Humble J. and Farley D.,, jenkins,, travis,, deployment,, deploy,, version,, integration,, production,, control",
+      "url"      : "/review/2015/11/03/continuous-delivery.html",
+      "date"     : "2015-11-03 00:55:27 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Algorithms, Algorithms, Algorithms .... Oh Wait!",
+      "category" : "",
+      "tags"     : "algorithm,, challenge,, codility,, hackerrank,, techcruch",
+      "url"      : "/thoughts/2015/10/12/algorithms-algorithms-algorithms-oh-wait.html",
+      "date"     : "2015-10-12 21:19:55 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Phing ? Automate all the things ! - Practical example",
+      "category" : "",
+      "tags"     : "automate,, composer,, dependency,, git,, github,, phing,, php,, phpunit,, target,, test,, unit",
+      "url"      : "/php/2015/09/30/phing-automate-all-the-things-practical-example.html",
+      "date"     : "2015-09-30 04:46:25 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Phing? Automate all the things!",
+      "category" : "",
+      "tags"     : "automate,, gnu,, phing,, php,, tasks,, xml",
+      "url"      : "/php/2015/08/30/phing-automate-all-the-things.html",
+      "date"     : "2015-08-30 22:46:48 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "ZCPE 5.5 here we go – PHP Basics (Language constructs)",
+      "category" : "",
+      "tags"     : "die,, echo,, empty,, eval,, exit,, include,, include_once,, isset,, language construct,, list,, php,, print,, require,, require_once,, return,, unset,, zcpe,, certification",
+      "url"      : "/php/zcpe/2015/08/26/zcpe-5-5-here-we-go-php-basics-language-constructs.html",
+      "date"     : "2015-08-26 04:01:47 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "ZCPE 5.5 here we go - PHP Basics (Variable variables)",
+      "category" : "",
+      "tags"     : "certification,, certified,, php,, php5.5,, variable variables,, zcpe,, zce,, zend,, certification",
+      "url"      : "/php/zcpe/2015/07/28/zcpe-5-5-here-we-go-php-basics-variable-variables.html",
+      "date"     : "2015-07-28 23:44:09 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "GitHub badges! (PHP repository)",
+      "category" : "",
+      "tags"     : "badges,, build,, CI,, coveralls,, downloads,, git,, github,, license,, packagist,, php,, poser,, travis,, travis CI",
+      "url"      : "/php/2015/06/28/github-badges-php-repository.html",
+      "date"     : "2015-06-28 23:27:09 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "ARE YOU NOT USING TDD?! – PART || (Legacy code)",
+      "category" : "",
+      "tags"     : "code base,, features,, legacy code,, lines,, tdd,, legacy",
+      "url"      : "/tdd/2015/05/23/are-you-not-using-tdd-part-legacy-code.html",
+      "date"     : "2015-05-23 21:33:47 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Stop complaining, do it now.",
+      "category" : "",
+      "tags"     : "comfort,, complaining,, developers,, tdd,, zone, design patterns,, carrer,, solid,, oop",
+      "url"      : "/thoughts/2015/05/16/stop-complaining-now.html",
+      "date"     : "2015-05-16 19:30:34 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Raspberry Pi + PHP socket",
+      "category" : "",
+      "tags"     : "apache,, codepen,, html5,, keyboard,, monitor,, nginx,, php,, raspberry,, ratchet,, sockets,, web,, wipi,, html,, w3c,, codepen",
+      "url"      : "/iot/2015/05/09/raspberry-pi-php-socket.html",
+      "date"     : "2015-05-09 16:58:04 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Getting started with Xpath",
+      "category" : "",
+      "tags"     : "Xpath,, book,, summary,, author,, library,, node,, PHP,, Summary,, version,, document,, using,, dom,, nodes,, php,, simplexml,, W3C,, web,, xpath,, certification,, xml",
+      "url"      : "/php/2015/05/07/getting-started-xpath.html",
+      "date"     : "2015-05-07 14:12:05 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "ARE YOU NOT USING TDD ?! - PART 1",
+      "category" : "",
+      "tags"     : "TDD,, code,, test,, stage,, make,, first,, pass,, problem,, bug,, hard,, refactor,, blue,, green,, red,, solid,, tdd,, software engineering,, methods,, test driven development,, methodology,, patterns,, bugs",
+      "url"      : "/tdd/2015/04/19/not-using-tdd-part-1.html",
+      "date"     : "2015-04-19 23:47:38 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "The definitive guide to HTML5 WebSocket",
+      "category" : "",
+      "tags"     : "WebSocket,, WebSockets,, Chapter,, handshake,, guide,, HTML5,, PHP,, protocol,, Messaging,, client,, html5,, IETF,, MDN,, security,, W3C,, web sockets,, web,, chat,, sockets,, xmpp,, review",
+      "url"      : "/review/2015/04/04/definitive-guide-html5-websocket.html",
+      "date"     : "2015-04-04 19:06:44 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "WebSocket - HTML5",
+      "category" : "",
+      "tags"     : "code pen,, html5,, http,, php,, rfc6455,, slideshare,, web sockets",
+      "url"      : "/php/2015/03/22/websocket-html5.html",
+      "date"     : "2015-03-22 21:21:43 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Bitwise operators – The Journey Part II",
+      "category" : "",
+      "tags"     : "bitwise,, php,, web,, zce,, zcpe,, certification",
+      "url"      : "/php/2015/02/24/bitwise-operators-journey-part-ii.html",
+      "date"     : "2015-02-24 04:27:27 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Head first - Design Patterns",
+      "category" : "",
+      "tags"     : "collections,, decorator,, design, patterns, factory, method, head, first, java,, o reilly,, observer,, oop,, php,, proxy,, singleton,, SPL,, state,, strategy",
+      "url"      : "/review/2015/02/20/head-first-design-patterns.html",
+      "date"     : "2015-02-20 11:15:48 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Bitwise operators - The Journey",
+      "category" : "",
+      "tags"     : "operator,, Operator,, table,, Result,, Bits,, operators,, and,, bitwise,, or,, php,, web,, xor,, certification",
+      "url"      : "/php/2015/02/19/bitwise-operators-journey.html",
+      "date"     : "2015-02-19 12:04:16 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Converting Hexadecimal(16) to Decimal(10)",
+      "category" : "",
+      "tags"     : "conversion,, table,, Hexadecimal,, numbers,, Converting,, Code,, Decimal,, development,, hex,, hexadecimal,, octal,, php,, php basics,, web,, zce,, zcpe,, certification",
+      "url"      : "/php/2015/02/17/converting-hexadecimal16-decimal10.html",
+      "date"     : "2015-02-17 01:51:27 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "PHP Design Patterns",
+      "category" : "",
+      "tags"     : "patterns,, PHP,, book,, Design,, Patterns,, Code,, Method,, Behavioral,, explain,, creational,, structural,, adapter,, decorator,, design patterns,, factory,, oop,, php,, prototype,, state,, template,, uml,, gof",
+      "url"      : "/review/2015/02/08/php-design-patterns.html",
+      "date"     : "2015-02-08 04:41:43 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Raspberry Pi - Meeting the RPi-Cam-Web-Interface",
+      "category" : "",
+      "tags"     : "raspberry,, Raspberry,, interface,, Interface,, Web,, Cam,, RPi,, picture,, Code,, Meeting,, socket,, text,, message,, changed,, port,, host,, WebSocket,, container,, clients,, server,, HTML,, camera,, internet of things,, iot,, javascript,, php,, raspberry pi,, streaming,, web,, code",
+      "url"      : "/iot/2015/01/31/raspberry-pi-meeting-rpi-cam-web-interface.html",
+      "date"     : "2015-01-31 07:04:02 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "PHP basics, are you sure? So tell me how to use octal system!",
+      "category" : "",
+      "tags"     : "PHP,, system,, numbers,, format,, program,, expression,, decimal,, documentation,, Converting,, output,, code,, octal,, php,, php basics,, zce,, zcpe,, certification,, math",
+      "url"      : "/php/2015/01/27/php-basics-sure-tell-use-octal-system.html",
+      "date"     : "2015-01-27 13:25:14 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "TDD by example",
+      "category" : "",
+      "tags"     : "TDD,, book,, example,, designs,, Beck,, Kent,, Code,, development,, driven,, java,, kent beck,, tdd,, software testing,, pettern,, tdd by example",
+      "url"      : "/review/2015/01/26/tdd-by-example.html",
+      "date"     : "2015-01-26 11:59:40 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "Are we front-end/back-end developers?",
+      "category" : "",
+      "tags"     : "case,, diagram,, Software,, actor,, development,, management,, UML,, developer,, code,, flow,, project,, angular,, backend,, firebase,, frontend,, future,, reflection,, web",
+      "url"      : "/thoughts/2015/01/23/are-we-front-endback-end-developers.html",
+      "date"     : "2015-01-23 01:39:18 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } ,
+  
+    {
+      "title"    : "The Art of Readable Code",
+      "category" : "",
+      "tags"     : "Code,, Readable,, Art,, read,, good,, writing,, Boswell,, write,, art,, book,, code,, oreilly,, readable,, review,, technical debts,, better code,, Dustin Boswell,, Trevor Foucher,, The Art Of Readable Code",
+      "url"      : "/review/2015/01/22/the-art-of-readable-code.html",
+      "date"     : "2015-01-22 12:18:46 +0000",
+      "content"  : "[  {% for post in site.posts %}    {      &quot;title&quot;    : &quot;{{ post.title | escape }}&quot;,      &quot;category&quot; : &quot;{{ post.category }}&quot;,      &quot;tags&quot;     : &quot;{{ post.tags | join: &#39;, &#39; }}&quot;,      &quot;url&quot;      : &quot;{{ site.baseurl }}{{ post.url }}&quot;,      &quot;date&quot;     : &quot;{{ post.date }}&quot;,      &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines | remove_chars | escape }}&quot;    } {% unless forloop.last %},{% endunless %}  {% endfor %}  ,  {% for page in site.pages %}   {     {% if page.title != nil %}        &quot;title&quot;    : &quot;{{ page.title | escape }}&quot;,        &quot;category&quot; : &quot;{{ page.category }}&quot;,        &quot;tags&quot;     : &quot;{{ page.tags | join: &#39;, &#39; }}&quot;,        &quot;url&quot;      : &quot;{{ site.baseurl }}{{ page.url }}&quot;,        &quot;date&quot;     : &quot;{{ page.date }}&quot;,        &quot;content&quot;  : &quot;{{ page.content | strip_html | strip_newlines }}&quot;     {% endif %}   } {% unless forloop.last %},{% endunless %}  {% endfor %}]"
+    } 
+  
+  ,
+  
+   {
+     
+        "title"    : "Talks",
+        "category" : "",
+        "tags"     : "Conference,, Developers,, Talks,, meetup,, Code,, Paulo,, conferences,, talks,, meetups,, tdc,, phpconf,, ufabc,, phpexperience,, 2014, 2015, 2016, 2017, 2018, 2019, 2020",
+        "url"      : "/talks",
+        "date"     : "2015-08-13 04:06:05 +0000",
+        "content"  : "Talks  MadridJs - Madrid, 2020  LACLO 2019 - San José del Cabo, 2019  MadridJs - Madrid, 2019  7Masters (Laravel) - São Paulo, 2018  Laravel meetup #16 - São Paulo, 2018  NerdZão Day #1 - 6 Trilhas Tech Simultâneas - São Paulo  PHPPRDay 2017   PHPExperience 2017  SENAI 2016  GDG Passo Fundo  10 Laravel meetup  The Developers Conference 2016 (São Paulo)  SC DEV Summit 2016 (Joinville)  The Developers Conference 2016 (Florianópolis)  Darkmira Tour 2016 (Brasília)  PHP Conference Brasil 2015  The Developers Conference 2015 (Porto Alegre)  The Developers Conference 2015 (São Paulo)  Intel IoT Road Show 2015 (São Paulo)  Arduino Day 2015 (Santo André)  CK 9 + Samsung  CK 8 + Samsung  CK 7 + PayPal  CK 6 + 7COMM  Campus Party 2015 (São Paulo)  Intel IoT Road Show 2014 (São Paulo)  Asser 2014 (Rio Claro)"
+     
+   } ,
+  
+   {
+     
+        "title"    : "About",
+        "category" : "",
+        "tags"     : "development,, Software,, MBA,, Marabesi,, engineering,, About,, mobile,, Matheus,, Masters,, Code,, analysis,, publications,, Technology,, IoT,, MSc,, Computer,, about,, mba,, iot,, matheus marabesi",
+        "url"      : "/about",
+        "date"     : "2016-03-24 13:29:49 +0000",
+        "content"  : "AboutMarabesi is addicted to software development in general, due to that,two books came out as a passion for sharing, one focuses on the PHP certificationand the other, focused on Laravel, a framework to build web applications. As ahobby he likes to play with Raspberry PI and to dive into the IoT world.Besides that  he’s an aspiring researcher focused on software testing andgamification. Testable, is a gamified tool that aims to improve the unit testteaching, trying to change the boring perception that developers havein learning how to test their code.Academic background  MSc - Software engineering (focused on software testing)  MBA - Software development and game development for mobile applications  MBA - Software engineering  Degree - Technology analysis and systems developmentEN publications  (EN) Towards a Gamified Tool to Improve Unit Test Teaching  (EN) EVALUATION OF TESTABLE, A GAMIFIED TOOL TO IMPROVE UNIT TEST TEACHINGPT-BR publications  (PT-BR) Matheus Marabesi: Testing - 7Masters  (PT-BR) Matheus Marabesi: Migrando de Mysql para MongoDB - 7Masters  (PT-BR) Nesse novo mundo da Internet das coisas, nos perguntamos: e o PHP? - iMastersPT-BR released books    Keep in touch"
+     
+   } ,
+  
+   {
+     
+        "title"    : "Dev guide",
+        "category" : "",
+        "tags"     : "",
+        "url"      : "/newbie-guide",
+        "date"     : "2016-11-21 04:06:05 +0000",
+        "content"  : "Throughout my career I’ve been across many developers in the beginning of their journey in become a programmer.In general what I observed was common doubts and common mistakes.In this section I’m going to bring all the content that an beginner should start to learn and alsofurther references to take it to the a next level.    Git                                                            Git introduction                                        "
+     
+   } ,
+  
+   {
+     
+        "title"    : "software development",
+        "category" : "",
+        "tags"     : "Software,, Websites,, Engineering,, PHP,, Books,, Unit,, Resources,, Framework,, Code,, podcast,, Testing,, resources,, php,, software,, laravel,, websites,, unit tests,, books",
+        "url"      : "/resources",
+        "date"     : "2016-12-23 04:06:05 +0000",
+        "content"  : "This page shows a collection of resources related to software development, morespecifically, web development. Besides that, this page offers software engineeringlinks, podcasts, books and influencers to follow.Podcasts  Fullstack radio  Shop Talk  Javascript Jabber  Laranews podcast  Syntax  Software Engineering Daily  Software Engineering Radio  React podcast  Kubernetes podcast  Stackoverflow podcast  php[podcast]  Serverless chats  Codurance podcast  GeePawHill.org  Data engineering podcast  ThoughtWorks Technology Podcast  Frontmatter podcast  The Tech Lead Journal  HTTP 203Trends  Thoughtworks Radar  infoQSoftware engineeringConferences  ICSE  FSE  ASE  ICSTJournals  TSE  EMSELinks  IEEE Software Magazine  Object calisthenics  arXiv.org  Software Testing: From Theory to PracticeBooks  Software Engineering - A Practitioner’s Approach  Software Engineering, Global Edition  Implementation Patterns  The Art of Readable Code  Engenharia de Software Moderna  Clean Architecture: A Craftsman’s Guide to Software Structure and Design (Robert C. Martin Series)  Software Testing: From Theory to PracticeSocial media  Netflix engineering  Instagram engineering  Vimeo engineeringPeople  Patrick Kua  Adam Wathan  Taylor Otwell  Fabien Potencier  Matthew Weier O’Phinney  Martin Fowler  Simon Brown  Robert C. Martin  Matthias Noback  GeePaw Hill  khalilstemmlerJavascriptBooks  Node.js Design Patterns - Third EditionPHPWebsites  PHP CertificationUnit testsWebsites  PHP Unit documentationBooks  Test Driven Development: By Example: Kent Beck  The art of Unit testingContainersBooks  Docker: Up &amp; Running, 2nd Edition  Kubernetes: Up and Running: Dive into the Future of Infrastructure, 2nd EditionLaravelWebsites  Laracast  Laravel documentation  LaranewsSymfonyWebsites  Symfony documentationBooks  Mastering Symfony"
+     
+   } ,
+  
+   {
+     
+        "title"    : "Tests",
+        "category" : "",
+        "tags"     : "",
+        "url"      : "/tests/",
+        "date"     : "2017-03-12 13:29:49 +0000",
+        "content"  : "Tests  What is testing?  Should you test?  Types of test          3.1 Unit test      3.2 Functional test      3.3 Integration test        Changing your mindset  Frameworks available to test          5.1 PHPUnit      5.2 Codeception      5.3 Jasmine        Building software with tests X software without tests  ConclusionHome"
+     
+   } ,
+  
+   {
+     
+        "title"    : "Conferences",
+        "category" : "",
+        "tags"     : "PHP,, Code,, Agenda,, Talk,, Workshop,, Meetup,, events,, calendar,, conferences,, php,, fullstack,, meetup,, community",
+        "url"      : "/agenda",
+        "date"     : "2017-05-26 13:29:49 +0000",
+        "content"  : "AgendaComing soon-Past due  02/03/2020 ~ 04/03/2020          14th annual International Technology, Education and Development Conference (INTED2020)        10/30/2019 ~ 11/01/2019          XIV Latin American Conference on Learning Objetcs        06/28/2019          Digital Innovation One - Introdução à orientação a objetos em PHP         05/14/2019          MadridJs - Meetup        03/27/2019          PHPMad - Meetup        03/27/2018          Laravel SP - Meetup        03/28/2018          7 Masters - Laravel        12/09/2017          CODE /PIZZA &gt; IN ‘013’ - Santos        11/17/2017 - 11/18/2017          Laraconf Brasil - São Paulo        11/03/2017          Campus Party (Workshop) - Minas Gerais      Campus Party (Talk) - Minas Gerais        08/12/2017          NerdZão Day #1 - 6 Trilhas Tech Simultâneas - São Paulo        06/10/2017          PHPDay - Curitiba        06/03/2017          Programando na Baleia ( iniciando Docker na Prática )      Hack in Sampa        05/20/2017 / 05/21/2017          Curso Laravel - Novatec        05/11/2017          Laravel Full-stack        03/28/2017          PHPExperience - IoT powered by PHP and Streams        05/11/2016          TDC 2016 Florianópolis - Vá para o próximo nível - Dicas e truques para a certificação PHP      Home"
+     
+   } ,
+  
+   {
+     
+        "title"    : "Side projects",
+        "category" : "",
+        "tags"     : "php,, extension,, release,, page,, projects,, json,, package,, github,, trello,, laravel",
+        "url"      : "/projects",
+        "date"     : "2020-12-21 04:06:05 +0000",
+        "content"  : "Side projectsThis page is a curated list of my personal sides projects that I have built over the years as a developer. They go from a wide range, fromextension to improve developers productivity to simple chrome extensionsto solve boring tasks.Git release botGitbot release was built to automate the boring tasks of updating files during a release. Besides creating a new tag in git, the release processrequires updating json (such as package.json and composer.json) files with the tagged version.  Git release botGithub stats dashboardGithub stats is a project that renders a github repository activity. Thefocus is on simplicity as the project offers three visualizations:  Barchart (Number of commits by day, week, month or year)  Bubblechart based on the tech stack (programming languages used. The most used the bigger the bubble)  World cloud using based on the repository topicsPHP import checkerPHP import checker is a visual code extension that was inspired by PHPStorm a IDE by jetbrains that has (in my opinion) the best namespace support for PHP. As Vscode is a editor it was lacking the powerful feature of highlighting unused imports in a PHP file, to fix that issue I published the extension on the marketplace.  PHP import checker vscode extensionTrello to excelTrello to excel is a chrome extension that exports a trello board to a excelfile following a specific spreadsheet layout.  Trello to excel github repositoryLarationLaration is a PHP/Laravel package that provides a CLI to show up in a nice waythe env variables currently being used by any Laravel application.  LarationLaravel easy crudEasy CRUD was created to easily generate a CRUD for each Eloquent model(Laravel’s ORM). The package generates a admin like interface to create,read, update or delete data from the database.zcpeZCPE is a project that was created to follow my studies on the PHPlanguage and later on in the ZCPE exam. The github repository has theten topics covered by the exam as well as a “playground” like to navigatethrough the code snippets.The current content in the project supports the version 5.5 of the ZCPEexam.DoormanDoorman is a IoT project that uses web technologies and raspberry Pi + MQTT + nodered to open a door configured via GPIO.API skeletonAPI skeleton is a project that provides a scaffolding for bulding an API using the PHP programming language."
+     
+   } 
+  
+]

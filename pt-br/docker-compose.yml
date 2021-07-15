@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+  nodejs:
+    image: node:10
+    volumes:
+      - ./:/srv/jekyll
+    working_dir: /srv/jekyll
+    command: bash -c "npm install && npm rebuild node-sass && npm run build:tailwind && npm run watch:webpack"
+    environment:
+      NODE_ENV: development 
+  blog:
+    image: bretfisher/jekyll-serve
+    command: bundle exec jekyll serve --livereload --drafts --incremental --host 0.0.0.0 --port 4000 --config _config.yml,_config_local.yml
+    working_dir: /srv/jekyll
+    volumes:
+      - ./:/srv/jekyll
+      - ./vendor:/usr/local/bundle
+    ports:
+      - $BLOG_PORT:4000
+      - $BLOG_DEBUG:35729

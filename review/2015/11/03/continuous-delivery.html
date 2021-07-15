@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Continuous Delivery</title>
+    <meta name="description"
+      content="As we know the software nowadays exists to support the business rules and Ibelieve that it is  a huge problem to programmers as well as everyoneinvolved with...">
+
+    <link rel="canonical" href="https://marabesi.com/review/2015/11/03/continuous-delivery.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Continuous Delivery" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/review/2015/11/03/continuous-delivery.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2015-11-02-continuous-delivery/cover.png" />
+    <meta property="og:description"
+      content="As we know the software nowadays exists to support the business rules and Ibelieve that it is  a huge problem to programmers as well as everyoneinvolved with..." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Continuous Delivery">
+    <meta name="twitter:description"
+      content="As we know the software nowadays exists to support the business rules and Ibelieve that it is  a huge problem to programmers as well as everyoneinvolved with...">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2015-11-02-continuous-delivery/cover.png">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2015-11-03 00:55:27 +0000">
+
+    <meta name="keywords" content="book,build,CI,commit,Continuous,Delivery,Chapter,martin fowler,pipeline,review,strategy,test,stage,software,martin fowler,Humble J. and Farley D.,jenkins,travis,deployment,deploy,version,integration,production,control" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="continuous-delivery">Continuous Delivery</h1>
+      <p>As we know the software nowadays exists to support the business rules and I
+believe that it is  a huge problem to programmers as well as everyone
+involved with software development. Basically as the business grow, the software
+might change as well but change isn’t the problem, it is the frequency.</p>
+
+<p>How can we deal with requirements today that change tomorrow? How can we
+guarantee our software quality? And the most important how can we delivery
+value?</p>
+
+<p>Value is something that the business just has after a software has been deployed
+in production. Often release to production is something to worry about.</p>
+
+<p>Software delivers no revenue until it is in the hands of its users.
+This is obvious, but in most organizations the release of software into
+production is a manually intensive, error-prone,
+and risky process <strong>[1, p. xxxiv]</strong>.</p>
+
+<h2 id="foundations">Foundations</h2>
+
+<p>Continuous Delivery is more than a tool, it is a practice, a process.
+You can’t just say, today I’m going to start to use Continuous Delivery.
+It takes time and a lot of work to get here. Continuous delivery is the ability
+to continuously integrate with production code, which means you must deploy
+often. Continuous Delivery is about having a releasable version in any
+version.</p>
+
+<p>Every change is, in effect, a release candidate. Every time a change
+is committed to version control, the expectation is that it will pass all of
+its tests, produce working code, and can be released into
+production <strong>[1, p. 24]</strong>.</p>
+
+<h2 id="configuration-management">Configuration Management</h2>
+
+<p>The start point is Configuration Management. It will enable us to manage all
+configuration needed to an application. Nowadays is really common to have
+version control in projects, but I’m sure that a team in somewhere is not using
+it. To use Continuous Delivery is mandatory to have a version control such as
+git or svn.</p>
+
+<p>Every single artifact related to the creation of your software should be under
+version control <strong>[1, p. 33]</strong>.</p>
+
+<p>It is about managing dependencies, it is almost impossible to write a software
+without dependencies. Usually we do use dependencies when we are developing
+something that is no the core business of the application.</p>
+
+<p>To display a PDF, to connect to the bank, to login with user’s social media
+account and so on. Configuration is the key for any software, usually when
+developing developers use their environment, Q&amp;A people uses other even in
+production environment could be different, it means we must have a good
+management in configuration because sooner or later problems will show in
+configurations and Continuous Delivery give to exactly proceed.</p>
+
+<h2 id="continuous-integration">Continuous Integration</h2>
+
+<p>Continuous integration is an interesting topic because often people confuse
+Continuous integration <strong>[2]</strong> with Continuous Delivery. It is true that in order to do
+Continuous Delivery we have to have to use continuous integration.</p>
+
+<p>Basically to create a simple continuous integration flow there are few steps to
+do. The first step is check-in regularly to you control version, suit test, keep
+fast the feedback from CI(Continuous Integration) server, Jenkins <strong>[3]</strong> and
+Travis CI <strong>[4]</strong> for example.</p>
+
+<p>To implement continuous integration is to create a paradigm shift in your
+team. Without CI, your application is broken until you prove otherwise. With
+CI, the default state of your application is working, albeit with a level of
+confidence that depends upon the extent of your automated test coverage.
+CI creates a tight feedback loop which allows you to find problems as soon as
+they are introduced, when they are cheap to fix <strong>[1, p. 82]</strong>.</p>
+
+<h2 id="implementing-a-test-strategy">Implementing a test strategy</h2>
+
+<p>One of the very first steps os Continuous Delivery is testing. To have a good
+suite test in which you can easily trust to run and believe that if a green bar
+shows up everything is fine, is essential.</p>
+
+<p>Testing is a cross-functional activity that involves the whole team, and should
+be done continuously from the beginning of the project <strong>[1, p. 84]</strong>.</p>
+
+<p>We can have different types of tests and different purposes the figure below
+show us how to understand it and what are each type of tests and when we apply
+them.</p>
+
+<p><a href="/images/posts/2015-11-02-continuous-delivery/unit-test.png" target="_blank"><img src="/images/posts/2015-11-02-continuous-delivery/unit-test.png" alt="Testing quadrant" /></a></p>
+
+<h2 id="the-deployment-pipeline">The deployment pipeline</h2>
+
+<p>If you aren’t familiar with CI you don’t know what a deployment pipeline
+is, we use deployment pipeline to build a flow where we can deploy the source
+code into production, the pipeline has steps where each one of it has a simple
+purpose, for example unit test, also the steps used in the pipeline usually
+were made manually in the past.</p>
+
+<p>At an abstract level, a deployment pipeline is an automated manifestation of
+your process for getting software from version control into the hands of your
+users. Every change to your software goes through a complex process on its
+way to being released <strong>[1, p. 107]</strong>.</p>
+
+<p>To build a pipeline depends in which project you’re working on.
+The best pipeline for you project could be the worse from mine.
+What brings us to a really unique way to develop pipelines, but of
+course following some rules and best practices.</p>
+
+<h2 id="build-and-deployment-scripting">Build and Deployment Scripting</h2>
+
+<p>So far we realized we need create a new culture, test things and also automate
+our deploy flow, and to achieve that we need to use a build tool.</p>
+
+<p>As soon as the project extends beyond a single person, spans more than a few
+days, or produces more than a single executable file as its output, it demands
+more control if it is not to become complex and
+unwieldy <strong>[1, p. 143]</strong>.</p>
+
+<p>In Java world we have Ant and in PHP we have Phing, both are build tools and
+have a lot of features. Those build tools help us when or application
+gets to complicated to deploy or is taking several  steps, as a consequence we
+reduce errors and increase our productivity.</p>
+
+<h2 id="the-commit-stage">The commit stage</h2>
+
+<p>Welcome to the one of most important stage in your new pipeline,
+the commit stage.</p>
+
+<p>The commit stage represents, in more ways than one, the entrance into the
+deployment pipeline. Not only is it the point at which a new release candidate
+is created; it is also where many teams start when they begin to implement a
+deployment pipeline <strong>[1, p. 169]</strong>.</p>
+
+<p>Definitely if you’re going to implement CI the commit stage is the most
+important step. Usually, developers send to the repository incomplete features
+and some bugs as well, what makes this stage a dangerous stage. When deploying
+with continuous integration we must have in mind that each commit can be
+delivered to the production.</p>
+
+<h2 id="book-content">Book content</h2>
+
+<p>Continuous Delivery from Jez Humble and David Farley tell was exactly how
+to apply Continuous Delivery.</p>
+
+<ul>
+  <li>Chapter 1: Foundations</li>
+  <li>Chapter 2: Configuration Management</li>
+  <li>Chapter 3: Continuous Integration</li>
+  <li>Chapter 4: Implementing a test strategy</li>
+  <li>Chapter 5: Anatomy of the Deployment Pipeline</li>
+  <li>Chapter 6: Build and Deployment Scripting</li>
+  <li>Chapter 7: The commit stage</li>
+  <li>Chapter 8: Automated Acceptance Testing</li>
+  <li>Chapter 9: Testing Nonfunctional Requirements</li>
+  <li>Chapter 10: Deploying and Release Application</li>
+  <li>Chapter 11: Managing Infrastructure and Environments</li>
+  <li>Chapter 12: Managing Data</li>
+  <li>Chapter 13: Managing Components and Dependencies</li>
+  <li>Chapter 14: Advance version control</li>
+  <li>Chapter 15: Managing Continuous Delivery</li>
+</ul>
+
+<h2 id="dont-be-regular-programmer">Don’t be regular programmer</h2>
+
+<p>Continuous Delivery is a process that take a while for start to work.
+There are many steps to follow, many things to automate, pipeline to be
+created, configuration management and commit stages to watch, just to name a
+few. To achieve Continuous Delivery we must persist and don’t give up.</p>
+
+<h2 id="references">References</h2>
+
+<p>[1] Humble, J. and Farley, D., 2010. Continuous Delivery: Reliable Software Releases through Build. Test, and Deployment Automation. Addison-Wesley, pp.2013-01.</p>
+
+<p>[2] Continuous Integration [Online]. Available: <a href="http://www.martinfowler.com/articles/continuousIntegration.html" title="Continuous Integration by Martin Fowler" target="_blank">http://www.martinfowler.com/articles/continuousIntegration.html</a>. [Accessed: 19 - Jan - 2020]</p>
+
+<p>[3] Jenkins user documentation [Online]. Available: <a href="https://jenkins.io/doc" title="Jenkins user documentation" target="_blank">https://jenkins.io/doc</a>. [Accessed: 19 - Jan - 2020]</p>
+
+<p>[4] Travis CI user documentation [Online]. Available: <a href="https://docs.travis-ci.com" title="Travis CI user documentation" target="_blank">https://docs.travis-ci.com</a>. [Accessed: 19 - Jan - 2020]</p>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/review/2015/11/03/continuous-delivery.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/review/2015/11/03/continuous-delivery.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/review/2015/11/03/continuous-delivery.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>

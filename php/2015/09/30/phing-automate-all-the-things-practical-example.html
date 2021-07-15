@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Phing ? Automate all the things ! - Practical example</title>
+    <meta name="description"
+      content="If you want to know what is Phing, why should you use it and see some simpleXML code please visit the part one of this posthere.">
+
+    <link rel="canonical" href="https://marabesi.com/php/2015/09/30/phing-automate-all-the-things-practical-example.html">
+    <link rel="alternate" type="application/rss+xml" title="Marabesi"
+      href="https://marabesi.com/feed.xml">
+
+    <meta property="og:title" content="Phing ? Automate all the things ! - Practical example" />
+    <meta property="og:site_name" content="marabesi.com" />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://marabesi.com/php/2015/09/30/phing-automate-all-the-things-practical-example.html" />
+    <meta property="og:image:alt" content="" />
+    <meta property="og:image"
+      content="https://marabesi.com/images/posts/2015-09-30-phing-automate-all-the-things-practical-example/cover.gif" />
+    <meta property="og:description"
+      content="If you want to know what is Phing, why should you use it and see some simpleXML code please visit the part one of this posthere." />
+
+    <meta property="fb:app_id" content="536384943068161" />
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@MatheusMarabesi">
+    <meta name="twitter:title" content="Phing ? Automate all the things ! - Practical example">
+    <meta name="twitter:description"
+      content="If you want to know what is Phing, why should you use it and see some simpleXML code please visit the part one of this posthere.">
+    <meta name="twitter:creator" content="@MatheusMarabesi">
+    <meta name="twitter:image:src"
+      content="https://marabesi.com/images/posts/2015-09-30-phing-automate-all-the-things-practical-example/cover.gif">
+
+    <meta name="author" content="Matheus Marabesi">
+    <meta name="publish_date" property="og:publish_date" content="2015-09-30 04:46:25 +0000">
+
+    <meta name="keywords" content="automate,composer,dependency,git,github,phing,php,phpunit,target,test,unit" />
+
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/images/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+
+    <link href="/assets/main-bundle.css" rel="stylesheet" />
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Marabesi">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Marabesi">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
+  </head>
+
+  <body class="font-sans overflow-x-hidden">
+    <button class="update-button w-full text-white bg-marabesi-purple p-5 m-auto fixed pin-b z-50 hidden focus:outline-none font-bold">Update found, click to update</button>
+
+    <div class="menu-wrapper flex fixed w-full bg-white z-50">
+      <nav class="top-menu hidden md:flex justify-start container lg:justify-center md:m-auto md:pt-2 md:pb-2">
+        <a href="/" class="hidden md:block">
+          <img class="logo w-18 p-1" data-src="/images/logo.png" width="100" alt="marabesi.com logo - two m's and one dot" title="marabesi.com logo - two m's and one dot" />
+        </a>
+
+        <ul id="menu-list" class="container-menu hidden flex-col pl-5 md:flex md:pl-0 md:flex-row md:m-auto lg:m-0">
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/talks">
+                Talks
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/about">
+                About
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/newbie-guide">
+                Dev guide
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/resources">
+                software development
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/tests/">
+                Tests
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/agenda">
+                Conferences
+              </a>
+            </li>
+          
+          
+           
+            <li class="item pt-2 pb-2 md:p-2">
+              <a class="item-link no-underline" href="/projects">
+                Side projects
+              </a>
+            </li>
+          
+          
+        </ul>
+      </nav>
+
+      <div class="w-full flex items-center h-12 pl-2 bg-white md:hidden">
+        <svg id="menu" class="cursor-pointer w-10 h-10 p-2 text-marabesi-pink fill-current" xmlns="http://www.w3.org/2000/svg"
+          x="0px" y="0px" width="50" height="50" viewBox="0 0 24 24">
+          <path
+            style="line-height:normal;text-indent:0;text-align:start;text-decoration-line:none;text-decoration-style:solid;text-decoration-color:#000;text-transform:none;block-progression:tb;isolation:auto;mix-blend-mode:normal"
+            d="M 2 5 L 2 7 L 22 7 L 22 5 L 2 5 z M 2 11 L 2 13 L 22 13 L 22 11 L 2 11 z M 2 17 L 2 19 L 22 19 L 22 17 L 2 17 z"
+            font-weight="400" font-family="sans-serif" white-space="normal" overflow="visible"></path>
+        </svg>
+      </div>
+    </div>
+
+    <div class="flex flex-col items-center justify-center p-5">
+      <input type="text" id="search-input" placeholder="search" aria-label="search" class="focus:outline-none border border-marabesi-purple text-marabesi-purple w-full p-3 mb-2 container mt-20 lg:mt-12">
+      <ul id="results-container"></ul>
+    </div>
+
+    <div class="shell-content">
+      
+        <div class="banner-highlight">
+          <p class="font-normal text-lg py-4 md:text-3xl lg:text-4xl">
+            <span class="apostrophe">‘‘</span>
+            Code should be easy to understand.
+            <span class="apostrophe">’’</span>
+          </p>
+          <p class="author text-xs">Dustin Boswell and Trevor Foucher - The Art Of Readable Code</p>
+        </div>
+      
+
+        <div class="page-content container flex flex-col p-1 m-auto">
+  
+    <main class="mb-5">
+      <h1 id="phing-automate-all-the-things-practical-example">Phing ? Automate all the things ! - Practical example</h1>
+      <p>If you want to know what is Phing, why should you use it and see some simple
+XML code please visit the part one of this post
+<a href="/php/2015/08/30/phing-automate-all-the-things.html">here</a>.</p>
+
+<p>The main objective here is to demonstrate how Phing fits in our day as developers
+and how useful it is. Nothing better than a real example world to illustrate and
+clarify our minds.</p>
+
+<h2 id="starting-the-project">Starting the project</h2>
+
+<p>Here I’m going to propose a workflow to ilustrate where Phing fits and how it
+can contribute to improve our productivity.</p>
+
+<p>Usually when we start a new project that already exists we clone it, we run
+composer and we run PHPUnit to check if its all right. It’s kinda of boring when
+we have to do it manually and also we can make mistakes, for example I
+can forget to update my dependencies with composer and try to run unit tests,
+and get a error thrown. As a second advantage to use a build tool we can
+improve our productivity, while Phing run our tasks we can do other things.
+For instance let’s see how our flow is going to work:</p>
+
+<p><a href="/images/posts/2015-09-30-phing-automate-all-the-things-practical-example/flow.png" target="_blank"><img src="/images/posts/2015-09-30-phing-automate-all-the-things-practical-example/flow.png" alt="Phing flow" /></a></p>
+
+<p>Describing it into step we have:</p>
+
+<ol>
+  <li>Cloning repository</li>
+  <li>Install/Update dependencies</li>
+  <li>Run unit tests</li>
+</ol>
+
+<h2 id="buildxml">Build.xml</h2>
+
+<p>First of all we need to create targets to execute tasks. Let’s start with the
+clone target.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">&lt;?xml version="1.0" encoding="utf-8"?&gt;</span>
+<span class="nt">&lt;project</span> <span class="na">name=</span><span class="s">"First Example"</span> <span class="na">description=</span><span class="s">"Clone, phpunit"</span> <span class="na">default=</span><span class="s">"clone"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"appdir"</span> <span class="na">value=</span><span class="s">"."</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"repodir"</span> <span class="na">value=</span><span class="s">"./app"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"repo"</span> <span class="na">value=</span><span class="s">"https://github.com/marabesi/laravel-pagseguro.git"</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"clone"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;echo</span> <span class="na">msg=</span><span class="s">"Cloning repository ${repo} please wait"</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;gitclone</span> <span class="na">repository=</span><span class="s">"${repo}"</span> <span class="na">targetPath=</span><span class="s">"${appdir}/app"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/target&gt;</span>
+<span class="nt">&lt;/project&gt;</span>
+</code></pre></div></div>
+
+<p>As you can see now we have a simple target that is going to clone the github
+repository and save it into <strong>app</strong> folder as specified in
+<strong>repodir</strong> property . The repository is defined in the
+<strong>repo</strong> property name.</p>
+
+<p>Properties can be defined as a simple tag(static), or it can be defined through
+an properties file. To use it we must use ${my_property_name} sintax.</p>
+
+<p>Defining property file</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;property</span> <span class="na">file=</span><span class="s">"project.properties"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>Defining static property</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">"local.property"</span> <span class="na">value=</span><span class="s">"hello"</span><span class="nt">/&gt;</span>
+</code></pre></div></div>
+
+<p>We can override properties using -D as argument followed by the property name
+in the command line.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>phing <span class="nt">-f</span> build-file.xml <span class="nt">-Dlocal</span>.property<span class="o">=</span>testing
+</code></pre></div></div>
+
+<p>As you can see we overrided our <strong>local.property</strong> with the value testing,
+when we run that instead of <strong>hello</strong> Phing will use <strong>testing</strong>.</p>
+
+<p>The tag <strong>target</strong> indicates to us an project component, in other words to each
+component (or each task that we want to run) we have to create and target.
+Targets are the simplest container to be executed by Phing Finally in <strong>project</strong>
+tag we have the attribute <strong>default</strong>, and as the name says, it is the default
+target Phing is going to run when we execute the build file.</p>
+
+<p>So far we have just one target and we need to implement more two to update our
+dependencies and run our unit test.</p>
+
+<h2 id="optional-tasks-dependencies">Optional Tasks (Dependencies)</h2>
+
+<p>Phing has various built-in tasks that we can use, known as optional tasks.
+Optional tasks are simple tasks that aren’t related to the core of Phing and
+aren’t tasks needed to build a project, for example, I use git in my project but
+you can use svn, so the git task is optional for you as svn is optional for me.</p>
+
+<p>Here we have the right fit to update our composer dependencies task.</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"composerupdate"</span> <span class="na">depends=</span><span class="s">"clone"</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;composer</span> <span class="na">composer=</span><span class="s">"./composer.phar"</span> <span class="na">command=</span><span class="s">"install"</span><span class="nt">&gt;</span>
+          <span class="nt">&lt;arg</span> <span class="na">value=</span><span class="s">"-d"</span><span class="nt">/&gt;</span>
+          <span class="nt">&lt;arg</span> <span class="na">path=</span><span class="s">"${repodir}"</span> <span class="nt">/&gt;</span>
+      <span class="nt">&lt;/composer&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+</code></pre></div></div>
+
+<p>The interesting part here is that we have a attribute in our target tag called depends,
+it means that Phing is going to run this target before run this
+(if no target specified in depends is found an error is thrown), in other words,
+we must have a cloned repository to update our dependencies, so it makes sense
+to depend on clone task.</p>
+
+<p>For further information about optional tasks refer to
+<a href="https://www.phing.info/docs/stable/hlhtml/index.html#app.optionaltasks" target="_blank">Phing’s official documentation</a>.</p>
+
+<h2 id="optional-tasks-unit-test">Optional Tasks (Unit test)</h2>
+
+<p>In the same mood of  composer we have phpunit optinal task to run:</p>
+
+<div class="language-xml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">&lt;target</span> <span class="na">name=</span><span class="s">"phpunittests"</span> <span class="na">depends=</span><span class="s">"clone, composerupdate"</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;phpunit</span> <span class="na">pharlocation=</span><span class="s">"${appdir}/phpunit.phar"</span>
+             <span class="na">codecoverage=</span><span class="s">"false"</span> 
+             <span class="na">bootstrap=</span><span class="s">"${testdir}/bootstrap.php"</span>
+             <span class="na">haltonfailure=</span><span class="s">"true"</span>
+             <span class="na">printsummary=</span><span class="s">"true"</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;batchtest&gt;</span>
+            <span class="nt">&lt;fileset</span> <span class="na">dir=</span><span class="s">"${testdir}"</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;include</span> <span class="na">name=</span><span class="s">"**/*Test.php"</span><span class="nt">/&gt;</span>
+            <span class="nt">&lt;/fileset&gt;</span>
+        <span class="nt">&lt;/batchtest&gt;</span>
+    <span class="nt">&lt;/phpunit&gt;</span>
+<span class="nt">&lt;/target&gt;</span>
+</code></pre></div></div>
+
+<p>And once again we take advantage of Phing with the optional task phpunit which
+provides a easy way to run unit tests using phpunt.</p>
+
+<h2 id="automate-automate-automate">Automate, automate, automate!</h2>
+
+<p>With a fewer steps we automated our project, with Phing we can do much more and
+now is up to you keep automating. Play around with core tasks and optional
+tasks as well, Phing has a lot more to explore!</p>
+
+<p>You can see full build file used in this post
+<a href="https://gist.github.com/marabesi/b3653f7dd290c6396b2d" target="_blank">here</a>.</p>
+
+    </main>
+
+    
+
+<style>
+#share-buttons {display: flex; justify-content: center; align-items: center;}
+#share-buttons > div {
+    position: relative;
+    text-align: left; 
+    height: 36px; 
+    width: 32px; 
+    float: left; 
+    text-align: center;
+}
+#share-buttons > div > svg {height: 16px; fill: #f12f46; margin-top: 10px;}
+#share-buttons > div:hover {cursor: pointer;}
+#share-buttons > div.facebook:hover > svg {fill: #3B5998;}
+#share-buttons > div.twitter:hover > svg {fill: #55ACEE;}
+#share-buttons > div.linkedin:hover > svg {fill: #0077b5;}
+#share-buttons > div.pinterest:hover > svg {fill: #CB2027;}
+#share-buttons > div.gplus:hover > svg {fill: #dd4b39;}
+#share-buttons > div.mail:hover > svg {fill: #7D7D7D;}
+#share-buttons > div.instagram:hover > svg {fill: #C73B92;}
+#share-buttons > div.facebook > svg {height: 18px; margin-top: 9px;}
+#share-buttons > div.twitter > svg {height: 20px; margin-top: 8px;}
+#share-buttons > div.linkedin > svg {height: 19px; margin-top: 7px;}
+#share-buttons > div.pinterest > svg {height: 20px; margin-top: 9px;}
+#share-buttons > div.gplus > svg {height: 17px; margin-top: 9px; position: relative; left: 1px;}
+#share-buttons > div.mail > svg {height: 14px; margin-top: 11px;}
+</style>
+
+<div id="share-buttons" class="mb-5">
+    <div class="facebook" title="Share this on Facebook" onclick="window.open('http://www.facebook.com/share.php?u=https://marabesi.com/php/2015/09/30/phing-automate-all-the-things-practical-example.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1343 12v264h-157q-86 0-116 36t-30 108v189h293l-39 296h-254v759h-306v-759h-255v-296h255v-218q0-186 104-288.5t277-102.5q147 0 228 12z"/></svg></div>
+    <div class="twitter" title="Share this on Twitter" onclick="window.open('https://twitter.com/intent/tweet?text=https://marabesi.com/php/2015/09/30/phing-automate-all-the-things-practical-example.html');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg></div>
+    <div class="linkedin" title="Share this on Linkedin" onclick="window.open('https://www.linkedin.com/shareArticle?mini=true&url=https://marabesi.com/php/2015/09/30/phing-automate-all-the-things-practical-example.html&title=&summary=&source=');"><svg viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M477 625v991h-330v-991h330zm21-306q1 73-50.5 122t-135.5 49h-2q-82 0-132-49t-50-122q0-74 51.5-122.5t134.5-48.5 133 48.5 51 122.5zm1166 729v568h-329v-530q0-105-40.5-164.5t-126.5-59.5q-63 0-105.5 34.5t-63.5 85.5q-11 30-11 81v553h-329q2-399 2-647t-1-296l-1-48h329v144h-2q20-32 41-56t56.5-52 87-43.5 114.5-15.5q171 0 275 113.5t104 332.5z"/></svg></div>
+</div>
+  
+
+
+  <div id="disqus_thread"></div>
+</div>
+
+      <div class="footer">
+        <div class="footer-details">
+          Made with 💖 by <a href="https://twitter.com/MatheusMarabesi" target="_blank">@MatheusMarabesi</a>
+        </div>
+      </div>
+    </div>
+
+    
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-58623708-1', 'auto');
+      ga('send', 'pageview');
+    </script>
+    
+
+    <script async src="/assets/main-bundle.js"></script>
+  </body>
+</html>
